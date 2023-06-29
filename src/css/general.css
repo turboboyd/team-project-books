@@ -41,6 +41,12 @@ body {
   border: 2px solid var(--accent-color);
   cursor: pointer;
 }
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
 
 @media screen and (max-width: 767px) {
   .container {
@@ -71,11 +77,26 @@ body {
     line-height: 1.08;
     letter-spacing: -1.92px;
   }
+  .sidebar {
+    margin-bottom: 100px;
+    width: calc(768px - 62px);
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 32px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
     padding: 0 24px;
+  }
+  .sidebar {
+    flex-direction: column;
+    max-width: 356px;
+    gap: 0;
+    margin-right: 40px;
+    margin-top: 0;
   }
 }
