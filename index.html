@@ -12,9 +12,9 @@
     />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-bec45635.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/styles-110ebd4d.js">
-    <link rel="stylesheet" href="/team-project-books/assets/styles-ada19642.css">
+    <script type="module" crossorigin src="/team-project-books/assets/index-9ccfb807.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/styles-ae8aef32.js">
+    <link rel="stylesheet" href="/team-project-books/assets/styles-e7aa9e18.css">
   </head>
 
   <body class="page">
@@ -204,18 +204,20 @@
     Best Seller
     <span class="main-title_last-word">Books</span>
   </h2>
-
-  <div class="content-rendering-container">
+  <div class="content-conteiner">
+      <ul class="books-grid render-container-js"></ul>
+  </div>
+  <div class="content-rendering-container ">
     <!-- СЮДИ РЕНДЕР БЕСТЦЕЛЕРІВ З АПІ   -->
 
     <!-- це розмітка динамічна , її звідси забрати в функцію яваскріпт (наприклад Bestsellers.js) -->
     <ul class="category-blocks-list">
       <li class="bestseller-category">
         <h3 class="bestseller-category-title">title</h3>
-        <ul class="books-list">
-          <li class="books-list-item bestsellers-book-item">
+        <ul class="books-list content-rendering-container-js">
+          <!-- <li class="books-list-item bestsellers-book-item content-rendering-container-js">
             рендер 1 книги(CreateBookMarkup) розмітка нижче
-          </li>
+          </li> -->
         </ul>
         <button type="button" class="button see-more-btn">See more</button>
       </li>
