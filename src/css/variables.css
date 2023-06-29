@@ -1,0 +1,11 @@
+:root {
+    --main-bgr-color: #F6F6F6;
+    --dark-main-bgr-color: #202024;
+    --white-color: #FFFFFF;
+    --title-color: #111111;
+    --accent-color: #4F2EE8;
+    --accent-header-color: #EAC645;
+    --main-font-color: #9A9A9A ;
+    --font-card-color: #F6F6F6;
+    --light-font-color: rgba(17, 17, 17, 0.60);
+}
