@@ -1,4 +1,5 @@
 import BookAPI from './book-api';
+import markupBook from './render-book-card'
 const bookApi = new BookAPI();
 
 const containerContent = document.querySelector(
@@ -7,7 +8,10 @@ const containerContent = document.querySelector(
 const categorieEl = document.querySelector('.categorie-js');
 
 
+bookApi.getBooksCategoriesList().then(data => renderCategories(data));
+
 bookApi.getSelectedCategoryBooks().then(data => renderBooks(data));
+
 
 function renderBooks(books) {
     cleaningBooks()
@@ -15,27 +19,12 @@ function renderBooks(books) {
 }
 
 function cleaningBooks() {
-      containerContent.innerHTML = '';
+    containerContent.innerHTML = '';
 }
 
-function markupBook({
-  book_image,
-  book_image_width,
-  book_image_height,
-  list_name,
-  author,
-}) {
-    const markup = `
-    <li class="card-book">
-        <img class="book-image" width="${book_image_width}" height="${book_image_height}" loading="lazy" src="${book_image}"/>
-        <h3 class="book-title">${list_name}</h3>
-        <p class="book-author">${author}</p>
-    </li>
-    `;
-  return containerContent.insertAdjacentHTML('beforeend', markup);
-}
 
-bookApi.getBooksCategoriesList().then(data => renderCategories(data));
+
+
 
 function renderCategories(categories) {
   categories.map(categorie => markupCategorie(categorie));
