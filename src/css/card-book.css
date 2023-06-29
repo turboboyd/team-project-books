@@ -1,0 +1,9 @@
+/* .card-book{
+    width: 180px;
+} */
+
+.books-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}

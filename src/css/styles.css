@@ -12,11 +12,13 @@
 @import url('./home-content.css');
 @import url('./bestsellers.css');
 @import url('./scrollbtn.css');
+@import url('./card-book.css');
 @import url('./shoping-list.css');
 
 
 @import url('./loader.css');
 @import url('./general.css');
+
 
 /* стандартні стилі зі збірника, не наші */
 /* :root {
