@@ -15,14 +15,17 @@ export default class BookAPI {
   }
 
   async getTopBooks() {
-    return await axios.get(`${this.#BASE_URL}/top-books`);
+    const respons = await axios.get(`${this.#BASE_URL}/top-books`);
+    return respons.data;
   }
 
   async getSelectedCategoryBooks() {
-    return await axios.get(`${this.#BASE_URL}/category?category=${this.category}`);
+    const respons = await axios.get(`${this.#BASE_URL}/category?category=${this.category}`)
+    return respons.data;
   }
 
-	async getBookInfo() {
-    return await axios.get(`${this.#BASE_URL}/${this.id}`);
+  async getBookInfo() {
+    const respons = await axios.get(`${this.#BASE_URL}/${this.id}`)
+    return respons.data ;
   }
 }
