@@ -1,0 +1,7 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.29;
+    color: var(--title-color);
+    background-color: var(--main-bgr-color);
+}
