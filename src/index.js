@@ -1,5 +1,5 @@
 // import './js/categories';
-// import './js/bestsellers';
+import './js/bestsellers';
 import './js/filter'
 import './js/categories';
 
