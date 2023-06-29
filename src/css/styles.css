@@ -4,6 +4,7 @@
   | default @import url()
   |============================
 */
+
 @import url('./reset.css');
 @import url('./header.css');
 @import url('./categories-menu.css');
@@ -11,7 +12,8 @@
 @import url('./home-content.css');
 @import url('./bestsellers.css');
 @import url('./scrollbtn.css');
-
+@import url('./loader.css');
+@import url('./general.css');
 /* стандартні стилі зі збірника, не наші */
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
