@@ -6,8 +6,8 @@
     <title>Shopping list</title>
     
     
-    <script type="module" crossorigin src="/team-project-books/assets/styles-c486d184.js"></script>
-    <link rel="stylesheet" href="/team-project-books/assets/styles-79d2dac9.css">
+    <script type="module" crossorigin src="/team-project-books/assets/styles-110ebd4d.js"></script>
+    <link rel="stylesheet" href="/team-project-books/assets/styles-ada19642.css">
   </head>
   <body class="page">
     <!-- хедер -->
@@ -126,9 +126,67 @@
 <section class="shopping section">
   <div class="container">
     <h2 class="title">Shopping <span class="title-span">List</span></h2>
+    <div class="">
+      <p class="shopping-text">
+        This page is empty, add some books and proceed to order.
+      </p>
+      <img
+        class="img-ctack-books"
+        src="../../images/empty.png"
+        alt="stack of books"
+        width="265"
+        height="198"
+      />
+    </div>
 
     <ul class="shopping__list">
-      <!-- сюда рендериться книга після додавання в шоп-ліст -->
+      <li class="shopping-item">
+        <img
+          class="shopping-book-cover"
+          src="../../images/empty.png"
+          alt="book cover"
+          width="100"
+          height="142"
+        />
+        <div class="shopping-wrap">
+          <div class="shopping-trash-wrap">
+            <h2 class="shopping-book-title">Book Title</h2>
+            <button class="shopping-trash" type="button">
+              <svg class="icon-shopping-trash" width="18" height="18">
+                <use href="../../images/sprite.svg#icon-trash"></use>
+              </svg>
+            </button>
+          </div>
+          <p class="shopping-book-categories">Categoris</p>
+          <p class="shopping-book-description text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam,
+            sint, incidunt eum sed laborum rerum sapiente esse repellendus
+            veritatis beatae cupiditate sit, magni repudiandae laboriosam quidem
+            officiis aut architecto fugit!
+          </p>
+          <div class="shopping-wrapper">
+            <p class="shopping-book-author">Author name</p>
+
+            <ul class="shop-list">
+              <li>
+                <a href="#">
+                  <img src="../../images/amazon.png" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="../../images/books-io.png" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="../../images/bookshop.png" alt="" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </section>
