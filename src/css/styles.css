@@ -11,6 +11,7 @@
 @import url('./home-content.css');
 @import url('./bestsellers.css');
 @import url('./scrollbtn.css');
+@import url('./card-book.css');
 
 /* стандартні стилі зі збірника, не наші */
 :root {

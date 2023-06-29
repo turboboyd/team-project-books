@@ -1,5 +1,3 @@
-
-
 import BookAPI from './book-api';
 const bookApi = new BookAPI();
 const categorieEl = document.querySelector('.categorie-js');
@@ -13,7 +11,16 @@ function renderCategories(categories) {
 }
 
 function markupCategorie({ list_name }) {
-  const markup = `<li>${list_name}</li>`;
+  const name = list_name;
+  const markup = `<li class="filter-item" data-active="${name}">${name}</li>`;
   return categorieEl.insertAdjacentHTML('beforeend', markup);
 }
+
+
+
+
+
+
+
+
 
