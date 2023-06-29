@@ -3,6 +3,7 @@
 import BookAPI from './book-api';
 const bookApi = new BookAPI();
 const categorieEl = document.querySelector('.categorie-js');
+console.log('categorieEl: ', categorieEl);
 
 
 bookApi.getBooksCategoriesList().then(data => renderCategories(data));
