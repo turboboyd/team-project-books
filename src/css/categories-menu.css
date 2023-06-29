@@ -1,0 +1,15 @@
+.categories {
+  height: 228px;
+  padding-right: 20px;
+  
+
+  
+}
+
+.categories_list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+}

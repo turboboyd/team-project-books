@@ -1,0 +1,39 @@
+/* стилі щоб бачити що є копка - переробити/доробити */
+
+.to-top-target {
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  z-index: 1;
+
+  height: 54px;
+  width: 54px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: blue;
+  border: 5px solid transparent;
+  border-radius: 50%;
+
+  
+
+ 
+
+  
+
+  
+}
+
+.button-icon--arrow {
+  --color1:white;
+  transition: fill 500ms ease-in-out;
+}

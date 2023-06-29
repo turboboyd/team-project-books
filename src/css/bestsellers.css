@@ -1,0 +1,36 @@
+.bestseller-category {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-blocks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.books-list {
+  display: flex;
+  gap: 24px;
+
+  margin-bottom: 32px;
+}
+
+.book-image {
+  /* min-width: 335px; */
+  width: 335px;
+    height: 485px;
+    background-color: blanchedalmond;
+}
+
+.book-thumb {
+  position: relative;
+  overflow: hidden;
+  
+
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.see-more-btn {
+  margin-left: auto;
+}

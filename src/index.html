@@ -4,12 +4,46 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Bookshelf</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body>
+
+  <body class="page">
+    <h1>трішки накидав стилів для візуалізації</h1>
+
+    <load ="./partials/layout/header/header.html" />
     <ul class="categorie-js"></ul>
-    <h1>Hellossssssss</h1>
+    <div class="container page-container">
+      <!-- дів для кнопки scroll up -->
+      <div class="to-top-target"></div>
+
+      <aside class="sidebar">
+        <!-- категорії -->
+
+        <load ="./partials/layout/sidebar/categories.html" />
+
+        <!-- Support Ukraine -->
+
+        <load ="./partials/layout/sidebar/support.html" />
+      </aside>
+
+      <main class="content">
+        <!-- Page content -->
+
+        <load ="./partials/layout/home-content.html" />
+
+        <!-- Modal -->
+        <load ="./partials/modals/modal.html" />
+
+        <!-- Scroll to up button -->
+        <load ="./partials/components/scroll-to-up.html" />
+
+        <!-- burger-menu-->
+        <load ="./partials/layout/header/burger-menu.html" />
+      </main>
+    </div>
+
+    <script type="module" src="/index.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
