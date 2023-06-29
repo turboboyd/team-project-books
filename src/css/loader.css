@@ -787,3 +787,7 @@ html {
   display: block;
   width: 76px;
 }
+
+.hidden {
+  display: none;
+}
