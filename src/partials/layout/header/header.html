@@ -1,0 +1,83 @@
+<!-- хедер -->
+
+<header class="header">
+  <div class="container">
+    <a class="logo-header link" href="./index.html">
+      <span class="page-logo">
+        <svg
+          class="page-logo-first"
+          lang=""
+          aria-label="Logo"
+          width="20"
+          height="20"
+        >
+          <use href="./images/symbol-defs.svg#icon-logo"></use></svg></span
+      ><svg
+        class="page-logo-last"
+        lang="en"
+        aria-label="Logo text 'Book'"
+        width="77"
+        height="13"
+      >
+        <use href="./images/symbol-defs.svg#icon-Book_desktop"></use>
+      </svg>
+    </a>
+
+    <!-- навігація -->
+    <div class="navigation-wrapper">
+      <ul class="navigation-list list">
+        <li class="navigation-list-item-home">
+          <a
+            class="navigation-link navigation-link-home link"
+            href="./index.html"
+            >Home</a
+          >
+        </li>
+        <li class="navigation-list-item-shopping">
+          <a
+            class="navigation-link navigation-link-shopping link"
+            href="./shopping-list.html"
+            >Shopping list
+            <svg
+              class="navigation-link-icon"
+              lang=""
+              aria-label="Suitcase icon"
+              width="20"
+              height="20"
+            >
+              <use href="./images/symbol-defs.svg#icon-uil-cart"></use>
+            </svg>
+          </a>
+        </li>
+        <!--  -->
+      </ul>
+
+      <!-- перемикач теми -->
+      <ul class="navigation-list-last list">
+        <li></li>
+        <li>
+          <button
+            type="button"
+            class="mobile-menu-open"
+            aria-label="Open mobile menu"
+          >
+            <svg width="28" height="28">
+              <use
+                class="mobile-menu-open mobile-menu-open__icon"
+                href="./images/symbol-defs.svg#icon-align-left"
+              ></use>
+              <use
+                class="mobile-menu__close-button mobile-menu__close-icon is-hidden"
+              ></use>
+            </svg>
+          </button>
+        </li>
+        <li class="navigation-list">
+          <!-- форма авторизації -->
+          <!--  НЕ МОЖУ СЮДИ ВСТАВИТИ  authorization-form.html   може тоді її тут і писати сам код форми-->
+          <!-- <include src="./partials/modals/authorization-form.html"></include> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
