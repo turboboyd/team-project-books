@@ -1,22 +1,11 @@
 
-const BASE_URL = 'https://books-backend.p.goit.global/books/category-list';
 
-function fetchBreeds() {
-  return fetch(`${BASE_URL}`).then(r => {
-    if (!r.ok) {
-      throw new Error();
-    }
-    return r.json();
-  });
-}
-
-fetchBreeds().then(data => renderCategories(data));
-
-
-
-
-
+import BookAPI from './book-api';
+const bookApi = new BookAPI();
 const categorieEl = document.querySelector('.categorie-js');
+
+
+bookApi.getBooksCategoriesList().then(data => renderCategories(data));
 
 function renderCategories(categories) {
   categories.map(categorie => markupCategorie(categorie));

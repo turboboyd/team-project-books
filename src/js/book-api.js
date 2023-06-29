@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export class BookAPI {
+export default class BookAPI {
   #BASE_URL = 'https://books-backend.p.goit.global/books';
 
   constructor() {
@@ -9,7 +9,9 @@ export class BookAPI {
   }
 
   async getBooksCategoriesList() {
-    return await axios.get(`${this.#BASE_URL}/category-list`);
+    const respons = await axios.get(`${this.#BASE_URL}/category-list`);
+    return respons.data
+
   }
 
   async getTopBooks() {
