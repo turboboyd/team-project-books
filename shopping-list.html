@@ -2,18 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/team-project-books/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookshelf</title>
+    <title>Shopping list</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-cb0eae11.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/styles-d70f2895.js">
+    
+    <script type="module" crossorigin src="/team-project-books/assets/styles-d70f2895.js"></script>
     <link rel="stylesheet" href="/team-project-books/assets/styles-f7bf16f0.css">
   </head>
-
   <body class="page">
-    <h1>трішки накидав стилів для візуалізації</h1>
-
     <!-- хедер -->
 
 <header class="header">
@@ -98,32 +94,9 @@
   </div>
 </header>
 
-    <ul class="categorie-js"></ul>
-    <div class="container page-container">
-      <!-- дів для кнопки scroll up -->
-      <div class="to-top-target"></div>
-
-      <aside class="sidebar">
-        <!-- категорії -->
-
-        <div class="categories">
-  <ul class="categories_list categorie-js">
-    <li class="categories_item">
-      <button
-        type="button"
-        class="category-btn active-category"
-        name="allcategories"
-      >
-        All categories
-      </button>
-    </li>
-    <!-- тут будуть рендеритися категорії з апі (фунція js )-->
-  </ul>
-</div>
-
-
-        <!-- Support Ukraine -->
-
+    <div class="container page container">
+      <aside class="sidebar sidebar-shoppinglist">
+        <!-- support -->
         <div class="support">
   <h2 class="head-title">
     Support Ukraine
@@ -147,69 +120,22 @@
 </div>
 
       </aside>
-
       <main class="content">
-        <!-- Page content -->
-
-        <div class="home-container">
-  <h2 class="main-title">
-    Best Seller
-    <span class="main-title_last-word">Books</span>
-  </h2>
-
-  <div class="content-rendering-container">
-    <!-- СЮДИ РЕНДЕР БЕСТЦЕЛЕРІВ З АПІ   -->
-
-    <!-- це розмітка динамічна , її звідси забрати в функцію яваскріпт (наприклад Bestsellers.js) -->
-    <ul class="category-blocks-list">
-      <li class="bestseller-category">
-        <h3 class="bestseller-category-title">title</h3>
-        <ul class="books-list">
-          <li class="books-list-item bestsellers-book-item">
-            рендер 1 книги(CreateBookMarkup) розмітка нижче
-          </li>
-        </ul>
-        <button type="button" class="button see-more-btn">See more</button>
-      </li>
+        <!-- те що додали в корзину -->
+        <!-- книги які добавляємо  -->
+<section class="shopping">
+  <div class="shopping__container">
+    <h2 class="shopping__title">
+      Shopping <span class="shopping__title-span">List</span>
+    </h2>
+    <ul class="shopping__list">
+      <!-- сюда рендериться книга після додавання в шоп-ліст -->
     </ul>
-    <!-- кінець основної розмітки рендер -->
-
-    <!-- createBookMarkup.js   ця розмітка динамічна, її звідси забрати в функцію яваскріпт, і вставляти всередину розмітки вище-->
-    <a class="book-link">
-      <div class="book-thumb">
-        <img class="book-image" />
-        <div class="book-image-overlay">
-          <p class="book-image-overlay-text">Quick view</p>
-        </div>
-      </div>
-      <div class="book-item-meta">
-        <h3 class="book-title">title</h3>
-        <p class="book-author">author</p>
-      </div>
-    </a>
-    <!--кінець розмітки 1 книги  -->
   </div>
-</div>
+</section>
 
-
-        <!-- Modal -->
-        <!-- модальне вікно коли ми відкриваємо 1 книгу -->
-<div class="backdrop is-hidden">
-  <div class="">
-    <button type="button" class="close-button" aria-label="Close">
-      <svg class="close-button__icon" width="18" height="18">
-        <use href="/team-project-books/assets/symbol-defs-fb5f1a09.svg#icon-x-close"></use>
-      </svg>
-    </button>
-
-    <div class="">
-      <!-- контент книги сюда рендериться -->
-    </div>
-
-    <button type="button" class="button">Add to shopping list</button>
-  </div>
-</div>
-
+        <!-- pagination -->
+        <!-- Тут буде пагінація для Shopping list -->
 
         <!-- Scroll to up button -->
         <!-- Кнопка повернутися вгору -->
@@ -218,7 +144,6 @@
     <use href="/team-project-books/assets/symbol-defs-fb5f1a09.svg#icon-chevron"></use>
   </svg>
 </button>
-
 
         <!-- burger-menu-->
         <!-- бургер меню хедера -->
@@ -259,7 +184,5 @@
 
       </main>
     </div>
-
-    
   </body>
 </html>
