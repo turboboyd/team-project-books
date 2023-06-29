@@ -4,8 +4,11 @@
   | default @import url()
   |============================
 */
-
 @import url('./reset.css');
+@import url('./general.css');
+@import url(./variables.css);
+
+
 @import url('./header.css');
 @import url('./categories-menu.css');
 @import url('./support.css');
@@ -17,7 +20,7 @@
 
 
 @import url('./loader.css');
-@import url('./general.css');
+
 
 
 /* стандартні стилі зі збірника, не наші */
