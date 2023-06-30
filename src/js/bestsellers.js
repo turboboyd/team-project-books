@@ -1,9 +1,16 @@
 import BookAPI from './book-api';
+import Notiflix from 'notiflix';
+
 import renderBook from './render-book-card';
 const bookApi = new BookAPI();
 const containerContent = document.querySelector('.books-render-js');
 
-bookApi.getTopBooks().then(data => renderWrapCategories(data));
+bookApi.getTopBooks()
+  .then(data => renderWrapCategories(data))
+  .catch(error => {
+  console.error('Error retrieving top books:', error);
+  Notiflix.Notify.failure('Oops! Error retrieving top books. Please try again later.')
+});
 
 function renderWrapCategories(categories) {
   categories.map(categorie => markupWrapCategories(categorie));
