@@ -1,4 +1,9 @@
 import charities from "./charities";
+import Swiper, { Navigation } from "swiper";
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+
 
 const list = document.querySelector('.support-list');
 const html = charities.map(makeMarkup).join('');
@@ -20,4 +25,22 @@ list.innerHTML = html;
 
 const str = charities.map((element, index) => {
   return '<li class="support-item"> ссылка на фонд <a class="support-link" href=""></a></li>';
+});
+
+
+const swiper = new Swiper('.swiper', {
+  direction: 'vertical',
+  slidesPerView: 4,
+  rewind: true,
+  spaceBetween: 20,
+  effect: 'slide',
+  breakpoints: {
+    480: {
+      slidesPerView: 6,
+    },
+  },
+  modules: [Navigation],
+  navigation: {
+    nextEl: '.swiper-next',
+  },
 });
