@@ -1,9 +1,7 @@
-import charities from "./charities";
-import Swiper, { Navigation } from "swiper";
+import charities from './charities';
+import Swiper, { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-
 
 const list = document.querySelector('.support-list');
 const html = charities.map(makeMarkup).join('');
@@ -26,7 +24,6 @@ list.innerHTML = html;
 const str = charities.map((element, index) => {
   return '<li class="support-item"> ссылка на фонд <a class="support-link" href=""></a></li>';
 });
-
 
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
