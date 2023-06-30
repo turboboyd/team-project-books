@@ -21,7 +21,7 @@ function markupWrapCategories(categorie) {
   const markup = `    
     <li class="content-categories">
       <h3>${list_name}</h3>
-        <ul class="books-grid " ()>
+        <ul class="books-grid books-grid-item" ()>
                   ${books
                     .map(book => {
                       return renderBook(book);
@@ -32,3 +32,4 @@ function markupWrapCategories(categorie) {
     </li>`;
   containerContent.insertAdjacentHTML('beforeend', markup);
 }
+
