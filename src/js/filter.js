@@ -1,9 +1,8 @@
 import BookAPI from './book-api';
 import markupBook from './render-book-card'
 const bookApi = new BookAPI();
-
 const containerContent = document.querySelector(
-  '.render-container-js'
+  '.books-render-js'
 );
 const categorieEl = document.querySelector('.categorie-js');
 
@@ -14,12 +13,14 @@ bookApi.getSelectedCategoryBooks().then(data => renderBooks(data));
 
 
 function renderBooks(books) {
-    cleaningBooks()
-    books.map(book => markupBook(book));
+  cleaningBooks()
+  const markup = books.map(book => markupBook(book));
+  return containerContent.insertAdjacentHTML('beforeend', markup);
 }
 
 function cleaningBooks() {
-    containerContent.innerHTML = '';
+  containerContent.innerHTML = '';
+  // containerContent.innerHTML = '';
 }
 
 
