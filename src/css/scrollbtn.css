@@ -23,17 +23,21 @@
   background-color: blue;
   border: 5px solid transparent;
   border-radius: 50%;
-
-  
-
- 
-
-  
-
-  
 }
 
 .button-icon--arrow {
-  --color1:white;
+  --color1: white;
+  fill: #fff;
   transition: fill 500ms ease-in-out;
+}
+.to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 54px;
+  height: 54px;
+  border: 10px solid rgba(79, 46, 232, 0.3);
+  border-radius: 50%;
+  background-color: rgba(79, 46, 232, 1);
+  cursor: pointer;
 }
