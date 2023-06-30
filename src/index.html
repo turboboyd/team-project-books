@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Bookshelf</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <title>Bookshelf</title>
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
+  <body class="page">
+    <h1 class="visually-hidden">Bookshop</h1>
 
-<body class="page">
-  <h1>трішки накидав стилів для візуалізації</h1>
+    <load ="./partials/layout/header/header.html" />
+    <div class="container page-container">
+      <!-- дів для кнопки scroll up -->
+      <div class="to-top-target"></div>
 
-  <load="./partials/layout/header/header.html" />
-  <div class="container page-container">
-    <!-- дів для кнопки scroll up -->
-    <div class="to-top-target"></div>
+      <aside class="sidebar">
+        <!-- категорії -->
 
-    <aside class="sidebar">
-      <!-- категорії -->
+        <load ="./partials/layout/sidebar/categories.html" />
 
-      <load="./partials/layout/sidebar/categories.html" />
+        <!-- Support Ukraine -->
 
-      <!-- Support Ukraine -->
+        <load ="./partials/layout/sidebar/support.html" />
+      </aside>
 
-      <load="./partials/layout/sidebar/support.html" />
-    </aside>
+      <main class="content">
+        <!-- loader -->
 
-    <main class="content">
-      <!-- loader -->
+        <load ="./partials/components/loader.html" />
+        <!-- Page content -->
 
-      <load="./partials/components/loader.html" />
-      <!-- Page content -->
+        <load ="./partials/layout/home-content.html" />
 
-      <load="./partials/layout/home-content.html" />
+        <!-- Modal -->
+        <load ="./partials/modals/modal.html" />
 
-      <!-- Modal -->
-      <load="./partials/modals/modal.html" />
+        <!-- Scroll to up button -->
+        <load ="./partials/components/scroll-to-up.html" />
 
-      <!-- Scroll to up button -->
-      <load="./partials/components/scroll-to-up.html" />
+        <!-- burger-menu-->
+        <load ="./partials/layout/header/burger-menu.html" />
 
-      <!-- burger-menu-->
-      <load="./partials/layout/header/burger-menu.html" />
+        <!-- loader -->
+        <load ="./partials/components/loader.html" />
+      </main>
+    </div>
 
-      <!-- loader -->
-      <load="./partials/components/loader.html" />
-    </main>
-  </div>
-
-  <script type="module" src="/index.js"></script>
-</body>
-
+    <script type="module" src="/index.js"></script>
+  </body>
 </html>

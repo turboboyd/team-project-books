@@ -1,4 +1,4 @@
-.category-books-list {
+/* .category-books-list {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -9,4 +9,12 @@
 
 .books-list-item {
   gap: 25px;
+} */
+
+
+
+@media screen and (min-width: 1280px) {
+  .page-container {
+      display: flex;
+    }
 }
