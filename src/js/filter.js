@@ -1,5 +1,7 @@
 import BookAPI from './book-api';
 import markupBook from './render-book-card'
+import Notiflix from 'notiflix';
+
 const bookApi = new BookAPI();
 const containerContent = document.querySelector(
   '.books-render-js'
@@ -7,9 +9,19 @@ const containerContent = document.querySelector(
 const categorieEl = document.querySelector('.categorie-js');
 
 
-bookApi.getBooksCategoriesList().then(data => renderCategories(data));
+bookApi.getBooksCategoriesList()
+  .then(data => renderCategories(data))
+  .catch(error => {
+  console.error('Error:', error);
+  Notiflix.Notify.failure('Oops! Something went wrong. Please try again later.')
+});;
 
-bookApi.getSelectedCategoryBooks().then(data => renderBooks(data));
+bookApi.getSelectedCategoryBooks()
+  .then(data => renderBooks(data))
+  .catch(error => {
+  console.error('Error:', error);
+  Notiflix.Notify.failure('Oops! Something went wrong. Please try again later.')
+});;
 
 
 function renderBooks(books) {
@@ -40,7 +52,12 @@ function markupCategorie({ list_name }) {
   const filterItem = element.querySelector('.filter-item');
     filterItem.addEventListener('click', () => {
     bookApi.category = name; 
-    bookApi.getSelectedCategoryBooks().then(data => renderBooks(data));
+      bookApi.getSelectedCategoryBooks()
+        .then(data => renderBooks(data))
+        .catch(error => {
+  console.error('Error found category:', error);
+  Notiflix.Notify.failure('Oops, there is no category with that name. Please try again later.')
+});
   });
 
   return categorieEl.appendChild(element.firstChild);
