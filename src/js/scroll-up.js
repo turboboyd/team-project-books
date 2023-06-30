@@ -1,4 +1,4 @@
-const toTopBtn = document.querySelector('.to-top');
+export const toTopBtn = document.querySelector('.to-top');
 function onScrollToTopBtn() {
   const offsetScroll = 200;
   const pageOffset = window.pageYOffset;
