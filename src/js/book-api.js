@@ -10,43 +10,40 @@ export default class BookAPI {
   }
 
   async getBooksCategoriesList() {
-    try {  const respons = await axios.get(`${this.#BASE_URL}/category-list`);
-           return respons.data
-      
+    try {
+      const respons = await axios.get(`${this.#BASE_URL}/category-list`);
+      return respons.data;
     } catch (error) {
-      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!')
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
     }
-    
-
   }
 
   async getTopBooks() {
-    try { const respons = await axios.get(`${this.#BASE_URL}/top-books`);
-    return respons.data;
-      
+    try {
+      const respons = await axios.get(`${this.#BASE_URL}/top-books`);
+      return respons.data;
     } catch (error) {
-      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!')
-      
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
     }
   }
 
-  async getSelectedCategoryBooks() {
-    try { const respons = await axios.get(`${this.#BASE_URL}/category?category=${this.category}`)
-    return respons.data;
-      
+  async getSelectedCategoryBooks(category) {
+    try {
+      const respons = await axios.get(
+        `${this.#BASE_URL}/category?category=${category}`
+      );
+      return respons.data;
     } catch (error) {
-      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!')
-      
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
     }
   }
 
   async getBookInfo() {
-    try { const respons = await axios.get(`${this.#BASE_URL}/${this.id}`)
-    return respons.data ;
-      
+    try {
+      const respons = await axios.get(`${this.#BASE_URL}/${this.id}`);
+      return respons.data;
     } catch (error) {
-      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!')
-      
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
     }
   }
 }

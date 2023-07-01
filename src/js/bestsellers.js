@@ -12,7 +12,7 @@ bookApi.getTopBooks()
   Notiflix.Notify.failure('Oops! Error retrieving top books. Please try again later.')
 });
 
-function renderWrapCategories(categories) {
+export default function renderWrapCategories(categories) {
   categories.map(categorie => markupWrapCategories(categorie));
 }
 
