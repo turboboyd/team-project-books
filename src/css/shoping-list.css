@@ -5,7 +5,7 @@
   filter: hue-rotate(80deg);
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
-.visually-hidden {
+.shop-page .visually-hidden {
   position: absolute;
   white-space: nowrap;
   width: 1px;
@@ -134,7 +134,11 @@
     margin-bottom: 120px;
   }
 }
-
+@media screen and (max-width: 1439px) {
+  .sidebar-shoppinglist {
+    display: none;
+  }
+}
 @media screen and (min-width: 768px) {
   .shopping-title {
     margin-bottom: 140px;
@@ -196,5 +200,22 @@
 @media screen and (min-width: 1440px) {
   .shopping-book-title {
     max-width: 750px;
+  }
+  .shopping-text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.33;
+    letter-spacing: -0.36px;
+  }
+  .shop-wrap {
+    flex-grow: 1;
+  }
+
+  .empty {
+    height: 409px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
