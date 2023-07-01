@@ -1,7 +1,121 @@
 body {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.29;
-    color: var(--title-color);
-    background-color: var(--main-bgr-color);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--title-color);
+  background-color: var(--main-bgr-color);
+}
+
+.btn {
+  color: var(--title-color);
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.14px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 40px;
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.btn:is(:hover, :focus) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.section {
+  padding-top: 40px;
+}
+
+.title {
+  color: var(--title-color);
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.title-span {
+  color: var(--accent-color);
+}
+
+.text {
+  line-height: 1.29;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 375px;
+    padding: 0 20px;
+  }
+  .section-modal {
+    padding: 40px 40px;
+  }
+  .title {
+    font-size: 32px;
+    line-height: 1.19;
+    letter-spacing: -1.28px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bigger-btn {
+    width: 100%;
+    font-size: 18px;
+    padding: 20px 28px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+
+    height: 64px;
+  }
+
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+  .section-modal {
+    padding: 40px 24px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -1.92px;
+  }
+  .sidebar {
+    margin-bottom: 100px;
+    width: calc(768px - 62px);
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 24px;
+  }
+  .sidebar {
+    flex-direction: column;
+    max-width: 356px;
+    gap: 0;
+    margin-right: 40px;
+    margin-top: 0;
+  }
 }

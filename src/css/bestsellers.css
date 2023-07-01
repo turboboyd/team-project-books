@@ -9,12 +9,13 @@
   gap: 40px;
 }
 
-.books-list {
+/* .books-list {
   display: flex;
+  flex-direction: column;
   gap: 24px;
 
   margin-bottom: 32px;
-}
+} */
 
 .book-image {
   /* min-width: 335px; */

@@ -4,16 +4,26 @@
   | default @import url()
   |============================
 */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css);
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 @import url('./reset.css');
+@import url('./general.css');
+@import url(./variables.css);
+
 @import url('./header.css');
 @import url('./categories-menu.css');
 @import url('./support.css');
 @import url('./home-content.css');
 @import url('./bestsellers.css');
 @import url('./scrollbtn.css');
+@import url('./card-book.css');
+@import url('./shoping-list.css');
+@import url('./content-categories.css');
+
+@import url('./loader.css');
 
 /* стандартні стилі зі збірника, не наші */
-:root {
+/* :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -27,4 +37,4 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
+} */
