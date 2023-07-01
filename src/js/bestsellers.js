@@ -20,7 +20,7 @@ function markupWrapCategories(categorie) {
   const { list_name, books} = categorie;
   const markup = `    
     <li class="content-categories">
-      <h3>${list_name}</h3>
+      <h3 class="content-categories-title">${list_name}</h3>
         <ul class="books-grid books-grid-item" ()>
                   ${books
                     .map(book => {
@@ -28,7 +28,7 @@ function markupWrapCategories(categorie) {
                     })
                     .join('')}
           </ul>
-    <button>see more</button>
+    <button class="btn see-more-btn">see more</button>
     </li>`;
   containerContent.insertAdjacentHTML('beforeend', markup);
 }
