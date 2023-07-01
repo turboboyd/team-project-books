@@ -1,0 +1,132 @@
+.footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 36px 20px 47px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.14;
+  
+  background-color: #f7f7f7;
+  color: #545454;
+  
+  }
+
+    .footer-text {
+      font-size: 12px;
+  
+    }
+
+  
+
+  .footer__heart-goit {
+    width: 14px;
+    height: 14px;
+    width: 14px;
+    fill: #ff6b08;
+    animation: heartpulse 1.5s infinite ease-in-out;
+  }
+
+    .footer-btn {
+      background-color: var(--theme-bg);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+  
+    .footer-btn-text {
+      font-size: 12px;
+      color: #ff6b0a;
+      text-decoration: underline;
+    }
+  
+    .footer-btn:hover .footer-btn-text {
+      color: #eb3d3d;
+    }
+  
+   
+
+
+  /* .footer__backdrop {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000000000000;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #ff001b;
+    top: 0;
+    position: fixed;
+  }
+
+  .footer__modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 1000000000000;
+
+    padding: 20px;
+    width: calc(100% - 40px);
+    height: 90vh;
+
+    border-radius: 10px;
+    color: #ff6b08;
+    text-shadow: 1px 1px 0 rgb(255, 255, 255);
+    background-color: #ebecf0;
+    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+
+    text-align: center;
+    overflow-y: auto;
+    font-weight: 500;
+    font-size: 20px;
+  } */
+
+
+@keyframes heartpulse {
+  0% {
+    transform: scale(1);
+    fill: #ff6b08;
+  }
+
+  10% {
+    transform: scale(1.4);
+    fill: #ff001b;
+    filter: drop-shadow(0px 0px 10px #ff6b08);
+  }
+
+  50% {
+    transform: scale(1);
+    fill: #ff6b08;
+  }
+
+  100% {
+    transform: scale(1.2);
+    fill: #ff001b;
+  }
+}
+
+
+
+
+/* tablet  */
+
+@media screen and (min-width: 768px) {
+  .foter{
+     flex-wrap: nowrap;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1.18;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footer {
+    padding: 29px 390px 29px 408px;
+      font-size: 16px;
+  }
+}
