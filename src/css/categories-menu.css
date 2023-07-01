@@ -25,7 +25,7 @@
 .filter-item:hover,
 .filter-item:focus {
   transform: scale(1.05) translateX(10px);
-  color: var(--accent-color);
+  color: var(--accent-color-filter);
 }
 
 @media screen and (min-width: 768px) {
@@ -48,6 +48,7 @@
     border: 12px solid #e0e0e0;
   }
   .filter-item {
+    color: var(--light-font-color);
     font-size: 18px;
     line-height: 1.33;
     padding-bottom: 32px;
