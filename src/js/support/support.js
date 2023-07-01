@@ -3,8 +3,15 @@ import Swiper, { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+
+
+const charitiesWithImages = charities.map((charity) => ({
+  ...charity,
+  img: `./images/support/${getImageFilename(charity.title)}`,
+}));
+
 const list = document.querySelector('.support-list');
-const html = charities.map(makeMarkup).join('');
+const html = charitiesWithImages.map(makeMarkup).join('');
 
 function makeMarkup({ url, title, img }, index) {
   const digits = (index + 1).toString().padStart(2, '0');
@@ -24,6 +31,12 @@ list.innerHTML = html;
 const str = charities.map((element, index) => {
   return '<li class="support-item"> ссылка на фонд <a class="support-link" href=""></a></li>';
 });
+
+function getImageFilename(title) {
+  // Видалити пробіли та спеціальні символи і перетворити на lowercase
+  const cleanedTitle = title.replace(/[^\w\s]/gi, '').toLowerCase();
+  return `${cleanedTitle}.png`;
+}
 
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
