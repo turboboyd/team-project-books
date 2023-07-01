@@ -41,3 +41,15 @@
   background-color: rgba(79, 46, 232, 1);
   cursor: pointer;
 }
+.is-hidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
