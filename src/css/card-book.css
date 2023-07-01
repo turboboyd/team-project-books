@@ -27,8 +27,7 @@
 }
 @media screen and (min-width: 1440px) {
   .books-grid {
-    gap: 40px 25px;
-
+    gap: 40px 24px;
   }
 }
 .card-book {
