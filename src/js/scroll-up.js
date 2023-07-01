@@ -1,5 +1,5 @@
-export const toTopBtn = document.querySelector('.to-top');
-export const btnUpWrapper = document.querySelector('.to-top-target');
+ const toTopBtn = document.querySelector('.back-to-top');
+ const btnUpWrapper = document.querySelector('.to-top-target');
 
 export default function scrollFunction() {
   if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
