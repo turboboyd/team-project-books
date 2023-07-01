@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // const modal = document.querySelector('.backdrop-js');
 // const closeButton = modal.querySelector('.modal-close');
 // const addToShoppingListButton = modal.querySelector('.btn--current');
@@ -6,9 +7,20 @@
 // const modalSubtitle = modal.querySelector('.modal-content-subtitle');
 // const modalPrimaryText = modal.querySelector('.modal-content__primary-text');
 // const modalLinks = modal.querySelector('#modal-links');
+=======
+const modal = document.querySelector('.backdrop-card-js');
+const closeButton = modal.querySelector('.close-button-card');
+const addToShoppingListButton = modal.querySelector('.btn--current');
+const infoText = modal.querySelector('.info-text');
+const modalTitle = modal.querySelector('.modal-content-title');
+const modalSubtitle = modal.querySelector('.modal-content-subtitle');
+const modalPrimaryText = modal.querySelector('.modal-content__primary-text');
+const modalLinks = modal.querySelector('#modal-links');
+>>>>>>> Stashed changes
 
 // const API_ENDPOINT = 'https://books-backend.p.goit.global';
 
+<<<<<<< Updated upstream
 // function openModal() {
 //   modal.classList.remove('visually-hidden');
 //   closeButton.addEventListener('click', closeModal);
@@ -22,6 +34,22 @@
 //   document.removeEventListener('keydown', handleKeyDown);
 //   enableScroll();
 // }
+=======
+export function openModal() {
+  modal.classList.remove('visually-hidden');
+  closeButton.addEventListener('click', closeModal);
+  document.addEventListener('keydown', handleKeyDown);
+  disableScroll();
+}
+
+
+function closeModal() {
+  modal.classList.add('visually-hidden');
+  closeButton.removeEventListener('click', closeModal);
+  document.removeEventListener('keydown', handleKeyDown);
+  enableScroll();
+}
+>>>>>>> Stashed changes
 
 // function handleKeyDown(event) {
 //   if (event.key === 'Escape') {
