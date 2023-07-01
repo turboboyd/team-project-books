@@ -5,6 +5,7 @@
 /* Стилі для світлої теми */
 [data-theme='light'] {
   --main-bgr-color: #f6f6f6;
+  --header-white-color: #ffffff;
   --white-color: #ffffff;
   --title-color: #111111;
   --accent-color: #4f2ee8;
@@ -20,6 +21,7 @@
 /* Стилі для темної теми */
 [data-theme='dark'] {
   --main-bgr-color: #202024;
+  --header-white-color: #111111;
   --white-color: #ffffff;
   --title-color: #ffffff;
   --accent-color: #4f2ee8;
