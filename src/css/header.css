@@ -5,20 +5,18 @@ header {
     left: 0;
     right: 0; */
   display: flex;
-    align-items: center;
-    
-    margin-left: auto;
-      margin-right: auto;
-      height: 64px;
-.container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-      
-          
-        }
-      }
+  align-items: center;
 
+  margin-left: auto;
+  margin-right: auto;
+  height: 64px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .logo-header {
   display: flex;
@@ -30,7 +28,7 @@ header {
 
 .page-navigation-link {
   display: flex;
-  
+
   align-items: center;
   padding: 8px 16px;
 }
@@ -42,23 +40,18 @@ header {
 }
 
 .mobile-menu {
-  position: fixed;
+  /* position: fixed; */
   top: 80px;
   width: 100%;
   height: calc(100vh - 64px);
-  
+
   top: 64px;
   left: 0;
-  
-
- 
 }
 
 .mobile-menu-open {
   background-color: grey;
   border: none;
-
-  
 }
 
 .mobile-menu-open__icon {

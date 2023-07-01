@@ -1,4 +1,62 @@
-<!-- форма для авторизації -->
-<!-- не вставляється поки
-в бургер меню т
-та хедер -->
+<div data-modal class="backdrop is-hidden">
+  <div class="modal">
+    <button data-modal-close type="button" class="btn__close">
+      <svg class="btn__close-modal">
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="form-container">
+      <div class="form-inner">
+        <form action="#" class="signup">
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="./images/sprite.svg#icon-user"></use>
+            </svg>
+            <input type="text" placeholder="Name" required />
+          </div>
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="./images/sprite.svg#icon-mail-02"></use>
+            </svg>
+            <input type="text" placeholder="Email" required />
+          </div>
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="./images/sprite.svg#icon-lock-02"></use>
+            </svg>
+            <input type="password" placeholder="Password" required />
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Sign up" />
+          </div>
+        </form>
+        <form action="#" class="login">
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="./images/sprite.svg#icon-mail-02"></use>
+            </svg>
+            <input type="text" placeholder="Email" required />
+          </div>
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="./images/sprite.svg#icon-lock-02"></use>
+            </svg>
+            <input type="password" placeholder="Password" required />
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Sign in" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="slide-controls">
+      <input type="radio" name="slide" id="login" />
+      <input type="radio" name="slide" id="signup" checked />
+      <label for="signup" class="slide signup">Sign up</label>
+      <label for="login" class="slide login">Sign in</label>
+      <div class="slider-tab"></div>
+    </div>
+  </div>
+</div>
