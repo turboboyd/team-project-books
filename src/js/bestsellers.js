@@ -28,7 +28,7 @@ function markupWrapCategories(categorie) {
                     })
                     .join('')}
           </ul>
-    <button class="btn see-more-btn">see more</button>
+    <button class="btn see-more-btn" data-categories-name="${list_name}">see more</button>
     </li>`;
   containerContent.insertAdjacentHTML('beforeend', markup);
 }
