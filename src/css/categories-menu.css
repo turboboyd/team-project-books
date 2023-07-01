@@ -2,7 +2,6 @@
   height: 228px;
   width: 100%;
   margin-bottom: 40px;
-  margin-top: 40px;
 }
 
 .categories_list {
@@ -15,15 +14,6 @@
 
 .filter-item {
   padding-bottom: 24px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 18px;
-  letter-spacing: -0.02em;
-  color: rgba(17, 17, 17, 0.6);
-  padding-bottom: 24px;
-  font-style: normal;
-  font-weight: 400;
   font-size: 16px;
   line-height: 1.12;
   letter-spacing: -0.02em;
@@ -39,8 +29,6 @@
 
 @media screen and (min-width: 768px) {
   .categories {
-    margin-top: 0px;
-    margin-bottom: 0px;
     width: 337px;
     height: 472px;
   }

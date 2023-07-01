@@ -54,7 +54,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
 }
 
 @media screen and (max-width: 767px) {
@@ -131,4 +130,8 @@ body {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   margin: -1px;
+}
+
+.section{
+  padding: 40px 0;
 }

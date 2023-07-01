@@ -12,17 +12,23 @@
     margin-right: auto;
   }
 }
+
 .books-grid {
+  display: flex;
+  gap: 40px 25px;
   margin-left: auto;
   margin-right: auto;
+}
+@media screen and (max-width: 767px) {
+  .books-grid {
+  flex-direction: column;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .books-grid {
-    display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 40px 25px;
   }
 }
 @media screen and (min-width: 1440px) {
