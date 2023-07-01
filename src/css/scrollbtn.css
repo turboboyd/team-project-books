@@ -7,7 +7,7 @@
   left: 0;
 }
 
-.back-to-top {
+/*.back-to-top {
   position: fixed;
   bottom: 40px;
   right: 50px;
@@ -24,11 +24,14 @@
   border: 5px solid transparent;
   border-radius: 50%;
 }
-
+*/
 .button-icon--arrow {
-  --color1: white;
   fill: #fff;
   transition: fill 500ms ease-in-out;
+}
+.button-icon--arrow:hover,
+.button-icon--arrow:active {
+  transform: translateX(-1px) translateY(1px);
 }
 .to-top {
   position: fixed;
@@ -36,10 +39,21 @@
   right: 20px;
   width: 54px;
   height: 54px;
-  border: 10px solid rgba(79, 46, 232, 0.3);
   border-radius: 50%;
   background-color: rgba(79, 46, 232, 1);
+  outline: 10px solid rgba(79, 46, 232, 0.3);
   cursor: pointer;
+  transition: fill 250ms ease-in-out;
+}
+.to-top:hover,
+.to-top:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 46, 232, 1);
+  }
 }
 .is-hidden {
   position: absolute;
