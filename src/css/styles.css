@@ -11,9 +11,9 @@
 @import url(./variables.css);
 
 @import url('./header.css');
+@import url('./hero-section.css');
 @import url('./categories-menu.css');
 @import url('./support.css');
-@import url('./home-content.css');
 @import url('./bestsellers.css');
 @import url('./scrollbtn.css');
 @import url('./card-book.css');

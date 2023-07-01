@@ -19,17 +19,16 @@
 
 @media screen and (min-width: 768px) {
   .books-grid {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
-    row-gap: 40px;
+    width: 100%;
+    gap: 40px 25px;
   }
 }
 @media screen and (min-width: 1440px) {
   .books-grid {
-    gap: 24px;
-    row-gap: 40px;
+    gap: 40px 25px;
+
   }
 }
 .card-book {
@@ -168,7 +167,7 @@
 
 /* стилі для показу  1-3-5 книг з категорії */
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1439px) {
   .books-grid-item :nth-child(n+4) {
     display: none;
   }
