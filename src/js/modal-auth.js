@@ -1,8 +1,10 @@
+import { closeMenu } from './header';
+
 const loginForm = document.querySelector("form.login");
 const signupForm = document.querySelector("form.signup");
 const loginBtn = document.querySelector("label.login");
 const signupBtn = document.querySelector("label.signup");
-const modalElem = document.querySelector("[data-modal]");
+export const modalElem = document.querySelector("[data-modal]");
 const closeModalBtn = document.querySelector("[data-modal-close]");
 
 loginBtn.addEventListener("click", () => {
@@ -22,9 +24,9 @@ closeModalBtn.addEventListener('click', onModalClose);
 document.addEventListener('keydown', onEscPress);
 
 function onModalClose() {
-    modalElem.classList.add('is-hidden');
-document.removeEventListener('keydown', onEscPress);
-    
+  modalElem.classList.add('is-hidden');
+  document.removeEventListener('keydown', onEscPress);
+  closeMenu();
 }
 
 function onEscPress(e) {
