@@ -1,12 +1,35 @@
 :root {
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Стилі для світлої теми */
+[data-theme='light'] {
   --main-bgr-color: #f6f6f6;
-  --dark-main-bgr-color: #202024;
+  --header-white-color: #ffffff;
   --white-color: #ffffff;
   --title-color: #111111;
   --accent-color: #4f2ee8;
   --accent-header-color: #eac645;
+
   --main-font-color: #9a9a9a;
   --font-card-color: #f6f6f6;
   --light-font-color: rgba(17, 17, 17, 0.6);
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-color: rgba(79, 46, 232, 0.4);
+  --second-text-color: #b4afaf;
+}
+
+/* Стилі для темної теми */
+[data-theme='dark'] {
+  --main-bgr-color: #202024;
+  --header-white-color: #111111;
+  --white-color: #ffffff;
+  --title-color: #ffffff;
+  --accent-color: #4f2ee8;
+  --accent-header-color: #eac645;
+
+  --main-font-color: #9a9a9a;
+  --font-card-color: #f6f6f6;
+  --light-font-color: rgba(17, 17, 17, 0.6);
+  --border-color: rgba(79, 46, 232, 0.4);
+  --second-text-color: #b4afaf;
 }
