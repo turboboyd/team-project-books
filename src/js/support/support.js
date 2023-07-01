@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 
 const charitiesWithImages = charities.map((charity) => ({
   ...charity,
-  img: `/${getImageFilename(charity.title)}`,
+  img: `${getImageFilename(charity.title)}`,
 }));
 
 const list = document.querySelector('.support-list');
