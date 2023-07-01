@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 export default class BookAPI {
   #BASE_URL = 'https://books-backend.p.goit.global/books';
@@ -9,23 +10,40 @@ export default class BookAPI {
   }
 
   async getBooksCategoriesList() {
-    const respons = await axios.get(`${this.#BASE_URL}/category-list`);
-    return respons.data
-
+    try {
+      const respons = await axios.get(`${this.#BASE_URL}/category-list`);
+      return respons.data;
+    } catch (error) {
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
+    }
   }
 
   async getTopBooks() {
-    const respons = await axios.get(`${this.#BASE_URL}/top-books`);
-    return respons.data;
+    try {
+      const respons = await axios.get(`${this.#BASE_URL}/top-books`);
+      return respons.data;
+    } catch (error) {
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
+    }
   }
 
-  async getSelectedCategoryBooks() {
-    const respons = await axios.get(`${this.#BASE_URL}/category?category=${this.category}`)
-    return respons.data;
+  async getSelectedCategoryBooks(category) {
+    try {
+      const respons = await axios.get(
+        `${this.#BASE_URL}/category?category=${category}`
+      );
+      return respons.data;
+    } catch (error) {
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
+    }
   }
 
   async getBookInfo() {
-    const respons = await axios.get(`${this.#BASE_URL}/${this.id}`)
-    return respons.data ;
+    try {
+      const respons = await axios.get(`${this.#BASE_URL}/${this.id}`);
+      return respons.data;
+    } catch (error) {
+      Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
+    }
   }
 }

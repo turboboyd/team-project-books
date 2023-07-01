@@ -5,6 +5,27 @@ body {
   background-color: var(--main-bgr-color);
 }
 
+.btn {
+  color: var(--title-color);
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.14px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 40px;
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.btn:is(:hover, :focus) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
 .container {
   max-width: 100%;
   padding: 0 15px;
@@ -18,6 +39,7 @@ body {
 .title {
   color: var(--title-color);
   font-weight: 700;
+  margin-bottom: 40px;
 }
 
 .title-span {
@@ -28,19 +50,6 @@ body {
   line-height: 1.29;
 }
 
-.btn {
-  color: var(--title-color);
-  background-color: transparent;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.14px;
-  text-transform: uppercase;
-  padding: 14px 28px;
-  border-radius: 40px;
-  border: 2px solid var(--accent-color);
-  cursor: pointer;
-}
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -64,6 +73,16 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+  .bigger-btn {
+    width: 100%;
+    font-size: 18px;
+    padding: 20px 28px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+
+    height: 64px;
+  }
+
   .container {
     max-width: 768px;
     padding: 0 32px;
@@ -99,4 +118,17 @@ body {
     margin-right: 40px;
     margin-top: 0;
   }
+}
+
+.visually-hidden{
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }

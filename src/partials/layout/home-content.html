@@ -4,44 +4,7 @@
     <span class="main-title_last-word">Books</span>
   </h2>
   <!-- блок для рендера хедара и категорий -->
-  <div class="content-conteiner">
-      <ul class="books-grid render-container-js"></ul>
-  </div>
-
-
-
-  <div class="content-rendering-container ">
-    <!-- СЮДИ РЕНДЕР БЕСТЦЕЛЕРІВ З АПІ   -->
-
-    <!-- це розмітка динамічна , її звідси забрати в функцію яваскріпт (наприклад Bestsellers.js) -->
-    <ul class="category-blocks-list">
-      <li class="bestseller-category">
-        <h3 class="bestseller-category-title">title</h3>
-        <ul class="books-list content-rendering-container-js">
-          <!-- <li class="books-list-item bestsellers-book-item content-rendering-container-js">
-            рендер 1 книги(CreateBookMarkup) розмітка нижче
-          </li> -->
-        </ul>
-        <button type="button" class="button see-more-btn">See more</button>
-      </li>
-    </ul>
-    <!-- кінець основної розмітки рендер -->
-
-    <!-- createBookMarkup.js   ця розмітка динамічна, її звідси забрати в функцію яваскріпт, і вставляти всередину розмітки вище-->
-
-    <!-- <a class="book-link">
-      <div class="book-thumb">
-        <img class="book-image" />
-        <div class="book-image-overlay">
-          <p class="book-image-overlay-text">Quick view</p>
-        </div>
-      </div>
-      <div class="book-item-meta">
-        <h3 class="book-title">title</h3>
-        <p class="book-author">author</p>
-      </div>
-    </a> -->
-    
-    <!--кінець розмітки 1 книги  -->
+  <div class="content-conteiner content-rendering-container-js">
+    <ul class="books-grid books-render-js"></ul>
   </div>
 </div>

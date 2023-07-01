@@ -1,8 +1,11 @@
-.section-shopping {
-  padding: 40px 20px;
+.shop-list img {
+  filter: hue-rotate(200deg);
 }
-
-.visually-hidden {
+.shop-link:is(:hover, :focus) .shop-img {
+  filter: hue-rotate(80deg);
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+.shop-page .visually-hidden {
   position: absolute;
   white-space: nowrap;
   width: 1px;
@@ -14,12 +17,20 @@
   clip-path: inset(50%);
   margin: -1px;
 }
-
+.shopping-wrap {
+  height: 142px;
+  display: flex;
+  flex-direction: column;
+}
 .shopping-text {
   margin: 0 auto;
   text-align: center;
   max-width: 244px;
   margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: -0.56px;
 }
 
 .img-ctack-books {
@@ -32,28 +43,34 @@
   padding: 14px;
   display: flex;
   gap: 14px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  background: var(--white-color);
 }
 .shop-list {
-  /* position: absolute; */
-  /* bottom: 14px; */
-  /* right: 14px; */
   display: flex;
-  align-items: center;
-  gap: 16px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
 }
 
-.shopping-wrapper,
-.shopping-trash-wrap {
+.shopping-wrapper {
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .shopping-trash {
+  position: absolute;
+  right: 14px;
+  top: 14px;
   width: 38px;
   height: 38px;
   padding: 8px;
-  background-color: #4f2ee8;
+  background-color: var(--accent-color);
   border-radius: 50%;
   border: none;
   display: flex;
@@ -61,35 +78,51 @@
   align-items: center;
 }
 .icon-shopping-trash {
-  stroke: #fff;
+  stroke: var(--white-color);
   fill: transparent;
 }
 
 .shopping-book-cover {
-  background-color: #242424;
+  width: 100px;
+  height: 142px;
+  background-color: var(--accent-header-color);
 }
 
 .shopping-book-title {
+  max-width: 144px;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.13;
   letter-spacing: -0.64px;
   text-transform: uppercase;
   margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .shopping-book-categories {
-  color: #b4afaf;
+  color: var(--second-text-color);
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.36px;
   margin-bottom: 8px;
 }
 .shopping-book-description {
-  margin-bottom: 8px;
+  max-height: 68px;
+  overflow: auto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: -0.56px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .shopping-book-author {
-  color: #b4afaf;
+  color: var(--second-text-color);
   font-size: 12px;
   font-style: italic;
   line-height: 1.67;
@@ -101,7 +134,11 @@
     margin-bottom: 120px;
   }
 }
-
+@media screen and (max-width: 1439px) {
+  .sidebar-shoppinglist {
+    display: none;
+  }
+}
 @media screen and (min-width: 768px) {
   .shopping-title {
     margin-bottom: 140px;
@@ -113,6 +150,16 @@
   .img-ctack-books {
     width: 322px;
     height: 240px;
+  }
+  .shopping-wrap {
+    height: 165px;
+  }
+  .shop-item {
+    gap: 16px;
+  }
+
+  .shopping-book-title {
+    max-width: 450px;
   }
   .icon-shop-1 {
     width: 48px;
@@ -137,10 +184,38 @@
   .shop-list {
     gap: 19px;
   }
+  .shopping-trash {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+  }
   .shopping-book-categories {
     margin-bottom: 14px;
   }
   .shopping-book-description {
-    margin-bottom: 30px;
+    max-height: 53px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .shopping-book-title {
+    max-width: 750px;
+  }
+  .shopping-text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.33;
+    letter-spacing: -0.36px;
+  }
+  .shop-wrap {
+    flex-grow: 1;
+  }
+
+  .empty {
+    height: 409px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

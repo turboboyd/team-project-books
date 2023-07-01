@@ -9,28 +9,22 @@
   gap: 40px;
 }
 
-.books-list {
-  display: flex;
-  gap: 24px;
+.content-categories-title{
+  color: var(--second-text-color);
 
-  margin-bottom: 32px;
+  font-style: normal;
+  /* line-height: 24px;
+  letter-spacing: 0.42px; */
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
-.book-image {
-  /* min-width: 335px; */
-  width: 335px;
-    height: 485px;
-    background-color: blanchedalmond;
-}
-
-.book-thumb {
-  position: relative;
-  overflow: hidden;
-  
-
-  border-radius: 8px;
-  margin-bottom: 14px;
-}
 .see-more-btn {
+  margin: 20px 0 0 auto;
   margin-left: auto;
+}
+
+.content-categories{
+  display: flex;
+  flex-direction: column;
 }
