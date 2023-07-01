@@ -58,7 +58,7 @@
     width: 8px;
     height: 114px;
     border-radius: 12px;
-    border: 12px solid scrollbar-color-light;
+    border: 12px solid #e0e0e0;
   }
   .filter-item {
     font-size: 18px;
