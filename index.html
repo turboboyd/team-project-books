@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-3d916d3c.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-52720b5e.js">
-    <link rel="stylesheet" href="/team-project-books/assets/support-2470ade1.css">
+    <script type="module" crossorigin src="/team-project-books/assets/index-f58f20f0.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-d0beec1c.js">
+    <link rel="stylesheet" href="/team-project-books/assets/support-90ac7403.css">
   </head>
 
   <body class="page">
@@ -141,6 +141,71 @@
             </div>
           </div>
         </div>
+
+        <!-- modal auth -->
+        <div data-modal class="backdrop-auth is-hidden">
+  <div class="modal-auth">
+    <button data-modal-close type="button" class="btn__close">
+      <svg class="btn__close-modal">
+        <use href="/team-project-books/assets/sprite-2a762604.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="form-container">
+      <div class="form-inner">
+        <form action="#" class="signup">
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="/team-project-books/assets/sprite-2a762604.svg#icon-user"></use>
+            </svg>
+            <input type="text" placeholder="Name" required />
+          </div>
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="/team-project-books/assets/sprite-2a762604.svg#icon-mail-02"></use>
+            </svg>
+            <input type="text" placeholder="Email" required />
+          </div>
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="/team-project-books/assets/sprite-2a762604.svg#icon-lock-02"></use>
+            </svg>
+            <input type="password" placeholder="Password" required />
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Sign up" />
+          </div>
+        </form>
+        <form action="#" class="login">
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="/team-project-books/assets/sprite-2a762604.svg#icon-mail-02"></use>
+            </svg>
+            <input type="text" placeholder="Email" required />
+          </div>
+          <div class="field">
+            <svg class="form__input-icon">
+              <use href="/team-project-books/assets/sprite-2a762604.svg#icon-lock-02"></use>
+            </svg>
+            <input type="password" placeholder="Password" required />
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Sign in" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="slide-controls">
+      <input type="radio" name="slide" id="login" />
+      <input type="radio" name="slide" id="signup" checked />
+      <label for="signup" class="slide signup">Sign up</label>
+      <label for="login" class="slide login">Sign in</label>
+      <div class="slider-tab"></div>
+    </div>
+  </div>
+</div>
+
       </section>
       <!-- разобрать -->
       <!-- дів для кнопки scroll up -->
