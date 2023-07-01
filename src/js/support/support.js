@@ -3,8 +3,15 @@ import Swiper, { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+
+
+const charitiesWithImages = charities.map((charity) => ({
+  ...charity,
+  img: `${getImageFilename(charity.title)}`,
+}));
+
 const list = document.querySelector('.support-list');
-const html = charities.map(makeMarkup).join('');
+const html = charitiesWithImages.map(makeMarkup).join('');
 
 function makeMarkup({ url, title, img }, index) {
   const digits = (index + 1).toString().padStart(2, '0');
@@ -14,7 +21,7 @@ function makeMarkup({ url, title, img }, index) {
         <div class="support-item">
         <span class="support-index">${digits}</span>
         <a class="support-link" href="${url}" target="_blank" rel="noopener noreferrer nofollow">
-            <img src="${img}"  alt="${title}">
+            <img src="images/support/${img}"  alt="${title}">
         </a>
     </li>`;
 }
@@ -24,6 +31,13 @@ list.innerHTML = html;
 const str = charities.map((element, index) => {
   return '<li class="support-item"> ссылка на фонд <a class="support-link" href=""></a></li>';
 });
+
+
+
+function getImageFilename(title) {
+  const cleanedTitle = title.replace(/\s+/g, '-').toLowerCase();
+  return `${cleanedTitle}.png`;
+}
 
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
