@@ -2,7 +2,6 @@
   height: 228px;
   width: 100%;
   margin-bottom: 40px;
-  margin-top: 40px;
 }
 
 .categories_list {
@@ -30,8 +29,6 @@
 
 @media screen and (min-width: 768px) {
   .categories {
-    margin-top: 0px;
-    margin-bottom: 0px;
     width: 337px;
     height: 472px;
   }
