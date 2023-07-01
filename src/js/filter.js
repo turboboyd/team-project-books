@@ -1,6 +1,7 @@
 import BookAPI from './book-api';
 import markupBook from './render-book-card';
 import Notiflix from 'notiflix';
+import renderWrapCategories from './bestsellers';
 
 const bookApi = new BookAPI();
 const containerContent = document.querySelector('.books-render-js');
@@ -21,7 +22,9 @@ bookApi
 
 bookApi
   .getSelectedCategoryBooks()
-  .then(data => renderBooks(data))
+  .then(data => {
+    renderBooks(data);
+  })
   .catch(error => {
     console.error('Error:', error);
     Notiflix.Notify.failure(
@@ -32,7 +35,7 @@ bookApi
 function renderBooks(books) {
   cleaningBooks();
   const markup = books.map(book => markupBook(book)).join('');
-  return containerContent.insertAdjacentHTML('beforeend', markup);
+  containerContent.insertAdjacentHTML('beforeend', markup);
 }
 
 function cleaningBooks() {
@@ -40,6 +43,7 @@ function cleaningBooks() {
 }
 
 function renderCategories(categories) {
+  markupCategorie({ list_name: 'All categories' });
   categories
     .sort((a, b) => a.list_name.localeCompare(b.list_name))
     .map(categorie => markupCategorie(categorie));
@@ -53,19 +57,34 @@ function markupCategorie({ list_name }) {
 
   const filterItem = element.querySelector('.filter-item');
   filterItem.addEventListener('click', () => {
-    bookApi.category = name;
-    bookApi
-      .getSelectedCategoryBooks()
-      .then(data => {
-        renderBooks(data);
-        mainTitleEl.textContent = name;
-      })
-      .catch(error => {
-        console.error('Error found category:', error);
-        Notiflix.Notify.failure(
-          'Oops, there is no category with that name. Please try again later.'
-        );
-      });
+    if (name === 'All categories') {
+      bookApi
+        .getTopBooks()
+        .then(data => {
+          cleaningBooks();
+          renderWrapCategories(data);
+          mainTitleEl.textContent = 'Best Seller Books';
+        })
+        .catch(error => {
+          console.error('Error retrieving top books:', error);
+          Notiflix.Notify.failure(
+            'Oops! Error retrieving top books. Please try again later.'
+          );
+        });
+    } else {
+      bookApi
+        .getSelectedCategoryBooks(name)
+        .then(data => {
+          renderBooks(data);
+          mainTitleEl.textContent = name;
+        })
+        .catch(error => {
+          console.error('Error found category:', error);
+          Notiflix.Notify.failure(
+            'Oops, there is no category with that name. Please try again later.'
+          );
+        });
+    }
   });
 
   return categorieEl.appendChild(element.firstChild);
