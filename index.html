@@ -179,7 +179,41 @@
 
 
       <!-- Modal -->
-      ENOENT: no such file or directory, open '/home/runner/work/team-project-books/team-project-books/src/partials/modals/modal.html'
+      <!-- модальне вікно коли ми відкриваємо 1 книгу -->
+<div class="backdrop-js visually-hidden">
+  <div class="">
+    <button type="button" class="close-button" aria-label="Close">
+      <svg class="close-button__icon" width="24" height="24">
+        <use href="/team-project-books/assets/symbol-defs-8b1fb106.svg#icon-x-close"></use>
+      </svg>
+    </button>
+          <!-- контент книги сюда рендериться / -->
+    <img class="sample" src="" alt="" />
+    <div class="modal-content">
+      <h2 class="modal-content-title">Title</h2>
+      <h3 class="modal-content-subtitle">Subtitle</h3>
+      <p class="modal-content__primary-text">text</p>
+      <div class="modal-links" id="modal-links">
+        <a class="store-link" href="" target="_blank">
+          <img 
+            src="data:image/png;base64,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" alt="amazon" width="33">
+        </a>
+        <a class="store-link" href="" target="_blank">
+          <img 
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAK5SURBVHgBzVdJa2JBEC7NTlZCCAlJ8OJJFC/iwYsiCHrwf3rzD3hSEUEEERG8eBFBUcF915n53vBCb+/5zOgkH4i9VHd/VV3VVc/26w/om2GnH4BTs8nRaETdbpcWiwVtt1vaF3a7nS4vL+nx8ZHu7u5oLxLD4ZDy+Tz1+306FG5ubigYDNL19bU0ZxN9AgRSqRSt12s6NGw2G0UiEXp4eODGJZ9Ip9O0Wq0I3A79w5XmcjkSY4Ej0Wg0aDwec4vYNttn58Vx1ZjeHwwG1Gq1jEm0221uIcC22T47L46rxljZZrPJkeAcU7eCiJOTE3p/f6fT07/iiBoQxh2zeH5+1hwQUTGfz6nX69FsNpP2m06nxiQ2m42ktcfjIZfLRWdnZ9xChG42m6XJZEJXV1cUCATo5eWFk1kul1Qul6lWq3Hj8DkW3HWI9wjtvV6vRAB4enrSDoZcOByWCADn5+fk8/no4+NDeV1KS4gC0NAMuvnFkBOBB0u0sCEJlcAu7CKg2ncvS1ghJDqnEYGjWsKK/F4k9Adp3wOswGxfu9GGKi/+KgmjR0vHP1+HFexSTnLMY1wHawk48sGjwyp05VR7WiaB6goZEMAjpZLBQSiEIItq6uLiYue+EgmVQKfToUwmo/3rm2Fzt9tNfr//U75QKFClUtESl/52gGwoFNrp5KYk6vU6VatVqb6EpsViUcuWkEcpWCqVJO9Hpk0kEhppM0twISomKqRcM0eF9tAchFSa6mPIpmwfpQELzhJIWKzpVJ4sHoBqDABZVl5cy7aR9FhwlnA4HFJJpyrbVOOivFn77e3NnMT9/T0dE7e3t+R0OsmQBEwYjUY5jQ/5Q3kYj8clYtJ3B4D3IJlMfr4LKpj5iwqoxGKxmPZ+WCKhA4Uqwgx15Fc+AxEFcPbX11fl4ZZI/C/8iK/y3zhKPhUdhr3eAAAAAElFTkSuQmCC" alt="books-io" width="32">
+        </a>
+        <a class="store-link" href="" target="_blank">
+          <img 
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAkCAMAAADSK7iXAAABelBMVEUAAAAAAAAAAAAAAAAHBwcCAgIAAAAAAACzs7MAAAAAAAACAgIAAAAAAAAAAABDQ0MBAQEEBAQuLi4AAAAAAAABAQEBAQEAAAA+QD4BAQEBAQEEBAQAAACNjo0AAACcnJyam5qRkZExMTFsbGxub26dnZ2AgIBaWlq2trZPT08RERE6OjpDQ0MAAAAAAABJSUk7PTsCAgICAgICAgKPj48hISFISEgEBAQAAAAAAAAAAAAAAAAAAACqq6p3d3d/f38KCgp6enpycnIQEBADAwOHh4eCg4LHx8fExMSXl5eQkZCLi4tAQEDJycnBwsGpqamlpqWbm5uOjo6IiIiFhYVxcXFtbW1sbGxqamqVlpWUlJRiYmJeX15WVlYXFxfQ0dDLzMusrKyoqKiBgYF0dHRvb29NTU0zMzMhISEZGRne396+vr65ubm1trWwsbCfn59EREQpKSkTExPt7e3Z2dnU1NTNzs3JysmgoaCenp5lZWWhoaE6Ojo4OTipeBnaAAAAPHRSTlMAHPte/jcVBP7OvqEL7uqzUDz+9vHb1cechm4jBvT08vLy8fDv7u7t4uHezbiwqqWkmJGOgn1HR0QyLCqCPqZpAAAB9klEQVQ4y83TZ3OiUBiGYWOLrhrT6/bee99DExAQUEAE7L3ErunZ3f++OCNnd40kX3N/vuaZeefMcVyTFlxfb16JvDsh4LzhuWLp/TowuxzuBW5PzBSu2CwF1iCyhd536xBAuPVlBn0IgbltLv+jdpeAXc5PUH2jbNW++jRosR07VMBK6JMFi70GdGHeEsrSkcpDyF4BdjByzy5NEIIRjyALUEU2z9D/L8WTE4SgjyHbxZmyEueE3P4UkSg7RVHpwZ7FPBSe/8WmE0WpRU5QTbRQIpX2fYbPlIuSIH9UkxWi0yABT0MUi+fwgMWCqwQTHVN4pagdlgT8sAxRFgdgY9Fy9ysYdhIlW7mh2KOabaIPESX8XvJa7Fm9Wj7nWJ0s5EvC8ECt+4iqGMEB7qZ7yRA89YWG6GpCHzA62WqutrtElTERNZZ6ycro71o4g6YQgz8zJEYj3SJ2bCJ3C5MbB3QDbDmsPg6y6UjtZz0mG4ioEai5VECwTFHoKsM1F2TB7TtylkOxUy3DGf0uDpoZ9bifLpeaTv8yVGY/tu9yRqxWPdO5tC8PGEUQs9KY9Ltm/+L3t/d4PZZSZeNEBdwR72u4/a5Fx8U8b24ltVidbmdAJz6CaA4MK0rutMMDgdqAaC58yfPSOdiEyK6VsPwcXndZQcf16A9mt6vIvLLZ8AAAAABJRU5ErkJggg==" alt="bookshop" width="33">
+        </a>
+      </div>
+    </div>
+    <div class="modal-content__container-btn">
+      <button type="button" class="btn btn--current">add to shopping list</button>
+      <div class="info-text"></div>
+      <p class="modal-content__info-text visually-hidden">remove from the shopping list</p>
+    </div>
+  </div>  
 
       <!-- Scroll to up button -->
       <!-- Кнопка повернутися вгору -->
