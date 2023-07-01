@@ -1,57 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Bookshelf</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <title>Bookshelf</title>
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
-
-<body class="page">
-  <h1>трішки накидав стилів для візуалізації</h1>
-
-  <load="./partials/layout/header/header.html" />
-  <div class="container page-container">
-    <!-- дів для кнопки scroll up -->
-    <div class="to-top-target"></div>
-
-    <aside class="sidebar">
-      <!-- категорії -->
-
-      <load="./partials/layout/sidebar/categories.html" />
-
-      <!-- Support Ukraine -->
-
-      <load="./partials/layout/sidebar/support.html" />
-    </aside>
-
+  <body class="page">
+    <!-- Хедер -->
+    <header>
+      <load ="./partials/layout/header/header.html" />
+    </header>
     <main class="content">
-      <!-- loader -->
+      <section>
+        <div class="container hero-container">
+          <h1 class="visually-hidden">Books shopping</h1>
 
-      <load="./partials/components/loader.html" />
-      <!-- Page content -->
+          <aside class="sidebar">
+            <div class="categories">
+              <ul class="categories_list categorie-js">
+                <li class="filter-item" data-active="All categories">
+                  All categories
+                </li>
+                <!-- тут будуть рендеритися категорії з апі (фунція js )-->
+              </ul>
+            </div>
+            <div class="support">
+              <h2 class="head-title">
+                Support Ukraine
+                <svg class="icon-ua" width="20" height="32">
+                  <use href="./images/symbol-defs.svg#icon-ua"></use>
+                </svg>
+              </h2>
 
-      <load="./partials/layout/home-content.html" />
+              <div class="swiper mySwiper">
+                <ul class="swiper-wrapper support-list"></ul>
+              </div>
+
+              <button
+                type="button"
+                class="next swiper-next"
+                aria-label="Swipe next"
+              >
+                <span class="icon-container">
+                  <svg class="icon-down" width="20" height="32">
+                    <use href="./images/symbol-defs.svg#icon-angle-down"></use>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </aside>
+          <div class="home-container">
+          <h2 class="main-title">
+            Best Seller
+            <span class="main-title_last-word">Books</span>
+          </h2>
+          <!-- блок для рендера хедара и категорий -->
+          <div class="content-conteiner content-rendering-container-js">
+            <ul class="books-grid books-render-js"></ul>
+          </div>
+        </div>
+        </div>
+      </section>
+      <!-- разобрать -->
+      <!-- дів для кнопки scroll up -->
+      <div class="to-top-target"></div>
+
+      <load ="./partials/components/loader.html" />
 
       <!-- Modal -->
-      <load="./partials/modals/modal.html" />
+      <load ="./partials/modals/modal.html" />
 
       <!-- Scroll to up button -->
-      <load="./partials/components/scroll-to-up.html" />
+      <load ="./partials/components/scroll-to-up.html" />
 
       <!-- burger-menu-->
-      <load="./partials/layout/header/burger-menu.html" />
+      <load ="./partials/layout/header/burger-menu.html" />
 
       <!-- loader -->
-      <load="./partials/components/loader.html" />
+      <load ="./partials/components/loader.html" />
     </main>
-  </div>
+    <!-- </div> -->
 
-  <script type="module" src="/index.js"></script>
-</body>
-
+    <script type="module" src="/index.js"></script>
+  </body>
 </html>
