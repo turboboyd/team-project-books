@@ -111,6 +111,5 @@ export function handleBookClick(event) {
       });
   }
 }
-
 const bookGrid = document.querySelector('.books-render-js');
 bookGrid.addEventListener('click', handleBookClick);
