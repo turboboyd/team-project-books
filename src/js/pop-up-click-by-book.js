@@ -38,6 +38,7 @@ function openPopUp() {
 
 function closePopUp() {
   modalPopUp.classList.add('is-hidden');
+  clearMarkup(modalContentEl);
 }
 
 function handleKeyDown(event) {
@@ -52,13 +53,12 @@ function handleBookClick(event) {
   if (!cardBook) {
     return;
   }
-
+  closeModalPopUpBtn.addEventListener('click', closePopUp);
   const bookId = cardBook.querySelector('.card-book-id').textContent;
 
   if (bookId) {
     fetchBookData(bookId)
       .then(bookData => {
-        console.log(bookData);
         const book_image = bookData.book_image;
         const title = bookData.title;
         const author = bookData.author;
@@ -103,7 +103,6 @@ function fetchBookData(bookId) {
   return fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       if (data.error) {
         throw new Error(data.error);
       }
@@ -113,4 +112,8 @@ function fetchBookData(bookId) {
 
 function renderMarkup(element, markup) {
   element.insertAdjacentHTML('beforeend', markup);
+}
+
+function clearMarkup(element) {
+  element.innerHTML = '';
 }

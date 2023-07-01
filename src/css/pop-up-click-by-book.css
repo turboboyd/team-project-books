@@ -8,7 +8,7 @@
   background-color: rgba(17, 17, 17, 0.4);
 
   opacity: 1;
-  cursor: pointer;
+  /* cursor: pointer; */
   z-index: 20;
   padding: 94px 15px;
 }
@@ -36,7 +36,7 @@
   overflow-x: hidden;
 
   color: var(--text-color);
-  background-color: var(--white-color);
+  background-color: var(--main-bgr-color);
   border: 2px solid var(--title-color);
   border-radius: 18px;
 }
@@ -59,12 +59,12 @@
 }
 
 .close-button__icon {
-  fill: var(--title-color);
+  stroke: var(--title-color);
 }
 
 .close-button__icon:focus,
 .close-button__icon:hover {
-  fill: var(--accent-header-color);
+  stroke: var(--accent-color);
 }
 
 .modal-book-attributes {
@@ -114,34 +114,14 @@
 }
 
 .modal-shop-img {
-  filter: grayscale(100%);
-  mix-blend-mode: luminosity;
-  transition: transform 200ms, filter 200ms;
+  /* filter: grayscale(100%); */
+  /* mix-blend-mode: luminosity;
+  transition: transform 200ms, filter 200ms; */
 }
 
 .modal-shop-img:hover,
 .modal-shop-img:focus {
-  mix-blend-mode: normal;
-  transform: scale(1.1);
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.7));
-}
-
-.amazon {
-  filter: grayscale(100%);
-}
-
-.amazon:hover,
-.amazon:focus {
-  filter: grayscale(0%);
-}
-
-.book-shop {
-  filter: none;
-}
-
-.book-shop:hover,
-.book-shop:focus {
-  filter: invert(10%);
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 .modal-pop-up-btn {
