@@ -37,7 +37,6 @@ function renderBooks(books) {
 
 function cleaningBooks() {
   containerContent.innerHTML = '';
-  // containerContent.innerHTML = '';
 }
 
 function renderCategories(categories) {
