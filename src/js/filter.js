@@ -26,13 +26,12 @@ bookApi.getSelectedCategoryBooks()
 
 function renderBooks(books) {
   cleaningBooks()
-  const markup = books.map(book => markupBook(book));
+  const markup = books.map(book => markupBook(book)).join('');
   return containerContent.insertAdjacentHTML('beforeend', markup);
 }
 
 function cleaningBooks() {
   containerContent.innerHTML = '';
-  // containerContent.innerHTML = '';
 }
 
 
