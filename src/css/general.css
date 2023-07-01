@@ -84,7 +84,7 @@ body {
   }
 
   .container {
-    max-width: 768px;
+    width: 768px;
     padding: 0 32px;
   }
   .section-modal {
@@ -108,7 +108,7 @@ body {
 
 @media screen and (min-width: 1440px) {
   .container {
-    max-width: 1440px;
+    width: 1440px;
     padding: 0 24px;
   }
   .sidebar {
