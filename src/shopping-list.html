@@ -12,7 +12,30 @@
     <div class="container page-container">
       <aside class="sidebar sidebar-shoppinglist section">
         <!-- support -->
-        <load ="./partials/layout/sidebar/support.html" />
+        <div class="support">
+          <h2 class="head-title">
+            Support Ukraine
+            <svg class="icon-ua" width="20" height="32">
+              <use href="./images/symbol-defs.svg#icon-ua"></use>
+            </svg>
+          </h2>
+
+          <div class="swiper mySwiper">
+            <ul class="swiper-wrapper support-list"></ul>
+          </div>
+
+          <button
+            type="button"
+            class="next swiper-next"
+            aria-label="Swipe next"
+          >
+            <span class="icon-container">
+              <svg class="icon-down" width="20" height="32">
+                <use href="./images/symbol-defs.svg#icon-angle-down"></use>
+              </svg>
+            </span>
+          </button>
+        </div>
       </aside>
       <main class="content shop-wrap">
         <!-- те що додали в корзину -->
@@ -22,7 +45,6 @@
         <!-- Scroll to up button -->
         <load ="./partials/components/scroll-to-up.html" />
         <!-- burger-menu-->
-        <load ="./partials/layout/header/burger-menu.html" />
       </main>
     </div>
   </body>
