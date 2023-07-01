@@ -8,15 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-a183d80a.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-1adb0d20.js">
-    <link rel="stylesheet" href="/team-project-books/assets/support-078c9e5d.css">
+    <script type="module" crossorigin src="/team-project-books/assets/index-7d18f1ba.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-7c250c70.js">
+    <link rel="stylesheet" href="/team-project-books/assets/support-9cc44018.css">
   </head>
 
   <body class="page">
-    <h1 class="visually-hidden">Bookshop</h1>
-
-    <!-- Header -->
+    <!-- Хедер -->
+    <header>
+      <!-- Header -->
 <header class="header">
   <!-- Menu -->
   <div class="container header-container">
@@ -64,50 +64,63 @@
   </div>
 </header>
 
-    <div class="container page-container">
+    </header>
+    <main class="content">
+      <section>
+        <div class="container hero-container">
+          <h1 class="visually-hidden">Books shopping</h1>
+
+          <aside class="sidebar">
+            <div class="categories">
+              <ul class="categories_list categorie-js">
+                <li class="filter-item" data-active="All categories">
+                  All categories
+                </li>
+                <!-- тут будуть рендеритися категорії з апі (фунція js )-->
+              </ul>
+            </div>
+            <div class="support">
+              <h2 class="head-title">
+                Support Ukraine
+                <svg class="icon-ua" width="20" height="32">
+                  <use href="/team-project-books/assets/symbol-defs-8f19b538.svg#icon-ua"></use>
+                </svg>
+              </h2>
+
+              <div class="swiper mySwiper">
+                <ul class="swiper-wrapper support-list"></ul>
+              </div>
+
+              <button
+                type="button"
+                class="next swiper-next"
+                aria-label="Swipe next"
+              >
+                <span class="icon-container">
+                  <svg class="icon-down" width="20" height="32">
+                    <use href="/team-project-books/assets/symbol-defs-8f19b538.svg#icon-angle-down"></use>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </aside>
+          <div class="home-container">
+          <h2 class="main-title">
+            Best Seller
+            <span class="main-title_last-word">Books</span>
+          </h2>
+          <!-- блок для рендера хедара и категорий -->
+          <div class="content-conteiner content-rendering-container-js">
+            <ul class="books-grid books-render-js"></ul>
+          </div>
+        </div>
+        </div>
+      </section>
+      <!-- разобрать -->
       <!-- дів для кнопки scroll up -->
       <div class="to-top-target"></div>
 
-      <aside class="sidebar">
-        <!-- категорії -->
-
-        <div class="categories">
-  <ul class="categories_list categorie-js">
-    <li class="filter_item" data-active="All categories">All categories</li>
-    <!-- тут будуть рендеритися категорії з апі (фунція js )-->
-  </ul>
-</div>
-
-
-        <!-- Support Ukraine -->
-
-        <div class="support">
-  <h2 class="head-title">
-    Support Ukraine
-    <svg class="icon-ua" width="20" height="32">
-      <use href="/team-project-books/assets/symbol-defs-8f19b538.svg#icon-ua"></use>
-    </svg>
-  </h2>
-
-  <div class="swiper mySwiper">
-    <ul class="swiper-wrapper support-list"></ul>
-  </div>
-
-  <button type="button" class="next swiper-next" aria-label="Swipe next">
-    <span class="icon-container">
-      <svg class="icon-down" width="20" height="32">
-        <use href="/team-project-books/assets/symbol-defs-8f19b538.svg#icon-angle-down"></use>
-      </svg>
-    </span>
-  </button>
-</div>
-
-      </aside>
-
-      <main class="content">
-        <!-- loader -->
-
-        <!-- <div class="loader-wrap">
+      <!-- <div class="loader-wrap">
   <div class="loader book">
     <figure class="page"></figure>
     <figure class="page"></figure>
@@ -147,22 +160,9 @@
   </div>
 </div>
 
-        <!-- Page content -->
 
-        <div class="home-container">
-  <h2 class="main-title">
-    Best Seller
-    <span class="main-title_last-word">Books</span>
-  </h2>
-  <!-- блок для рендера хедара и категорий -->
-  <div class="content-conteiner content-rendering-container-js">
-    <ul class="books-grid books-render-js"></ul>
-  </div>
-</div>
-
-
-        <!-- Modal -->
-        <!-- модальне вікно коли ми відкриваємо 1 книгу -->
+      <!-- Modal -->
+      <!-- модальне вікно коли ми відкриваємо 1 книгу -->
 <div class="backdrop-js visually-hidden">
   <div class="">
     <button type="button" class="close-button" aria-label="Close">
@@ -180,8 +180,8 @@
 </div>
 
 
-        <!-- Scroll to up button -->
-        <!-- Кнопка повернутися вгору -->
+      <!-- Scroll to up button -->
+      <!-- Кнопка повернутися вгору -->
 <button type="button" class="back-to-top hidden" aria-label="Scroll to top">
   <svg class="button-icon button-icon--arrow" width="24" height="25">
     <use href="/team-project-books/assets/symbol-defs-8f19b538.svg#icon-chevron"></use>
@@ -189,8 +189,8 @@
 </button>
 
 
-        <!-- burger-menu-->
-        <!-- бургер меню хедера -->
+      <!-- burger-menu-->
+      <!-- бургер меню хедера -->
 <!-- <div class="mobile-menu" data-menu>
   <div class="mobile-menu__container">
     <ul class="mobile-menu__list">
@@ -225,8 +225,8 @@
 </div> -->
 
 
-        <!-- loader -->
-        <!-- <div class="loader-wrap">
+      <!-- loader -->
+      <!-- <div class="loader-wrap">
   <div class="loader book">
     <figure class="page"></figure>
     <figure class="page"></figure>
@@ -266,8 +266,8 @@
   </div>
 </div>
 
-      </main>
-    </div>
+    </main>
+    <!-- </div> -->
 
     
   </body>
