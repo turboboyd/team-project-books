@@ -11,6 +11,7 @@
       alt="stack of books"
       width="265"
       height="198"
+      loading="lazy"
     />
   </div>
 
@@ -22,10 +23,11 @@
         alt="book cover"
         width="100"
         height="142"
+        loading="lazy"
       />
       <div class="shopping-wrap">
         <h2 class="shopping-book-title">book title</h2>
-        <button class="shopping-trash" type="button">
+        <button class="shopping-trash" type="button" data-id-book="id">
           <svg class="icon-shopping-trash" width="18" height="18">
             <use href="../../images/sprite.svg#icon-trash"></use>
           </svg>
@@ -50,7 +52,7 @@
 
           <ul class="shop-list">
             <li>
-              <a class="shop-link" href="https://www.amazon.com/">
+              <a class="shop-link" href="#buy_links.amazon">
                 <img
                   class="shop-img"
                   src="../../images/amazon.png"
@@ -61,7 +63,7 @@
               </a>
             </li>
             <li>
-              <a class="shop-link" href="https://www.booksio.com/">
+              <a class="shop-link" href="#buy_links.Apple-Books">
                 <img
                   class="shop-img"
                   src="../../images/books-io.png"
@@ -72,7 +74,7 @@
               </a>
             </li>
             <li>
-              <a class="shop-link" href="https://books-shop.com.ua/">
+              <a class="shop-link" href="#buy_links.bookshop">
                 <img
                   class="shop-img"
                   src="../../images/bookshop.png"
