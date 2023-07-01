@@ -23,6 +23,7 @@
 
 @import url('./modal-auth.css');
 @import url('./loader.css');
+@import url('./footer.css');
 
 /* стандартні стилі зі збірника, не наші */
 /* :root {
