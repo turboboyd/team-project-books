@@ -4,6 +4,6 @@ import './js/filter';
 import './js/categories';
 
 import { showLoader, hideLoader } from './js/loader';
-import { toTopBtn, galleryContainer } from './js/scroll-up';
+import { toTopBtn, btnUpWrapper } from './js/scroll-up';
 import './js/support/support';
 import './js/modal';
