@@ -1,36 +1,17 @@
+// Код JavaScript
 const categoryContainerEl = document.querySelector(
   '.content-rendering-container'
 );
-
 const modalPopUp = document.querySelector('[data-pop-up]');
-
-const modalContentEl = document.querySelector('.modal-pop-up-content');
-const closeModalPopUpBtn = document.querySelector('[data-pop-up-close]');
-const addBtnEL = document.querySelector('.modal-pop-up-btn');
-
+const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
+const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
 const bookGrid = document.querySelector('.books-render-js');
+
 bookGrid.addEventListener('click', handleBookClick);
+modalPopUp.addEventListener('click', handleModalBackdropClick);
+window.addEventListener('keydown', handleKeyDown);
 
 const API_ENDPOINT = 'https://books-backend.p.goit.global';
-
-const markup = `<img class="modal-img" src="${book_image}" alt="book cover" />
-    <div class='modal-book-attributes'>
-      <p class="modal-book-title">${title}</p>
-      <p class="modal-book-author">${author}</p>
-      <p class="modal-book-desc">${description}</p>
-      <div class="modal-shops">
-        <a class="modal-shop-link" href="${amazon.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
-          <img class="modal-shop-img shopping-shopimg amazon" src="${amazonIconPath}" alt="Amazon link" aria-label="Buy this book on Amazon" />
-        </a>
-        <a class="modal-shop-link" href="${apple.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
-          <img class="modal-shop-img shopping-shopimg apple" src="${appleBooksIconPath}" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
-        </a>
-        <a class="modal-shop-link" href="${bookshop.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
-          <img class="modal-shop-img shopping-shopimg book-shop" src="${bookShopIconPath}" alt="BookShop link" aria-label="Buy this book on BookShop"/>
-        </a>
-      </div>
-    </div>
-`;
 
 function openPopUp() {
   modalPopUp.classList.remove('is-hidden');
@@ -39,6 +20,12 @@ function openPopUp() {
 function closePopUp() {
   modalPopUp.classList.add('is-hidden');
   clearMarkup(modalContentEl);
+}
+
+function handleModalBackdropClick(event) {
+  if (event.target === modalPopUp) {
+    closePopUp();
+  }
 }
 
 function handleKeyDown(event) {
@@ -54,6 +41,7 @@ function handleBookClick(event) {
     return;
   }
   closeModalPopUpBtn.addEventListener('click', closePopUp);
+
   const bookId = cardBook.querySelector('.card-book-id').textContent;
 
   if (bookId) {
@@ -111,7 +99,7 @@ function fetchBookData(bookId) {
 }
 
 function renderMarkup(element, markup) {
-  element.insertAdjacentHTML('beforeend', markup);
+  element.innerHTML = markup;
 }
 
 function clearMarkup(element) {
