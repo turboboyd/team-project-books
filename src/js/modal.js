@@ -58,12 +58,16 @@ function handleLogoClick(event) {
 function handleAddToShoppingList() {
   addToShoppingListButton.textContent = 'Remove from the shopping list';
   infoText.textContent = 'Congratulations! You have successfully added the book to your shopping list.';
+<<<<<<< Updated upstream
   infoText.style.color = 'rgba(255, 255, 255, 0.5)'; 
   infoText.style.fontWeight = '400';
   infoText.style.fontSize = '10px';
   infoText.style.align = 'center';
   infoText.style.weight = '242px';
 
+=======
+  infoText.style.color = 'rgba(255, 255, 255, 0.5)';
+>>>>>>> Stashed changes
   infoText.classList.remove('visually-hidden');
 }
 
