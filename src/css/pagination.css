@@ -1,0 +1,22 @@
+.pagination-list {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pagination-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background-color: blueviolet;
+  border-radius: 50%;
+}
+
+/* .pagination-text {
+} */
+
+.curent-btn-pagination {
+  background-color: aqua;
+}
