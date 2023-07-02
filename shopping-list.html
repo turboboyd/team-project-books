@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-109de126.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/scroll-up-e4e626bd.js">
-    <link rel="stylesheet" href="/team-project-books/assets/scroll-up-f1fbbd92.css">
+    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-7fbe48b8.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/scroll-up-9687cf48.js">
+    <link rel="stylesheet" href="/team-project-books/assets/scroll-up-6fcf83a8.css">
   </head> 
   <body class="page">
     <header class="header">
@@ -154,97 +154,98 @@
           <h2 class="title">Shopping <span class="main-title_last-word">List</span></h2>
             <!-- те що додали в корзину -->
           <!-- книги які добавляємо  -->
-  <div class="empty">
-    <p class="shopping-text">
-      This page is empty, add some books and proceed to order.
-    </p>
+<div class="empty visually-hidden">
+  <p class="shopping-text">
+    This page is empty, add some books and proceed to order.
+  </p>
+  <img
+    class="img-ctack-books"
+    src="/team-project-books/assets/empty-40c5979b.png"
+    alt="stack of books"
+    width="265"
+    height="198"
+    loading="lazy"
+  />
+</div>
+
+<ul class="shopping__list">
+  <li class="shopping-item visually-hidden">
     <img
-      class="img-ctack-books"
+      class="shopping-book-cover"
       src="/team-project-books/assets/empty-40c5979b.png"
-      alt="stack of books"
-      width="265"
-      height="198"
+      alt="book cover"
+      width="100"
+      height="142"
       loading="lazy"
     />
-  </div>
+    <div class="shopping-wrap">
+      <h2 class="shopping-book-title">book title</h2>
+      <button class="shopping-trash" type="button" data-id-book="id">
+        <svg class="icon-shopping-trash" width="18" height="18">
+          <use href="/team-project-books/assets/sprite-2a762604.svg#icon-trash"></use>
+        </svg>
+      </button>
 
-  <ul class="shopping__list">
-    <li class="shopping-item">
-      <img
-        class="shopping-book-cover"
-        src="/team-project-books/assets/empty-40c5979b.png"
-        alt="book cover"
-        width="100"
-        height="142"
-        loading="lazy"
-      />
-      <div class="shopping-wrap">
-        <h2 class="shopping-book-title">book title</h2>
-        <button class="shopping-trash" type="button" data-id-book="id">
-          <svg class="icon-shopping-trash" width="18" height="18">
-            <use href="/team-project-books/assets/sprite-2a762604.svg#icon-trash"></use>
-          </svg>
-        </button>
+      <p class="shopping-book-categories">Categoris</p>
+      <p class="shopping-book-description text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ut alias
+        voluptatum nemo velit aliquid nulla tempore, voluptatibus et, sed
+        consectetur voluptas aut laborum quam aperiam odit esse minus eum
+        dolorem nisi adipisci quaerat eveniet? Est ipsum consequatur cupiditate,
+        assumenda praesentium eligendi mollitia labore, quam laborum ducimus
+        earum! Voluptatibus corrupti voluptate sint ab vel? Tenetur libero
+        labore atque? Quaerat deleniti, minima ullam mollitia corrupti, libero
+        numquam natus repellat quod enim vero iusto a pariatur repudiandae eos?
+        Accusamus iusto dolor quae, ipsa ducimus id vero consequuntur distinctio
+        ea tenetur, et repellat illo eveniet perferendis magnam placeat vitae
+        commodi nisi! Nostrum, tempora!
+      </p>
+      <div class="shopping-wrapper">
+        <p class="shopping-book-author">Author name</p>
 
-        <p class="shopping-book-categories">Categoris</p>
-        <p class="shopping-book-description text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ut alias
-          voluptatum nemo velit aliquid nulla tempore, voluptatibus et, sed
-          consectetur voluptas aut laborum quam aperiam odit esse minus eum
-          dolorem nisi adipisci quaerat eveniet? Est ipsum consequatur
-          cupiditate, assumenda praesentium eligendi mollitia labore, quam
-          laborum ducimus earum! Voluptatibus corrupti voluptate sint ab vel?
-          Tenetur libero labore atque? Quaerat deleniti, minima ullam mollitia
-          corrupti, libero numquam natus repellat quod enim vero iusto a
-          pariatur repudiandae eos? Accusamus iusto dolor quae, ipsa ducimus id
-          vero consequuntur distinctio ea tenetur, et repellat illo eveniet
-          perferendis magnam placeat vitae commodi nisi! Nostrum, tempora!
-        </p>
-        <div class="shopping-wrapper">
-          <p class="shopping-book-author">Author name</p>
-
-          <ul class="shop-list">
-            <li>
-              <a class="shop-link" href="#buy_links.amazon">
-                <img
-                  class="shop-img"
-                  src="data:image/png;base64,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"
-                  alt="amazon"
-                  width="32"
-                  height="11"
-                />
-              </a>
-            </li>
-            <li>
-              <a class="shop-link" href="#buy_links.Apple-Books">
-                <img
-                  class="shop-img"
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAK5SURBVHgBzVdJa2JBEC7NTlZCCAlJ8OJJFC/iwYsiCHrwf3rzD3hSEUEEERG8eBFBUcF915n53vBCb+/5zOgkH4i9VHd/VV3VVc/26w/om2GnH4BTs8nRaETdbpcWiwVtt1vaF3a7nS4vL+nx8ZHu7u5oLxLD4ZDy+Tz1+306FG5ubigYDNL19bU0ZxN9AgRSqRSt12s6NGw2G0UiEXp4eODGJZ9Ip9O0Wq0I3A79w5XmcjkSY4Ej0Wg0aDwec4vYNttn58Vx1ZjeHwwG1Gq1jEm0221uIcC22T47L46rxljZZrPJkeAcU7eCiJOTE3p/f6fT07/iiBoQxh2zeH5+1hwQUTGfz6nX69FsNpP2m06nxiQ2m42ktcfjIZfLRWdnZ9xChG42m6XJZEJXV1cUCATo5eWFk1kul1Qul6lWq3Hj8DkW3HWI9wjtvV6vRAB4enrSDoZcOByWCADn5+fk8/no4+NDeV1KS4gC0NAMuvnFkBOBB0u0sCEJlcAu7CKg2ncvS1ghJDqnEYGjWsKK/F4k9Adp3wOswGxfu9GGKi/+KgmjR0vHP1+HFexSTnLMY1wHawk48sGjwyp05VR7WiaB6goZEMAjpZLBQSiEIItq6uLiYue+EgmVQKfToUwmo/3rm2Fzt9tNfr//U75QKFClUtESl/52gGwoFNrp5KYk6vU6VatVqb6EpsViUcuWkEcpWCqVJO9Hpk0kEhppM0twISomKqRcM0eF9tAchFSa6mPIpmwfpQELzhJIWKzpVJ4sHoBqDABZVl5cy7aR9FhwlnA4HFJJpyrbVOOivFn77e3NnMT9/T0dE7e3t+R0OsmQBEwYjUY5jQ/5Q3kYj8clYtJ3B4D3IJlMfr4LKpj5iwqoxGKxmPZ+WCKhA4Uqwgx15Fc+AxEFcPbX11fl4ZZI/C/8iK/y3zhKPhUdhr3eAAAAAElFTkSuQmCC"
-                  alt="books-io"
-                  width="16"
-                  height="16"
-                />
-              </a>
-            </li>
-            <li>
-              <a class="shop-link" href="#buy_links.bookshop">
-                <img
-                  class="shop-img"
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAkCAMAAADSK7iXAAABelBMVEUAAAAAAAAAAAAAAAAHBwcCAgIAAAAAAACzs7MAAAAAAAACAgIAAAAAAAAAAABDQ0MBAQEEBAQuLi4AAAAAAAABAQEBAQEAAAA+QD4BAQEBAQEEBAQAAACNjo0AAACcnJyam5qRkZExMTFsbGxub26dnZ2AgIBaWlq2trZPT08RERE6OjpDQ0MAAAAAAABJSUk7PTsCAgICAgICAgKPj48hISFISEgEBAQAAAAAAAAAAAAAAAAAAACqq6p3d3d/f38KCgp6enpycnIQEBADAwOHh4eCg4LHx8fExMSXl5eQkZCLi4tAQEDJycnBwsGpqamlpqWbm5uOjo6IiIiFhYVxcXFtbW1sbGxqamqVlpWUlJRiYmJeX15WVlYXFxfQ0dDLzMusrKyoqKiBgYF0dHRvb29NTU0zMzMhISEZGRne396+vr65ubm1trWwsbCfn59EREQpKSkTExPt7e3Z2dnU1NTNzs3JysmgoaCenp5lZWWhoaE6Ojo4OTipeBnaAAAAPHRSTlMAHPte/jcVBP7OvqEL7uqzUDz+9vHb1cechm4jBvT08vLy8fDv7u7t4uHezbiwqqWkmJGOgn1HR0QyLCqCPqZpAAAB9klEQVQ4y83TZ3OiUBiGYWOLrhrT6/bee99DExAQUEAE7L3ErunZ3f++OCNnd40kX3N/vuaZeefMcVyTFlxfb16JvDsh4LzhuWLp/TowuxzuBW5PzBSu2CwF1iCyhd536xBAuPVlBn0IgbltLv+jdpeAXc5PUH2jbNW++jRosR07VMBK6JMFi70GdGHeEsrSkcpDyF4BdjByzy5NEIIRjyALUEU2z9D/L8WTE4SgjyHbxZmyEueE3P4UkSg7RVHpwZ7FPBSe/8WmE0WpRU5QTbRQIpX2fYbPlIuSIH9UkxWi0yABT0MUi+fwgMWCqwQTHVN4pagdlgT8sAxRFgdgY9Fy9ysYdhIlW7mh2KOabaIPESX8XvJa7Fm9Wj7nWJ0s5EvC8ECt+4iqGMEB7qZ7yRA89YWG6GpCHzA62WqutrtElTERNZZ6ycro71o4g6YQgz8zJEYj3SJ2bCJ3C5MbB3QDbDmsPg6y6UjtZz0mG4ioEai5VECwTFHoKsM1F2TB7TtylkOxUy3DGf0uDpoZ9bifLpeaTv8yVGY/tu9yRqxWPdO5tC8PGEUQs9KY9Ltm/+L3t/d4PZZSZeNEBdwR72u4/a5Fx8U8b24ltVidbmdAJz6CaA4MK0rutMMDgdqAaC58yfPSOdiEyK6VsPwcXndZQcf16A9mt6vIvLLZ8AAAAABJRU5ErkJggg=="
-                  alt="bookshop"
-                  width="16"
-                  height="16"
-                />
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul class="shop-list">
+          <li>
+            <a class="shop-link" href="#buy_links.amazon">
+              <img
+                class="shop-img"
+                src="data:image/png;base64,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"
+                alt="amazon"
+                width="32"
+                height="11"
+              />
+            </a>
+          </li>
+          <li>
+            <a class="shop-link" href="#buy_links.Apple-Books">
+              <img
+                class="shop-img"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAK5SURBVHgBzVdJa2JBEC7NTlZCCAlJ8OJJFC/iwYsiCHrwf3rzD3hSEUEEERG8eBFBUcF915n53vBCb+/5zOgkH4i9VHd/VV3VVc/26w/om2GnH4BTs8nRaETdbpcWiwVtt1vaF3a7nS4vL+nx8ZHu7u5oLxLD4ZDy+Tz1+306FG5ubigYDNL19bU0ZxN9AgRSqRSt12s6NGw2G0UiEXp4eODGJZ9Ip9O0Wq0I3A79w5XmcjkSY4Ej0Wg0aDwec4vYNttn58Vx1ZjeHwwG1Gq1jEm0221uIcC22T47L46rxljZZrPJkeAcU7eCiJOTE3p/f6fT07/iiBoQxh2zeH5+1hwQUTGfz6nX69FsNpP2m06nxiQ2m42ktcfjIZfLRWdnZ9xChG42m6XJZEJXV1cUCATo5eWFk1kul1Qul6lWq3Hj8DkW3HWI9wjtvV6vRAB4enrSDoZcOByWCADn5+fk8/no4+NDeV1KS4gC0NAMuvnFkBOBB0u0sCEJlcAu7CKg2ncvS1ghJDqnEYGjWsKK/F4k9Adp3wOswGxfu9GGKi/+KgmjR0vHP1+HFexSTnLMY1wHawk48sGjwyp05VR7WiaB6goZEMAjpZLBQSiEIItq6uLiYue+EgmVQKfToUwmo/3rm2Fzt9tNfr//U75QKFClUtESl/52gGwoFNrp5KYk6vU6VatVqb6EpsViUcuWkEcpWCqVJO9Hpk0kEhppM0twISomKqRcM0eF9tAchFSa6mPIpmwfpQELzhJIWKzpVJ4sHoBqDABZVl5cy7aR9FhwlnA4HFJJpyrbVOOivFn77e3NnMT9/T0dE7e3t+R0OsmQBEwYjUY5jQ/5Q3kYj8clYtJ3B4D3IJlMfr4LKpj5iwqoxGKxmPZ+WCKhA4Uqwgx15Fc+AxEFcPbX11fl4ZZI/C/8iK/y3zhKPhUdhr3eAAAAAElFTkSuQmCC"
+                alt="books-io"
+                width="16"
+                height="16"
+              />
+            </a>
+          </li>
+          <li>
+            <a class="shop-link" href="#buy_links.bookshop">
+              <img
+                class="shop-img"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAkCAMAAADSK7iXAAABelBMVEUAAAAAAAAAAAAAAAAHBwcCAgIAAAAAAACzs7MAAAAAAAACAgIAAAAAAAAAAABDQ0MBAQEEBAQuLi4AAAAAAAABAQEBAQEAAAA+QD4BAQEBAQEEBAQAAACNjo0AAACcnJyam5qRkZExMTFsbGxub26dnZ2AgIBaWlq2trZPT08RERE6OjpDQ0MAAAAAAABJSUk7PTsCAgICAgICAgKPj48hISFISEgEBAQAAAAAAAAAAAAAAAAAAACqq6p3d3d/f38KCgp6enpycnIQEBADAwOHh4eCg4LHx8fExMSXl5eQkZCLi4tAQEDJycnBwsGpqamlpqWbm5uOjo6IiIiFhYVxcXFtbW1sbGxqamqVlpWUlJRiYmJeX15WVlYXFxfQ0dDLzMusrKyoqKiBgYF0dHRvb29NTU0zMzMhISEZGRne396+vr65ubm1trWwsbCfn59EREQpKSkTExPt7e3Z2dnU1NTNzs3JysmgoaCenp5lZWWhoaE6Ojo4OTipeBnaAAAAPHRSTlMAHPte/jcVBP7OvqEL7uqzUDz+9vHb1cechm4jBvT08vLy8fDv7u7t4uHezbiwqqWkmJGOgn1HR0QyLCqCPqZpAAAB9klEQVQ4y83TZ3OiUBiGYWOLrhrT6/bee99DExAQUEAE7L3ErunZ3f++OCNnd40kX3N/vuaZeefMcVyTFlxfb16JvDsh4LzhuWLp/TowuxzuBW5PzBSu2CwF1iCyhd536xBAuPVlBn0IgbltLv+jdpeAXc5PUH2jbNW++jRosR07VMBK6JMFi70GdGHeEsrSkcpDyF4BdjByzy5NEIIRjyALUEU2z9D/L8WTE4SgjyHbxZmyEueE3P4UkSg7RVHpwZ7FPBSe/8WmE0WpRU5QTbRQIpX2fYbPlIuSIH9UkxWi0yABT0MUi+fwgMWCqwQTHVN4pagdlgT8sAxRFgdgY9Fy9ysYdhIlW7mh2KOabaIPESX8XvJa7Fm9Wj7nWJ0s5EvC8ECt+4iqGMEB7qZ7yRA89YWG6GpCHzA62WqutrtElTERNZZ6ycro71o4g6YQgz8zJEYj3SJ2bCJ3C5MbB3QDbDmsPg6y6UjtZz0mG4ioEai5VECwTFHoKsM1F2TB7TtylkOxUy3DGf0uDpoZ9bifLpeaTv8yVGY/tu9yRqxWPdO5tC8PGEUQs9KY9Ltm/+L3t/d4PZZSZeNEBdwR72u4/a5Fx8U8b24ltVidbmdAJz6CaA4MK0rutMMDgdqAaC58yfPSOdiEyK6VsPwcXndZQcf16A9mt6vIvLLZ8AAAAABJRU5ErkJggg=="
+                alt="bookshop"
+                width="16"
+                height="16"
+              />
+            </a>
+          </li>
+        </ul>
       </div>
-    </li>
-  </ul>
+    </div>
+  </li>
+</ul>
 
           <!-- pagination -->
           <!-- Тут буде пагінація для Shopping list -->
+<ul class="pagination-list"></ul>
 
           <!-- Scroll to up button -->
           <div class="to-top-target">
