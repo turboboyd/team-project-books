@@ -1,33 +1,35 @@
-<!-- бургер меню хедера -->
-<!-- <div class="mobile-menu" data-menu>
-  <div class="mobile-menu__container">
-    <ul class="mobile-menu__list">
-      <li class="mobile-menu__item">
-       
-      </li>
-    </ul>
-    <ul class="mobile-menu__btn">
-      <li class="mobile-menu__item">
-        <a href="./index.html" class="mobile-menu__home burger-nav-link"
-          >HOME</a
-        >
-      </li>
-      <li class="mobile-menu__item">
-        <a href="./shopping-list.html" class="mobile-menu__shopping"
-          >SHOPPING LIST
-          <svg class="mobile-menu__icon" width="20" height="20">
-            <use href="../../../images/symbol-defs.svg#icon-uil_cart"></use>
-          </svg>
-        </a>
-      </li>
-    </ul>
-    <button type="button" class="button-modal__logout">
-      Log out
-      <svg class="logo__svg" width="20" height="20">
-        <use
-          href="../../../images/symbol-defs.svg#icon-arrow-narrow-right"
-        ></use>
+<div class="mob-menu-start">
+  <div class="menu-user-bar">
+    <div class="menu-user-bar-foto">
+      <svg class="menu-user-bar-icon" width="19" height="19">
+        <use href="./images/svg-sprite-den.svg#user-default-icon"></use>
       </svg>
-    </button>
+    </div>
+    <p>Stephen</p>
   </div>
-</div> -->
+  <button data-modal-auth-open class="menu-btn-start" type="button">
+    Sign up
+    <svg class="menu-btn-start-icon" width="20" height="20">
+      <use href="./images/svg-sprite-den.svg#arrow-right-icon"></use>
+    </svg>
+  </button>
+  <nav class="mob-menu-nav">
+    <ul class="mob-menu-list-nav">
+      <li class="mob-menu-item-nav">
+        <a class="mob-menu-link-nav current" href="./index.html">HOME</a>
+      </li>
+      <li class="mob-menu-item-nav">
+        <a class="mob-menu-link-nav" href="./shopping-list.html"
+          >SHOPPING LIST<svg class="header-link-icon" width="20" height="20">
+            <use href="./images/svg-sprite-den.svg#bag"></use></svg
+        ></a>
+      </li>
+    </ul>
+  </nav>
+  <button class="menu-btn-exit" type="button">
+    Log out
+    <svg class="menu-btn-start-icon" width="20" height="20">
+      <use href="./images/svg-sprite-den.svg#arrow-right-icon"></use>
+    </svg>
+  </button>
+</div>
