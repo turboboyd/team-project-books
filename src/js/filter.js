@@ -6,7 +6,7 @@ import renderWrapCategories from './bestsellers';
 const bookApi = new BookAPI();
 const containerContent = document.querySelector('.books-render-js');
 const categorieEl = document.querySelector('.categorie-js');
-const mainTitleEl = document.querySelector('.main-title');
+const homeContainerEl = document.querySelector('.home-container');
 
 bookApi
   .getBooksCategoriesList()
@@ -32,21 +32,28 @@ bookApi
     );
   });
 
+function renderCategories(categories) {
+  markupCategorie({ list_name: 'All categories' });
+  categories
+    .sort((a, b) => a.list_name.localeCompare(b.list_name))
+    .map(categorie => markupCategorie(categorie));
+}
+
 function renderBooks(books) {
   cleaningBooks();
   const markup = books.map(book => markupBook(book)).join('');
   containerContent.insertAdjacentHTML('beforeend', markup);
 }
 
-function cleaningBooks() {
-  containerContent.innerHTML = '';
-}
-
-function renderCategories(categories) {
-  markupCategorie({ list_name: 'All categories' });
-  categories
-    .sort((a, b) => a.list_name.localeCompare(b.list_name))
-    .map(categorie => markupCategorie(categorie));
+function renderMainTitle(name) {
+  cleaningTitle();
+  const words = name.split(' ');
+  const lastWord = words.pop();
+  const title = words.join(' ');
+  const markup = `<h2 class="main-title">
+       ${title} <span class="main-title_last-word">${lastWord}</span>
+    </h2>`;
+  homeContainerEl.insertAdjacentHTML('afterbegin', markup);
 }
 
 function markupCategorie({ list_name }) {
@@ -56,47 +63,66 @@ function markupCategorie({ list_name }) {
   element.insertAdjacentHTML('beforeend', markup);
 
   const filterItem = element.querySelector('.filter-item');
+
   filterItem.addEventListener('click', () => {
     if (name === 'All categories') {
-      bookApi
-        .getTopBooks()
-        .then(data => {
-          cleaningBooks();
-          renderWrapCategories(data);
-          mainTitleEl.textContent = 'Best Seller Books';
-        })
-        .catch(error => {
-          console.error('Error retrieving top books:', error);
-          Notiflix.Notify.failure(
-            'Oops! Error retrieving top books. Please try again later.'
-          );
-        });
+      generateBestSellersCategories();
     } else {
-      bookApi
-        .getSelectedCategoryBooks(name)
-        .then(data => {
-          renderBooks(data);
-          mainTitleEl.textContent = name;
-        })
-        .catch(error => {
-          console.error('Error found category:', error);
-          Notiflix.Notify.failure(
-            'Oops, there is no category with that name. Please try again later.'
-          );
-        });
+      generateCategory(name);
     }
   });
 
   return categorieEl.appendChild(element.firstChild);
 }
 
-// Клик по кнопке
+function generateBestSellersCategories() {
+  bookApi
+    .getTopBooks()
+    .then(data => {
+      cleaningBooks();
+      renderWrapCategories(data);
+      renderMainTitle('Best Seller Books');
+    })
+    .catch(error => {
+      console.error('Error retrieving top books:', error);
+      Notiflix.Notify.failure(
+        'Oops! Error retrieving top books. Please try again later.'
+      );
+    });
+}
+
+function generateCategory(name) {
+  bookApi
+    .getSelectedCategoryBooks(name)
+    .then(data => {
+      renderBooks(data);
+      renderMainTitle(name);
+    })
+    .catch(error => {
+      console.error('Error found category:', error);
+      Notiflix.Notify.failure(
+        'Oops, there is no category with that name. Please try again later.'
+      );
+    });
+}
+
+function cleaningBooks() {
+  containerContent.innerHTML = '';
+}
+
+function cleaningTitle() {
+  const titleElements = homeContainerEl.getElementsByClassName('main-title');
+  for (let i = titleElements.length - 1; i >= 0; i--) {
+    const titleElement = titleElements[i];
+    titleElement.parentNode.removeChild(titleElement);
+  }
+}
+
 containerContent.addEventListener('click', function (event) {
   if (event.target.classList.contains('see-more-btn')) {
-    const listName = event.target.dataset.categoriesName;
-          bookApi.getSelectedCategoryBooks(listName).then(data => {
-            renderBooks(data);
-            mainTitleEl.textContent = listName;
-          });
+    const listName = event.target.dataset.active;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    generateCategory(listName);
   }
 });
+
