@@ -70,6 +70,17 @@
   stroke: var(--accent-color);
 }
 
+.messagetext{
+  width: 242px;
+  margin-top: 8px;
+  margin-left: 15px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  text-align: center;
+  color: #b4afaf;
+}
 .modal-book-attributes {
   display: flex;
   flex-direction: column;
@@ -151,7 +162,12 @@
     width: 21px;
     height: 21px;
   }
-
+  
+    .messagetext {
+      width: 324px;
+      font-size: 12px;
+      line-height: 1.16;
+  }
   .modal-pop-up-content {
     display: flex;
     gap: 24px;
