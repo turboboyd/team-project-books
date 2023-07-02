@@ -1,4 +1,5 @@
 import './js/header';
+import './js/launch';
 import './js/bestsellers';
 import './js/filter';
 import './js/categories';
