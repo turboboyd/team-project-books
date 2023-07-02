@@ -17,8 +17,8 @@
   font-size: 16px;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  transition: all ease-in-out 160ms;
-  color: var(--light-font-color);
+  transition: all ease-in-out 200ms;
+  color: var(--light-font-color); 
   cursor: pointer;
 }
 .filter-item:hover,
@@ -72,5 +72,9 @@
 .filter-item-is-Active {
   transform: scale(1.05) translateX(10px);
   color: var(--accent-color-filter);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33;
+  letter-spacing: -0.36px;
   text-transform: uppercase;
 }
