@@ -1,1 +1,0 @@
-import"./scroll-up-20f9310d.js";const e=document.querySelector(".footer-btn"),t=document.querySelector(".footer-modal-close-btn"),o=document.querySelector(".footer-backdrop");e.addEventListener("click",c);t.addEventListener("click",n);function c(){o.classList.remove("is-open")}function n(){o.classList.add("is-open")}
