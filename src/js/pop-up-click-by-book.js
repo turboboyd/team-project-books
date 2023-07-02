@@ -1,11 +1,9 @@
 import { showLoader, hideLoader } from './loader';
 
-const categoryContainerEl = document.querySelector(
-  '.content-rendering-container'
-);
 const modalPopUp = document.querySelector('[data-pop-up]');
 const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
+const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
 
 bookGrid.addEventListener('click', handleBookClick);
@@ -13,6 +11,7 @@ modalPopUp.addEventListener('click', handleModalBackdropClick);
 window.addEventListener('keydown', handleKeyDown);
 
 const API_ENDPOINT = 'https://books-backend.p.goit.global';
+const shoppingListKey = 'shoppingList';
 
 function openPopUp() {
   modalPopUp.classList.remove('is-hidden');
@@ -64,6 +63,30 @@ function clearMarkup(element) {
   element.innerHTML = '';
 }
 
+function addToShoppingList(bookId) {
+  const shoppingList = getShoppingList();
+  shoppingList.push(bookId);
+  saveShoppingList(shoppingList);
+}
+
+function removeFromShoppingList(bookId) {
+  const shoppingList = getShoppingList();
+  const index = shoppingList.indexOf(bookId);
+  if (index !== -1) {
+    shoppingList.splice(index, 1);
+    saveShoppingList(shoppingList);
+  }
+}
+
+function getShoppingList() {
+  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
+  return shoppingList;
+}
+
+function saveShoppingList(shoppingList) {
+  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
+}
+
 async function handleBookClick(event) {
   event.preventDefault();
   const cardBook = event.target.closest('.card-book');
@@ -81,6 +104,14 @@ async function handleBookClick(event) {
       const markup = createMarkup(bookData);
       renderMarkup(modalContentEl, markup);
       openPopUp();
+
+      const shoppingList = getShoppingList();
+      if (shoppingList.includes(bookId)) {
+        modalPopUpBtn.textContent = 'Remove from the shopping list';
+      } else {
+        modalPopUpBtn.textContent = 'Add to shopping list';
+      }
+
       hideLoader();
     } catch (error) {
       console.error('Error handling book click:', error);
@@ -99,3 +130,27 @@ async function getBookData(bookId) {
 
   return data;
 }
+
+modalPopUpBtn.addEventListener('click', () => {
+  const bookId = modalContentEl.querySelector('.card-book-id').textContent;
+  const shoppingList = getShoppingList();
+
+  if (shoppingList.includes(bookId)) {
+    removeFromShoppingList(bookId);
+    modalPopUpBtn.textContent = 'Add to shopping list';
+  } else {
+    addToShoppingList(bookId);
+    modalPopUpBtn.textContent = 'Remove from the shopping list';
+  }
+});
+
+closeModalPopUpBtn.addEventListener('click', () => {
+  const bookId = modalContentEl.querySelector('.card-book-id').textContent;
+  const shoppingList = getShoppingList();
+
+  if (shoppingList.includes(bookId)) {
+    modalPopUpBtn.textContent = 'Remove from the shopping list';
+  } else {
+    modalPopUpBtn.textContent = 'Add to shopping list';
+  }
+});
