@@ -5,6 +5,7 @@ const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
 const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
+const messageTextEl = document.getElementById('messageText');
 
 bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
@@ -138,9 +139,11 @@ modalPopUpBtn.addEventListener('click', () => {
   if (shoppingList.includes(bookId)) {
     removeFromShoppingList(bookId);
     modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
   } else {
     addToShoppingList(bookId);
     modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent = 'Congratulations! You have successfully added the book to your shopping list';
   }
 });
 
@@ -150,7 +153,9 @@ closeModalPopUpBtn.addEventListener('click', () => {
 
   if (shoppingList.includes(bookId)) {
     modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent = 'Congratulations! You have successfully added the book to your shopping list';
   } else {
     modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
   }
 });
