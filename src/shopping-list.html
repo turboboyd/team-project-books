@@ -13,48 +13,51 @@
       <load ="./partials/layout/header/header.html" />
       <load ="./partials/layout/header/burger-menu.html" />
     </header>
-    <div class="container page-container">
-      <aside class="sidebar sidebar-shoppinglist section">
-        <!-- support -->
-        <div class="support">
-          <h2 class="head-title">
-            Support Ukraine
-            <svg class="icon-ua" width="20" height="32">
-              <use href="./images/symbol-defs.svg#icon-ua"></use>
-            </svg>
-          </h2>
+    <main class="content shop-wrap">
+      <div class="container page-container">
+      <section class="section">
+          <aside class="sidebar sidebar-shoppinglist section">
+            <!-- support -->
+            <div class="support">
+              <h2 class="head-title">
+                Support Ukraine
+                <svg class="icon-ua" width="20" height="32">
+                  <use href="./images/symbol-defs.svg#icon-ua"></use>
+                </svg>
+              </h2>
 
-          <div class="swiper mySwiper">
-            <ul class="swiper-wrapper support-list"></ul>
-          </div>
+              <div class="swiper mySwiper">
+                <ul class="swiper-wrapper support-list"></ul>
+              </div>
 
-          <button
-            type="button"
-            class="next swiper-next"
-            aria-label="Swipe next"
-          >
-            <span class="icon-container">
-              <svg class="icon-down" width="20" height="32">
-                <use href="./images/symbol-defs.svg#icon-angle-down"></use>
-              </svg>
-            </span>
-          </button>
-        </div>
-      </aside>
-      <main class="content shop-wrap">
-        <!-- те що додали в корзину -->
-        <load ="./partials/layout/shopping-list-content.html" />
-        <!-- pagination -->
-        <load ="./partials/components/pagination.html" />
-        <!-- Scroll to up button -->
-        <div class="to-top-target">
+              <button
+                type="button"
+                class="next swiper-next"
+                aria-label="Swipe next"
+              >
+                <span class="icon-container">
+                  <svg class="icon-down" width="20" height="32">
+                    <use href="./images/symbol-defs.svg#icon-angle-down"></use>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </aside>
+          <!-- burger-menu-->
+      </section>
+      <section class="shopping section">
+          <h2 class="title">Shopping <span class="main-title_last-word">List</span></h2>
+            <!-- те що додали в корзину -->
+          <load ="./partials/layout/shopping-list-content.html" />
+          <!-- pagination -->
+          <load ="./partials/components/pagination.html" />
           <!-- Scroll to up button -->
-          <load ="./partials/components/scroll-to-up.html" />
-        </div>
-        <!-- burger-menu-->
-      </main>
-    </div>
-
+          <div class="to-top-target">
+            <!-- Scroll to up button -->
+            <load ="./partials/components/scroll-to-up.html" />
+      </section>
+      </div>
+    </main>
     <!-- footer -->
     <footer class="footer">
       <div class="container">
@@ -77,24 +80,13 @@
           >&nbsp;
           <span class="footer-text"
             >by&nbsp;
-            <button type="button" class="footer-btn">
+            <button type="button" class="footer-btn" data-footer-modal-open>
               <span class="footer-btn-text"> GoIT Students</span>
             </button>
           </span>
         </span>
       </div>
     </footer>
-
-    <div class="footer-backdrop is-open">
-      <div class="footer-modal">
-        <button type="button" class="footer-modal-close-btn">
-          <svg class="footer-modal-close-btn__icon" width="18" height="18">
-            <use href="./images/symbol-defs.svg#icon-close"></use>
-          </svg>
-        </button>
-      </div>
-    </div>
-
     <script type="module" src="./shopping-list.js"></script>
   </body>
 </html>
