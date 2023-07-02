@@ -13,94 +13,80 @@
       <load ="./partials/layout/header/header.html" />
       <load ="./partials/layout/header/burger-menu.html" />
     </header>
-    <div class="container page-container">
-      <aside class="sidebar sidebar-shoppinglist section">
-        <!-- support -->
-        <div class="support">
-          <h2 class="head-title">
-            Support Ukraine
-            <svg class="icon-ua" width="20" height="32">
-              <use href="./images/symbol-defs.svg#icon-ua"></use>
-            </svg>
-          </h2>
+    <main class="content shop-wrap">
+      <div class="container page-container">
+      <section class="section">
+          <aside class="sidebar sidebar-shoppinglist section">
+            <!-- support -->
+            <div class="support">
+              <h2 class="head-title">
+                Support Ukraine
+                <svg class="icon-ua" width="20" height="32">
+                  <use href="./images/symbol-defs.svg#icon-ua"></use>
+                </svg>
+              </h2>
 
-          <div class="swiper mySwiper">
-            <ul class="swiper-wrapper support-list"></ul>
-          </div>
+              <div class="swiper mySwiper">
+                <ul class="swiper-wrapper support-list"></ul>
+              </div>
 
-          <button
-            type="button"
-            class="next swiper-next"
-            aria-label="Swipe next"
-          >
-            <span class="icon-container">
-              <svg class="icon-down" width="20" height="32">
-                <use href="./images/symbol-defs.svg#icon-angle-down"></use>
-              </svg>
-            </span>
-          </button>
-        </div>
-      </aside>
-      <main class="content shop-wrap">
-        <!-- те що додали в корзину -->
-        <load ="./partials/layout/shopping-list-content.html" />
-        <!-- pagination -->
-        <load ="./partials/components/pagination.html" />
-        <!-- Scroll to up button -->
-        <div class="to-top-target">
-          <!-- Scroll to up button -->
-          <load ="./partials/components/scroll-to-up.html" />
-        </div>
-        <!-- burger-menu-->
-      </main>
-
-      <!-- footer -->
-      <footer class="footer">
-        <div class="container">
-          <span class="footer-text"
-            >&copy; 2023 | All Rights Reserved |&#160;</span
-          >
-          <span class="footer-text footer__heart"
-            >Developed with&nbsp;
-            <svg
-              class="footer__heart-goit"
-              width="14"
-              height="13"
-              viewbox="0 0 14 13"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 12.88L6.02 11.9C2.38 8.68 0 6.51 0 3.85C0 1.68 1.68 0 3.85 0C5.04 0 6.23 0.56 7 1.47C7.77 0.56 8.96 0 10.15 0C12.32 0 14 1.68 14 3.85C14 6.51 11.62 8.68 7.98 11.9L7 12.88Z"
-                fill="#eb3d3d"
-              /></svg
-            >&nbsp;
-            <span class="footer-text"
-              >by&nbsp;
-              <button type="button" class="footer-btn" data-footer-modal-open>
-                <span class="footer-btn-text"> GoIT Students</span>
+              <button
+                type="button"
+                class="next swiper-next"
+                aria-label="Swipe next"
+              >
+                <span class="icon-container">
+                  <svg class="icon-down" width="20" height="32">
+                    <use href="./images/symbol-defs.svg#icon-angle-down"></use>
+                  </svg>
+                </span>
               </button>
-            </span>
-          </span>
-        </div>
-      </footer>
-
-      <!-- <div class="container">
-        <div class="footer-backdrop is-open" data-footer-modal>
-          <div class="footer-modal">
-            <button
-              type="button"
-              class="footer-modal-close-btn"
-              data-footer-modal-close
-            >
-              <svg class="footer-modal-close-btn__icon" width="18" height="18">
-                <use href="./images/symbol-defs.svg#icon-close"></use>
-              </svg>
-            </button>
-          </div>
-        </div>
+            </div>
+          </aside>
+          <!-- burger-menu-->
+      </section>
+      <section class="shopping section">
+          <h2 class="title">Shopping <span class="main-title_last-word">List</span></h2>
+            <!-- те що додали в корзину -->
+          <load ="./partials/layout/shopping-list-content.html" />
+          <!-- pagination -->
+          <load ="./partials/components/pagination.html" />
+          <!-- Scroll to up button -->
+          <div class="to-top-target">
+            <!-- Scroll to up button -->
+            <load ="./partials/components/scroll-to-up.html" />
+      </section>
       </div>
-    </div> -->
-
+    </main>
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="footer-text"
+          >&copy; 2023 | All Rights Reserved |&#160;</span
+        >
+        <span class="footer-text footer__heart"
+          >Developed with&nbsp;
+          <svg
+            class="footer__heart-goit"
+            width="14"
+            height="13"
+            viewbox="0 0 14 13"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 12.88L6.02 11.9C2.38 8.68 0 6.51 0 3.85C0 1.68 1.68 0 3.85 0C5.04 0 6.23 0.56 7 1.47C7.77 0.56 8.96 0 10.15 0C12.32 0 14 1.68 14 3.85C14 6.51 11.62 8.68 7.98 11.9L7 12.88Z"
+              fill="#eb3d3d"
+            /></svg
+          >&nbsp;
+          <span class="footer-text"
+            >by&nbsp;
+            <button type="button" class="footer-btn" data-footer-modal-open>
+              <span class="footer-btn-text"> GoIT Students</span>
+            </button>
+          </span>
+        </span>
+      </div>
+    </footer>
     <script type="module" src="./shopping-list.js"></script>
   </body>
 </html>
