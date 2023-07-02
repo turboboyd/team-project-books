@@ -1,0 +1,36 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .sidebar {
+        margin-bottom: 100px;
+        width: calc(768px - 62px);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 32px;
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 1439px) {
+    .section-sidebar {
+        display: none;
+    }
+
+    .sidebar-shoppinglist {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .sidebar {
+        flex-direction: column;
+        max-width: 356px;
+        gap: 0;
+        margin-right: 40px;
+        margin-top: 0;
+    }
+}
