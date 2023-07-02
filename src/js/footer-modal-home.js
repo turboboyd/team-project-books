@@ -7,11 +7,11 @@ closeFooterModalBtnHome.addEventListener('click', closeFooterModal);
 
 function openFooterModal() {
   footerBackdropHome.classList.remove('is-open');
-  console.log(123);
+  
 }
 
 function closeFooterModal() {
   footerBackdropHome.classList.add('is-open');
-  console.log(124);
+  
 }
 
