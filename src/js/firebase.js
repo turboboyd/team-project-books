@@ -1,9 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
   authDomain: "my-app-bookchelf-gr6.firebaseapp.com",
@@ -15,3 +14,60 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+
+const authUser = (userName, userEmail, userPassword) => {
+    createUserWithEmailAndPassword(auth, userEmail, userPassword)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      user.updateProfile({
+        displayName: userName
+      }).then(() => {
+        console.log('Sign in successful');
+        
+      }).catch((error) => {
+        console.error('Error while updating profile:', error);
+      });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Error while registration profile:', errorCode, errorMessage);
+    });
+}
+
+const loginUser = (auth, loginUserEmail, loginUserPassword) => {
+      signInWithEmailAndPassword(auth, loginUserEmail, loginUserPassword)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log('Successful login');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Error during login:', errorCode, errorMessage);
+    });
+}
+
+function addUserAuth(e) {
+    e.preventDefault();
+    console.log('Лог до реєстрації');
+    const authName = authNameEl.value;
+    const authEmail = authEmailEl.value;
+    const authPassword = authPasswordEl.value;
+    authUser(authName, authEmail, authPassword);
+    console.log('Лог після реєстрації');
+
+}
+
+function onLoginUser(e) {
+    e.preventDefault();
+    const loginEmail = loginEmailEl.value;
+    const loginPassword = loginPasswordEl.value;
+    loginUser(auth, loginEmail, loginPassword);
+}
+
+signupForm.addEventListener('submit', addUserAuth);
+loginForm.addEventListener('submit', onLoginUser)
+
+

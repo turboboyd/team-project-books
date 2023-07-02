@@ -7,42 +7,52 @@
     </button>
     <div class="form-container">
       <div class="form-inner">
-        <form action="#" class="signup">
+        <form action="#" class="signup" id="formAuth">
           <div class="field">
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-user"></use>
             </svg>
-            <input type="text" placeholder="Name" required />
+            <input type="text" placeholder="Name" id="authName" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-mail-02"></use>
             </svg>
-            <input type="text" placeholder="Email" required />
+            <input type="text" placeholder="Email" id="authEmail" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-lock-02"></use>
             </svg>
-            <input type="password" placeholder="Password" required />
+            <input
+              type="password"
+              placeholder="Password"
+              id="authPassword"
+              required
+            />
           </div>
           <div class="field btn">
             <div class="btn-layer"></div>
             <input type="submit" value="Sign up" />
           </div>
         </form>
-        <form action="#" class="login">
+        <form action="#" class="login" id="formLogin">
           <div class="field">
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-mail-02"></use>
             </svg>
-            <input type="text" placeholder="Email" required />
+            <input type="text" placeholder="Email" id="loginEmail" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-lock-02"></use>
             </svg>
-            <input type="password" placeholder="Password" required />
+            <input
+              type="password"
+              placeholder="Password"
+              id="loginPassword"
+              required
+            />
           </div>
           <div class="field btn">
             <div class="btn-layer"></div>

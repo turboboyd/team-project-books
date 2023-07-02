@@ -1,3 +1,7 @@
+// Authorisation
+import './js/firebase';
+// 
+
 import './js/header';
 import './js/bestsellers';
 import './js/filter';
