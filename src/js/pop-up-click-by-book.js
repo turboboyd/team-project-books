@@ -5,6 +5,7 @@ const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
 const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
+const messageTextEl = document.getElementById('messageText');
 
 bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
@@ -12,6 +13,8 @@ window.addEventListener('keydown', handleKeyDown);
 
 const API_ENDPOINT = 'https://books-backend.p.goit.global';
 const shoppingListKey = 'shoppingList';
+
+let currentBookData = null;
 
 function openPopUp() {
   modalPopUp.classList.remove('is-hidden');
@@ -42,13 +45,13 @@ function createMarkup(bookData) {
       <p class="modal-book-desc">${bookData.description}</p>
       <p class="card-book-id visually-hidden">${bookData._id}</p>
       <div class="modal-shops">
-        <a class="modal-shop-link" href="${bookData.amazonUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
+        <a class="modal-shop-link" href="${bookData.buy_links[0].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
           <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
         </a>
-        <a class="modal-shop-link" href="${bookData.appleUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
+        <a class="modal-shop-link" href="${bookData.buy_links[1].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
           <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
         </a>
-        <a class="modal-shop-link" href="${bookData.bookshopUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
+        <a class="modal-shop-link" href="${bookData.buy_links[4].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
           <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
         </a>
       </div>
@@ -63,15 +66,15 @@ function clearMarkup(element) {
   element.innerHTML = '';
 }
 
-function addToShoppingList(bookId) {
+function addToShoppingList(bookData) {
   const shoppingList = getShoppingList();
-  shoppingList.push(bookId);
+  shoppingList.push(bookData);
   saveShoppingList(shoppingList);
 }
 
 function removeFromShoppingList(bookId) {
   const shoppingList = getShoppingList();
-  const index = shoppingList.indexOf(bookId);
+  const index = shoppingList.findIndex(book => book._id === bookId);
   if (index !== -1) {
     shoppingList.splice(index, 1);
     saveShoppingList(shoppingList);
@@ -102,20 +105,23 @@ async function handleBookClick(event) {
       showLoader();
       const bookData = await getBookData(bookId);
       const markup = createMarkup(bookData);
+
+      currentBookData = bookData;
+
       renderMarkup(modalContentEl, markup);
       openPopUp();
 
       const shoppingList = getShoppingList();
-      if (shoppingList.includes(bookId)) {
+      if (shoppingList.some(book => book._id === bookId)) {
         modalPopUpBtn.textContent = 'Remove from the shopping list';
       } else {
         modalPopUpBtn.textContent = 'Add to shopping list';
       }
-
+      addToShoppingList(bookId);
       hideLoader();
-    } catch (error) {
+      } catch (error) {
       console.error('Error handling book click:', error);
-    }
+    }    
   }
 }
 
@@ -135,12 +141,15 @@ modalPopUpBtn.addEventListener('click', () => {
   const bookId = modalContentEl.querySelector('.card-book-id').textContent;
   const shoppingList = getShoppingList();
 
-  if (shoppingList.includes(bookId)) {
+  if (shoppingList.some(book => book._id === bookId)) {
     removeFromShoppingList(bookId);
     modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
   } else {
-    addToShoppingList(bookId);
+    addToShoppingList(currentBookData);
     modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent =
+      'Congratulations! You have successfully added the book to your shopping list';
   }
 });
 
@@ -148,9 +157,12 @@ closeModalPopUpBtn.addEventListener('click', () => {
   const bookId = modalContentEl.querySelector('.card-book-id').textContent;
   const shoppingList = getShoppingList();
 
-  if (shoppingList.includes(bookId)) {
+  if (shoppingList.some(book => book._id === bookId)) {
     modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent =
+      'Congratulations! You have successfully added the book to your shopping list';
   } else {
     modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
   }
 });
