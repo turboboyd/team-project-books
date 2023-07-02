@@ -1,4 +1,5 @@
-// Код JavaScript
+import { showLoader, hideLoader } from './loader';
+
 const categoryContainerEl = document.querySelector(
   '.content-rendering-container'
 );
@@ -34,7 +35,36 @@ function handleKeyDown(event) {
   }
 }
 
-function handleBookClick(event) {
+function createMarkup(bookData) {
+  return `<img class="modal-img" src="${bookData.book_image}" alt="book cover" />
+    <div class='modal-book-attributes'>
+      <p class="modal-book-title">${bookData.title}</p>
+      <p class="modal-book-author">${bookData.author}</p>
+      <p class="modal-book-desc">${bookData.description}</p>
+      <p class="card-book-id visually-hidden">${bookData._id}</p>
+      <div class="modal-shops">
+        <a class="modal-shop-link" href="${bookData.amazonUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
+          <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
+        </a>
+        <a class="modal-shop-link" href="${bookData.appleUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
+          <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
+        </a>
+        <a class="modal-shop-link" href="${bookData.bookshopUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
+          <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
+        </a>
+      </div>
+    </div>`;
+}
+
+function renderMarkup(element, markup) {
+  element.innerHTML = markup;
+}
+
+function clearMarkup(element) {
+  element.innerHTML = '';
+}
+
+async function handleBookClick(event) {
   event.preventDefault();
   const cardBook = event.target.closest('.card-book');
   if (!cardBook) {
@@ -45,63 +75,27 @@ function handleBookClick(event) {
   const bookId = cardBook.querySelector('.card-book-id').textContent;
 
   if (bookId) {
-    fetchBookData(bookId)
-      .then(bookData => {
-        const book_image = bookData.book_image;
-        const title = bookData.title;
-        const author = bookData.author;
-        const description = bookData.description;
-        const amazon = bookData.buy_links.find(link => link.name === 'Amazon');
-        const apple = bookData.buy_links.find(
-          link => link.name === 'Apple Books'
-        );
-        const bookshop = bookData.buy_links.find(
-          link => link.name === 'Bookshop'
-        );
-
-        const markup = `<img class="modal-img" src="${book_image}" alt="book cover" />
-        <div class='modal-book-attributes'>
-          <p class="modal-book-title">${title}</p>
-          <p class="modal-book-author">${author}</p>
-          <p class="modal-book-desc">${description}</p>
-          <div class="modal-shops">
-            <a class="modal-shop-link" href="${amazon.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
-              <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
-            </a>
-            <a class="modal-shop-link" href="${apple.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
-              <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
-            </a>
-            <a class="modal-shop-link" href="${bookshop.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
-              <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
-            </a>
-          </div>
-        </div>`;
-
-        renderMarkup(modalContentEl, markup);
-        openPopUp();
-      })
-      .catch(error => {
-        console.error('Error fetching book data:', error);
-      });
+    try {
+      showLoader();
+      const bookData = await getBookData(bookId);
+      const markup = createMarkup(bookData);
+      renderMarkup(modalContentEl, markup);
+      openPopUp();
+      hideLoader();
+    } catch (error) {
+      console.error('Error handling book click:', error);
+    }
   }
 }
 
-function fetchBookData(bookId) {
+async function getBookData(bookId) {
   const url = `${API_ENDPOINT}/books/${bookId}`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        throw new Error(data.error);
-      }
-      return data;
-    });
-}
+  const response = await fetch(url);
+  const data = await response.json();
 
-function renderMarkup(element, markup) {
-  element.innerHTML = markup;
-}
+  if (data.error) {
+    throw new Error(data.error);
+  }
 
-function clearMarkup(element) {
-  element.innerHTML = '';
+  return data;
 }
