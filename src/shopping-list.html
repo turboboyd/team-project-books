@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>Shopping list</title>
+    <title>Bookshelf</title>
     <link rel="stylesheet" href="./css/styles.css" />
-  </head>
+  </head> 
   <body class="page">
     <header class="header">
       <load ="./partials/layout/header/header.html" />
@@ -15,10 +16,10 @@
     </header>
     <main class="content shop-wrap">
       <div class="container page-container">
-      <section class="section">
-          <aside class="sidebar sidebar-shoppinglist section">
+      <section class="section section-sidebar">
+          <aside class="sidebar sidebar-shoppinglist">
             <!-- support -->
-            <div class="support">
+             <div class="support">
               <h2 class="head-title">
                 Support Ukraine
                 <svg class="icon-ua" width="20" height="32">
@@ -54,7 +55,10 @@
           <!-- Scroll to up button -->
           <div class="to-top-target">
             <!-- Scroll to up button -->
-            <load ="./partials/components/scroll-to-up.html" />
+                <div class="to-top">
+        <!-- Scroll to up button -->
+        <load ="./partials/components/scroll-to-up.html" />
+      </div>
       </section>
       </div>
     </main>

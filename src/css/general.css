@@ -50,13 +50,6 @@ body {
   line-height: 1.29;
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
 @media screen and (max-width: 767px) {
   .container {
     max-width: 375px;
@@ -96,27 +89,12 @@ body {
     line-height: 1.08;
     letter-spacing: -1.92px;
   }
-  .sidebar {
-    margin-bottom: 100px;
-    width: calc(768px - 62px);
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 32px;
-    margin-bottom: 100px;
-  }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
     width: 1440px;
     padding: 0 24px;
-  }
-  .sidebar {
-    flex-direction: column;
-    max-width: 356px;
-    gap: 0;
-    margin-right: 40px;
-    margin-top: 0;
   }
 }
 
