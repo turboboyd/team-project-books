@@ -105,7 +105,7 @@
           >&nbsp;
           <span class="footer-text"
             >by&nbsp;
-            <button type="button" class="footer-btn" data-modal-open>
+            <button type="button" class="footer-btn" data-footer-modal-open>
               <span class="footer-btn-text"> GoIT Students</span>
             </button>
           </span>
@@ -113,7 +113,21 @@
       </div>
     </footer>
 
-    <div class="footer_backdrop visually-hidden" data-modal></div>
+    <div class="container">
+      <div class="footer-backdrop is-open" data-footer-modal>
+        <div class="footer-modal">
+          <button
+            type="button"
+            class="footer-modal-close-btn"
+            data-footer-modal-close
+          >
+            <svg class="footer-modal-close-btn__icon" width="18" height="18">
+              <use href="./images/symbol-defs.svg#icon-close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="/index.js"></script>
   </body>
