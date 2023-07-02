@@ -7,20 +7,16 @@
   left: 0;
 }
 
-.back-to-top {
+.to-top {
   position: fixed;
   bottom: 40px;
   right: 50px;
   z-index: 1;
-
   height: 54px;
   width: 54px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: blue;
   border: 5px solid transparent;
   border-radius: 50%;
 }
@@ -33,9 +29,9 @@
 .button-icon--arrow:active {
   transform: translateX(-1px) translateY(1px);
 }
-.to-top {
+.back-to-top {
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   right: 20px;
   width: 54px;
   height: 54px;
@@ -46,8 +42,8 @@
   cursor: pointer;
   transition: fill 250ms ease-in-out;
 }
-.to-top:hover,
-.to-top:focus {
+.back-to-top:hover,
+.back-to-top:focus {
   animation: pulse 1s;
   box-shadow: 0 0 0 2em transparent;
 }
