@@ -26,6 +26,13 @@
 .filter-item:focus {
   transform: scale(1.05) translateX(10px);
   color: var(--accent-color-filter);
+  text-transform: uppercase;
+}
+
+.filter-item-is-Active {
+  transform: scale(1.05) translateX(10px);
+  color: var(--accent-color-filter);
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {
