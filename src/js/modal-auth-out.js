@@ -5,14 +5,11 @@ const btnOutYes = document.querySelector('[data-btn-out-yes]');
 const btnOutNo = document.querySelector('[data-btn-out-no]')
 
 function removeClassHidden() {
-    backdropOutEl.classList.add('is-hidden')
+    backdropOutEl.classList.add('is-hidden');
     document.removeEventListener('keydown', onEscPressModalOut);
 }
 
 function onCloseModalOut(e) {
-    console.log('targe', e.target);
-    console.dir(e.target);
-    console.log('current', e.currentTarget);
     let currentElement = e.target;
     if (currentElement === backdropOutEl || currentElement === btnOutNo || currentElement === closeModalBtnOut ) {
         removeClassHidden();
@@ -22,9 +19,8 @@ function onCloseModalOut(e) {
 
 function onEscPressModalOut(e) {
     if (e.key === 'Escape') {
-         removeClassHidden();
+     backdropOutEl.classList.add('is-hidden')
     }  
-    return
 }
 
 
