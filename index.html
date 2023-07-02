@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-9ceb7bbf.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/scroll-up-e444315c.js">
-    <link rel="stylesheet" href="/team-project-books/assets/scroll-up-29137626.css">
+    <script type="module" crossorigin src="/team-project-books/assets/index-d1f897a9.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/scroll-up-847ebe3e.js">
+    <link rel="stylesheet" href="/team-project-books/assets/scroll-up-c4f5cdad.css">
     <link rel="stylesheet" href="/team-project-books/assets/index-b16a6001.css">
   </head>
 
@@ -338,7 +338,11 @@
           >&nbsp;
           <span class="footer-text"
             >by&nbsp;
-            <button type="button" class="footer-btn" data-footer-modal-open>
+            <button
+              type="button"
+              class="footer-btn"
+              data-footer-modal-open="index"
+            >
               <span class="footer-btn-text"> GoIT Students</span>
             </button>
           </span>
@@ -347,14 +351,18 @@
     </footer>
 
     <div class="container">
-      <div class="footer-backdrop is-open" data-footer-modal>
+      <div class="footer-backdrop is-open" data-footer-modal="index">
         <div class="footer-modal">
           <button
             type="button"
             class="footer-modal-close-btn"
             data-footer-modal-close
           >
-            <svg class="footer-modal-close-btn__icon" width="18" height="18">
+            <svg
+              class="footer-modal-index-close-btn__icon"
+              width="18"
+              height="18"
+            >
               <use href="/team-project-books/assets/symbol-defs-a5c005e3.svg#icon-close"></use>
             </svg>
           </button>
