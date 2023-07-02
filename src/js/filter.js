@@ -125,3 +125,4 @@ containerContent.addEventListener('click', function (event) {
     generateCategory(listName);
   }
 });
+
