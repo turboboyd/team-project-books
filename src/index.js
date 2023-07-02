@@ -12,4 +12,5 @@ import './js/pop-up-click-by-book';
 import './js/modalcardbook';
 import './js/modal-auth';
 import { showLoader, hideLoader } from './js/loader';
-import  './js/scroll-up';
+import './js/scroll-up';
+import './js/footermodal';

@@ -1,0 +1,64 @@
+.footer-backdrop {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: yellow;
+  z-index: 100;
+  opacity: 1;
+  
+
+}
+
+.footer-backdrop.is-open {
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+
+  
+ }
+
+ .footer-modal {
+    position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      z-index: 101;
+    
+      padding: 20px;
+      width: calc(100% - 40px);
+      height: 90vh;
+    
+      border-radius: 10px;
+      color: #ff6b08;
+      text-shadow: 1px 1px 0 rgb(255, 255, 255);
+      background-color: #ebecf0;
+      box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+    
+      text-align: center;
+      overflow-y: auto;
+      font-weight: 500;
+      font-size: 20px;
+ }
+
+ .footer-modal-close-btn {
+   position: absolute;
+   top: 8px;
+   right: 8px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   border: 1px solid #555555;
+   background-color: transparent;
+   cursor: pointer;
+   padding: 0;
+   transition: border-color 250ms linear;
+ }
+
+ .footer-modal-close-btn__icon {
+  stroke: black;
+ }
