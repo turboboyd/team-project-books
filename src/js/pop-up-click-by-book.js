@@ -143,9 +143,12 @@ modalPopUpBtn.addEventListener('click', () => {
   if (shoppingList.some(book => book._id === bookId)) {
     removeFromShoppingList(bookId);
     modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
   } else {
     addToShoppingList(currentBookData);
     modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent =
+      'Congratulations! You have successfully added the book to your shopping list';
   }
 });
 
@@ -155,7 +158,10 @@ closeModalPopUpBtn.addEventListener('click', () => {
 
   if (shoppingList.some(book => book._id === bookId)) {
     modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent =
+      'Congratulations! You have successfully added the book to your shopping list';
   } else {
     modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
   }
 });
