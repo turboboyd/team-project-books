@@ -1,17 +1,18 @@
-// Код JavaScript
-const categoryContainerEl = document.querySelector(
-  '.content-rendering-container'
-);
+import { showLoader, hideLoader } from './loader';
+
 const modalPopUp = document.querySelector('[data-pop-up]');
 const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
+const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
+const messageTextEl = document.getElementById('messageText');
 
 bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
 window.addEventListener('keydown', handleKeyDown);
 
 const API_ENDPOINT = 'https://books-backend.p.goit.global';
+const shoppingListKey = 'shoppingList';
 
 function openPopUp() {
   modalPopUp.classList.remove('is-hidden');
@@ -34,7 +35,60 @@ function handleKeyDown(event) {
   }
 }
 
-function handleBookClick(event) {
+function createMarkup(bookData) {
+  return `<img class="modal-img" src="${bookData.book_image}" alt="book cover" />
+    <div class='modal-book-attributes'>
+      <p class="modal-book-title">${bookData.title}</p>
+      <p class="modal-book-author">${bookData.author}</p>
+      <p class="modal-book-desc">${bookData.description}</p>
+      <p class="card-book-id visually-hidden">${bookData._id}</p>
+      <div class="modal-shops">
+        <a class="modal-shop-link" href="${bookData.amazonUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
+          <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
+        </a>
+        <a class="modal-shop-link" href="${bookData.appleUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
+          <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
+        </a>
+        <a class="modal-shop-link" href="${bookData.bookshopUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
+          <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
+        </a>
+      </div>
+    </div>`;
+}
+
+function renderMarkup(element, markup) {
+  element.innerHTML = markup;
+}
+
+function clearMarkup(element) {
+  element.innerHTML = '';
+}
+
+function addToShoppingList(bookId) {
+  const shoppingList = getShoppingList();
+  shoppingList.push(bookId);
+  saveShoppingList(shoppingList);
+}
+
+function removeFromShoppingList(bookId) {
+  const shoppingList = getShoppingList();
+  const index = shoppingList.indexOf(bookId);
+  if (index !== -1) {
+    shoppingList.splice(index, 1);
+    saveShoppingList(shoppingList);
+  }
+}
+
+function getShoppingList() {
+  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
+  return shoppingList;
+}
+
+function saveShoppingList(shoppingList) {
+  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
+}
+
+async function handleBookClick(event) {
   event.preventDefault();
   const cardBook = event.target.closest('.card-book');
   if (!cardBook) {
@@ -45,63 +99,63 @@ function handleBookClick(event) {
   const bookId = cardBook.querySelector('.card-book-id').textContent;
 
   if (bookId) {
-    fetchBookData(bookId)
-      .then(bookData => {
-        const book_image = bookData.book_image;
-        const title = bookData.title;
-        const author = bookData.author;
-        const description = bookData.description;
-        const amazon = bookData.buy_links.find(link => link.name === 'Amazon');
-        const apple = bookData.buy_links.find(
-          link => link.name === 'Apple Books'
-        );
-        const bookshop = bookData.buy_links.find(
-          link => link.name === 'Bookshop'
-        );
+    try {
+      showLoader();
+      const bookData = await getBookData(bookId);
+      const markup = createMarkup(bookData);
+      renderMarkup(modalContentEl, markup);
+      openPopUp();
 
-        const markup = `<img class="modal-img" src="${book_image}" alt="book cover" />
-        <div class='modal-book-attributes'>
-          <p class="modal-book-title">${title}</p>
-          <p class="modal-book-author">${author}</p>
-          <p class="modal-book-desc">${description}</p>
-          <div class="modal-shops">
-            <a class="modal-shop-link" href="${amazon.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
-              <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
-            </a>
-            <a class="modal-shop-link" href="${apple.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
-              <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
-            </a>
-            <a class="modal-shop-link" href="${bookshop.url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
-              <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
-            </a>
-          </div>
-        </div>`;
+      const shoppingList = getShoppingList();
+      if (shoppingList.includes(bookId)) {
+        modalPopUpBtn.textContent = 'Remove from the shopping list';
+      } else {
+        modalPopUpBtn.textContent = 'Add to shopping list';
+      }
 
-        renderMarkup(modalContentEl, markup);
-        openPopUp();
-      })
-      .catch(error => {
-        console.error('Error fetching book data:', error);
-      });
+      hideLoader();
+    } catch (error) {
+      console.error('Error handling book click:', error);
+    }
   }
 }
 
-function fetchBookData(bookId) {
+async function getBookData(bookId) {
   const url = `${API_ENDPOINT}/books/${bookId}`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        throw new Error(data.error);
-      }
-      return data;
-    });
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data.error) {
+    throw new Error(data.error);
+  }
+
+  return data;
 }
 
-function renderMarkup(element, markup) {
-  element.innerHTML = markup;
-}
+modalPopUpBtn.addEventListener('click', () => {
+  const bookId = modalContentEl.querySelector('.card-book-id').textContent;
+  const shoppingList = getShoppingList();
 
-function clearMarkup(element) {
-  element.innerHTML = '';
-}
+  if (shoppingList.includes(bookId)) {
+    removeFromShoppingList(bookId);
+    modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
+  } else {
+    addToShoppingList(bookId);
+    modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent = 'Congratulations! You have successfully added the book to your shopping list';
+  }
+});
+
+closeModalPopUpBtn.addEventListener('click', () => {
+  const bookId = modalContentEl.querySelector('.card-book-id').textContent;
+  const shoppingList = getShoppingList();
+
+  if (shoppingList.includes(bookId)) {
+    modalPopUpBtn.textContent = 'Remove from the shopping list';
+    messageTextEl.textContent = 'Congratulations! You have successfully added the book to your shopping list';
+  } else {
+    modalPopUpBtn.textContent = 'Add to shopping list';
+    messageTextEl.textContent = '';
+  }
+});

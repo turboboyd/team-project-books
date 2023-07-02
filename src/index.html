@@ -12,8 +12,9 @@
 
   <body class="page">
     <!-- Хедер -->
-    <header>
+    <header class="header">
       <load ="./partials/layout/header/header.html" />
+      <load ="./partials/layout/header/burger-menu.html" />
     </header>
     <main class="content">
       <section class="section">
@@ -69,7 +70,7 @@
       <!-- разобрать -->
 
       <!-- дів для кнопки scroll up -->
-      <div class="to-top-target">
+      <div class="to-top">
         <!-- Scroll to up button -->
         <load ="./partials/components/scroll-to-up.html" />
       </div>
@@ -105,7 +106,11 @@
           >&nbsp;
           <span class="footer-text"
             >by&nbsp;
-            <button type="button" class="footer-btn" data-footer-modal-open>
+            <button
+              type="button"
+              class="footer-btn"
+              data-footer-modal-open="index"
+            >
               <span class="footer-btn-text"> GoIT Students</span>
             </button>
           </span>
@@ -114,14 +119,18 @@
     </footer>
 
     <div class="container">
-      <div class="footer-backdrop is-open" data-footer-modal>
+      <div class="footer-backdrop is-open" data-footer-modal="index">
         <div class="footer-modal">
           <button
             type="button"
             class="footer-modal-close-btn"
             data-footer-modal-close
           >
-            <svg class="footer-modal-close-btn__icon" width="18" height="18">
+            <svg
+              class="footer-modal-index-close-btn__icon"
+              width="18"
+              height="18"
+            >
               <use href="./images/symbol-defs.svg#icon-close"></use>
             </svg>
           </button>
