@@ -5,7 +5,6 @@
 // const categorieEl = document.querySelector('.categorie-js');
 // console.log('categorieEl: ', categorieEl);
 
-
 // bookApi.getBooksCategoriesList()
 //   .then(data => renderCategories(data))
 //   .catch(error => {
@@ -22,12 +21,3 @@
 //   const markup = `<li class="filter-item" data-active="${name}">${name}</li>`;
 //   return categorieEl.insertAdjacentHTML('beforeend', markup);
 // }
-
-
-
-
-
-
-
-
-
