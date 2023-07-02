@@ -8,9 +8,11 @@ import './js/header';
 import './js/click-card-book';
 
 // import './js/modalcardbook';
+import './js/footer-modal-home';
 import './js/pop-up-click-by-book';
+import './js/scroll-up';
 import './js/modalcardbook';
 import './js/modal-auth';
 import { showLoader, hideLoader } from './js/loader';
-import './js/scroll-up';
-import './js/footermodal';
+
+
