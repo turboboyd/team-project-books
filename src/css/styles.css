@@ -12,6 +12,7 @@
 
 @import url('./header.css');
 @import url('./hero-section.css');
+@import url('./sidebar');
 @import url('./filter-categories');
 @import url('./support.css');
 @import url('./bestsellers.css');
@@ -27,3 +28,5 @@
 @import url('./loader.css');
 @import url('./footer.css');
 @import url('./footer-modal.css');
+
+@import url('./pagination.css');
