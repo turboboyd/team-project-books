@@ -45,13 +45,13 @@ function createMarkup(bookData) {
       <p class="modal-book-desc">${bookData.description}</p>
       <p class="card-book-id visually-hidden">${bookData._id}</p>
       <div class="modal-shops">
-        <a class="modal-shop-link" href="${bookData.amazonUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
+        <a class="modal-shop-link" href="${bookData.buy_links[0].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
           <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
         </a>
-        <a class="modal-shop-link" href="${bookData.appleUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
+        <a class="modal-shop-link" href="${bookData.buy_links[1].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
           <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
         </a>
-        <a class="modal-shop-link" href="${bookData.bookshopUrl}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
+        <a class="modal-shop-link" href="${bookData.buy_links[4].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
           <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
         </a>
       </div>
