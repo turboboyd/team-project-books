@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
 
 const firebaseConfig = {
@@ -19,8 +19,9 @@ const auth = getAuth();
 const authUser = (userName, userEmail, userPassword) => {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
     .then((userCredential) => {
-      const user = userCredential.user;
-      user.updateProfile({
+        const user = userCredential.user;
+        console.log(user);
+      updateProfile(user, {
         displayName: userName
       }).then(() => {
         console.log('Sign in successful');
@@ -51,13 +52,10 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
 function addUserAuth(e) {
     e.preventDefault();
-    console.log('Лог до реєстрації');
     const authName = authNameEl.value;
     const authEmail = authEmailEl.value;
     const authPassword = authPasswordEl.value;
     authUser(authName, authEmail, authPassword);
-    console.log('Лог після реєстрації');
-
 }
 
 function onLoginUser(e) {

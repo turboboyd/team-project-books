@@ -22,8 +22,8 @@ signupBtn.addEventListener("click", () => {
   loginForm.style.marginLeft = "0%";
 });
 
-closeModalBtn.addEventListener('click', onModalClose);
-modalElem.addEventListener('keydown', onEscPress);
+// closeModalBtn.addEventListener('click', onModalClose);
+// modalElem.addEventListener('keydown', onEscPress);
 
 closeModalBtn.addEventListener('click', onModalClose);
 document.addEventListener('keydown', onEscPress);
