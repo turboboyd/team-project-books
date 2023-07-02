@@ -2,16 +2,6 @@
   overflow: hidden;
 }
 
-/* .header {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 375px;
-  border: 2px solid var(--title-color);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-} */
-
 .header {
   position: relative;
   max-width: 375px;
@@ -20,6 +10,8 @@
 }
 
 .header-container {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,11 +23,6 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-
-/* .header-container {
-  position: relative;
-  z-index: 1;
-} */
 
 .header-buttons {
   display: flex;
@@ -85,10 +72,6 @@
 .header-btn-close {
   display: none;
 }
-
-/* .header-btn-close.hidden {
-  display: none;
-} */
 
 .header-btn-user {
   display: none;
@@ -181,8 +164,7 @@ input:checked + .slider:before {
     #4f2ee8 18.03%,
     #ffffff 100%
   );
-  transition: transform var(--transition);
-  display: none;
+  transition: var(--transition);
 }
 
 .menu-user-bar {
@@ -242,13 +224,6 @@ input:checked + .slider:before {
   display: flex;
 }
 
-.mob-menu-item-nav:is(:hover, :focus, .current) {
-  /* font-weight: 700;
-  color: var(--header-title-color);
-  fill: var(--header-title-color);
-  background-color: var(--accent-header-color); */
-}
-
 .mob-menu-link-nav {
   display: flex;
   align-items: center;
@@ -285,18 +260,11 @@ input:checked + .slider:before {
 /* ================= Media ===================== */
 
 @media screen and (max-width: 767px) {
-  .mob-menu-start.open {
-    display: block;
+  .mob-menu-start.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
-
-  .header-container.open {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* .body.no-scroll.open {
-    overflow: hidden;
-  } */
 
   .burger.open {
     display: none;
@@ -311,15 +279,6 @@ input:checked + .slider:before {
   .header-btn-close {
     display: none;
   }
-
-  /* .header-container.open {
-    position: relative;
-    z-index: initial;
-  } */
-
-  /* .body.no-scroll.open {
-    overflow: initial;
-  } */
 
   .header {
     max-width: 768px;
