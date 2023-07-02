@@ -134,11 +134,7 @@
     margin-bottom: 120px;
   }
 }
-@media screen and (max-width: 1439px) {
-  .sidebar-shoppinglist {
-    display: none;
-  }
-}
+
 @media screen and (min-width: 768px) {
   .shopping-title {
     margin-bottom: 140px;
