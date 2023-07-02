@@ -1,4 +1,4 @@
-export const loaderEl = document.querySelector('.loader-wrapper');
+const loaderEl = document.querySelector('.loader-wrapper');
 
 export function showLoader() {
   loaderEl.classList.remove('hidden');
