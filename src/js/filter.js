@@ -89,3 +89,14 @@ function markupCategorie({ list_name }) {
 
   return categorieEl.appendChild(element.firstChild);
 }
+
+// Клик по кнопке
+containerContent.addEventListener('click', function (event) {
+  if (event.target.classList.contains('see-more-btn')) {
+    const listName = event.target.dataset.categoriesName;
+          bookApi.getSelectedCategoryBooks(listName).then(data => {
+            renderBooks(data);
+            mainTitleEl.textContent = listName;
+          });
+  }
+});

@@ -54,7 +54,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 767px) {
@@ -84,7 +84,7 @@ body {
   }
 
   .container {
-    max-width: 768px;
+    width: 768px;
     padding: 0 32px;
   }
   .section-modal {
@@ -99,16 +99,16 @@ body {
   .sidebar {
     margin-bottom: 100px;
     width: calc(768px - 62px);
-
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 32px;
+    margin-bottom: 100px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
-    max-width: 1440px;
+    width: 1440px;
     padding: 0 24px;
   }
   .sidebar {
@@ -131,4 +131,8 @@ body {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   margin: -1px;
+}
+
+.section{
+  padding: 40px 0;
 }

@@ -1,25 +1,21 @@
-const toTopBtn = document.querySelector('.to-top');
-function onScrollToTopBtn() {
-  const offsetScroll = 200;
-  const pageOffset = window.pageYOffset;
-  pageOffset > offsetScroll
-    ? refs.toTopBtn.classList.remove('is-hidden')
-    : refs.toTopBtn.classList.add('is-hidden');
+const toTopBtn = document.querySelector('.back-to-top');
+const btnUpWrapper = document.querySelector('.to-top-target');
+
+function scrollFunction() {
+  if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+    btnUpWrapper.style.display = 'flex';
+  } else {
+    btnUpWrapper.style.display = 'none';
+  }
 }
-function onTopScroll() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'instant',
-  });
-}
-function smoothScrollGallery() {
-  const { height } =
-    refs.galleryContainer.firstElementChild.getBoundingClientRect();
-  window.scrollBy({
-    top: height * 2,
-    behavior: 'instant',
-  });
-}
-toTopBtn.addEventListener('click', onTopScroll);
-galleryContainer.addEventListener('click', smoothScrollGallery);
-window.addEventListener('scroll', onScrollToTopBtn);
+
+window.addEventListener('scroll', () => {
+  scrollFunction();
+});
+
+toTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Спочатку приховуємо кнопку
+btnUpWrapper.style.display = 'none';
