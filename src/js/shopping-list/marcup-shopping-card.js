@@ -1,37 +1,30 @@
-export default function markupBookCard({
-  id,
-  book_image,
-  title,
-  categoris,
-  description,
-  author,
-  linksAmazon,
-  linkBookIo,
-  linkBookshop,
-}) {
-  return `<li class="shopping-item">
+export default function markupBookCard(books) {
+  const marcup = books
+    .map(
+      book => `<li class="shopping-item">
+      <p>${book}</p>
       <img
         class="shopping-book-cover"
-        src="${book_image}"
+        src="${book.book_image}"
         alt="book cover"
         width="100"
         height="142"
         loading="lazy"
       />
       <div class="shopping-wrap">
-        <h2 class="shopping-book-title">${title}</h2>
-        <button class="shopping-trash" type="button" data-id-book="${id}">
+        <h2 class="shopping-book-title">${book.title}</h2>
+        <button class="shopping-trash" type="button" data-id-book="${book.id}">
           <svg class="icon-shopping-trash" width="18" height="18">
             <use href="../../images/sprite.svg#icon-trash"></use>
           </svg>
         </button>
-        <p class="shopping-book-categories">${categoris}</p>
-        <p class="shopping-book-description">${description}</p>
+        <p class="shopping-book-categories">${book.categoris}</p>
+        <p class="shopping-book-description">${book.description}</p>
         <div class="shopping-wrapper">
-          <p class="shopping-book-author">${author}</p>
+          <p class="shopping-book-author">${book.author}</p>
           <ul class="shop-list">
             <li>
-              <a class="shop-link" href="${linksAmazon}">
+              <a class="shop-link" href="${book.linksAmazon}">
                 <img
                   class="shop-img"
                   src="../../images/amazon.png"
@@ -42,7 +35,7 @@ export default function markupBookCard({
               </a>
             </li>
             <li>
-              <a class="shop-link" href="${linkBookIo}">
+              <a class="shop-link" href="${book.linkBookIo}">
                 <img
                   class="shop-img"
                   src="../../images/books-io.png"
@@ -53,7 +46,7 @@ export default function markupBookCard({
               </a>
             </li>
             <li>
-              <a class="shop-link" href="${linkBookshop}">
+              <a class="shop-link" href="${book.linkBookshop}">
                 <img
                   class="shop-img"
                   src="../../images/bookshop.png"
@@ -66,5 +59,8 @@ export default function markupBookCard({
           </ul>
         </div>
       </div>
-    </li>>`;
+    </li>`
+    )
+    .join('');
+  return marcup;
 }
