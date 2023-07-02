@@ -1,4 +1,5 @@
-const backdropOutEl = document.querySelector('[data-backdrop-out]');
+
+export const backdropOutEl = document.querySelector('[data-backdrop-out]');
 const closeModalBtnOut = document.querySelector('[data-btn-out-close]');
 const btnOutYes = document.querySelector('[data-btn-out-yes]');
 const btnOutNo = document.querySelector('[data-btn-out-no]')
@@ -26,6 +27,8 @@ function onEscPressModalOut(e) {
     return
 }
 
+
+
 backdropOutEl.addEventListener('click', onCloseModalOut);
-// closeModalBtnOut.addEventListener('click', onCloseModalOut);
+closeModalBtnOut.addEventListener('click', removeClassHidden);
 document.addEventListener('keydown', onEscPressModalOut);
