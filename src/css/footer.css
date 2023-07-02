@@ -63,28 +63,7 @@
     position: fixed;
   }
 
-  .footer__modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 1000000000000;
-
-    padding: 20px;
-    width: calc(100% - 40px);
-    height: 90vh;
-
-    border-radius: 10px;
-    color: #ff6b08;
-    text-shadow: 1px 1px 0 rgb(255, 255, 255);
-    background-color: #ebecf0;
-    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
-
-    text-align: center;
-    overflow-y: auto;
-    font-weight: 500;
-    font-size: 20px;
-  } */
+   */
 
 
 @keyframes heartpulse {
