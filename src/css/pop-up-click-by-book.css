@@ -165,6 +165,8 @@
   
     .messagetext {
       width: 324px;
+      margin-right: auto;
+      margin-left: auto;
       font-size: 12px;
       line-height: 1.16;
   }
