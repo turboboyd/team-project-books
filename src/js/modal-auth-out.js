@@ -1,7 +1,7 @@
 
 export const backdropOutEl = document.querySelector('[data-backdrop-out]');
 const closeModalBtnOut = document.querySelector('[data-btn-out-close]');
-const btnOutYes = document.querySelector('[data-btn-out-yes]');
+export const btnOutYes = document.querySelector('[data-btn-out-yes]');
 const btnOutNo = document.querySelector('[data-btn-out-no]')
 
 function removeClassHidden() {

@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
+import { btnOutYes } from './modal-auth-out';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
@@ -52,20 +53,31 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
 function addUserAuth(e) {
     e.preventDefault();
-    const authName = authNameEl.value;
-    const authEmail = authEmailEl.value;
+    const authName = authNameEl.value.trim();
+    const authEmail = authEmailEl.value.trim();
     const authPassword = authPasswordEl.value;
-    authUser(authName, authEmail, authPassword);
+  authUser(authName, authEmail, authPassword);
+  signupForm.reset()
 }
 
 function onLoginUser(e) {
     e.preventDefault();
     const loginEmail = loginEmailEl.value;
     const loginPassword = loginPasswordEl.value;
-    loginUser(auth, loginEmail, loginPassword);
+  loginUser(auth, loginEmail, loginPassword);
+  loginForm.reset()
+}
+
+function onLogoutUser () {
+  signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  console.log('Помилка при LOGOUT');
+});
 }
 
 signupForm.addEventListener('submit', addUserAuth);
 loginForm.addEventListener('submit', onLoginUser)
+btnOutYes.addEventListener('click', onLogoutUser)
 
 
