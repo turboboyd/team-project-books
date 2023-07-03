@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-277a5bc3.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/scroll-up-a27ce2e4.js">
-    <link rel="stylesheet" href="/team-project-books/assets/scroll-up-de08af21.css">
+    <script type="module" crossorigin src="/team-project-books/assets/index-c7c2b9e6.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/scroll-up-6ce6bba6.js">
+    <link rel="stylesheet" href="/team-project-books/assets/scroll-up-fe997814.css">
     <link rel="stylesheet" href="/team-project-books/assets/index-b16a6001.css">
   </head>
 
@@ -179,42 +179,52 @@
     </button>
     <div class="form-container">
       <div class="form-inner">
-        <form action="#" class="signup">
+        <form action="#" class="signup" id="formAuth">
           <div class="field">
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-user"></use>
             </svg>
-            <input type="text" placeholder="Name" required />
+            <input type="text" placeholder="Name" id="authName" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-mail-02"></use>
             </svg>
-            <input type="text" placeholder="Email" required />
+            <input type="text" placeholder="Email" id="authEmail" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-lock-02"></use>
             </svg>
-            <input type="password" placeholder="Password" required />
+            <input
+              type="password"
+              placeholder="Password"
+              id="authPassword"
+              required
+            />
           </div>
           <div class="field btn">
             <div class="btn-layer"></div>
             <input type="submit" value="Sign up" />
           </div>
         </form>
-        <form action="#" class="login">
+        <form action="#" class="login" id="formLogin">
           <div class="field">
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-mail-02"></use>
             </svg>
-            <input type="text" placeholder="Email" required />
+            <input type="text" placeholder="Email" id="loginEmail" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-lock-02"></use>
             </svg>
-            <input type="password" placeholder="Password" required />
+            <input
+              type="password"
+              placeholder="Password"
+              id="loginPassword"
+              required
+            />
           </div>
           <div class="field btn">
             <div class="btn-layer"></div>
@@ -233,6 +243,26 @@
   </div>
 </div>
 
+        <div class="backdrop-auth-out is-hidden" data-backdrop-out>
+  <div class="modal-auth-out">
+    <button data-btn-out-close type="button" class="btn__close">
+      <svg class="btn__close-modal">
+        <use href="/team-project-books/assets/sprite-2a762604.svg#icon-close"></use>
+      </svg>
+    </button>
+    <p class="text-auth-out">
+      Are you sure you want to leave our wonderful app?
+    </p>
+
+    <div class="btn-auth-out">
+      <button data-btn-out-yes type="button" class="btn">Yes</button>
+      <button data-btn-out-no type="button" class="btn">No</button>
+    </div>
+    <div class="messagetext" id="messageText"></div>
+  </div>
+</div>
+
+        </section>
       </section>
       <!-- разобрать -->
 
