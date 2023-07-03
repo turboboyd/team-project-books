@@ -6,3 +6,4 @@ import './js/shopping-list/footer-modal-shoplist';
 import './js/header';
 import './js/modal-auth-out';
 import './js/modal-auth';
+import './js/shopping-list/check-storage';
