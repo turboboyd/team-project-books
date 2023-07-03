@@ -22,13 +22,10 @@ signupBtn.addEventListener("click", () => {
   loginForm.style.marginLeft = "0%";
 });
 
-// closeModalBtn.addEventListener('click', onModalClose);
-// modalElem.addEventListener('keydown', onEscPress);
-
 closeModalBtn.addEventListener('click', onModalClose);
 document.addEventListener('keydown', onEscPress);
 
-function onModalClose() {
+ export function onModalClose() {
   modalElem.classList.add('is-hidden');
   document.removeEventListener('keydown', onEscPress);
   closeMenu();
