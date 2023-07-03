@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.pagination-item {
+.pagination-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,9 +13,6 @@
   background-color: blueviolet;
   border-radius: 50%;
 }
-
-/* .pagination-text {
-} */
 
 .curent-btn-pagination {
   background-color: aqua;

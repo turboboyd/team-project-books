@@ -5,7 +5,7 @@ const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
 const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
-const messageTextEl = document.getElementById('messageText');
+const messageTextEl = document.getElementById('messageTextPop');
 
 bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
@@ -159,8 +159,7 @@ closeModalPopUpBtn.addEventListener('click', () => {
 
   if (shoppingList.some(book => book._id === bookId)) {
     modalPopUpBtn.textContent = 'Remove from the shopping list';
-    messageTextEl.textContent =
-      'Congratulations! You have successfully added the book to your shopping list';
+    messageTextEl.textContent = 'Congratulations! You have successfully added the book to your shopping list';
   } else {
     modalPopUpBtn.textContent = 'Add to shopping list';
     messageTextEl.textContent = '';
