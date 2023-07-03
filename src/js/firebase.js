@@ -3,6 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
 import { btnOutYes } from './modal-auth-out';
+import { renderUserLogin } from './header';
+import { onModalClose } from './modal-auth'; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
@@ -15,7 +17,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 
 const authUser = (userName, userEmail, userPassword) => {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
@@ -27,6 +29,11 @@ const authUser = (userName, userEmail, userPassword) => {
       }).then(() => {
         console.log('Sign in successful');
         
+        onModalClose();
+        signupForm.reset();
+        renderUserLogin()
+        console.log(renderUserLogin);
+
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -43,6 +50,10 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log('Successful login');
+
+      onModalClose();
+      loginForm.reset();
+      renderUserLogin()
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -57,7 +68,6 @@ function addUserAuth(e) {
     const authEmail = authEmailEl.value.trim();
     const authPassword = authPasswordEl.value;
   authUser(authName, authEmail, authPassword);
-  signupForm.reset()
 }
 
 function onLoginUser(e) {
@@ -65,7 +75,6 @@ function onLoginUser(e) {
     const loginEmail = loginEmailEl.value;
     const loginPassword = loginPasswordEl.value;
   loginUser(auth, loginEmail, loginPassword);
-  loginForm.reset()
 }
 
 function onLogoutUser () {
