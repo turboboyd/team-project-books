@@ -10,14 +10,13 @@ const bodyElement = document.querySelector('body');
 const htmlUserNotLoginModal =
   '<button data-modal-auth-open class="menu-btn-start" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
 
-export function renderUserLogin() {
+export function renderUserLogin(displayName) {
   const htmlUserLoginModal =
     '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a class="mob-menu-link-nav current" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
   btnLogout.addEventListener('click', onBtnLogout);
   setUserName(displayName);
-  console.log('Test LOGIN');
 }
 
 export function renderUserNotLogin() {
@@ -56,9 +55,9 @@ function onBtnLogout() {
   backdropOutEl.classList.remove('is-hidden');
 }
 
-function setUserName(userName) {
+function setUserName(displayName) {
   const userActive = document.querySelector('.menu-user-bar-name');
-  userActive.textContent = userName;
+  userActive.textContent = displayName
 }
 
 

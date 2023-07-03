@@ -4,7 +4,7 @@ const closeModalBtnOut = document.querySelector('[data-btn-out-close]');
 export const btnOutYes = document.querySelector('[data-btn-out-yes]');
 const btnOutNo = document.querySelector('[data-btn-out-no]')
 
-function removeClassHidden() {
+export function removeClassHidden() {
     backdropOutEl.classList.add('is-hidden');
     document.removeEventListener('keydown', onEscPressModalOut);
 }
