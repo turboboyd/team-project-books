@@ -5,7 +5,7 @@ const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
 const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
-const messageTextEl = document.getElementById('messageText');
+const messageTextEl = document.getElementById('messageTextPop');
 
 bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
@@ -66,7 +66,7 @@ function clearMarkup(element) {
   element.innerHTML = '';
 }
 
-export function addToShoppingList(bookData) {
+function addToShoppingList(bookData) {
   const shoppingList = getShoppingList();
   shoppingList.push(bookData);
   saveShoppingList(shoppingList);
