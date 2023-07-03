@@ -7,7 +7,6 @@ import './js/launch';
 import './js/bestsellers';
 import './js/filter';
 import './js/see-more-btn';
-import './js/categories';
 import './js/theme-dark-light';
 import './js/support/support';
 

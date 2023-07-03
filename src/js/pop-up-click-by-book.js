@@ -1,5 +1,8 @@
+import BookAPI from './book-API';
 import { showLoader, hideLoader } from './loader';
-import createMarkup from './render-book-card';
+import createMarkup from './create-markup-book';
+
+const bookApi = new BookAPI();
 const modalPopUp = document.querySelector('[data-pop-up]');
 const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
@@ -36,8 +39,6 @@ function handleKeyDown(event) {
     closePopUp();
   }
 }
-
-
 
 function renderMarkup(element, markup) {
   element.innerHTML = markup;
@@ -85,11 +86,10 @@ async function handleBookClick(event) {
     try {
       showLoader();
       const bookData = await getBookData(bookId);
-      const markup = createMarkup(bookData);
 
       currentBookData = bookData;
 
-      renderMarkup(modalContentEl, markup);
+      renderMarkup(modalContentEl, createMarkup(bookData));
       openPopUp();
 
       const shoppingList = getShoppingList();

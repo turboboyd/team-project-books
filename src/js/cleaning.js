@@ -1,0 +1,13 @@
+export default class Cleaning {
+  cleaningBooks() {
+    containerContent.innerHTML = '';
+  }
+
+  cleaningTitle() {
+    const titleElements = homeContainerEl.getElementsByClassName('main-title');
+    for (let i = titleElements.length - 1; i >= 0; i--) {
+      const titleElement = titleElements[i];
+      titleElement.parentNode.removeChild(titleElement);
+    }
+  }
+}
