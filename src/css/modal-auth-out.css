@@ -23,7 +23,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 335px;
+  width: 300px;
 
   padding: 40px 20px;
   overflow: hidden;
@@ -40,10 +40,15 @@
   border-radius: 18px;
   border: 2px solid var(--border-color);
 }
+@media screen and (min-width: 375px) {
+  .modal-auth-out {
+    width: 335px;
+  }
+}
 @media screen and (min-width: 768px) {
   .modal-auth-out {
     padding: 80px 40px 40px 40px;
-    max-width: 579px;
+    width: 579px;
   }
 }
 
