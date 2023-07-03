@@ -66,7 +66,7 @@ function clearMarkup(element) {
   element.innerHTML = '';
 }
 
-function addToShoppingList(bookData) {
+export function addToShoppingList(bookData) {
   const shoppingList = getShoppingList();
   shoppingList.push(bookData);
   saveShoppingList(shoppingList);
