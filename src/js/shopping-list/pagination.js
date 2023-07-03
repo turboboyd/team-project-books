@@ -1,4 +1,9 @@
 import markupBookCard from './marcup-shopping-card';
+// import {
+//   removeFromShoppingList,
+//   getShoppingList,
+//   saveShoppingList,
+// } from '../pop-up-click-by-book';
 
 function parseStorage(storageKey) {
   try {
@@ -13,7 +18,7 @@ let countPerPage = 3;
 if (isMobile) {
   countPerPage = 4;
 }
-
+const shoppingListKey = 'shoppingList';
 let savedBooks;
 const paginationEl = document.querySelector('.pagination-list');
 
@@ -26,25 +31,25 @@ function renderBtnPagination(data) {
     const btnEl = `<button type="button" class="pagination-btn">${i}</button>`;
     arrBtnPage.push(btnEl);
   }
-  const arrAllBtn = [...createArrowLeftBtnPagination(), ...arrBtnPage];
-  console.log('arrAllBtn', arrAllBtn);
-  const marcupBtn = arrAllBtn.join('');
-  console.log('arrAllBtn', arrAllBtn);
+  //   const arrAllBtn = [...createArrowLeftBtnPagination(), ...arrBtnPage];
+  //   console.log('arrAllBtn', arrAllBtn);
+  const marcupBtn = arrBtnPage.join('');
+  //   console.log('arrAllBtn', arrAllBtn);
   paginationEl.innerHTML = marcupBtn;
 }
 
-function createArrowLeftBtnPagination() {
-  return [
-    `<button type="button" class="pagination-btn" data-go-to="leftSomePage"><svg class="icon-arrow icon-arrow-left" width="18" height="18">
-          <use href="./images/sprite.svg#icon-arrow-right"></use>
-        </svg><svg class="icon-arrow icon-arrow-left" width="18" height="18">
-          <use href="./images/sprite.svg#icon-arrow-right"></use>
-        </svg></button>,
-        <button type="button"class="pagination-btn" data-go-to="leftOnePage"><svg class="icon-arrow icon-arrow-left" width="18" height="18">
-          <use href="./images/sprite.svg#icon-arrow-right"></use>
-        </svg></button>`,
-  ];
-}
+// function createArrowLeftBtnPagination() {
+//   return [
+//     `<button type="button" class="pagination-btn" data-go-to="leftSomePage"><svg class="icon-arrow icon-arrow-left" width="18" height="18">
+//           <use href="./images/sprite.svg#icon-arrow-right"></use>
+//         </svg><svg class="icon-arrow icon-arrow-left" width="18" height="18">
+//           <use href="./images/sprite.svg#icon-arrow-right"></use>
+//         </svg></button>,
+//         <button type="button"class="pagination-btn" data-go-to="leftOnePage"><svg class="icon-arrow icon-arrow-left" width="18" height="18">
+//           <use href="./images/sprite.svg#icon-arrow-right"></use>
+//         </svg></button>`,
+//   ];
+// }
 
 // function createArrowRightBtnPagination() {
 //   return `<button type="button" class="pagination-btn" data-go-to="rightOnePage"><svg class="icon-arrow icon-arrow-right" width="18" height="18">
@@ -57,9 +62,9 @@ function createArrowLeftBtnPagination() {
 // }
 
 function checkStorage() {
-  const localSavedBooks = localStorage.getItem('shoppingList');
+  const localSavedBooks = localStorage.getItem(shoppingListKey);
   if (localSavedBooks) {
-    savedBooks = parseStorage('shoppingList');
+    savedBooks = parseStorage(shoppingListKey);
     renderBtnPagination(savedBooks);
     renderShoppingList(savedBooks);
   } else {
@@ -79,6 +84,7 @@ function renderShoppingList(data) {
 
   if (data.length <= 3) {
     shoppingListEl.innerHTML = markupBookCard(data);
+    addEventListenerToTrash();
   } else {
     renderList(1, data);
     paginationEl.addEventListener('click', OnClickrenderShoppingList);
@@ -92,10 +98,11 @@ function renderList(page, arrBooks) {
   }
   const arrForRenderFirstPage = arrBooks.slice(start, end);
   shoppingListEl.innerHTML = markupBookCard(arrForRenderFirstPage);
+  addEventListenerToTrash();
 }
 
 window.addEventListener('storage', function (event) {
-  if (event.key === 'shoppingList' && !event.newValue) {
+  if (event.key === shoppingListKey && !event.newValue) {
     checkStorage();
   }
 });
@@ -104,9 +111,45 @@ function OnClickrenderShoppingList(e) {
   const btnEl = e.target.closest('button');
   if (btnEl !== null) {
     const pageBtn = btnEl.textContent;
-    renderList(pageBtn, parseStorage('shoppingList'));
+    renderList(pageBtn, parseStorage(shoppingListKey));
+    addEventListenerToTrash();
     const previousPage = document.querySelector('.curent-btn-pagination');
     previousPage.classList.remove('curent-btn-pagination');
     btnEl.classList.add('curent-btn-pagination');
   }
+}
+
+function addEventListenerToTrash() {
+  const trashEl = document.querySelectorAll('.shopping-trash');
+  trashEl.forEach(el =>
+    el.addEventListener('click', OnClickremoveBookFromList)
+  );
+}
+
+function OnClickremoveBookFromList(e) {
+  const target = e.target.closest('.shopping-trash');
+  const id = target.dataset.id;
+  console.log(id);
+  removeFromShoppingList(id);
+  const data = parseStorage(shoppingListKey);
+  renderList(1, data);
+  renderBtnPagination(data);
+}
+
+function removeFromShoppingList(bookId) {
+  const shoppingList = getShoppingList();
+  const index = shoppingList.findIndex(book => book._id === bookId);
+  if (index !== -1) {
+    shoppingList.splice(index, 1);
+    saveShoppingList(shoppingList);
+  }
+}
+
+function getShoppingList() {
+  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
+  return shoppingList;
+}
+
+function saveShoppingList(shoppingList) {
+  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
 }
