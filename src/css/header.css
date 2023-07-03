@@ -188,7 +188,7 @@ input:checked + .slider:before {
   fill: var(--accent-color);
   margin-right: 9px;
 }
-
+.menu-btn-start-tab,
 .menu-btn-start {
   display: flex;
   align-items: center;
@@ -265,6 +265,10 @@ input:checked + .slider:before {
     opacity: 0;
     pointer-events: none;
   } */
+
+  .menu-btn-start-tab {
+    display: none;
+  }
 
   .burger.open {
     display: none;
