@@ -1,4 +1,4 @@
-import"./scroll-up-8b6e3f07.js";function L(t){return t.map((o,e)=>`<li class="shopping-item">
+import"./scroll-up-d73047b1.js";function L(t){return t.map((o,e)=>`<li class="shopping-item">
     <img
       class="shopping-book-cover"
       src="${o.book_image}"
