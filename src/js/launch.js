@@ -1,4 +1,4 @@
-import BookAPI from './book-API';
+import BookAPI from './book-Api';
 import { showLoader, hideLoader } from './loader';
 import Notiflix from 'notiflix';
 import renderWrapCategories from './bestsellers';
@@ -7,7 +7,6 @@ import renderCategories from './filter';
 const bookApi = new BookAPI();
 
 generatePage();
-
 
 function generatePage() {
   showLoader();

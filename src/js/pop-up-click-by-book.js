@@ -1,4 +1,4 @@
-import BookAPI from './book-API';
+import BookAPI from './book-Api';
 import { showLoader, hideLoader } from './loader';
 import createMarkup from './create-markup-book';
 
