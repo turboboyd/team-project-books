@@ -375,3 +375,11 @@ input:checked + .slider:before {
     gap: 24px;
   }
 }
+/* ============= TEST ================== */
+.header-btn-user-menu {
+  display: none;
+}
+
+.header-menu-btn-exit {
+  display: none;
+}
