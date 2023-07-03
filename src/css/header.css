@@ -27,7 +27,6 @@
 .header-buttons {
   display: flex;
   align-items: center;
-  gap: 14px;
 }
 
 .header-logo {
@@ -84,6 +83,7 @@
   display: inline-block;
   width: 40px;
   height: 20px;
+  margin-right: 14px;
 }
 
 .switch input {
@@ -260,11 +260,11 @@ input:checked + .slider:before {
 /* ================= Media ===================== */
 
 @media screen and (max-width: 767px) {
-  .mob-menu-start.is-hidden {
+  /* .mob-menu-start.is-hidden {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-  }
+  } */
 
   .burger.open {
     display: none;
@@ -276,6 +276,10 @@ input:checked + .slider:before {
 }
 
 @media screen and (min-width: 768px) {
+  .switch {
+    margin-right: 24px;
+  }
+
   .header-btn-close {
     display: none;
   }
@@ -376,10 +380,53 @@ input:checked + .slider:before {
   }
 }
 /* ============= TEST ================== */
+
+.header-btn-user-wrap {
+  position: relative;
+}
+
 .header-btn-user-menu {
-  display: none;
+  position: absolute;
+  right: -3%;
+  top: 100%;
+  /* width: 250px;
+  height: 200px; */
+  /* background: linear-gradient(
+    325deg,
+    hsl(251deg 80% 55%) 68%,
+    hsl(231deg 72% 63%) 99%,
+    hsl(211deg 63% 70%) 101%,
+    hsl(191deg 55% 78%) 101%,
+    hsl(171deg 46% 86%) 100%
+  ); */
+  transition: transform var(--transition);
+  transform: scale(1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+}
+
+.header-btn-user-menu.is-hidden {
+  transform: scale(0);
 }
 
 .header-menu-btn-exit {
-  display: none;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  gap: 90px;
+  font-weight: 500;
+  border-radius: 18px;
+  border: 1.5px solid #111;
+  background: #fff;
+  /* display: none; */
 }
+
+/* .is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+} */
