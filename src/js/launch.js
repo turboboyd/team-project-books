@@ -1,4 +1,4 @@
-import BookAPI from './book-Api';
+import BookAPI from './book-api';
 import { showLoader, hideLoader } from './loader';
 import Notiflix from 'notiflix';
 import renderWrapCategories from './bestsellers';

@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
 import Cleaning from './cleaning';
-import BookAPI from './book-Api';
+import BookAPI from './book-api';
 import createMarkupBook from './create-markup-book';
 import renderWrapCategories from './bestsellers';
 import { showLoader, hideLoader } from './loader';
