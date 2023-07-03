@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
-import { btnOutYes } from './modal-auth-out';
+import { btnOutYes, removeClassHidden } from './modal-auth-out';
 import { renderUserLogin, renderUserNotLogin } from './header';
 import { onModalClose } from './modal-auth'; 
 
@@ -32,9 +32,7 @@ const authUser = (userName, userEmail, userPassword) => {
         
         onModalClose();
         signupForm.reset();
-        renderUserLogin()
-        console.log(renderUserLogin);
-
+        userVerification();
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -82,7 +80,7 @@ function onLoginUser(e) {
 
 function onLogoutUser () {
   signOut(auth).then(() => {
-  // Sign-out successful.
+    removeClassHidden();
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
@@ -92,14 +90,11 @@ export default function userVerification() {
   const user = auth.currentUser;
   if (user !== null) {
     const displayName = user.displayName;
-    const email = user.email;
-    const uid = user.uid;
     renderUserLogin(displayName)
-
-    console.log('displayName:', displayName);
-    console.log('uid:', uid);
+  } else {
+    renderUserNotLogin();
   }
-  renderUserNotLogin();
+  
 }
 
 // userVerification()
