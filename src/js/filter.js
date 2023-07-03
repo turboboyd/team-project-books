@@ -28,10 +28,11 @@ export function generateCategory(name) {
   bookApi
     .getSelectedCategoryBooks(name)
     .then(data => {
-      renderBooks(data);
       renderMainTitle(name);
+      renderBooks(data);
       hideLoader();
       homeContainerEl.classList.remove('hidden');
+      scrollToMainTitle();
     })
     .catch(error => {
       console.error('Error found category:', error);
@@ -52,6 +53,7 @@ function generateBestSellersCategories() {
       renderMainTitle('Best Seller Books');
       hideLoader();
       homeContainerEl.classList.remove('hidden');
+      scrollToMainTitle();
     })
     .catch(error => {
       console.error('Error retrieving top books:', error);
@@ -91,7 +93,6 @@ function markupCategorie({ list_name }) {
 
   filterItem.addEventListener('click', () => {
     isActiveCategoryBtn(filterItem);
-    scrollToMainTitle();
     if (name === 'All categories') {
       generateBestSellersCategories();
     } else {
