@@ -383,15 +383,18 @@ input:checked + .slider:before {
 
 .header-btn-user-menu {
   position: absolute;
-  right: -15%;
-  top: 150%;
-  width: 250px;
-  height: 200px;
-  background: radial-gradient(
-    183.6% 183.01% at 59.76% -23.42%,
-    #4f2ee8 18.03%,
-    #ffffff 100%
-  );
+  right: -3%;
+  top: 100%;
+  /* width: 250px;
+  height: 200px; */
+  /* background: linear-gradient(
+    325deg,
+    hsl(251deg 80% 55%) 68%,
+    hsl(231deg 72% 63%) 99%,
+    hsl(211deg 63% 70%) 101%,
+    hsl(191deg 55% 78%) 101%,
+    hsl(171deg 46% 86%) 100%
+  ); */
   transition: transform var(--transition);
   transform: scale(1);
 
