@@ -81,14 +81,14 @@ function removeFromShoppingList(bookId) {
   }
 }
 
-// function getShoppingList() {
-//   const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
-//   return shoppingList;
-// }
+function getShoppingList() {
+  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
+  return shoppingList;
+}
 
-// function saveShoppingList(shoppingList) {
-//   localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
-// }
+function saveShoppingList(shoppingList) {
+  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
+}
 
 async function handleBookClick(event) {
   event.preventDefault();
