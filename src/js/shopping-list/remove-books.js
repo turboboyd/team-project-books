@@ -1,23 +1,29 @@
 import parseStorage from './parse-storage';
 import { renderList, currentPage, renderBtnPagination } from './pagination';
-const paginationEl = document.querySelector('.pagination-list');
+
+// import {
+//   removeFromShoppingList,
+//   getShoppingList,
+//   saveShoppingList,
+// } from '../pop-up-click-by-book';
+
 const shoppingListKey = 'shoppingList';
 
-export function OnClickRemoveBookFromList(e) {
+export default function OnClickRemoveBookFromList(e) {
+  const paginationEl = document.querySelector('.pagination-list');
   const target = e.target.closest('.shopping-trash');
   const id = target.dataset.id;
-  const CountBtn = paginationEl.length;
-  console.log('CountBtnBeforeRemove', CountBtn);
+  const startCount = paginationEl.childElementCount;
   removeFromShoppingList(id);
   const data = parseStorage(shoppingListKey);
-  renderList(currentPage, data);
   renderBtnPagination(data);
-  //   console.log('CountBtnAfterRemove', CountBtn);
-  //   console.log('CountBtnAfterRemove', CountBtn);
+  const endCount = paginationEl.childElementCount;
+  startCount === endCount
+    ? renderList(currentPage, data)
+    : renderList(currentPage - 1, data);
   const currentBtn =
     paginationEl.children[currentPage - 1].querySelector('button');
   currentBtn.classList.add('curent-btn-pagination');
-  console.log(currentPage);
 }
 
 export function removeFromShoppingList(bookId) {

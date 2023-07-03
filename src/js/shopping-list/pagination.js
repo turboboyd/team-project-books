@@ -1,10 +1,5 @@
 import markupBookCard from './marcup-shopping-card';
-import {
-  OnClickRemoveBookFromList,
-  removeFromShoppingList,
-  getShoppingList,
-  saveShoppingList,
-} from './remove-books';
+import OnClickRemoveBookFromList from './remove-books';
 import parseStorage from './parse-storage';
 // import {
 //   removeFromShoppingList,
@@ -12,13 +7,6 @@ import parseStorage from './parse-storage';
 //   saveShoppingList,
 // } from '../pop-up-click-by-book';
 
-// function parseStorage(storageKey) {
-//   try {
-//     return JSON.parse(localStorage.getItem(storageKey));
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 const screenWidth = window.innerWidth;
 const isMobile = screenWidth < 768;
 let countPerPage = 3;
@@ -82,7 +70,6 @@ function checkStorage() {
     ShoppingListIsEmpty.classList.remove('visually-hidden');
   }
 }
-checkStorage();
 
 function renderShoppingList(data) {
   //   console.log(data);
@@ -114,12 +101,6 @@ export function renderList(page, arrBooks) {
   addEventListenerToTrash();
 }
 
-window.addEventListener('storage', function (event) {
-  if (event.key === shoppingListKey && !event.newValue) {
-    checkStorage();
-  }
-});
-
 function OnClickrenderShoppingList(e) {
   const btnEl = e.target.closest('button');
   if (btnEl !== null) {
@@ -140,3 +121,11 @@ function addEventListenerToTrash() {
     el.addEventListener('click', OnClickRemoveBookFromList)
   );
 }
+
+window.addEventListener('storage', function (event) {
+  if (event.key === shoppingListKey && !event.newValue) {
+    checkStorage();
+  }
+});
+
+checkStorage();
