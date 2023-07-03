@@ -84,7 +84,8 @@ function renderShoppingList(data) {
     previousPage.classList.remove('curent-btn-pagination');
   }
 
-  const firstBtn = paginationEl.children[currentPage - 1];
+  const firstBtn =
+    paginationEl.children[currentPage - 1].querySelector('button');
   firstBtn.classList.add('curent-btn-pagination');
 
   if (data.length <= 3) {
@@ -144,7 +145,8 @@ function OnClickRemoveBookFromList(e) {
   renderBtnPagination(data);
   console.log('CountBtnAfterRemove', CountBtn);
   console.log('CountBtnAfterRemove', CountBtn);
-  const currentBtn = paginationEl.children[currentPage - 1];
+  const currentBtn =
+    paginationEl.children[currentPage - 1].querySelector('button');
   currentBtn.classList.add('curent-btn-pagination');
   console.log(currentPage);
 }
