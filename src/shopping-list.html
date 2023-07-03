@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     <link rel="stylesheet" href="./css/styles.css" />
-  </head> 
+  </head>
   <body class="page">
     <header class="header">
       <load ="./partials/layout/header/header.html" />
@@ -16,10 +16,10 @@
     </header>
     <main class="content shop-wrap">
       <div class="container page-container">
-      <section class="section section-sidebar">
+        <section class="section section-sidebar">
           <aside class="sidebar sidebar-shoppinglist">
             <!-- support -->
-             <div class="support">
+            <div class="support">
               <h2 class="head-title">
                 Support Ukraine
                 <svg class="icon-ua" width="20" height="32">
@@ -37,7 +37,10 @@
                 aria-label="Swipe next"
               >
                 <span class="icon-container">
-                  <svg class="icon-down" width="20" height="32">
+                  <svg class="icon-down" width="22" height="22">
+                    <use href="./images/symbol-defs.svg#icon-angle-down"></use>
+                  </svg>
+                  <svg class="icon-up visually-hidden" width="22" height="22">
                     <use href="./images/symbol-defs.svg#icon-angle-down"></use>
                   </svg>
                 </span>
@@ -45,20 +48,22 @@
             </div>
           </aside>
           <!-- burger-menu-->
-      </section>
-      <section class="shopping section">
-          <h2 class="title">Shopping <span class="main-title_last-word">List</span></h2>
-            <!-- те що додали в корзину -->
+        </section>
+        <section class="shopping section">
+          <h2 class="title">
+            Shopping <span class="main-title_last-word">List</span>
+          </h2>
+          <!-- те що додали в корзину -->
           <load ="./partials/layout/shopping-list-content.html" />
           <!-- pagination -->
           <load ="./partials/components/pagination.html" />
-                  <!-- modal auth -->
-        <load ="./partials/modals/modal-auth.html" />
-        <load ="./partials/modals/modal-auth-out.html" />
-      </section>
+          <!-- modal auth -->
+          <load ="./partials/modals/modal-auth.html" />
+          <load ="./partials/modals/modal-auth-out.html" />
+        </section>
       </div>
     </main>
-   <!-- footer -->
+    <!-- footer -->
     <footer class="footer">
       <div class="container">
         <span class="footer-text"
