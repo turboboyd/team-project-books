@@ -1,5 +1,6 @@
 import parseStorage from './parse-storage';
-import { renderList, currentPage, renderBtnPagination } from './pagination';
+import { renderList, currentPage } from './pagination';
+import { renderBtnPagination } from './pagination-btn';
 
 // import {
 //   removeFromShoppingList,
@@ -9,7 +10,14 @@ import { renderList, currentPage, renderBtnPagination } from './pagination';
 
 const shoppingListKey = 'shoppingList';
 
-export default function OnClickRemoveBookFromList(e) {
+export default function addEventListenerToTrash() {
+  const trashEl = document.querySelectorAll('.shopping-trash');
+  trashEl.forEach(el =>
+    el.addEventListener('click', OnClickRemoveBookFromList)
+  );
+}
+
+function OnClickRemoveBookFromList(e) {
   const paginationEl = document.querySelector('.pagination-list');
   const target = e.target.closest('.shopping-trash');
   const id = target.dataset.id;
@@ -26,7 +34,7 @@ export default function OnClickRemoveBookFromList(e) {
   currentBtn.classList.add('curent-btn-pagination');
 }
 
-export function removeFromShoppingList(bookId) {
+function removeFromShoppingList(bookId) {
   const shoppingList = getShoppingList();
   const index = shoppingList.findIndex(book => book._id === bookId);
   if (index !== -1) {
@@ -35,11 +43,11 @@ export function removeFromShoppingList(bookId) {
   }
 }
 
-export function getShoppingList() {
+function getShoppingList() {
   const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
   return shoppingList;
 }
 
-export function saveShoppingList(shoppingList) {
+function saveShoppingList(shoppingList) {
   localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
 }
