@@ -1,5 +1,6 @@
 import { modalElem } from './modal-auth';
 import { backdropOutEl } from './modal-auth-out';
+import userVerification from './firebase'
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
@@ -31,8 +32,8 @@ function openMenu() {
   burgerButton.classList.add('open');
   closeButton.classList.add('open');
   menuStart.classList.remove('is-hidden');
-  renderUserNotLogin();
   bodyElement.classList.add('no-scroll');
+  userVerification()
 }
 
 export function closeMenu() {

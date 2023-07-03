@@ -3,8 +3,9 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
 import { btnOutYes } from './modal-auth-out';
-import { renderUserLogin } from './header';
+import { renderUserLogin, renderUserNotLogin } from './header';
 import { onModalClose } from './modal-auth'; 
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
@@ -87,7 +88,7 @@ function onLogoutUser () {
 });
 }
 
-function userVerification() {
+export default function userVerification() {
   const user = auth.currentUser;
   if (user !== null) {
     const displayName = user.displayName;
@@ -98,6 +99,7 @@ function userVerification() {
     console.log('displayName:', displayName);
     console.log('uid:', uid);
   }
+  renderUserNotLogin();
 }
 
 // userVerification()
