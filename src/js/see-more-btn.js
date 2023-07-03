@@ -15,8 +15,10 @@ function onClickSeeMoreBtn(event) {
     generateCategory(listName);
     searchCategoryName(listName);
     let elementFound = searchCategoryName(listName);
-    // scrollToMainTitle();
     scrollToElement(elementFound);
+    setTimeout(() => {
+      scrollToMainTitle();
+    }, 0);
   }
 }
 
