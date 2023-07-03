@@ -1,9 +1,5 @@
-import BookAPI from './book-api';
-import Notiflix from 'notiflix';
-
 import renderBook from './render-book-card';
 
-const bookApi = new BookAPI();
 const containerContent = document.querySelector('.books-render-js');
 
 export default function renderWrapCategories(categories) {
