@@ -1,17 +1,12 @@
 import markupBookCard from './marcup-shopping-card';
+import OnClickRemoveBookFromList from './remove-books';
+import parseStorage from './parse-storage';
 // import {
 //   removeFromShoppingList,
 //   getShoppingList,
 //   saveShoppingList,
 // } from '../pop-up-click-by-book';
 
-function parseStorage(storageKey) {
-  try {
-    return JSON.parse(localStorage.getItem(storageKey));
-  } catch (error) {
-    console.log(error);
-  }
-}
 const screenWidth = window.innerWidth;
 const isMobile = screenWidth < 768;
 let countPerPage = 3;
@@ -21,14 +16,14 @@ if (isMobile) {
 const shoppingListKey = 'shoppingList';
 let savedBooks;
 const paginationEl = document.querySelector('.pagination-list');
-
 const shoppingListEl = document.querySelector('.shopping__list');
+export let currentPage = 1;
 
-function renderBtnPagination(data) {
+export function renderBtnPagination(data) {
   const pageCount = Math.ceil(data.length / countPerPage);
   const arrBtnPage = [];
   for (let i = 1; i <= pageCount; i += 1) {
-    const btnEl = `<button type="button" class="pagination-btn">${i}</button>`;
+    const btnEl = `<li class="pagination-item"><button type="button" class="pagination-btn">${i}</button></li>`;
     arrBtnPage.push(btnEl);
   }
   //   const arrAllBtn = [...createArrowLeftBtnPagination(), ...arrBtnPage];
@@ -75,22 +70,27 @@ function checkStorage() {
     ShoppingListIsEmpty.classList.remove('visually-hidden');
   }
 }
-checkStorage();
 
 function renderShoppingList(data) {
-  console.log(data);
-  const firstBtn = paginationEl.children[0];
+  //   console.log(data);
+  if (document.querySelector('.current-btn-pagination')) {
+    const previousPage = document.querySelector('.curent-btn-pagination');
+    previousPage.classList.remove('curent-btn-pagination');
+  }
+
+  const firstBtn =
+    paginationEl.children[currentPage - 1].querySelector('button');
   firstBtn.classList.add('curent-btn-pagination');
 
   if (data.length <= 3) {
     shoppingListEl.innerHTML = markupBookCard(data);
     addEventListenerToTrash();
   } else {
-    renderList(1, data);
+    renderList(currentPage, data);
     paginationEl.addEventListener('click', OnClickrenderShoppingList);
   }
 }
-function renderList(page, arrBooks) {
+export function renderList(page, arrBooks) {
   let start = countPerPage * page - 3;
   let end = countPerPage * page;
   if (isMobile) {
@@ -101,16 +101,12 @@ function renderList(page, arrBooks) {
   addEventListenerToTrash();
 }
 
-window.addEventListener('storage', function (event) {
-  if (event.key === shoppingListKey && !event.newValue) {
-    checkStorage();
-  }
-});
-
 function OnClickrenderShoppingList(e) {
   const btnEl = e.target.closest('button');
   if (btnEl !== null) {
     const pageBtn = btnEl.textContent;
+    currentPage = pageBtn;
+    // console.log('currentPage', currentPage);
     renderList(pageBtn, parseStorage(shoppingListKey));
     addEventListenerToTrash();
     const previousPage = document.querySelector('.curent-btn-pagination');
@@ -122,34 +118,14 @@ function OnClickrenderShoppingList(e) {
 function addEventListenerToTrash() {
   const trashEl = document.querySelectorAll('.shopping-trash');
   trashEl.forEach(el =>
-    el.addEventListener('click', OnClickremoveBookFromList)
+    el.addEventListener('click', OnClickRemoveBookFromList)
   );
 }
 
-function OnClickremoveBookFromList(e) {
-  const target = e.target.closest('.shopping-trash');
-  const id = target.dataset.id;
-  console.log(id);
-  removeFromShoppingList(id);
-  const data = parseStorage(shoppingListKey);
-  renderList(1, data);
-  renderBtnPagination(data);
-}
-
-function removeFromShoppingList(bookId) {
-  const shoppingList = getShoppingList();
-  const index = shoppingList.findIndex(book => book._id === bookId);
-  if (index !== -1) {
-    shoppingList.splice(index, 1);
-    saveShoppingList(shoppingList);
+window.addEventListener('storage', function (event) {
+  if (event.key === shoppingListKey && !event.newValue) {
+    checkStorage();
   }
-}
+});
 
-function getShoppingList() {
-  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
-  return shoppingList;
-}
-
-function saveShoppingList(shoppingList) {
-  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
-}
+checkStorage();
