@@ -70,7 +70,7 @@ function renderBooks(books) {
 }
 
 function renderMainTitle(name) {
-  cleaningcleaningTitle();
+  cleaning.cleaningTitle();
   const words = name.split(' ');
   const lastWord = words.pop();
   const title = words.join(' ');
