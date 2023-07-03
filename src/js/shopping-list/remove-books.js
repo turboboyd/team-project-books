@@ -22,10 +22,12 @@ function OnClickRemoveBookFromList(e) {
   const target = e.target.closest('.shopping-trash');
   const id = target.dataset.id;
   const startCount = paginationEl.childElementCount;
+  console.log('startCount', startCount);
   removeFromShoppingList(id);
   const data = parseStorage(shoppingListKey);
   renderBtnPagination(data);
   const endCount = paginationEl.childElementCount;
+  console.log('endCount', endCount);
   startCount === endCount
     ? renderList(currentPage, data)
     : renderList(currentPage - 1, data);

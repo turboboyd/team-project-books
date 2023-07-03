@@ -1,4 +1,6 @@
-import { paginationEl, currentPage } from './pagination';
+import { currentPage } from './pagination';
+
+export const paginationEl = document.querySelector('.pagination-list');
 export let countPerPage = 3;
 
 if (isMobile()) {

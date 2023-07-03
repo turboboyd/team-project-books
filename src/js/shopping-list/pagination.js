@@ -1,11 +1,11 @@
 import markupBookCard from './marcup-shopping-card';
 import addEventListenerToTrash from './remove-books';
 import parseStorage from './parse-storage';
-import { addClassListToCurrentBtn } from './pagination-btn';
+import { paginationEl, addClassListToCurrentBtn } from './pagination-btn';
 import { renderBtnPagination, countPerPage, isMobile } from './pagination-btn';
 
 export let currentPage = 1;
-export const paginationEl = document.querySelector('.pagination-list');
+// export const paginationEl = document.querySelector('.pagination-list');
 const shoppingListEl = document.querySelector('.shopping__list');
 export const shoppingListKey = 'shoppingList';
 let savedBooks;
