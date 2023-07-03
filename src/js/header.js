@@ -12,7 +12,7 @@ const htmlUserNotLoginModal =
 
 export function renderUserLogin() {
   const htmlUserLoginModal =
-  '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a class="mob-menu-link-nav current" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
+    '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a class="mob-menu-link-nav current" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
   btnLogout.addEventListener('click', onBtnLogout);
@@ -24,8 +24,6 @@ export function renderUserNotLogin() {
   menuStart.innerHTML = htmlUserNotLoginModal;
   const btnOpenFormAuth = document.querySelector('[data-modal-auth-open]');
   btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
-  
-
 }
 
 function openMenu() {
@@ -60,7 +58,7 @@ function onBtnLogout() {
 
 function setUserName(userName) {
   const userActive = document.querySelector('.menu-user-bar-name');
-  userActive.textContent = userName
+  userActive.textContent = userName;
 }
 
 
@@ -94,3 +92,14 @@ document.addEventListener('keydown', event => {
     headerBtnUserMenu.classList.add('is-hidden');
   }
 });
+
+// =========== Remove is-hidden ====================
+
+const headerNav = document.querySelector('.header-list-nav');
+const menuBtnStart = document.querySelector('.menu-btn-start-tab');
+
+export default function removeHeaderHidden() {
+  headerNav.classList.remove('.is-hidden');
+  headerBtnUser.classList.remove('.is-hidden');
+  menuBtnStart.classList.add('.is-hidden');
+}
