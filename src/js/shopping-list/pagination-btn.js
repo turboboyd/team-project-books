@@ -1,6 +1,6 @@
 import { currentPage } from './pagination';
 
-export const paginationEl = document.querySelector('.pagination-list');
+export const btnListPaginationEl = document.querySelector('.pagination-list');
 export let countPerPage = 3;
 
 if (isMobile()) {
@@ -13,15 +13,25 @@ export function isMobile() {
   return isMobile;
 }
 
-export function addClassListToCurrentBtn(btn) {
-  if (document.querySelector('.current-btn-pagination')) {
+export function addClassListToCurrentBtn(page) {
+  const btnListPaginationEl = document.querySelector('.pagination-list');
+  if (
+    btnListPaginationEl &&
+    document.querySelector('.current-btn-pagination')
+  ) {
     const previousPage = document.querySelector('.current-btn-pagination');
     previousPage.classList.remove('current-btn-pagination');
   }
-  btn.classList.add('current-btn-pagination');
+  if (btnListPaginationEl && btnListPaginationEl.childElementCount !== 0) {
+    const currentBtn =
+      btnListPaginationEl.children[page - 1].querySelector('button');
+    if (currentBtn) {
+      currentBtn.classList.add('current-btn-pagination');
+    }
+  }
 }
 
-export function renderBtnPagination(data) {
+export function renderBtnList(data) {
   const pageCount = Math.ceil(data.length / countPerPage);
   const arrBtnPage = [];
   for (let i = 1; i <= pageCount; i += 1) {
@@ -32,10 +42,7 @@ export function renderBtnPagination(data) {
   //   console.log('arrAllBtn', arrAllBtn);
   const marcupBtn = arrBtnPage.join('');
   //   console.log('arrAllBtn', arrAllBtn);
-  paginationEl.innerHTML = marcupBtn;
-  const firstBtn =
-    paginationEl.children[currentPage - 1].querySelector('button');
-  addClassListToCurrentBtn(firstBtn);
+  btnListPaginationEl.innerHTML = marcupBtn;
 }
 
 // function createArrowLeftBtnPagination() {

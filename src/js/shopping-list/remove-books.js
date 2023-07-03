@@ -1,14 +1,22 @@
 import parseStorage from './parse-storage';
-import { renderList, currentPage } from './pagination';
-import { renderBtnPagination } from './pagination-btn';
+import {
+  currentPage,
+  listIsEmpty,
+  shoppingListKey,
+  renderShoppingList,
+  setCurrentPage,
+} from './pagination';
+import {
+  btnListPaginationEl,
+  countPerPage,
+  renderBtnList,
+} from './pagination-btn';
 
 // import {
 //   removeFromShoppingList,
 //   getShoppingList,
 //   saveShoppingList,
 // } from '../pop-up-click-by-book';
-
-const shoppingListKey = 'shoppingList';
 
 export default function addEventListenerToTrash() {
   const trashEl = document.querySelectorAll('.shopping-trash');
@@ -18,22 +26,35 @@ export default function addEventListenerToTrash() {
 }
 
 function OnClickRemoveBookFromList(e) {
-  const paginationEl = document.querySelector('.pagination-list');
   const target = e.target.closest('.shopping-trash');
   const id = target.dataset.id;
-  const startCount = paginationEl.childElementCount;
-  console.log('startCount', startCount);
+  const countPage = btnListPaginationEl.childElementCount;
+
   removeFromShoppingList(id);
+
   const data = parseStorage(shoppingListKey);
-  renderBtnPagination(data);
-  const endCount = paginationEl.childElementCount;
-  console.log('endCount', endCount);
-  startCount === endCount
-    ? renderList(currentPage, data)
-    : renderList(currentPage - 1, data);
-  const currentBtn =
-    paginationEl.children[currentPage - 1].querySelector('button');
-  currentBtn.classList.add('curent-btn-pagination');
+  const booksCount = data.length;
+
+  if (
+    booksCount !== 0 &&
+    Number(countPage) === Number(currentPage) &&
+    booksCount % countPerPage === 0
+  ) {
+    console.log('111');
+    setCurrentPage(currentPage - 1);
+    renderBtnList(data);
+    renderShoppingList(data, currentPage);
+  } else {
+    if (booksCount === 0) {
+      console.log('222');
+      listIsEmpty();
+      localStorage.removeItem(shoppingListKey);
+    } else {
+      console.log('333');
+      renderBtnList(data);
+      renderShoppingList(data, currentPage);
+    }
+  }
 }
 
 function removeFromShoppingList(bookId) {
