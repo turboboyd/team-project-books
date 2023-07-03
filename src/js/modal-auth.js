@@ -1,7 +1,12 @@
 import { closeMenu } from './header';
 
-const loginForm = document.querySelector("form.login");
-const signupForm = document.querySelector("form.signup");
+export const loginForm = document.getElementById("formLogin");
+export const signupForm = document.getElementById("formAuth");
+export const authNameEl = document.getElementById("authName");
+export const authEmailEl = document.getElementById("authEmail");
+export const authPasswordEl = document.getElementById("authPassword");
+export const loginEmailEl = document.getElementById("loginEmail");
+export const loginPasswordEl = document.getElementById("loginPassword");
 const loginBtn = document.querySelector("label.login");
 const signupBtn = document.querySelector("label.signup");
 export const modalElem = document.querySelector("[data-modal]");
@@ -17,8 +22,8 @@ signupBtn.addEventListener("click", () => {
   loginForm.style.marginLeft = "0%";
 });
 
-closeModalBtn.addEventListener('click', onModalClose);
-modalElem.addEventListener('keydown', onEscPress);
+// closeModalBtn.addEventListener('click', onModalClose);
+// modalElem.addEventListener('keydown', onEscPress);
 
 closeModalBtn.addEventListener('click', onModalClose);
 document.addEventListener('keydown', onEscPress);
