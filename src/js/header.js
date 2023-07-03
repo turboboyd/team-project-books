@@ -1,5 +1,6 @@
 import { modalElem } from './modal-auth';
 import { backdropOutEl } from './modal-auth-out';
+import userVerification from './firebase'
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
@@ -15,6 +16,7 @@ export function renderUserLogin() {
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
   btnLogout.addEventListener('click', onBtnLogout);
+  setUserName(displayName);
   console.log('Test LOGIN');
 }
 
@@ -30,8 +32,8 @@ function openMenu() {
   burgerButton.classList.add('open');
   closeButton.classList.add('open');
   menuStart.classList.remove('is-hidden');
-  renderUserNotLogin();
   bodyElement.classList.add('no-scroll');
+  userVerification()
 }
 
 export function closeMenu() {
@@ -61,7 +63,34 @@ function setUserName(userName) {
   userActive.textContent = userName
 }
 
+
 burgerButton.addEventListener('click', openMenu);
 closeButton.addEventListener('click', closeMenu);
 
 window.addEventListener('resize', handleResize);
+
+// =========== Виклик меню "Виходу з аккаунта" ====================
+
+const headerBtnUser = document.querySelector('.header-btn-user');
+const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+
+headerBtnUser.addEventListener('click', () => {
+  headerBtnUserMenu.classList.toggle('is-hidden');
+});
+
+document.addEventListener('click', event => {
+  const target = event.target;
+  if (
+    !headerBtnUser.classList.contains('is-hidden') &&
+    !headerBtnUser.contains(target) &&
+    !headerBtnUserMenu.contains(target)
+  ) {
+    headerBtnUserMenu.classList.add('is-hidden');
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    headerBtnUserMenu.classList.add('is-hidden');
+  }
+});
