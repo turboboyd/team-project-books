@@ -10,10 +10,10 @@
   align-items: center;
   width: 44px;
   height: 44px;
-  background-color: blueviolet;
+  background-color: darkkhaki;
   border-radius: 50%;
 }
 
 .curent-btn-pagination {
-  background-color: aqua;
+  background-color: dimgray;
 }

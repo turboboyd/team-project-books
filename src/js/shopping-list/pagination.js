@@ -21,14 +21,14 @@ if (isMobile) {
 const shoppingListKey = 'shoppingList';
 let savedBooks;
 const paginationEl = document.querySelector('.pagination-list');
-
 const shoppingListEl = document.querySelector('.shopping__list');
+let currentPage = 1;
 
 function renderBtnPagination(data) {
   const pageCount = Math.ceil(data.length / countPerPage);
   const arrBtnPage = [];
   for (let i = 1; i <= pageCount; i += 1) {
-    const btnEl = `<button type="button" class="pagination-btn">${i}</button>`;
+    const btnEl = `<li class="pagination-item"><button type="button" class="pagination-btn">${i}</button></li>`;
     arrBtnPage.push(btnEl);
   }
   //   const arrAllBtn = [...createArrowLeftBtnPagination(), ...arrBtnPage];
@@ -78,15 +78,20 @@ function checkStorage() {
 checkStorage();
 
 function renderShoppingList(data) {
-  console.log(data);
-  const firstBtn = paginationEl.children[0];
+  //   console.log(data);
+  if (document.querySelector('.current-btn-pagination')) {
+    const previousPage = document.querySelector('.curent-btn-pagination');
+    previousPage.classList.remove('curent-btn-pagination');
+  }
+
+  const firstBtn = paginationEl.children[currentPage - 1];
   firstBtn.classList.add('curent-btn-pagination');
 
   if (data.length <= 3) {
     shoppingListEl.innerHTML = markupBookCard(data);
     addEventListenerToTrash();
   } else {
-    renderList(1, data);
+    renderList(currentPage, data);
     paginationEl.addEventListener('click', OnClickrenderShoppingList);
   }
 }
@@ -111,6 +116,8 @@ function OnClickrenderShoppingList(e) {
   const btnEl = e.target.closest('button');
   if (btnEl !== null) {
     const pageBtn = btnEl.textContent;
+    currentPage = pageBtn;
+    // console.log('currentPage', currentPage);
     renderList(pageBtn, parseStorage(shoppingListKey));
     addEventListenerToTrash();
     const previousPage = document.querySelector('.curent-btn-pagination');
@@ -122,18 +129,24 @@ function OnClickrenderShoppingList(e) {
 function addEventListenerToTrash() {
   const trashEl = document.querySelectorAll('.shopping-trash');
   trashEl.forEach(el =>
-    el.addEventListener('click', OnClickremoveBookFromList)
+    el.addEventListener('click', OnClickRemoveBookFromList)
   );
 }
 
-function OnClickremoveBookFromList(e) {
+function OnClickRemoveBookFromList(e) {
   const target = e.target.closest('.shopping-trash');
   const id = target.dataset.id;
-  console.log(id);
+  const CountBtn = paginationEl.length;
+  console.log('CountBtnBeforeRemove', CountBtn);
   removeFromShoppingList(id);
   const data = parseStorage(shoppingListKey);
-  renderList(1, data);
+  renderList(currentPage, data);
   renderBtnPagination(data);
+  console.log('CountBtnAfterRemove', CountBtn);
+  console.log('CountBtnAfterRemove', CountBtn);
+  const currentBtn = paginationEl.children[currentPage - 1];
+  currentBtn.classList.add('curent-btn-pagination');
+  console.log(currentPage);
 }
 
 function removeFromShoppingList(bookId) {
