@@ -1,17 +1,24 @@
 import markupBookCard from './marcup-shopping-card';
+import {
+  OnClickRemoveBookFromList,
+  removeFromShoppingList,
+  getShoppingList,
+  saveShoppingList,
+} from './remove-books';
+import parseStorage from './parse-storage';
 // import {
 //   removeFromShoppingList,
 //   getShoppingList,
 //   saveShoppingList,
 // } from '../pop-up-click-by-book';
 
-function parseStorage(storageKey) {
-  try {
-    return JSON.parse(localStorage.getItem(storageKey));
-  } catch (error) {
-    console.log(error);
-  }
-}
+// function parseStorage(storageKey) {
+//   try {
+//     return JSON.parse(localStorage.getItem(storageKey));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 const screenWidth = window.innerWidth;
 const isMobile = screenWidth < 768;
 let countPerPage = 3;
@@ -22,9 +29,9 @@ const shoppingListKey = 'shoppingList';
 let savedBooks;
 const paginationEl = document.querySelector('.pagination-list');
 const shoppingListEl = document.querySelector('.shopping__list');
-let currentPage = 1;
+export let currentPage = 1;
 
-function renderBtnPagination(data) {
+export function renderBtnPagination(data) {
   const pageCount = Math.ceil(data.length / countPerPage);
   const arrBtnPage = [];
   for (let i = 1; i <= pageCount; i += 1) {
@@ -96,7 +103,7 @@ function renderShoppingList(data) {
     paginationEl.addEventListener('click', OnClickrenderShoppingList);
   }
 }
-function renderList(page, arrBooks) {
+export function renderList(page, arrBooks) {
   let start = countPerPage * page - 3;
   let end = countPerPage * page;
   if (isMobile) {
@@ -132,39 +139,4 @@ function addEventListenerToTrash() {
   trashEl.forEach(el =>
     el.addEventListener('click', OnClickRemoveBookFromList)
   );
-}
-
-function OnClickRemoveBookFromList(e) {
-  const target = e.target.closest('.shopping-trash');
-  const id = target.dataset.id;
-  const CountBtn = paginationEl.length;
-  console.log('CountBtnBeforeRemove', CountBtn);
-  removeFromShoppingList(id);
-  const data = parseStorage(shoppingListKey);
-  renderList(currentPage, data);
-  renderBtnPagination(data);
-  console.log('CountBtnAfterRemove', CountBtn);
-  console.log('CountBtnAfterRemove', CountBtn);
-  const currentBtn =
-    paginationEl.children[currentPage - 1].querySelector('button');
-  currentBtn.classList.add('curent-btn-pagination');
-  console.log(currentPage);
-}
-
-function removeFromShoppingList(bookId) {
-  const shoppingList = getShoppingList();
-  const index = shoppingList.findIndex(book => book._id === bookId);
-  if (index !== -1) {
-    shoppingList.splice(index, 1);
-    saveShoppingList(shoppingList);
-  }
-}
-
-function getShoppingList() {
-  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
-  return shoppingList;
-}
-
-function saveShoppingList(shoppingList) {
-  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
 }
