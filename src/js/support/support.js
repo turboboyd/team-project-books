@@ -81,7 +81,6 @@ const supportImg = [
 
 const list = document.querySelector('.support-list');
 
-
 charities.forEach(function (data, index) {
   let digits = (index + 1).toString().padStart(2, '0');
   let imgSrc = data.img;
@@ -108,19 +107,59 @@ charities.forEach(function (data, index) {
   list.insertAdjacentHTML('beforeend', listItem);
 });
 
+const down = document.querySelector('.icon-down');
+const up = document.querySelector('.icon-up');
+
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
-  slidesPerView: 4,
+  // slidesPerView: 4,
   rewind: true,
   spaceBetween: 20,
   effect: 'slide',
-  breakpoints: {
-    480: {
+ breakpoints: {
+    300: {
+      slidesPerView: 4,
+    },
+
+    768: {
       slidesPerView: 6,
     },
   },
-  modules: [Navigation],
-  navigation: {
-    nextEl: '.swiper-next',
-  },
+ 
 });
+
+
+swiper.on('reachEnd', function () {
+  if (up.classList.contains('visually-hidden')) {
+    up.classList.remove('visually-hidden');
+  }
+  down.classList.add('visually-hidden');
+});
+
+swiper.on('reachBeginning', function () {
+  if (down.classList.contains('visually-hidden')) {
+    down.classList.remove('visually-hidden');
+  }
+  up.classList.add('visually-hidden');
+});
+
+down.addEventListener('click', slideUp);
+
+function slideUp() {
+  swiper.slideNext();
+}
+
+up.addEventListener('click', slideDown);
+
+function slideDown() {
+  swiper.slidePrev();
+}
+
+
+
+
+
+
+
+
+swiper.update();
