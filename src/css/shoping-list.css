@@ -21,6 +21,7 @@
   height: 142px;
   display: flex;
   flex-direction: column;
+  
 }
 .shopping-text {
   margin: 0 auto;
@@ -46,8 +47,8 @@
   align-items: flex-start;
   padding: 14px;
   border-radius: 16px;
+  background-color: var(--main-bgr-color);
   border: 2px solid var(--border-color);
-  background: var(--white-color);
 }
 .shop-list {
   display: flex;
@@ -61,6 +62,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  
 }
 
 .shopping-trash {
