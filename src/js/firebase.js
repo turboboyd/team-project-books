@@ -1,7 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
+import { btnOutYes } from './modal-auth-out';
+import { renderUserLogin, renderUserNotLogin } from './header';
+import { onModalClose } from './modal-auth'; 
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
@@ -14,7 +18,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 
 const authUser = (userName, userEmail, userPassword) => {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
@@ -26,6 +30,11 @@ const authUser = (userName, userEmail, userPassword) => {
       }).then(() => {
         console.log('Sign in successful');
         
+        onModalClose();
+        signupForm.reset();
+        renderUserLogin()
+        console.log(renderUserLogin);
+
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -42,6 +51,12 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log('Successful login');
+
+      onModalClose();
+      loginForm.reset();
+      
+      userVerification();
+
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -52,20 +67,45 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
 function addUserAuth(e) {
     e.preventDefault();
-    const authName = authNameEl.value;
-    const authEmail = authEmailEl.value;
+    const authName = authNameEl.value.trim();
+    const authEmail = authEmailEl.value.trim();
     const authPassword = authPasswordEl.value;
-    authUser(authName, authEmail, authPassword);
+  authUser(authName, authEmail, authPassword);
 }
 
 function onLoginUser(e) {
     e.preventDefault();
     const loginEmail = loginEmailEl.value;
     const loginPassword = loginPasswordEl.value;
-    loginUser(auth, loginEmail, loginPassword);
+  loginUser(auth, loginEmail, loginPassword);
 }
+
+function onLogoutUser () {
+  signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  console.log('Помилка при LOGOUT');
+});
+}
+
+export default function userVerification() {
+  const user = auth.currentUser;
+  if (user !== null) {
+    const displayName = user.displayName;
+    const email = user.email;
+    const uid = user.uid;
+    renderUserLogin(displayName)
+
+    console.log('displayName:', displayName);
+    console.log('uid:', uid);
+  }
+  renderUserNotLogin();
+}
+
+// userVerification()
 
 signupForm.addEventListener('submit', addUserAuth);
 loginForm.addEventListener('submit', onLoginUser)
+btnOutYes.addEventListener('click', onLogoutUser)
 
 
