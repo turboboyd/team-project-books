@@ -1,6 +1,7 @@
 import { modalElem } from './modal-auth';
 import { backdropOutEl } from './modal-auth-out';
 import userVerification from './firebase'
+// import { createLogger } from 'vite';
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
@@ -9,6 +10,7 @@ const bodyElement = document.querySelector('body');
 
 const htmlUserNotLoginModal =
   '<button data-modal-auth-open class="menu-btn-start" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
+
 
 export function renderUserLogin(displayName) {
   const htmlUserLoginModal =
@@ -57,7 +59,9 @@ function onBtnLogout() {
 
 function setUserName(displayName) {
   const userActive = document.querySelector('.menu-user-bar-name');
-  userActive.textContent = displayName
+  const userNameTabletDesktop = document.querySelector('.user-name-tablet-desktop');
+  userActive.textContent = displayName;
+  userNameTabletDesktop.textContent = displayName
 }
 
 
@@ -97,8 +101,12 @@ document.addEventListener('keydown', event => {
 const headerNav = document.querySelector('.header-list-nav');
 const menuBtnStart = document.querySelector('.menu-btn-start-tab');
 
-export default function removeHeaderHidden() {
-  headerNav.classList.remove('.is-hidden');
-  headerBtnUser.classList.remove('.is-hidden');
-  menuBtnStart.classList.add('.is-hidden');
+
+export function removeHeaderHidden() {
+  headerNav.classList.remove('is-hidden');
+  headerBtnUser.classList.remove('is-hidden');
+  menuBtnStart.classList.add('is-hidden');
+  console.log('removeHeaderHidden');
 }
+
+menuBtnStart.addEventListener('click', onOpenFormAuth)

@@ -2,8 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
-import { btnOutYes, removeClassHidden } from './modal-auth-out';
-import { renderUserLogin, renderUserNotLogin } from './header';
+import { btnOutYes, removeHiddenModalOut } from './modal-auth-out';
+import { renderUserLogin, renderUserNotLogin, removeHeaderHidden } from './header';
 import { onModalClose } from './modal-auth'; 
 
 
@@ -52,9 +52,7 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
       onModalClose();
       loginForm.reset();
-      
       userVerification();
-
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -80,7 +78,7 @@ function onLoginUser(e) {
 
 function onLogoutUser () {
   signOut(auth).then(() => {
-    removeClassHidden();
+    removeHiddenModalOut();
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
@@ -90,14 +88,21 @@ export default function userVerification() {
   const user = auth.currentUser;
   if (user !== null) {
     const displayName = user.displayName;
-    renderUserLogin(displayName)
+    renderUserLogin(displayName);
   } else {
     renderUserNotLogin();
   }
-  
 }
 
-// userVerification()
+export function userVerificationTabDesk() {
+    const user = auth.currentUser;
+  if (user !== null) {
+    const displayName = user.displayName;
+    renderUserLogin(displayName);
+  } 
+}
+
+
 
 signupForm.addEventListener('submit', addUserAuth);
 loginForm.addEventListener('submit', onLoginUser)
