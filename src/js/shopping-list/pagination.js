@@ -1,40 +1,52 @@
+import parseStorage from './parse-storage';
 import markupBookCard from './marcup-shopping-card';
 import addEventListenerToTrash from './remove-books';
-import parseStorage from './parse-storage';
-import { addClassListToCurrentBtn } from './pagination-btn';
-import { renderBtnPagination, countPerPage, isMobile } from './pagination-btn';
+import {
+  btnListPaginationEl,
+  addClassListToCurrentBtn,
+  renderBtnList,
+  countPerPage,
+  isMobile,
+} from './pagination-btn';
 
 export let currentPage = 1;
-export const paginationEl = document.querySelector('.pagination-list');
+export function setCurrentPage(newPage) {
+  currentPage = newPage;
+}
 const shoppingListEl = document.querySelector('.shopping__list');
 export const shoppingListKey = 'shoppingList';
 let savedBooks;
 
 export function checkStorage() {
   const localSavedBooks = localStorage.getItem(shoppingListKey);
-  if (localSavedBooks) {
+  if (localSavedBooks && localSavedBooks.length !== 0) {
     savedBooks = parseStorage(shoppingListKey);
-    renderBtnPagination(savedBooks);
-    renderShoppingList(savedBooks);
+    renderBtnList(savedBooks);
+    renderShoppingList(savedBooks, currentPage);
   } else {
-    shoppingListEl.innerHTML = '';
-    paginationEl.innerHTML = '';
-    // paginationEl.removeEventListener('click', OnClickrenderShoppingList);
-    const ShoppingListIsEmpty = document.querySelector('.empty');
-    ShoppingListIsEmpty.classList.remove('visually-hidden');
+    listIsEmpty();
   }
+}
+checkStorage();
+
+export function listIsEmpty() {
+  shoppingListEl.innerHTML = '';
+  btnListPaginationEl.innerHTML = '';
+  const ShoppingListIsEmpty = document.querySelector('.empty');
+  ShoppingListIsEmpty.classList.remove('visually-hidden');
 }
 
-function renderShoppingList(data) {
-  if (data.length <= 3) {
-    shoppingListEl.innerHTML = markupBookCard(data);
-    addEventListenerToTrash();
+export function renderShoppingList(arrOfBooks, page) {
+  if (arrOfBooks.length <= 3) {
+    renderOnePage(page, arrOfBooks);
   } else {
-    renderList(currentPage, data);
-    paginationEl.addEventListener('click', OnClickrenderShoppingList);
+    renderOnePage(page, arrOfBooks);
+    btnListPaginationEl.addEventListener('click', OnClickrenderShoppingList);
   }
+  addClassListToCurrentBtn(page);
 }
-export function renderList(page, arrBooks) {
+
+export function renderOnePage(page, arrBooks) {
   let start = countPerPage * page - 3;
   let end = countPerPage * page;
   if (isMobile()) {
@@ -46,14 +58,12 @@ export function renderList(page, arrBooks) {
 }
 
 function OnClickrenderShoppingList(e) {
-  const btnEl = e.target.closest('button');
-  if (btnEl !== null) {
-    const pageBtn = btnEl.textContent;
-    currentPage = pageBtn;
-    renderList(pageBtn, parseStorage(shoppingListKey));
-    addEventListenerToTrash();
-    addClassListToCurrentBtn(btnEl);
-  }
+  rewriteValuecurrentPageOnClick(e);
+  renderShoppingList(parseStorage(shoppingListKey), currentPage);
 }
 
-checkStorage();
+function rewriteValuecurrentPageOnClick(e) {
+  const btnEl = e.target.closest('button');
+  const pageBtn = btnEl.textContent;
+  currentPage = pageBtn;
+}
