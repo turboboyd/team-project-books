@@ -33,7 +33,7 @@
   justify-content: center;
 
   min-width: 335px;
-
+  
   max-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -44,6 +44,12 @@
   border-radius: 18px;
 }
 
+.modal-pop-up-btn {
+  font-size: 12px;
+}
+.modal-img{
+  min-height: 100%;
+}
 .close-button {
   background-color: transparent;
   position: absolute;
@@ -63,6 +69,8 @@
 
 .close-button__icon {
   stroke: var(--title-color);
+  width: 12px;
+  height: 12px;
 }
 
 .close-button__icon:focus,
