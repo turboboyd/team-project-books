@@ -12,8 +12,8 @@
   font-size: 14px;
   line-height: 1.14;
   
-  background-color: #f7f7f7;
-  color: #545454;
+  background-color: var(--main-bgr-color);
+  color: var(--second-text-color);
   
   }
 

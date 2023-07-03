@@ -117,11 +117,11 @@ async function handleBookClick(event) {
       } else {
         modalPopUpBtn.textContent = 'Add to shopping list';
       }
-      addToShoppingList(bookId);
+
       hideLoader();
-      } catch (error) {
+    } catch (error) {
       console.error('Error handling book click:', error);
-    }    
+    }
   }
 }
 

@@ -7,11 +7,13 @@ closeFooterModalBtnHome.addEventListener('click', closeFooterModal);
 
 function openFooterModal() {
   footerBackdropHome.classList.remove('is-open');
-  
+  openFooterModalBtnHome.removeEventListener('click', openFooterModal);
+  closeFooterModalBtnHome.addEventListener('click', closeFooterModal);
 }
 
 function closeFooterModal() {
   footerBackdropHome.classList.add('is-open');
-  
+  closeFooterModalBtnHome.removeEventListener('click', closeFooterModal);
+  openFooterModalBtnHome.addEventListener('click', openFooterModal);
 }
 
