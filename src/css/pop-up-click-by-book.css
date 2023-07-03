@@ -70,7 +70,7 @@
   stroke: var(--accent-color);
 }
 
-.messagetext{
+.messagetextpop{
   width: 242px;
   margin-top: 8px;
   margin-left: 15px;
@@ -163,7 +163,7 @@
     height: 21px;
   }
   
-    .messagetext {
+    .messagetextpop {
       width: 324px;
       margin-right: auto;
       margin-left: auto;
