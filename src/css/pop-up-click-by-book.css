@@ -62,6 +62,7 @@
 }
 
 .close-button__icon {
+  width: auto;
   stroke: var(--title-color);
 }
 
@@ -70,7 +71,7 @@
   stroke: var(--accent-color);
 }
 
-.messagetext{
+.messagetextpop {
   width: 242px;
   margin-top: 8px;
   margin-left: 15px;
@@ -162,13 +163,13 @@
     width: 21px;
     height: 21px;
   }
-  
-    .messagetext {
-      width: 324px;
-      margin-right: auto;
-      margin-left: auto;
-      font-size: 12px;
-      line-height: 1.16;
+
+  .messagetextpop {
+    width: 324px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 1.16;
   }
   .modal-pop-up-content {
     display: flex;
