@@ -1,4 +1,4 @@
-import"./support-fa054018.js";function b(t){return t.map((e,o)=>`<li class="shopping-item">
+import"./support-98ea4142.js";function b(t){return t.map((e,o)=>`<li class="shopping-item">
     <img
       class="shopping-book-cover"
       src="${e.book_image}"
