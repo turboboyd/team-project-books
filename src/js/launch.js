@@ -8,6 +8,7 @@ const bookApi = new BookAPI();
 
 generatePage();
 
+
 function generatePage() {
   showLoader();
   Promise.all([
