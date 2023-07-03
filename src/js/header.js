@@ -1,5 +1,6 @@
 import { modalElem } from './modal-auth';
 import { backdropOutEl } from './modal-auth-out';
+import userVerification from './firebase'
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
@@ -15,6 +16,7 @@ export function renderUserLogin() {
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
   btnLogout.addEventListener('click', onBtnLogout);
+  setUserName(displayName);
   console.log('Test LOGIN');
 }
 
@@ -28,8 +30,8 @@ function openMenu() {
   burgerButton.classList.add('open');
   closeButton.classList.add('open');
   menuStart.classList.remove('is-hidden');
-  renderUserNotLogin();
   bodyElement.classList.add('no-scroll');
+  userVerification()
 }
 
 export function closeMenu() {
@@ -58,6 +60,7 @@ function setUserName(userName) {
   const userActive = document.querySelector('.menu-user-bar-name');
   userActive.textContent = userName;
 }
+
 
 burgerButton.addEventListener('click', openMenu);
 closeButton.addEventListener('click', closeMenu);
