@@ -15,6 +15,7 @@ export function renderUserLogin() {
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
   btnLogout.addEventListener('click', onBtnLogout);
+  setUserName(displayName);
   console.log('Test LOGIN');
 }
 
@@ -60,6 +61,7 @@ function setUserName(userName) {
   const userActive = document.querySelector('.menu-user-bar-name');
   userActive.textContent = userName
 }
+
 
 burgerButton.addEventListener('click', openMenu);
 closeButton.addEventListener('click', closeMenu);

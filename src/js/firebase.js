@@ -53,7 +53,9 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
       onModalClose();
       loginForm.reset();
-      renderUserLogin()
+      
+      userVerification();
+
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -84,6 +86,21 @@ function onLogoutUser () {
   console.log('Помилка при LOGOUT');
 });
 }
+
+function userVerification() {
+  const user = auth.currentUser;
+  if (user !== null) {
+    const displayName = user.displayName;
+    const email = user.email;
+    const uid = user.uid;
+    renderUserLogin(displayName)
+
+    console.log('displayName:', displayName);
+    console.log('uid:', uid);
+  }
+}
+
+// userVerification()
 
 signupForm.addEventListener('submit', addUserAuth);
 loginForm.addEventListener('submit', onLoginUser)
