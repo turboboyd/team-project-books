@@ -1,6 +1,8 @@
 import { modalElem } from './modal-auth';
+import { backdropOutEl } from './modal-auth-out'
 
 const btnOpenFormAuth = document.querySelector('[data-modal-auth-open]');
+const btnLogout = document.querySelector('.menu-btn-exit')
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
 const menuStart = document.querySelector('.mob-menu-start');
@@ -30,8 +32,14 @@ function onOpenFormAuth() {
   modalElem.classList.remove('is-hidden');
 }
 
+function onBtnLogout() {
+  closeMenu();
+  backdropOutEl.classList.remove('is-hidden');
+}
+
 burgerButton.addEventListener('click', openMenu);
 closeButton.addEventListener('click', closeMenu);
 btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
+btnLogout.addEventListener('click', onBtnLogout)
 
 window.addEventListener('resize', handleResize);

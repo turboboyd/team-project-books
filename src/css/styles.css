@@ -23,7 +23,10 @@
 @import url('./pop-up-click-by-book.css');
 
 @import url('./modal-auth.css');
+@import url('./modal-auth-out.css');
+
 @import url('./loader.css');
 @import url('./footer.css');
 @import url('./footer-modal.css');
+
 @import url('./pagination.css');
