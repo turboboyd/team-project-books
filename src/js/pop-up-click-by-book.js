@@ -5,7 +5,7 @@ const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
 const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
-const messageTextEl = document.getElementById('messageTextPop');
+const messageTextEl = document.getElementById('messageText');
 
 bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
@@ -81,14 +81,14 @@ function removeFromShoppingList(bookId) {
   }
 }
 
-// function getShoppingList() {
-//   const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
-//   return shoppingList;
-// }
+function getShoppingList() {
+  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
+  return shoppingList;
+}
 
-// function saveShoppingList(shoppingList) {
-//   localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
-// }
+function saveShoppingList(shoppingList) {
+  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
+}
 
 async function handleBookClick(event) {
   event.preventDefault();
