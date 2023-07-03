@@ -56,3 +56,29 @@ btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
 btnLogout.addEventListener('click', onBtnLogout);
 
 window.addEventListener('resize', handleResize);
+
+// =========== Виклик меню "Виходу з аккаунта" ====================
+
+const headerBtnUser = document.querySelector('.header-btn-user');
+const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+
+headerBtnUser.addEventListener('click', () => {
+  headerBtnUserMenu.classList.toggle('is-hidden');
+});
+
+document.addEventListener('click', event => {
+  const target = event.target;
+  if (
+    !headerBtnUser.classList.contains('is-hidden') &&
+    !headerBtnUser.contains(target) &&
+    !headerBtnUserMenu.contains(target)
+  ) {
+    headerBtnUserMenu.classList.add('is-hidden');
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    headerBtnUserMenu.classList.add('is-hidden');
+  }
+});
