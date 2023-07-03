@@ -15,8 +15,10 @@ function onClickSeeMoreBtn(event) {
     generateCategory(listName);
     searchCategoryName(listName);
     let elementFound = searchCategoryName(listName);
-    // scrollToMainTitle();
     scrollToElement(elementFound);
+    setTimeout(() => {
+      scrollToMainTitle();
+    }, 0);
   }
 }
 
@@ -29,11 +31,12 @@ function searchCategoryName(list_name) {
       return;
     }
   });
+  scrollToElement(foundElement);
   return foundElement;
 }
 
 function scrollToElement(elementToScroll) {
-  elementToScroll.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  elementToScroll.scrollIntoView({ block: 'center', behavior: 'auto' });
 }
 
 export default function scrollToMainTitle() {

@@ -1,11 +1,11 @@
 import Notiflix from 'notiflix';
-
+import Cleaning from './cleaning';
 import BookAPI from './book-api';
-import markupBook from './render-book-card';
+import createMarkupBook from './create-markup-book';
 import renderWrapCategories from './bestsellers';
 import { showLoader, hideLoader } from './loader';
 import scrollToMainTitle from './see-more-btn';
-
+const cleaning = new Cleaning();
 const bookApi = new BookAPI();
 const containerContent = document.querySelector('.books-render-js');
 const categorieEl = document.querySelector('.categorie-js');
@@ -28,10 +28,11 @@ export function generateCategory(name) {
   bookApi
     .getSelectedCategoryBooks(name)
     .then(data => {
-      renderBooks(data);
       renderMainTitle(name);
+      renderBooks(data);
       hideLoader();
       homeContainerEl.classList.remove('hidden');
+      scrollToMainTitle();
     })
     .catch(error => {
       console.error('Error found category:', error);
@@ -47,11 +48,12 @@ function generateBestSellersCategories() {
   bookApi
     .getTopBooks()
     .then(data => {
-      cleaningBooks();
+      cleaning.cleaningBooks();
       renderWrapCategories(data);
       renderMainTitle('Best Seller Books');
       hideLoader();
       homeContainerEl.classList.remove('hidden');
+      scrollToMainTitle();
     })
     .catch(error => {
       console.error('Error retrieving top books:', error);
@@ -62,13 +64,13 @@ function generateBestSellersCategories() {
 }
 
 function renderBooks(books) {
-  cleaningBooks();
-  const markup = books.map(book => markupBook(book)).join('');
+  cleaning.cleaningBooks();
+  const markup = books.map(book => createMarkupBook(book)).join('');
   containerContent.insertAdjacentHTML('beforeend', markup);
 }
 
 function renderMainTitle(name) {
-  cleaningTitle();
+  cleaning.cleaningTitle();
   const words = name.split(' ');
   const lastWord = words.pop();
   const title = words.join(' ');
@@ -91,7 +93,6 @@ function markupCategorie({ list_name }) {
 
   filterItem.addEventListener('click', () => {
     isActiveCategoryBtn(filterItem);
-    scrollToMainTitle();
     if (name === 'All categories') {
       generateBestSellersCategories();
     } else {
@@ -101,18 +102,6 @@ function markupCategorie({ list_name }) {
 
   categorieEl.appendChild(element.firstChild);
   activeCategoty = categoriesListEl.firstElementChild;
-}
-
-function cleaningBooks() {
-  containerContent.innerHTML = '';
-}
-
-function cleaningTitle() {
-  const titleElements = homeContainerEl.getElementsByClassName('main-title');
-  for (let i = titleElements.length - 1; i >= 0; i--) {
-    const titleElement = titleElements[i];
-    titleElement.parentNode.removeChild(titleElement);
-  }
 }
 
 export function isActiveCategoryBtn(filterItem) {

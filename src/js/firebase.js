@@ -2,9 +2,10 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
-import { btnOutYes } from './modal-auth-out';
-import { renderUserLogin } from './header';
+import { btnOutYes, removeClassHidden } from './modal-auth-out';
+import { renderUserLogin, renderUserNotLogin } from './header';
 import { onModalClose } from './modal-auth'; 
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
@@ -31,9 +32,7 @@ const authUser = (userName, userEmail, userPassword) => {
         
         onModalClose();
         signupForm.reset();
-        renderUserLogin()
-        console.log(renderUserLogin);
-
+        userVerification();
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -53,7 +52,9 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
       onModalClose();
       loginForm.reset();
-      renderUserLogin()
+      
+      userVerification();
+
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -79,11 +80,24 @@ function onLoginUser(e) {
 
 function onLogoutUser () {
   signOut(auth).then(() => {
-  // Sign-out successful.
+    removeClassHidden();
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
 }
+
+export default function userVerification() {
+  const user = auth.currentUser;
+  if (user !== null) {
+    const displayName = user.displayName;
+    renderUserLogin(displayName)
+  } else {
+    renderUserNotLogin();
+  }
+  
+}
+
+// userVerification()
 
 signupForm.addEventListener('submit', addUserAuth);
 loginForm.addEventListener('submit', onLoginUser)

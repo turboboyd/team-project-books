@@ -1,4 +1,4 @@
-import renderBook from './render-book-card';
+import renderBook from './create-markup-book';
 
 const containerContent = document.querySelector('.books-render-js');
 

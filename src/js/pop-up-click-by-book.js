@@ -1,5 +1,8 @@
+import BookAPI from './book-api';
 import { showLoader, hideLoader } from './loader';
+import createMarkup from './create-markup-book';
 
+const bookApi = new BookAPI();
 const modalPopUp = document.querySelector('[data-pop-up]');
 const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
@@ -35,27 +38,6 @@ function handleKeyDown(event) {
   if (event.key === 'Escape') {
     closePopUp();
   }
-}
-
-function createMarkup(bookData) {
-  return `<img class="modal-img" src="${bookData.book_image}" alt="book cover" />
-    <div class='modal-book-attributes'>
-      <p class="modal-book-title">${bookData.title}</p>
-      <p class="modal-book-author">${bookData.author}</p>
-      <p class="modal-book-desc">${bookData.description}</p>
-      <p class="card-book-id visually-hidden">${bookData._id}</p>
-      <div class="modal-shops">
-        <a class="modal-shop-link" href="${bookData.buy_links[0].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
-          <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
-        </a>
-        <a class="modal-shop-link" href="${bookData.buy_links[1].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
-          <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
-        </a>
-        <a class="modal-shop-link" href="${bookData.buy_links[4].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
-          <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
-        </a>
-      </div>
-    </div>`;
 }
 
 function renderMarkup(element, markup) {
@@ -104,11 +86,10 @@ async function handleBookClick(event) {
     try {
       showLoader();
       const bookData = await getBookData(bookId);
-      const markup = createMarkup(bookData);
 
       currentBookData = bookData;
 
-      renderMarkup(modalContentEl, markup);
+      renderMarkup(modalContentEl, createMarkup(bookData));
       openPopUp();
 
       const shoppingList = getShoppingList();
