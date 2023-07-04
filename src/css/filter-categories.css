@@ -17,8 +17,8 @@
   font-size: 16px;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  transition: all ease-in-out 200ms;
-  color: var(--light-font-color); 
+  transition: all var(--transition);
+  color: var(--light-font-color);
   cursor: pointer;
 }
 .filter-item:hover,
