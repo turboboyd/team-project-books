@@ -29,7 +29,7 @@ export default function markupBookCard(books) {
 
         <ul class="shop-list">
           <li>
-            <a class="shop-link" href="${book.amazon_product_url}" target="_blank">
+            <a class="shop-link" href="${book.buy_links[0].url}" target="_blank">
               <img
                 class="shop-img"
                 src="${amazon}"
