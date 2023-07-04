@@ -11,6 +11,7 @@ import {
   renderBtnSignupTabDesc,
 } from './header';
 import { onModalClose } from './modal-auth'; 
+import {ofNavMenu} from './header'
 
 
 const firebaseConfig = {
@@ -90,6 +91,8 @@ function onLogoutUser () {
   signOut(auth).then(() => {
     removeHiddenModalOut();
     renderBtnSignupTabDesc();
+    ofNavMenu()
+    console.log('fsafaf')
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
