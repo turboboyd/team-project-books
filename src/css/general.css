@@ -3,6 +3,7 @@ body {
   font-size: 14px;
   color: var(--title-color);
   background-color: var(--main-bgr-color);
+  font-display: optional;
 }
 
 .btn {
