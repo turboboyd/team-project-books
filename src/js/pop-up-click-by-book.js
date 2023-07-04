@@ -8,7 +8,7 @@ const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
 const modalPopUpBtn = modalPopUp.querySelector('.modal-pop-up-btn');
 const bookGrid = document.querySelector('.books-render-js');
-const messageTextEl = document.getElementById('messageTextPop');
+const messageTextEl = document.getElementById('messageText');
 
 bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
@@ -21,10 +21,12 @@ let currentBookData = null;
 
 function openPopUp() {
   modalPopUp.classList.remove('is-hidden');
+  document.body.classList.add('modal-open');
 }
 
 function closePopUp() {
   modalPopUp.classList.add('is-hidden');
+  document.body.classList.remove('modal-open');
   clearMarkup(modalContentEl);
 }
 

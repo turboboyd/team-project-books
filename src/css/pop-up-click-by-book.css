@@ -12,7 +12,9 @@
   z-index: 20;
   padding: 94px 15px;
 }
-
+.modal-open{
+  overflow: hidden;
+}
 .backdrop-pop-up.is-hidden {
   visibility: hidden;
   opacity: 0;

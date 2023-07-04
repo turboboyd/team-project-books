@@ -1,6 +1,9 @@
-import amazon from '../../images/amazon.png';
-import booksIo from '../../images/books-io.png';
-import bookshop from '../../images/bookshop.png';
+import amazon from '../../images/stores/amazon.png';
+import amazon2x from '../../images/stores/amazon@2x.png';
+import bookStore from '../../images/stores/book.png';
+import bookStore2x from '../../images/stores/book@2x.png';
+import bookShop from '../../images/stores/book-shop.png';
+import bookShop2x from '../../images/stores/book-shop@2x.png';
 
 export default function markupBookCard(books) {
   const marcup = books
@@ -31,9 +34,10 @@ export default function markupBookCard(books) {
           <li>
             <a class="shop-link" href="${book.buy_links[0].url}" target="_blank">
               <img
-                class="shop-img"
-                src="${amazon}"
-                alt="amazon"
+                class="shop-img amazon icon-shop-1"
+                srcset="${amazon} 1x, ${amazon2x} 2x"
+                src="${amazon}";
+                alt="Amazon shop"
                 width="32"
                 height="11"
               />
@@ -42,9 +46,10 @@ export default function markupBookCard(books) {
           <li>
             <a class="shop-link" href="${book.buy_links[1].url}" target="_blank">
               <img
-                class="shop-img"
-                src="${booksIo}"
-                alt="books-io"
+                class="shop-img icon-shop-2"
+                srcset="${bookStore} 1x, ${bookStore2x} 2x"
+                src="${bookStore}"
+                alt="Book shop"
                 width="16"
                 height="16"
               />
@@ -53,9 +58,10 @@ export default function markupBookCard(books) {
           <li>
             <a class="shop-link" href="${book.buy_links[4].url}" target="_blank">
               <img
-                class="shop-img"
-                src="${bookshop}"
-                alt="bookshop"
+                class="shop-img icon-shop-3"
+                srcset=" ${bookShop} 1x, ${bookShop2x} 2x"
+                src="${bookShop2x}"
+                alt="Book shop"
                 width="16"
                 height="16"
               />
