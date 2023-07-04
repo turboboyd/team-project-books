@@ -92,7 +92,6 @@ function onLogoutUser () {
     removeHiddenModalOut();
     renderBtnSignupTabDesc();
     ofNavMenu()
-    console.log('fsafaf')
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
