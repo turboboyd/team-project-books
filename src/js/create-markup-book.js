@@ -20,7 +20,7 @@ export default function createMarkupBook({ _id, book_image, title, author }) {
 
 
 export function createMarkup({_id ,book_image, title, author, description, buy_links}) {
-  return `<img class="modal-img" src="${book_image}" alt="book cover" />
+  return `<img class="modal-img" src="${book_image}" alt="${title}" />
     <div class='modal-book-attributes'>
       <p class="modal-book-title">${title}</p>
       <p class="modal-book-author">${author}</p>
