@@ -7,7 +7,7 @@ export default function createMarkupBook({ _id, book_image, title, author }) {
   return `    <li class="card-book" data-aos="zoom-in" data-aos-delay="150" data-aos-duration="800">
         <a href="#" class="card-book-link" title="${title}">
         <div class="card-book-wrap">
-    <img width="218" height="auto" class="card-book-image" src="${book_image}" alt="${author} ${title}" loading="lazy">
+    <img width="218" height="auto" class="card-book-image" src="${book_image}" alt="${title}" loading="lazy">
     <p class="card-book-notification">Quick view</p>
     <p class="card-book-id visually-hidden">${_id}</p>
     </div>
