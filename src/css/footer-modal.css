@@ -23,7 +23,11 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
-  background-color: rgba(79, 46, 232, 1);
+  background: radial-gradient(
+    189.32% 190.93% at 59.76% -23.42%,
+    #4f2ee8 18.03%,
+    #fff 100%
+  );
   text-align: center;
   overflow-y: auto;
   font-weight: 500;
