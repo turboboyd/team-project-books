@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-740e55ce.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-7271386d.js">
-    <link rel="stylesheet" href="/team-project-books/assets/support-85a7f6fb.css">
+    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-33a7c258.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-211386ee.js">
+    <link rel="stylesheet" href="/team-project-books/assets/support-73365b86.css">
   </head>
   <body class="page">
     <header class="header">
@@ -216,7 +216,51 @@
 
           <!-- pagination -->
           <!-- Тут буде пагінація для Shopping list -->
-<ul class="pagination-list"></ul>
+<div class="pagination-wrap">
+  <ul class="nav-pagination-btn pagination-btn-left">
+    <li class="nav-btn-item">
+      <button type="button" class="pagination-btn-nav" data-go-to="first-page">
+        <svg class="icon-arrow icon-arrow-left" width="18" height="18">
+          <use href="../../images/sprite.svg#icon-angle-up"></use>
+        </svg>
+        <svg class="icon-arrow icon-arrow-left" width="18" height="18">
+          <use href="../../images/sprite.svg#icon-angle-up"></use>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-btn-item">
+      <button
+        type="button"
+        class="pagination-btn-nav"
+        data-go-to="previos-page"
+      >
+        <svg class="icon-arrow icon-arrow-left" width="18" height="18">
+          <use href="../../images/sprite.svg#icon-angle-up"></use>
+        </svg>
+      </button>
+    </li>
+  </ul>
+  <ul class="pagination-list"></ul>
+  <ul class="nav-pagination-btn pagination-btn-right">
+    <li class="nav-btn-item">
+      <button type="button" class="pagination-btn-nav" data-go-to="next-page">
+        <svg class="icon-arrow icon-arrow-right" width="18" height="18">
+          <use href="../../images/sprite.svg#icon-angle-up"></use>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-btn-item">
+      <button type="button" class="pagination-btn-nav" data-go-to="last-page">
+        <svg class="icon-arrow icon-arrow-right" width="18" height="18">
+          <use href="../../images/sprite.svg#icon-angle-up"></use>
+        </svg>
+        <svg class="icon-arrow icon-arrow-right" width="18" height="18">
+          <use href="../../images/sprite.svg#icon-angle-up"></use>
+        </svg>
+      </button>
+    </li>
+  </ul>
+</div>
 
           <!-- modal auth -->
           <div data-modal class="backdrop-auth is-hidden">
