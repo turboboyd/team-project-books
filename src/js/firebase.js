@@ -2,8 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
-import { btnOutYes, removeClassHidden } from './modal-auth-out';
-import { renderUserLogin, renderUserNotLogin } from './header';
+import { btnOutYes, removeHiddenModalOut } from './modal-auth-out';
+import { renderUserLogin, renderUserNotLogin, renderHeaderTabDescLogin, renderHeaderTabDescLogout } from './header';
 import { onModalClose } from './modal-auth'; 
 
 
@@ -32,7 +32,8 @@ const authUser = (userName, userEmail, userPassword) => {
         
         onModalClose();
         signupForm.reset();
-        userVerification();
+        // userVerification();
+        // userVerificationTabDesk();
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -52,9 +53,8 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
       onModalClose();
       loginForm.reset();
-      
-      userVerification();
-
+      // userVerification();
+      // userVerificationTabDesk();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -80,24 +80,31 @@ function onLoginUser(e) {
 
 function onLogoutUser () {
   signOut(auth).then(() => {
-    removeClassHidden();
+    removeHiddenModalOut();
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
 }
 
-export default function userVerification() {
+export function userVerification() {
   const user = auth.currentUser;
   if (user !== null) {
     const displayName = user.displayName;
-    renderUserLogin(displayName)
+    renderUserLogin(displayName);
   } else {
     renderUserNotLogin();
   }
-  
 }
 
-// userVerification()
+function userVerificationTabDesk() {
+    const user = auth.currentUser;
+  if (user !== null) {
+    const displayName = user.displayName;
+    return renderHeaderTabDescLogin(displayName);
+  } else {
+    renderHeaderTabDescLogout();
+  }
+}
 
 signupForm.addEventListener('submit', addUserAuth);
 loginForm.addEventListener('submit', onLoginUser)
