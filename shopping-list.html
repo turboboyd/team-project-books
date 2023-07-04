@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-19e314ef.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-90fe2203.js">
-    <link rel="stylesheet" href="/team-project-books/assets/support-0291c762.css">
+    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-13fddc17.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-2c7ca5c2.js">
+    <link rel="stylesheet" href="/team-project-books/assets/support-a656ec7e.css">
   </head>
   <body class="page">
     <header class="header">
@@ -24,12 +24,12 @@
         <use href="/team-project-books/assets/symbol-defs-518eca22.svg#icon-Bookshelf"></use>
       </svg>
     </a>
-    <ul class="header-list-nav">
+    <ul class="header-list-nav is-hidden">
       <li>
-        <a class="header-link-nav" href="./index.html">HOME</a>
+        <a class="header-link-nav current" href="./index.html">HOME</a>
       </li>
       <li>
-        <a class="header-link-nav current" href="./shopping-list.html"
+        <a class="header-link-nav" href="./shopping-list.html"
           >SHOPPING LIST<svg class="header-link-icon" width="20" height="20">
             <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#bag"></use></svg
         ></a>
@@ -38,8 +38,8 @@
   </nav>
   <div class="header-buttons">
     <label id="switch" class="switch">
-      <input type="checkbox" id="slider" />
-      <span class="slider round"></span>
+      <!-- <input type="checkbox" id="slider" /> -->
+      <span class="slider round" id="slider"></span>
     </label>
     <button class="burger" type="button">
       <svg class="header-menu-icon-mob" width="28" height="28">
@@ -51,28 +51,30 @@
         <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#x-close-icon"></use>
       </svg>
     </button>
-    <button class="header-btn-user" type="button">
-      <div class="btn-container">
-        <div class="header-btn-user-foto">
-          <svg class="header-btn-user-icon" width="19" height="19">
-            <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#user-default-icon"></use>
+    <div class="header-btn-user-wrap">
+      <!-- <button class="header-btn-user is-hidden" type="button">
+        <div class="btn-container">
+          <div class="header-btn-user-foto">
+            <svg class="header-btn-user-icon" width="19" height="19">
+              <use href="./images/svg-sprite-den.svg#user-default-icon"></use>
+            </svg>
+          </div>
+          <p class="user-name-tablet-desktop">welcome</p>
+          <svg class="header-btn-down-icon" width="23" height="26">
+            <use href="./images/svg-sprite-den.svg#user-arrow-down-icon"></use>
           </svg>
         </div>
-        <p class="user-name-tablet-desktop">welcome</p>
-        <svg class="header-btn-down-icon" width="23" height="26">
-          <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#user-arrow-down-icon"></use>
-        </svg>
-      </div>
-      <div class="header-btn-user-menu">
-        <button class="header-menu-btn-exit is-hidden" type="button">
+      </button> -->
+
+        <!-- <button class="header-menu-btn-exit" type="button">
           Log out
           <svg class="menu-btn-start-icon" width="20" height="20">
-            <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#arrow-right-icon"></use>
+            <use href="./images/svg-sprite-den.svg#arrow-right-icon"></use>
           </svg>
-        </button>
-      </div>
-    </button>
-    <!-- <button class="menu-btn-start" type="button">
+        </button> -->
+
+    </div>
+    <!-- <button class="menu-btn-start-tab" type="button">
       Sign up
       <svg class="menu-btn-start-icon" width="20" height="20">
         <use href="./images/symbol-defs.svg#icon-arrow-right"></use>
