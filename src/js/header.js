@@ -22,8 +22,8 @@ export function renderUserLogin(displayName) {
 
 export function renderUserNotLogin() {
   menuStart.innerHTML = htmlUserNotLoginModal;
-  const btnOpenFormAuth = document.querySelector('[data-modal-auth-open]');
-  btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
+  const btnOpenForm = document.querySelector('[data-modal-auth-open]');
+  btnOpenForm.addEventListener('click', onOpenFormAuth);
 }
 
 function openMenu() {
@@ -50,6 +50,7 @@ function handleResize() {
 }
 
 function onOpenFormAuth() {
+  console.log('fsafaf');
   modalElem.classList.remove('is-hidden');
 }
 
@@ -104,8 +105,9 @@ window.addEventListener('resize', handleResize);
 // const menuBtnStart = document.querySelector('.menu-btn-start-tab');
 const headerButtonsEl = document.querySelector('.header-buttons');
 const headerBtnUserEl = document.querySelector('.header-btn-user-wrap');
-const headerNavLinkEl = document.querySelector('.header-nav');
-const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+const headerNavLinkEl = document.querySelector('.header-list-nav');
+
+// const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
 
 // export function removeHeaderHidden() {
 //   headerNav.classList.remove('is-hidden');
@@ -115,43 +117,57 @@ const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
 // }
 
 // ========== not registration user ====================
-function renderBtnSignupTabDesc() {
-  const markupSignupTabDesc = `<button data-modal-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/symbol-defs.svg#icon-arrow-right"></use></svg></button>`;
-  headerButtonsEl.insertAdjacentHTML('beforeend', markupSignupTabDesc);
+export function renderBtnSignupTabDesc() {
+  const markupSignupTabDesc = `<button data-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/symbol-defs.svg#icon-arrow-right"></use></svg></button>`;
+  headerBtnUserEl.innerHTML = markupSignupTabDesc;
+  const btnOpenFormAuth = document.querySelector('[data-auth-open]');
+  btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
 }
 
 // ========== yes registration user ====================
-function renderNavLinkPageTabDesc() {
-  const markupNavLinkPageTabDesc = `<ul class="header-list-nav"><li><a class="header-link-nav current" href="./index.html">HOME</a></li><li><a class="header-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul>`;
-  headerNavLinkEl.insertAdjacentHTML('beforeend', markupNavLinkPageTabDesc);
-}
+// function renderNavLinkPageTabDesc() {
+//   const markupNavLinkPageTabDesc = `<ul class="header-list-nav"><li><a class="header-link-nav current" href="./index.html">HOME</a></li><li><a class="header-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul>`;
+//   headerNavLinkEl.insertAdjacentHTML('beforeend', markupNavLinkPageTabDesc)
+// }
 
 function renderBtnUserProfTabDesc() {
-  const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="./images/svg-sprite-den.svg#user-arrow-down-icon"></use></svg></div></button>`;
+  const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="./images/svg-sprite-den.svg#user-arrow-down-icon"></use></svg></div></button><div class="header-btn-user-menu is-hidden"><button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button></div>`;
   headerBtnUserEl.innerHTML = markupUserProfTabDesc;
   const headerBtnUser = document.querySelector('.header-btn-user');
   headerBtnUser.addEventListener('click', onOpenMenuUser);
-  onOpenMenuUser();
 }
 
-function renderBtnLogoutTabDesc() {
-  const markupLogoutTabDesc = `<button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>`;
-  headerBtnUserMenu.innerHTML = markupLogoutTabDesc;
-}
+// function renderBtnLogoutTabDesc() {
+//   const markupLogoutTabDesc = `<button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>`;
+//   headerBtnUserMenu.innerHTML = markupLogoutTabDesc;
+// }
 
 function onOpenMenuUser() {
-  headerBtnUserMenu.classList.toggle('is-hidden');
+  const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+  headerBtnUserMenu.classList.remove('is-hidden');
+  const btnLogout = document.querySelector('.header-menu-btn-exit');
+  btnLogout.addEventListener('click', onBtnLogout);
 }
 
 // ========== render after checking the user in firebase ================
 export function renderHeaderTabDescLogin(displayName) {
-  renderNavLinkPageTabDesc();
-  renderBtnLogoutTabDesc();
+  // renderNavLinkPageTabDesc();
+  // renderBtnLogoutTabDesc();
+  onNavMenu();
+  console.log('делаем рендер');
   renderBtnUserProfTabDesc();
   setUserNameTabDesc(displayName);
+
   console.log('renderHeaderTabDescLogin');
 }
 
 export function renderHeaderTabDescLogout() {
   renderBtnSignupTabDesc();
+}
+
+function onNavMenu() {
+  headerNavLinkEl.classList.remove('is-hidden');
+}
+export function ofNavMenu() {
+  headerNavLinkEl.classList.add('is-hidden');
 }

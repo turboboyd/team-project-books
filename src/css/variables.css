@@ -14,7 +14,7 @@
 
   --main-font-color: #9a9a9a;
   --font-card-color: #f6f6f6;
-  --light-font-color: red(17, 17, 17, 0.6);
+  --light-font-color: rgba(17, 17, 17, 0.6);
   --border-color: rgba(79, 46, 232, 0.4);
   --second-text-color: #b4afaf;
   --accent-color-filter: #4f2ee8;

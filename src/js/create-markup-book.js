@@ -7,7 +7,7 @@ export default function createMarkupBook({ _id, book_image, title, author }) {
   return `    <li class="card-book" data-aos="zoom-in" data-aos-delay="150" data-aos-duration="800">
         <a href="#" class="card-book-link" title="${title}">
         <div class="card-book-wrap">
-    <img class="card-book-image" src="${book_image}" alt="${author} ${title}" loading="lazy">
+    <img width="218" height="auto" class="card-book-image" src="${book_image}" alt="${author} ${title}" loading="lazy">
     <p class="card-book-notification">Quick view</p>
     <p class="card-book-id visually-hidden">${_id}</p>
     </div>
@@ -20,7 +20,7 @@ export default function createMarkupBook({ _id, book_image, title, author }) {
 
 
 export function createMarkup({_id ,book_image, title, author, description, buy_links}) {
-  return `<img class="modal-img" src="${book_image}" alt="book cover" />
+  return `<img width="218" height="auto" class="modal-img" src="${book_image}" alt="${title}" />
     <div class='modal-book-attributes'>
       <p class="modal-book-title">${title}</p>
       <p class="modal-book-author">${author}</p>
@@ -28,7 +28,7 @@ export function createMarkup({_id ,book_image, title, author, description, buy_l
       <p class="card-book-id visually-hidden">${_id}</p>
       <div class="modal-shops">
         <a class="modal-shop-link" href="${buy_links[0].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
-          <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
+          <img width="218px" class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
         </a>
         <a class="modal-shop-link" href="${buy_links[1].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
           <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
