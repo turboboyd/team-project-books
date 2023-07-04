@@ -12,19 +12,20 @@
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-user"></use>
             </svg>
-            <input type="text" placeholder="Name" id="authName" required />
+            <input aria-label="Name" type="text" placeholder="Name" id="authName" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-mail-02"></use>
             </svg>
-            <input type="text" placeholder="Email" id="authEmail" required />
+            <input aria-label="Email" type="text" placeholder="Email" id="authEmail" required />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="./images/sprite.svg#icon-lock-02"></use>
             </svg>
             <input
+              aria-label="password"
               type="password"
               placeholder="Password"
               id="authPassword"
@@ -56,14 +57,14 @@
           </div>
           <div class="field btn">
             <div class="btn-layer"></div>
-            <input type="submit" value="Sign in" />
+            <input aria-label="submit button" type="submit" value="Sign in" />
           </div>
         </form>
       </div>
     </div>
     <div class="slide-controls">
-      <input type="radio" name="slide" id="login" />
-      <input type="radio" name="slide" id="signup" checked />
+      <input aria-label="slide" type="radio" name="slide" id="login" />
+      <input aria-label="slide" type="radio" name="slide" id="signup" checked />
       <label for="signup" class="slide signup">Sign up</label>
       <label for="login" class="slide login">Sign in</label>
       <div class="slider-tab"></div>
