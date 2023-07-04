@@ -1,3 +1,7 @@
+import amazon from '../../images/amazon.png';
+import booksIo from '../../images/books-io.png';
+import bookshop from '../../images/bookshop.png';
+
 export default function markupBookCard(books) {
   const marcup = books
     .map(
@@ -28,7 +32,7 @@ export default function markupBookCard(books) {
             <a class="shop-link" href="${book.amazon_product_url}" target="_blank">
               <img
                 class="shop-img"
-                src="./images/amazon.png"
+                src="${amazon}"
                 alt="amazon"
                 width="32"
                 height="11"
@@ -39,7 +43,7 @@ export default function markupBookCard(books) {
             <a class="shop-link" href="${book.buy_links[1].url}" target="_blank">
               <img
                 class="shop-img"
-                src="./images/books-io.png"
+                src="${booksIo}"
                 alt="books-io"
                 width="16"
                 height="16"
@@ -50,7 +54,7 @@ export default function markupBookCard(books) {
             <a class="shop-link" href="${book.buy_links[4].url}" target="_blank">
               <img
                 class="shop-img"
-                src="./images/bookshop.png"
+                src="${bookshop}"
                 alt="bookshop"
                 width="16"
                 height="16"
