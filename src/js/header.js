@@ -22,8 +22,8 @@ const bodyElement = document.querySelector('body');
 
 export function renderUserNotLogin() {
   menuStart.innerHTML = htmlUserNotLoginModal;
-  const btnOpenFormAuth = document.querySelector('[data-modal-auth-open]');
-  btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
+  const btnOpenForm = document.querySelector('[data-modal-auth-open]');
+  btnOpenForm.addEventListener('click', onOpenFormAuth);
 }
 
 function openMenu() {
@@ -48,6 +48,7 @@ function handleResize() {
 }
 
 function onOpenFormAuth() {
+  console.log('fsafaf')
   modalElem.classList.remove('is-hidden');
 }
 
@@ -115,9 +116,9 @@ const headerNavLinkEl = document.querySelector('.header-nav')
 
 // ========== not registration user ====================
 export function renderBtnSignupTabDesc() {
-  const markupSignupTabDesc = `<button data-modal-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/symbol-defs.svg#icon-arrow-right"></use></svg></button>`;
+  const markupSignupTabDesc = `<button data-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/symbol-defs.svg#icon-arrow-right"></use></svg></button>`;
   headerBtnUserEl.innerHTML = markupSignupTabDesc;
-    const btnOpenFormAuth = document.querySelector('[data-modal-auth-open]');
+    const btnOpenFormAuth = document.querySelector('[data-auth-open]');
     btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
 
 }
