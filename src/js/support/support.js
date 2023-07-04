@@ -108,16 +108,15 @@ charities.forEach(function (data, index) {
 });
 
 const down = document.querySelector('.icon-down');
-const up = document.querySelector('.icon-up');
+
 
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
-  // slidesPerView: 4,
   rewind: true,
   spaceBetween: 20,
   effect: 'slide',
  breakpoints: {
-    300: {
+    375: {
       slidesPerView: 4,
     },
 
@@ -129,31 +128,25 @@ const swiper = new Swiper('.swiper', {
 });
 
 
-swiper.on('reachEnd', function () {
-  if (up.classList.contains('visually-hidden')) {
-    up.classList.remove('visually-hidden');
-  }
-  down.classList.add('visually-hidden');
-});
+
 
 swiper.on('reachBeginning', function () {
-  if (down.classList.contains('visually-hidden')) {
-    down.classList.remove('visually-hidden');
-  }
-  up.classList.add('visually-hidden');
+  down.classList.add('rotate-animation', 'active'); 
+  
+    setTimeout(function () { 
+      down.classList.remove('rotate-animation'); 
+    },500);
+  
 });
 
 down.addEventListener('click', slideUp);
 
 function slideUp() {
   swiper.slideNext();
+  
 }
 
-up.addEventListener('click', slideDown);
 
-function slideDown() {
-  swiper.slidePrev();
-}
 
 
 
