@@ -1,6 +1,6 @@
 import { modalElem } from './modal-auth';
 import { backdropOutEl } from './modal-auth-out';
-import { userVerification } from './firebase'
+import { userVerification, userVerificationTabDesk } from './firebase'
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
@@ -116,7 +116,7 @@ const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
 // ========== not registration user ====================
 function renderBtnSignupTabDesc() {
   const markupSignupTabDesc = `<button data-modal-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/symbol-defs.svg#icon-arrow-right"></use></svg></button>`;
-    headerButtonsEl.innerHTML = markupSignupTabDesc;
+    headerButtonsEl.insertAdjacentHTML('beforeend', markupSignupTabDesc);
 
 }
 
@@ -150,6 +150,7 @@ export function renderHeaderTabDescLogin(displayName) {
   renderBtnLogoutTabDesc();
   renderBtnUserProfTabDesc();
   setUserNameTabDesc(displayName);
+  console.log('renderHeaderTabDescLogin');
 };
 
 export function renderHeaderTabDescLogout() {
