@@ -164,7 +164,13 @@ input:checked + .slider:before {
     #4f2ee8 18.03%,
     #ffffff 100%
   );
-  transition: var(--transition);
+
+  transform: translateY(-100%);
+  transition: transform var(--transition);
+}
+
+.mob-menu-start.is-active-h {
+  transform: translateY(0%);
 }
 
 .menu-user-bar {
@@ -188,6 +194,7 @@ input:checked + .slider:before {
   fill: var(--accent-color);
   margin-right: 9px;
 }
+
 .menu-btn-start-tab,
 .menu-btn-start {
   display: flex;
