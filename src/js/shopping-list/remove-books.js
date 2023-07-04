@@ -10,6 +10,7 @@ import {
   btnListPaginationEl,
   countPerPage,
   renderBtnList,
+  addClassListToCurrentBtn,
 } from './pagination-btn';
 
 export default function addEventListenerToTrash() {
@@ -36,6 +37,7 @@ function OnClickRemoveBookFromListandStorage(e) {
   ) {
     setCurrentPage(currentPage - 1);
     renderBtnList(data);
+    addClassListToCurrentBtn(currentPage);
     renderShoppingList(data, currentPage);
   } else {
     if (booksCount === 0) {
@@ -43,6 +45,7 @@ function OnClickRemoveBookFromListandStorage(e) {
       localStorage.removeItem(shoppingListKey);
     } else {
       renderBtnList(data);
+      addClassListToCurrentBtn(currentPage);
       renderShoppingList(data, currentPage);
     }
   }

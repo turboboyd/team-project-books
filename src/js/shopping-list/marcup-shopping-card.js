@@ -1,4 +1,3 @@
-
 import amazon from '../../images/stores/amazon.png';
 import amazon2x from '../../images/stores/amazon@2x.png';
 import bookStore from '../../images/stores/book.png';
@@ -33,7 +32,7 @@ export default function markupBookCard(books) {
 
         <ul class="shop-list">
           <li>
-            <a class="shop-link" href="${book.amazon_product_url}" target="_blank">
+            <a class="shop-link" href="${book.buy_links[0].url}" target="_blank">
               <img
                 class="shop-img amazon icon-shop-1"
                 srcset="${amazon} 1x, ${amazon2x} 2x"
