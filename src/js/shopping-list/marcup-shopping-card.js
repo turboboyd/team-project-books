@@ -18,14 +18,14 @@ export default function markupBookCard(books) {
         </svg>
       </button>
 
-      <p class="shopping-book-categories">${book.categoris}</p>
+      <p class="shopping-book-categories">${book.list_name}</p>
       <p class="shopping-book-description text">${book.description}</p>
       <div class="shopping-wrapper">
         <p class="shopping-book-author">${book.author}</p>
 
         <ul class="shop-list">
           <li>
-            <a class="shop-link" href="${book.amazon_product_url}">
+            <a class="shop-link" href="${book.amazon_product_url}" target="_blank">
               <img
                 class="shop-img"
                 src="./images/amazon.png"
@@ -36,7 +36,7 @@ export default function markupBookCard(books) {
             </a>
           </li>
           <li>
-            <a class="shop-link" href="#">
+            <a class="shop-link" href="${book.buy_links[1].url}" target="_blank">
               <img
                 class="shop-img"
                 src="./images/books-io.png"
@@ -47,7 +47,7 @@ export default function markupBookCard(books) {
             </a>
           </li>
           <li>
-            <a class="shop-link" href="#">
+            <a class="shop-link" href="${book.buy_links[4].url}" target="_blank">
               <img
                 class="shop-img"
                 src="./images/bookshop.png"

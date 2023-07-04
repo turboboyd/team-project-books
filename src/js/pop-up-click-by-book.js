@@ -21,10 +21,12 @@ let currentBookData = null;
 
 function openPopUp() {
   modalPopUp.classList.remove('is-hidden');
+  document.body.classList.add('modal-open');
 }
 
 function closePopUp() {
   modalPopUp.classList.add('is-hidden');
+  document.body.classList.remove('modal-open');
   clearMarkup(modalContentEl);
 }
 
