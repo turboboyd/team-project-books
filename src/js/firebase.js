@@ -20,6 +20,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+
+
 const authUser = (userName, userEmail, userPassword) => {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
     .then((userCredential) => {
@@ -32,8 +34,8 @@ const authUser = (userName, userEmail, userPassword) => {
         
         onModalClose();
         signupForm.reset();
-        // userVerification();
-        // userVerificationTabDesk();
+        userVerification();
+  userVerificationTabDesk();
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -53,8 +55,8 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
 
       onModalClose();
       loginForm.reset();
-      // userVerification();
-      // userVerificationTabDesk();
+      userVerification();
+      userVerificationTabDesk();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -86,28 +88,35 @@ function onLogoutUser () {
 });
 }
 
+setTimeout(() => {
+  userVerification();
+  userVerificationTabDesk();
+}, 1000);
+
 export function userVerification() {
-  const user = auth.currentUser;
-  if (user !== null) {
-    const displayName = user.displayName;
+  const userActive = auth.currentUser;
+  console.log(userActive);
+  if (userActive !== null) {
+    const displayName = userActive.displayName;
     renderUserLogin(displayName);
   } else {
     renderUserNotLogin();
   }
 }
 
-function userVerificationTabDesk() {
-    const user = auth.currentUser;
-  if (user !== null) {
-    const displayName = user.displayName;
-    return renderHeaderTabDescLogin(displayName);
+export function userVerificationTabDesk() {
+  const userActive = auth.currentUser;
+  console.log(userActive);
+  if (userActive !== null) {
+    const displayName = userActive.displayName;
+    renderHeaderTabDescLogin(displayName);
   } else {
     renderHeaderTabDescLogout();
   }
 }
 
 signupForm.addEventListener('submit', addUserAuth);
-loginForm.addEventListener('submit', onLoginUser)
+loginForm.addEventListener('submit', onLoginUser);
 btnOutYes.addEventListener('click', onLogoutUser)
 
 

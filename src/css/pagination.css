@@ -1,11 +1,21 @@
+.pagination-wrap {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.nav-pagination-btn {
+  display: flex;
+  gap: 10px;
+}
 .pagination-list {
   display: flex;
   gap: 10px;
-  justify-content: center;
-  padding: 20px;
 }
 
-.pagination-btn {
+.pagination-btn,
+.pagination-btn-nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +29,24 @@
   font-weight: 700;
   line-height: 1.22;
 }
+.pagination-btn-left > .pagination-btn-nav {
+  background-color: var(--arrow-right-color);
+}
+.pagination-btn-right .pagination-btn-nav {
+  background-color: var(--accent-header-color);
+}
 
+.pagination-btn-left .icon-arrow {
+  transform: rotate(270deg);
+  stroke: var(--second-text-color);
+  fill: var(--second-text-color);
+}
+
+.pagination-btn-right .icon-arrow {
+  transform: rotate(90deg);
+  stroke: var(--arrow-right-color);
+  fill: var(--arrow-right-color);
+}
 .current-btn-pagination {
   background-color: var(--title-color);
   color: var(--header-white-color);
