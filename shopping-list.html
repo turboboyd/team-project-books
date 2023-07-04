@@ -2,44 +2,19 @@
 <html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>Bookshelf</title>
-    <!-- тут буде посилання на фавікон -->
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href="data:image/png;base64,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"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACslBMVEUAAACm71mm71mm71mm71mm71mm71mm71mm71mm71mm71mm71mm71mm71ml7lmm71mm71mm71mm71mm71mm71mm71mm71mm71mm71mm71mm71mm71mp81qn8Vmm71mm8Fmm71ml7lim71mm71mm71ml7lim71mm71ml7lim71mm71mm71mm71mm71mm71mm71mm71mm71ml7lim8Fmo8lqn8FmX2VF4rUB5r0FypD1xpD12qj+T006c4VQ1TBwDBAEFBwICAwEgLhGGwkin8Vmo81pwojwEBgIAAABJaieb31MvRBlDYCRdhjIBAgAFCAMJDQQAAQBmlDel7llLbCgSGgpxojyEvkaDvUaFv0dAXSIQFwiLyUqj61ei6lc0TBw7VR+i6VczShsvRRmNy0tQdCuc4VOIxEkPFggaJg4+WiE+WSE/WiE0SxsHCgNZgTCq9ltunztypT1GZSUKDgWBukVEYiRplzip81prmjkZJA1IaCZIZyZBXiMLEAYkNBOd4lSY3FEdKg8KDwWFwEdWfC5nlTer91yp9Fur9luQ0E0SGglMbimp9Fp6sEEoOhWe5FQ/XCIGCQNfijN8s0J8skKq9FtSdiyR0k4XIgwDBQKW2FCe5FUnOBUEBwJ7skKm7llbhDE/WyKEv0cJDgUeKxCY3FIWIAxqmTlFZCWOzEwySBtwoTxeiDIzSRuNzEwQGAkVHguS0k6e41QrPhdpmDg5Uh6EvkdkkDWV11AjMhInORUNEweJxklUei2q9Vt1qT4tQRig5lV/tkQUHApXfS4hMBIiMhIjMxMySBqb4FN/uERtnDo7ViCd41SAuUUiMRKQz00XIQwUHgtxoz2U1k+Y21GY2lGX2lGPz01lkjYIDAQVHwsaJQ4RGQmDvEan8Vqk7FgeLBBxozyV1k////8VR97lAAAAMXRSTlMAACSG1ff41oknAk3R/tRSTunrUyXQ1CmFjdv799bc/pAn09csUu5YU9hXAwH83ZEr1yutngAAAAFiS0dE5VhlC78AAAAHdElNRQfnBwQQNwPv/5gjAAACWUlEQVQ4y2NgYGRkYmZhNcQAbOwcnIyMDAyMXNw8vEC+kbEJGjDl5ePnYmRgFBA0BMubmVtYIgEraxtjQyFhRgYRUYiJtnb2Do7IwN7J2cVQTJxBghdsgKubuwc68DQ2NJRkEAPrN/byxpD38AFKSDFA3O/i6wcU8Q+AA6B5gUEmhkbSDGD5YJcQoHxoWHgEFERGeXhExxjFGhpBFBjGxQMVJBjCvZiY5OGRHJeSmmYMVmBkkp4BVJCZlQ0FObl5Hh75BYV5Ra4QExKLMZ1YUmpS5lFeAVZgUukPFKkqrq6BgOraOg+P+obGpuYWEwawDa1Aeb+29g4o6Ozq9vDo6e1z759gCHHDRKCCSZOn9EHB1BA/Dwfraake011ACoxMZ8wEWTrLAQ6AgZI5e87cefNNFoBMMF0YiOnGRaaLlyxdZgwywSVlOaa834pOX4+VQN1ABSZT/DEVdK+KXe2xxsQIqMDIZC2mvMe62PUbNm4yBZuweQsWBb6dWz22xYKsMDJZg8WGuu2mWR47gDYYMpju3IXFgN1zdlbt2esCMsEkfAkWBfv2H3A8eMgQrOBwHqb8kb0mIR5HTcAKKso9So7tQgbHT5y0NDx1PO80RIHMGY+zmzefQwYTYk06zudd8AKmWUNpBtmLly5fuXoNGVy/ceNmjkcISN5QjoFD/tZthzt3UUFmaOC9+w+CgQoUGBSVHlY+muURiAI87Jseg5OasgoDo6qQy+w+S1RgZf7E1BAYSmrqwLzJpcGOkW+BOdcQaIGmljYoe+uIS8rpYmZ/XT19Ax1GBgCFh1Ikfa+GRgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wNy0wNFQxNjo1NTowMyswMDowMDCXT04AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDctMDRUMTY6NTU6MDMrMDA6MDBByvfyAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="16x16"
-  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABgFBMVEWm71mm71mm71ml7lmm71mn8Vmm71ml7lim71mm71mm71mm71mm71mm71ml7lh7sUKU1U+m71mp81qNy0ul7lim71mk7Fip9Fqn8Vql7lim71mm71mn8Fmm8Fmm71ml7lin8Vl/t0RDYSQ/WyI/WyE/WiFAXSJ1qT+d4lQvRBkAAAAtQRih6Fam7lmo8lp4rkAFBwIKDgVCXyNLbShLbChMbikzShui6lel7llZgC8XIQxlkjZsmzlrmzltnToCBAFunjtkkDWKxkmPz00cKA8eLBAuQxkuQhgpOxYVHwuEvkeAuESo81pxozwCAwEHCgODvUaBu0VrmjkIDAQ5Uh55rkEwRRmb31Ok7FgBAQAMEQYLEQYICwRVey5OcSqNy0sRGQkOFAeBukV3qz+p81orPheW2VAvQxlXfi9hjDRCYCOFwEcOFQc7VR8eKxBgizNgijN7skKPzUw4UR5GZCVYfy9Yfi81TBxAXCKj61dPcio9VyA9WCA8VyCR0U7////6F2VlAAAAHHRSTlMGYtn9/tpkBu7vZdjb/P792dxk7/BoBmXc3mcH3Oc03gAAAAFiS0dEf0i/ceUAAAAHdElNRQfnBwQQNwKY+Ki1AAAA5ElEQVQY02NgYGRilpGVkwcBFlY2dgZGDnkFRSVlFSBQVVPn5GLglpPT0NSCAm0dHgZeXT19A0MjYxMTUzMtJXM+BjkLPUstK2sbW1s7NXsHRycGORlnFy1XN3d3dw8DTy9NbwZ5H18/f+uAwMCAoOCQ0LBwBrkIJa1Iw6jo6KgYLcfYOAUGhfgEmB2JSWbJPgwpDvZwSxVT02QYwtNhfK2MzCx5OYbsHLgO79wgPXkG/jzL/AIwKIz3KJJhYRAoLinNAIOy8opKOUEGIeGq6howqI2rkxERZRATl5CHAgUZSSlpAKHlOdCxLxfiAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTA3LTA0VDE2OjU1OjAyKzAwOjAwluBE+gAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0wNy0wNFQxNjo1NTowMiswMDowMOe9/EYAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII="
-/>
-<link rel="manifest" href="/site.webmanifest" />
-<link
-  rel="mask-icon"
-  href="/team-project-books/assets/safari-pinned-tab-cc61eae0.svg"
-  color="#a6ef59"
-/>
-<meta name="msapplication-TileColor" content="#a6ef59" />
-<meta name="theme-color" content="#a6ef59" />
-
+    <title>Shopping List</title>
     
     <script type="module" crossorigin src="/team-project-books/assets/shopping-list-5ae73845.js"></script>
     <link rel="modulepreload" crossorigin href="/team-project-books/assets/support-134d602a.js">
     <link rel="stylesheet" href="/team-project-books/assets/support-e64bfbdf.css">
   </head>
+
   <body class="page">
+    <!-- Хедер -->
     <header class="header">
       <div class="container header-container">
   <nav class="header-nav">
@@ -53,19 +28,18 @@
     </a>
     <ul class="header-list-nav is-hidden">
       <li>
-        <a class="header-link-nav" href="./index.html">HOME</a>
+        <a class="header-link-nav current" href="./index.html">HOME</a>
       </li>
       <li>
-        <a class="header-link-nav current" href="./shopping-list.html"
+        <a class="header-link-nav" href="./shopping-list.html"
           >SHOPPING LIST<svg class="header-link-icon" width="20" height="20">
-            <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#bag"></use></svg
-        ></a>
+            <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#bag"></use></svg></a>
       </li>
     </ul>
   </nav>
   <div class="header-buttons">
     <label id="switch" class="switch">
-      <input type="checkbox" id="slider" />
+      <input type="checkbox" id="slider" aria-labelledby="switch-label" />
       <span class="slider round"></span>
     </label>
     <button class="burger" type="button">
@@ -294,7 +268,7 @@
           <!-- modal auth -->
           <div data-modal class="backdrop-auth is-hidden">
   <div class="modal-auth">
-    <button data-modal-close type="button" class="btn__close">
+    <button data-modal-close aria-label="close modal" type="button" class="btn__close">
       <svg class="btn__close-modal">
         <use href="/team-project-books/assets/sprite-2a762604.svg#icon-close"></use>
       </svg>
