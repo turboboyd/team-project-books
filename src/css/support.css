@@ -43,10 +43,16 @@
   stroke: var(--accent-color);
 }
 
-.icon-up {
-  transform: rotate(180deg);
-
+.rotate-animation {
+  transform: rotate(0deg);
+  transition: transform 500ms linear;
 }
+
+.rotate-animation.active {
+  transform: rotate(360deg);
+}
+
+
 
 .swiper {
   height: 188px;
