@@ -3,7 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { loginForm, signupForm, authNameEl, authEmailEl, authPasswordEl, loginEmailEl, loginPasswordEl } from './modal-auth';
 import { btnOutYes, removeHiddenModalOut } from './modal-auth-out';
-import { renderUserLogin, renderUserNotLogin, renderHeaderTabDescLogin, renderHeaderTabDescLogout } from './header';
+import {
+  renderUserLogin,
+  renderUserNotLogin,
+  renderHeaderTabDescLogin,
+  renderHeaderTabDescLogout,
+  renderBtnSignupTabDesc,
+} from './header';
 import { onModalClose } from './modal-auth'; 
 
 
@@ -35,7 +41,7 @@ const authUser = (userName, userEmail, userPassword) => {
         onModalClose();
         signupForm.reset();
         userVerification();
-  userVerificationTabDesk();
+        userVerificationTabDesk();
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -83,6 +89,7 @@ function onLoginUser(e) {
 function onLogoutUser () {
   signOut(auth).then(() => {
     removeHiddenModalOut();
+    renderBtnSignupTabDesc();
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
@@ -91,7 +98,7 @@ function onLogoutUser () {
 setTimeout(() => {
   userVerification();
   userVerificationTabDesk();
-}, 1000);
+}, 2000);
 
 export function userVerification() {
   const userActive = auth.currentUser;
