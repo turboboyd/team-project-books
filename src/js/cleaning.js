@@ -1,9 +1,4 @@
 export default class Cleaning {
-  
-  cleaningBooks() {
-    const containerContent = document.querySelector('.books-render-js');
-    containerContent.innerHTML = '';
-  }
 
   cleaningTitle() {
     const homeContainerEl = document.querySelector('.home-container');
@@ -13,4 +8,8 @@ export default class Cleaning {
       titleElement.parentNode.removeChild(titleElement);
     }
   }
+
+   clearElement(element) {
+  element.innerHTML = '';
+}
 }

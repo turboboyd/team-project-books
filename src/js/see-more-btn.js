@@ -1,6 +1,6 @@
 import {
   isActiveCategoryBtn,
-  generateCategory,
+  generatePageFromCategories,
   filterItemArray,
 } from './filter';
 
@@ -12,7 +12,7 @@ containerContent.addEventListener('click', onClickSeeMoreBtn);
 function onClickSeeMoreBtn(event) {
   if (event.target.classList.contains('see-more-btn')) {
     const listName = event.target.dataset.active;
-    generateCategory(listName);
+    generatePageFromCategories(listName);
     searchCategoryName(listName);
     let elementFound = searchCategoryName(listName);
     scrollToElement(elementFound);
