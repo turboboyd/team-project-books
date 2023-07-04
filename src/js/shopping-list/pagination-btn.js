@@ -3,33 +3,35 @@ import {
   setCurrentPage,
   shoppingListKey,
   renderShoppingList,
+  OnClickrenderShoppingList,
 } from './pagination';
 import parseStorage from './parse-storage';
-
+import { arrowLeftMarcup, arrowRightMarcup } from './arrow-marcup';
 export const btnListPaginationEl = document.querySelector('.pagination-list');
 export let countPerPage = 3;
 if (isMobile()) {
   countPerPage = 4;
 }
 
-const btnGoToFirstPage = document.querySelector(
-  'button[data-go-to="first-page"]'
-);
-const btnGoToPreviosPage = document.querySelector(
-  'button[data-go-to="previos-page"]'
-);
+function addEventListenerToArrowBtn() {
+  const btnGoToFirstPage = document.querySelector(
+    'button[data-go-to="first-page"]'
+  );
+  const btnGoToPreviosPage = document.querySelector(
+    'button[data-go-to="previos-page"]'
+  );
 
-const btnGoToNextPage = document.querySelector(
-  'button[data-go-to="next-page"]'
-);
-const btnGoToLastPage = document.querySelector(
-  'button[data-go-to="last-page"]'
-);
-
-btnGoToFirstPage.addEventListener('click', OnClickGoToFirstPage);
-btnGoToPreviosPage.addEventListener('click', OnClickGoPreviosPage);
-btnGoToNextPage.addEventListener('click', OnClickGoToNextPage);
-btnGoToLastPage.addEventListener('click', OnClickGoToLastPage);
+  const btnGoToNextPage = document.querySelector(
+    'button[data-go-to="next-page"]'
+  );
+  const btnGoToLastPage = document.querySelector(
+    'button[data-go-to="last-page"]'
+  );
+  btnGoToFirstPage.addEventListener('click', OnClickGoToFirstPage);
+  btnGoToPreviosPage.addEventListener('click', OnClickGoPreviosPage);
+  btnGoToNextPage.addEventListener('click', OnClickGoToNextPage);
+  btnGoToLastPage.addEventListener('click', OnClickGoToLastPage);
+}
 
 export function isMobile() {
   const screenWidth = window.innerWidth;
@@ -59,12 +61,42 @@ export function addClassListToCurrentBtn(page) {
 export function renderBtnList(data, page) {
   const pageCount = Math.ceil(data.length / countPerPage);
   const arrBtnPage = [];
+  let leftContainer = document.querySelector('.pagination-btn-left');
+  let rightContainer = document.querySelector('.pagination-btn-right');
   for (let i = 1; i <= pageCount; i += 1) {
     const btnEl = `<li class="pagination-item"><button type="button" class="pagination-btn">${i}</button></li>`;
     arrBtnPage.push(btnEl);
   }
   const marcupBtn = arrBtnPage.join('');
-  btnListPaginationEl.innerHTML = marcupBtn;
+  if (pageCount === 1) {
+    if (leftContainer && rightContainer) {
+      leftContainer.remove();
+      rightContainer.remove();
+    }
+    btnListPaginationEl.innerHTML = marcupBtn;
+    btnListPaginationEl.addEventListener('click', OnClickrenderShoppingList);
+  } else {
+    const paginationWrapEl = document.querySelector('.pagination-wrap');
+
+    if (!leftContainer && !rightContainer) {
+      leftContainer = document.createElement('ul');
+      leftContainer.innerHTML = arrowLeftMarcup();
+      paginationWrapEl.prepend(leftContainer);
+      leftContainer.classList.add('nav-pagination-btn', 'pagination-btn-left');
+
+      rightContainer = document.createElement('ul');
+      rightContainer.innerHTML = arrowRightMarcup();
+      paginationWrapEl.append(rightContainer);
+      rightContainer.classList.add(
+        'nav-pagination-btn',
+        'pagination-btn-right'
+      );
+    }
+
+    btnListPaginationEl.innerHTML = marcupBtn;
+    btnListPaginationEl.addEventListener('click', OnClickrenderShoppingList);
+    addEventListenerToArrowBtn();
+  }
 }
 
 function OnClickGoToFirstPage() {

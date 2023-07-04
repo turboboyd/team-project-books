@@ -46,7 +46,6 @@ export function renderShoppingList(arrOfBooks, page) {
     renderOnePage(page, arrOfBooks);
   } else {
     renderOnePage(page, arrOfBooks);
-    btnListPaginationEl.addEventListener('click', OnClickrenderShoppingList);
   }
 }
 
@@ -61,7 +60,7 @@ export function renderOnePage(page, arrBooks) {
   addEventListenerToTrash();
 }
 
-function OnClickrenderShoppingList(e) {
+export function OnClickrenderShoppingList(e) {
   rewriteValuecurrentPageOnClick(e);
   renderShoppingList(parseStorage(shoppingListKey), currentPage);
   addClassListToCurrentBtn(currentPage);
