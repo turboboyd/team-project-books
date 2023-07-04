@@ -1,7 +1,12 @@
 const loaderEl = document.querySelector('.loader-wrapper');
 
 export function showLoader() {
-  loaderEl.classList.remove('hidden');
+  return new Promise(resolve => {
+    loaderEl.classList.remove('hidden');
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+  });
 }
 
 export function hideLoader() {

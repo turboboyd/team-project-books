@@ -1,6 +1,5 @@
 .book {
-  --loader-book-color: #111111;
-  --loader-book-background: #4f2ee8;
+  --loader-book-background: #9a9a9a;
   --duration: 6.8s;
   width: 32px;
   height: 12px;
@@ -769,13 +768,13 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 320px;
-  min-width: 320px;
+  height: 320px;
+  width: 320px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--loader-book-background);
+  background-color: var(--loader-book-background);
 }
 .loader-wrapper .dribbble {
   position: fixed;
