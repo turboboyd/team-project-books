@@ -3,6 +3,12 @@ import { showLoader, hideLoader } from './loader';
 // import createMarkup from './create-markup-book';
 import Cleaning from './cleaning';
 import localstorageMethods from './localstorage-method';
+import amazon from '../images/stores/amazon.png';
+import amazon2x from '../images/stores/amazon@2x.png';
+import bookStore from '../images/stores/book.png';
+import bookStore2x from '../images/stores/book@2x.png';
+import bookShop from '../images/stores/book-shop.png';
+import bookShop2x from '../images/stores/book-shop@2x.png';
 
 const bookApi = new BookAPI();
 const clearMarkup = new Cleaning();
@@ -43,7 +49,14 @@ function handleKeyDown(event) {
   }
 }
 
-function createMarkup({_id ,book_image, title, author, description, buy_links}) {
+function createMarkup({
+  _id,
+  book_image,
+  title,
+  author,
+  description,
+  buy_links,
+}) {
   return `<img class="modal-img" src="${book_image}" alt="book cover" />
     <div class='modal-book-attributes'>
       <p class="modal-book-title">${title}</p>
@@ -52,13 +65,25 @@ function createMarkup({_id ,book_image, title, author, description, buy_links}) 
       <p class="card-book-id visually-hidden">${_id}</p>
       <div class="modal-shops">
         <a class="modal-shop-link" href="${buy_links[0].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Amazon link">
-          <img class="modal-shop-img shopping-shopimg amazon" src="../images/amazon.png" alt="Amazon link" aria-label="Buy this book on Amazon" />
+          <img 
+          class="modal-shop-img shopping-shopimg amazon" 
+           srcset="${amazon} 1x, ${amazon2x} 2x"
+                src="${amazon}";
+                alt="Amazon shop"
+               
+          aria-label="Buy this book on Amazon" />
         </a>
         <a class="modal-shop-link" href="${buy_links[1].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="Apple Books link">
-          <img class="modal-shop-img shopping-shopimg apple" src="../images/books-io.png" alt="Apple Books link"  aria-label="Buy this book on Apple Books"/>
+          <img class="modal-shop-img shopping-shopimg apple"     srcset="${bookStore} 1x, ${bookStore2x} 2x"
+                src="${bookStore}"
+                alt="Book shop"
+                  aria-label="Buy this book on Apple Books"/>
         </a>
         <a class="modal-shop-link" href="${buy_links[4].url}" target="_blank" rel="noopener noreferrer nofollow" aria-label="BookShop link">
-          <img class="modal-shop-img shopping-shopimg book-shop" src="../images/bookshop.png" alt="BookShop link" aria-label="Buy this book on BookShop"/>
+          <img class="modal-shop-img shopping-shopimg book-shop"  srcset=" ${bookShop} 1x, ${bookShop2x} 2x"
+                src="${bookShop2x}"
+                alt="Book shop"
+                aria-label="Buy this book on BookShop"/>
         </a>
       </div>
     </div>`;
@@ -96,12 +121,14 @@ async function handleBookClick(event) {
 
   if (bookId) {
     try {
-      showLoader();
+      await showLoader();
       const bookData = await bookApi.getBookInfo(bookId);
 
       currentBookData = bookData;
 
       renderMarkup(modalContentEl, createMarkup(bookData));
+
+      hideLoader();
       openPopUp();
 
       const shoppingList = shopListMethods.getShoppingList();
@@ -110,8 +137,6 @@ async function handleBookClick(event) {
       } else {
         modalPopUpBtn.textContent = 'Add to shopping list';
       }
-
-      hideLoader();
     } catch (error) {
       console.error('Error handling book click:', error);
     }
@@ -141,3 +166,11 @@ closeModalPopUpBtn.addEventListener('click', () => {
     addChangeTextModalBtn();
   }
 });
+
+function elementIsDisableb(element) {
+  element.disabled = true;
+}
+
+function elementIsActive(element) {
+  element.disabled = false;
+}

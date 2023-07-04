@@ -1,6 +1,5 @@
 .book {
-  --loader-book-color: #111111;
-  --loader-book-background: #4f2ee8;
+  --loader-book-background: #9a9a9a;
   --duration: 6.8s;
   width: 32px;
   height: 12px;

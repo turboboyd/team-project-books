@@ -19,6 +19,7 @@
   --second-text-color: #b4afaf;
   --accent-color-filter: #4f2ee8;
   --amazon-image-filter: grayscale(100%);
+  --loader-book-color: #111111;
 }
 
 /* Стилі для темної теми */
@@ -37,5 +38,6 @@
   --border-color: rgba(79, 46, 232, 0.4);
   --second-text-color: #b4afaf;
   --accent-color-filter: #eac645;
-  --amazon-image-filter: grayscale(100%)invert(1);
+  --amazon-image-filter: grayscale(100%) invert(1);
+  --loader-book-color: #ffffff;
 }
