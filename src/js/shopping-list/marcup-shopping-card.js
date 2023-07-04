@@ -12,7 +12,7 @@ export default function markupBookCard(books) {
     <img
       class="shopping-book-cover"
       src="${book.book_image}"
-      alt="book cover"
+      alt="${book.title}"
       width="100"
       height="142"
       loading="lazy"
