@@ -1,8 +1,12 @@
 import BookAPI from './book-api';
 import { showLoader, hideLoader } from './loader';
 import createMarkup from './create-markup-book';
+import Cleaning from './cleaning';
+import localstorageMethods from './localstorage-method';
 
 const bookApi = new BookAPI();
+const clearMarkup = new Cleaning();
+const shopListMethods = new localstorageMethods();
 const modalPopUp = document.querySelector('[data-pop-up]');
 const modalContentEl = modalPopUp.querySelector('.modal-pop-up-content');
 const closeModalPopUpBtn = modalPopUp.querySelector('[data-pop-up-close]');
@@ -14,9 +18,6 @@ bookGrid.addEventListener('click', handleBookClick);
 modalPopUp.addEventListener('click', handleModalBackdropClick);
 window.addEventListener('keydown', handleKeyDown);
 
-const API_ENDPOINT = 'https://books-backend.p.goit.global';
-const shoppingListKey = 'shoppingList';
-
 let currentBookData = null;
 
 function openPopUp() {
@@ -27,7 +28,7 @@ function openPopUp() {
 function closePopUp() {
   modalPopUp.classList.add('is-hidden');
   document.body.classList.remove('modal-open');
-  clearMarkup(modalContentEl);
+  clearMarkup.clearElement(modalContentEl);
 }
 
 function handleModalBackdropClick(event) {
@@ -46,32 +47,21 @@ function renderMarkup(element, markup) {
   element.innerHTML = markup;
 }
 
-function clearMarkup(element) {
-  element.innerHTML = '';
+function addChangeTextModalBtn() {
+  modalPopUpBtn.textContent = 'Add to shopping list';
+  messageTextEl.textContent = '';
+}
+
+function removeChangeTextModalBtn() {
+  modalPopUpBtn.textContent = 'Remove from the shopping list';
+  messageTextEl.textContent =
+    'Congratulations! You have successfully added the book to your shopping list';
 }
 
 function addToShoppingList(bookData) {
-  const shoppingList = getShoppingList();
+  const shoppingList = shopListMethods.getShoppingList();
   shoppingList.push(bookData);
-  saveShoppingList(shoppingList);
-}
-
-function removeFromShoppingList(bookId) {
-  const shoppingList = getShoppingList();
-  const index = shoppingList.findIndex(book => book._id === bookId);
-  if (index !== -1) {
-    shoppingList.splice(index, 1);
-    saveShoppingList(shoppingList);
-  }
-}
-
-function getShoppingList() {
-  const shoppingList = JSON.parse(localStorage.getItem(shoppingListKey)) || [];
-  return shoppingList;
-}
-
-function saveShoppingList(shoppingList) {
-  localStorage.setItem(shoppingListKey, JSON.stringify(shoppingList));
+  shopListMethods.saveShoppingList(shoppingList);
 }
 
 async function handleBookClick(event) {
@@ -80,21 +70,21 @@ async function handleBookClick(event) {
   if (!cardBook) {
     return;
   }
-  closeModalPopUpBtn.addEventListener('click', closePopUp);
 
   const bookId = cardBook.querySelector('.card-book-id').textContent;
+  closeModalPopUpBtn.addEventListener('click', closePopUp);
 
   if (bookId) {
     try {
       showLoader();
-      const bookData = await getBookData(bookId);
+      const bookData = await bookApi.getBookInfo(bookId);
 
       currentBookData = bookData;
 
       renderMarkup(modalContentEl, createMarkup(bookData));
       openPopUp();
 
-      const shoppingList = getShoppingList();
+      const shoppingList = shopListMethods.getShoppingList();
       if (shoppingList.some(book => book._id === bookId)) {
         modalPopUpBtn.textContent = 'Remove from the shopping list';
       } else {
@@ -108,44 +98,26 @@ async function handleBookClick(event) {
   }
 }
 
-async function getBookData(bookId) {
-  const url = `${API_ENDPOINT}/books/${bookId}`;
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.error) {
-    throw new Error(data.error);
-  }
-
-  return data;
-}
-
 modalPopUpBtn.addEventListener('click', () => {
   const bookId = modalContentEl.querySelector('.card-book-id').textContent;
-  const shoppingList = getShoppingList();
+  const shoppingList = shopListMethods.getShoppingList();
 
   if (shoppingList.some(book => book._id === bookId)) {
-    removeFromShoppingList(bookId);
-    modalPopUpBtn.textContent = 'Add to shopping list';
-    messageTextEl.textContent = '';
+    shopListMethods.removeFromShoppingList(bookId);
+    addChangeTextModalBtn();
   } else {
     addToShoppingList(currentBookData);
-    modalPopUpBtn.textContent = 'Remove from the shopping list';
-    messageTextEl.textContent =
-      'Congratulations! You have successfully added the book to your shopping list';
+    removeChangeTextModalBtn();
   }
 });
 
 closeModalPopUpBtn.addEventListener('click', () => {
   const bookId = modalContentEl.querySelector('.card-book-id').textContent;
-  const shoppingList = getShoppingList();
+  const shoppingList = shopListMethods.getShoppingList();
 
   if (shoppingList.some(book => book._id === bookId)) {
-    modalPopUpBtn.textContent = 'Remove from the shopping list';
-    messageTextEl.textContent =
-      'Congratulations! You have successfully added the book to your shopping list';
+    removeChangeTextModalBtn();
   } else {
-    modalPopUpBtn.textContent = 'Add to shopping list';
-    messageTextEl.textContent = '';
+    addChangeTextModalBtn();
   }
 });

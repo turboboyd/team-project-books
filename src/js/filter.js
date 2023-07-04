@@ -15,6 +15,14 @@ const categoriesListEl = document.querySelector('.categories_list');
 let activeCategoty = null;
 export let filterItemArray = [];
 
+export function isActiveCategoryBtn(filterItem) {
+  if (activeCategoty) {
+    activeCategoty.classList.remove('filter-item-is-Active');
+  }
+  filterItem.classList.add('filter-item-is-Active');
+  activeCategoty = filterItem;
+}
+
 export default function renderCategories(categories) {
   markupCategorie({ list_name: 'All categories' });
   categories
@@ -22,7 +30,7 @@ export default function renderCategories(categories) {
     .map(categorie => markupCategorie(categorie));
 }
 
-export function generateCategory(name) {
+export function generatePageFromCategories(name) {
   homeContainerEl.classList.add('hidden');
   showLoader();
   bookApi
@@ -42,13 +50,13 @@ export function generateCategory(name) {
     });
 }
 
-function generateBestSellersCategories() {
+function generatePageFromBestSellersCategory() {
   homeContainerEl.classList.add('hidden');
   showLoader();
   bookApi
     .getTopBooks()
     .then(data => {
-      cleaning.cleaningBooks();
+      cleaning.clearElement(containerContent);
       renderWrapCategories(data);
       renderMainTitle('Best Seller Books');
       hideLoader();
@@ -64,7 +72,7 @@ function generateBestSellersCategories() {
 }
 
 function renderBooks(books) {
-  cleaning.cleaningBooks();
+  cleaning.clearElement(containerContent);
   const markup = books.map(book => createMarkupBook(book)).join('');
   containerContent.insertAdjacentHTML('beforeend', markup);
 }
@@ -80,6 +88,15 @@ function renderMainTitle(name) {
   homeContainerEl.insertAdjacentHTML('afterbegin', markup);
 }
 
+function onClickCategory(name, filterItem) {
+  isActiveCategoryBtn(filterItem);
+  if (name === 'All categories') {
+    generatePageFromBestSellersCategory();
+  } else {
+    generatePageFromCategories(name);
+  }
+}
+
 function markupCategorie({ list_name }) {
   const name = list_name;
   const markup = `<li class="filter-item ${
@@ -92,55 +109,9 @@ function markupCategorie({ list_name }) {
   filterItemArray.push(filterItem);
 
   filterItem.addEventListener('click', () => {
-    isActiveCategoryBtn(filterItem);
-    if (name === 'All categories') {
-      generateBestSellersCategories();
-    } else {
-      generateCategory(name);
-    }
+    onClickCategory(name, filterItem);
   });
 
   categorieEl.appendChild(element.firstChild);
   activeCategoty = categoriesListEl.firstElementChild;
 }
-
-export function isActiveCategoryBtn(filterItem) {
-  if (activeCategoty) {
-    activeCategoty.classList.remove('filter-item-is-Active');
-  }
-  filterItem.classList.add('filter-item-is-Active');
-  activeCategoty = filterItem;
-}
-
-// function onClickSeeMoreBtn(event) {
-//   if (event.target.classList.contains('see-more-btn')) {
-//     const listName = event.target.dataset.active;
-//     generateCategory(listName);
-//     searchCategoryName(listName);
-//     let elementFound = searchCategoryName(listName);
-//     // scrollToElement(elementFound);
-//     scrollToMainTitle();
-//   }
-// }
-
-// containerContent.addEventListener('click', onClickSeeMoreBtn);
-
-// function searchCategoryName(list_name) {
-//   let foundElement = null;
-//   filterItemArray.forEach(element => {
-//     if (list_name === element.dataset.active) {
-//       isActiveCategoryBtn(element);
-//       foundElement = element;
-//       return;
-//     }
-//   });
-//   return foundElement;
-// }
-
-// function scrollToElement(elementToScroll) {
-//   elementToScroll.scrollIntoView({ block: 'center', behavior: 'smooth' });
-// }
-
-//  function scrollToMainTitle() {
-//   window.scrollTo({ top: homeContainerEl.offsetTop, behavior: 'smooth' });
-// }
