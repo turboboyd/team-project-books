@@ -4,10 +4,7 @@ import Notiflix from 'notiflix';
 export default class BookAPI {
   #BASE_URL = 'https://books-backend.p.goit.global/books';
 
-  constructor() {
-    this.category = '';
-    this.id = '';
-  }
+  constructor() {}
 
   async getBooksCategoriesList() {
     try {
@@ -38,9 +35,9 @@ export default class BookAPI {
     }
   }
 
-  async getBookInfo() {
+  async getBookInfo(bookId) {
     try {
-      const respons = await axios.get(`${this.#BASE_URL}/${this.id}`);
+      const respons = await axios.get(`${this.#BASE_URL}/${bookId}`);
       return respons.data;
     } catch (error) {
       Notiflix.Notify.failure('Oops! Something went wrong! Please try again!');
