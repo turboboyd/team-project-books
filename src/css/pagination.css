@@ -2,6 +2,7 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+  padding: 20px;
 }
 
 .pagination-btn {
@@ -10,10 +11,16 @@
   align-items: center;
   width: 44px;
   height: 44px;
-  background-color: darkkhaki;
+  background-color: var(--header-white-color);
   border-radius: 50%;
+  color: var(--title-color);
+  border: 1px solid var(--title-color);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.22;
 }
 
 .current-btn-pagination {
-  background-color: dimgray;
+  background-color: var(--title-color);
+  color: var(--header-white-color);
 }
