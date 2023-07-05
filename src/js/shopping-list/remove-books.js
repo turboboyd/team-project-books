@@ -6,12 +6,7 @@ import {
   renderShoppingList,
   setCurrentPage,
 } from './pagination';
-import {
-  btnListPaginationEl,
-  countPerPage,
-  renderBtnList,
-  addClassListToCurrentBtn,
-} from './pagination-btn';
+import { countPerPage, renderBtnList, allPage } from './pagination-btn';
 
 export default function addEventListenerToTrash() {
   const trashEl = document.querySelectorAll('.shopping-trash');
@@ -23,10 +18,8 @@ export default function addEventListenerToTrash() {
 function OnClickRemoveBookFromListandStorage(e) {
   const target = e.target.closest('.shopping-trash');
   const id = target.dataset.id;
-  const countPage = btnListPaginationEl.childElementCount;
-
+  const countPage = allPage();
   removeFromShoppingList(id);
-
   const data = parseStorage(shoppingListKey);
   const booksCount = data.length;
 
@@ -36,16 +29,14 @@ function OnClickRemoveBookFromListandStorage(e) {
     booksCount % countPerPage === 0
   ) {
     setCurrentPage(currentPage - 1);
-    renderBtnList(data);
-    addClassListToCurrentBtn(currentPage);
+    renderBtnList();
     renderShoppingList(data, currentPage);
   } else {
     if (booksCount === 0) {
       listIsEmpty();
       localStorage.removeItem(shoppingListKey);
     } else {
-      renderBtnList(data);
-      addClassListToCurrentBtn(currentPage);
+      renderBtnList();
       renderShoppingList(data, currentPage);
     }
   }
