@@ -78,6 +78,8 @@
 
 .card-book img {
   width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
 }
 
 @media screen and (min-width: 768px) {
