@@ -14,11 +14,13 @@
     hsl(191deg 55% 78%) 101%,
     hsl(171deg 46% 86%) 100%
   );
+  transition: opacity var(--transition), visibility var(--transition);
 }
 
-.backdrop-auth.is-hidden {
+.backdrop-auth.is-hidden-auth {
+  visibility: hidden;
   opacity: 0;
-  transition: all var(--transition);
+  pointer-events: none;
 }
 
 .modal-auth {

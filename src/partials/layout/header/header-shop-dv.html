@@ -10,10 +10,10 @@
     </a>
     <ul class="header-list-nav is-hidden">
       <li>
-        <a class="header-link-nav current" href="./index.html">HOME</a>
+        <a class="header-link-nav" href="./index.html">HOME</a>
       </li>
       <li>
-        <a class="header-link-nav" href="./shopping-list.html"
+        <a class="header-link-nav current" href="./shopping-list.html"
           >SHOPPING LIST<svg class="header-link-icon" width="20" height="20">
             <use href="./images/svg-sprite-den.svg#bag"></use></svg
         ></a>
@@ -22,10 +22,10 @@
   </nav>
   <div class="header-buttons">
     <label id="switch" class="switch">
-      <!-- <input type="checkbox" id="slider" /> -->
-      <span class="slider round" id="slider"></span>
+      <input aria-label="slider" type="checkbox" id="slider" />
+      <span class="slider round"></span>
     </label>
-    <button class="burger" type="button">
+    <button  aria-label="menu" class="burger" type="button">
       <svg class="header-menu-icon-mob" width="28" height="28">
         <use href="./images/svg-sprite-den.svg#ham-menu-icon"></use>
       </svg>

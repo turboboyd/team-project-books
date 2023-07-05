@@ -26,9 +26,9 @@ closeModalBtn.addEventListener('click', onModalClose);
 document.addEventListener('keydown', onEscPress);
 
  export function onModalClose() {
-  modalElem.classList.add('is-hidden');
+  modalElem.classList.add('is-hidden-auth');
   document.removeEventListener('keydown', onEscPress);
-  closeMenu();
+  // closeMenu();
 }
 
 function onEscPress(e) {
