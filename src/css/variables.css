@@ -20,6 +20,10 @@
   --accent-color-filter: #4f2ee8;
   --amazon-image-filter: grayscale(100%);
   --loader-book-color: #111111;
+  --pagination-btn-text: #000;
+  --pagination-btn-bcg: #fff;
+  --pagination-btn-border: #111;
+  --pagination-arrow-left: #b4afaf;
 }
 
 /* Стилі для темної теми */
@@ -40,4 +44,8 @@
   --accent-color-filter: #eac645;
   --amazon-image-filter: grayscale(100%) invert(1);
   --loader-book-color: #ffffff;
+  --pagination-btn-text: #fff;
+  --pagination-btn-bcg: #202024;
+  --pagination-btn-border: #000;
+  --pagination-arrow-left: #fff;
 }
