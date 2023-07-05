@@ -282,6 +282,7 @@ form .btn input[type='submit'] {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  transition: all var(--transition);
 }
 @media screen and (min-width: 768px) {
   form .btn input[type='submit'] {
@@ -291,9 +292,9 @@ form .btn input[type='submit'] {
   }
 }
 
-form .btn input[type='submit']:hover,
-form .btn input[type='submit']:focus {
-  color: ;
+form .btn:hover input[type='submit'],
+form .btn:focus input[type='submit'] {
+  color: #ffffff;
 }
 
 form .btn {
