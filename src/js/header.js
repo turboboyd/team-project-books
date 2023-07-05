@@ -1,23 +1,40 @@
 import { modalElem } from './modal-auth';
 import { backdropOutEl } from './modal-auth-out';
-import { userVerification, userVerificationTabDesk } from './firebase'
+import { userVerification, userVerificationTabDesk } from './firebase';
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
 const menuStart = document.querySelector('.mob-menu-start');
 const bodyElement = document.querySelector('body');
 
-  const htmlUserNotLoginModal =
-    '<button data-modal-auth-open class="menu-btn-start" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
-  
-  const htmlUserLoginModal =
-    '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a class="mob-menu-link-nav current" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
-  
-  export function renderUserLogin(displayName) {
+const htmlUserNotLoginModal =
+  '<button data-modal-auth-open class="menu-btn-start" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
+
+const htmlUserLoginModal =
+  '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a id="home" class="mob-menu-link-nav" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a id="shop" class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
+
+export function renderUserLogin(displayName) {
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
   btnLogout.addEventListener('click', onBtnLogout);
   setUserName(displayName);
+
+  const linkPageHomeEl = document.querySelector('#home');
+  const linkPageShopEl = document.querySelector('#shop');
+  currentPage(linkPageHomeEl, linkPageShopEl);
+}
+
+function currentPage(linkPageHomeEl, linkPageShopEl) {
+  const currentPageUrl = window.location.href;
+  console.log(currentPageUrl);
+
+  if (currentPageUrl === 'http://localhost:5173/index.html') {
+    linkPageHomeEl.classList.add('current');
+  }
+
+  if (currentPageUrl === 'http://localhost:5173/shopping-list.html') {
+    linkPageShopEl.classList.add('current');
+  }
 }
 
 export function renderUserNotLogin() {
@@ -30,14 +47,16 @@ function openMenu() {
   burgerButton.classList.add('open');
   closeButton.classList.add('open');
   menuStart.classList.remove('is-hidden');
+  menuStart.classList.add('is-active-h');
   bodyElement.classList.add('no-scroll');
-  userVerification()
+  userVerification();
 }
 
 export function closeMenu() {
   burgerButton.classList.remove('open');
   closeButton.classList.remove('open');
-  menuStart.classList.add('is-hidden');
+  menuStart.classList.remove('is-active-h');
+  // menuStart.classList.add('is-hidden');
   bodyElement.classList.remove('no-scroll');
 }
 
@@ -48,7 +67,7 @@ function handleResize() {
 }
 
 function onOpenFormAuth() {
-  console.log('fsafaf')
+  console.log('fsafaf');
   modalElem.classList.remove('is-hidden');
 }
 
@@ -63,11 +82,11 @@ function setUserName(displayName) {
 }
 
 function setUserNameTabDesc(displayName) {
-  const userNameTabletDesktop = document.querySelector('.user-name-tablet-desktop');
-  userNameTabletDesktop.textContent = displayName
-  
+  const userNameTabletDesktop = document.querySelector(
+    '.user-name-tablet-desktop'
+  );
+  userNameTabletDesktop.textContent = displayName;
 }
-
 
 burgerButton.addEventListener('click', openMenu);
 closeButton.addEventListener('click', closeMenu);
@@ -75,7 +94,6 @@ closeButton.addEventListener('click', closeMenu);
 window.addEventListener('resize', handleResize);
 
 // =========== Виклик меню "Виходу з аккаунта" ====================
-
 
 // headerBtnUser.addEventListener('click', () => {
 //   headerBtnUserMenu.classList.toggle('is-hidden');
@@ -102,8 +120,8 @@ window.addEventListener('resize', handleResize);
 
 // const headerNav = document.querySelector('.header-list-nav');
 // const menuBtnStart = document.querySelector('.menu-btn-start-tab');
-const headerButtonsEl = document.querySelector('.header-buttons')
-const headerBtnUserEl = document.querySelector('.header-btn-user-wrap')
+const headerButtonsEl = document.querySelector('.header-buttons');
+const headerBtnUserEl = document.querySelector('.header-btn-user-wrap');
 const headerNavLinkEl = document.querySelector('.header-list-nav');
 
 // const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
@@ -119,9 +137,8 @@ const headerNavLinkEl = document.querySelector('.header-list-nav');
 export function renderBtnSignupTabDesc() {
   const markupSignupTabDesc = `<button data-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/symbol-defs.svg#icon-arrow-right"></use></svg></button>`;
   headerBtnUserEl.innerHTML = markupSignupTabDesc;
-    const btnOpenFormAuth = document.querySelector('[data-auth-open]');
-    btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
-
+  const btnOpenFormAuth = document.querySelector('[data-auth-open]');
+  btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
 }
 
 // ========== yes registration user ====================
@@ -135,7 +152,6 @@ function renderBtnUserProfTabDesc() {
   headerBtnUserEl.innerHTML = markupUserProfTabDesc;
   const headerBtnUser = document.querySelector('.header-btn-user');
   headerBtnUser.addEventListener('click', onOpenMenuUser);
-
 }
 
 // function renderBtnLogoutTabDesc() {
@@ -150,7 +166,7 @@ function onOpenMenuUser() {
   btnLogout.addEventListener('click', onBtnLogout);
 }
 
-// ========== render after checking the user in firebase ================  
+// ========== render after checking the user in firebase ================
 export function renderHeaderTabDescLogin(displayName) {
   // renderNavLinkPageTabDesc();
   // renderBtnLogoutTabDesc();
@@ -160,7 +176,7 @@ export function renderHeaderTabDescLogin(displayName) {
   setUserNameTabDesc(displayName);
 
   console.log('renderHeaderTabDescLogin');
-};
+}
 
 export function renderHeaderTabDescLogout() {
   renderBtnSignupTabDesc();
