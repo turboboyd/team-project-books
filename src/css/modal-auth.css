@@ -134,6 +134,12 @@ input[type='radio'] {
   text-transform: uppercase;
   cursor: pointer;
 }
+#signup:checked ~ label.login:hover,
+#login:checked ~ label.signup:hover,
+#signup:checked ~ label.login:focus,
+#login:checked ~ label.signup:focus {
+  color: var(--accent-color);
+}
 
 #login:checked ~ label.signup {
   margin-right: 20px;
@@ -232,9 +238,12 @@ input[type='radio'] {
   }
 }
 
-.form-inner form .field input:focus {
+.form-inner form .field input:focus,
+.form-inner form .field input:hover {
   outline: none;
   border-color: var(--accent-color);
+  -webkit-box-shadow: inset 0px 0px 3px 2px var(--accent-color);
+  box-shadow: inset 0px 0px 3px 2px var(--accent-color);
 }
 
 .form-inner form .field input::placeholder {
