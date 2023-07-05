@@ -3,7 +3,7 @@ import markupBookCard from './marcup-shopping-card';
 import addEventListenerToTrash from './remove-books';
 import {
   btnListPaginationEl,
-  // addClassListToCurrentBtn,
+  addClassListToCurrentBtn,
   renderBtnList,
   countPerPage,
   isMobile,
@@ -59,7 +59,7 @@ export function renderOnePage(page, arrBooks) {
 export function OnClickrenderShoppingList(e) {
   rewriteValuecurrentPageOnClick(e);
   renderShoppingList(parseStorage(shoppingListKey), currentPage);
-  // addClassListToCurrentBtn(currentPage);
+  addClassListToCurrentBtn();
 }
 
 function rewriteValuecurrentPageOnClick(e) {
