@@ -45,13 +45,13 @@
 }
 
 .pagination-btn-left .icon-arrow {
-  transform: rotate(270deg);
+  /* transform: rotate(270deg); */
   stroke: var(--second-text-color);
   fill: var(--second-text-color);
 }
 
 .pagination-btn-right .icon-arrow {
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
   stroke: var(--arrow-right-color);
   fill: var(--arrow-right-color);
 }
