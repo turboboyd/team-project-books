@@ -99,7 +99,31 @@ export function renderUserLogin(displayName) {
   currentPage(linkPageHomeEl, linkPageShopEl);
 }
 
+// function currentPage(linkPageHomeEl, linkPageShopEl) {
+//   const currentPagePath = window.location.pathname;
+//   const rootPath = '/';
+//   if (currentPagePath === rootPath) {
+//     linkPageHomeEl.classList.add('current');
+//   }
+
+//   const currentPageUrl = window.location.pathname;
+//   const homeHref = '/index.html';
+//   const shopHref = '/shopping-list.html';
+//   if (currentPageUrl === homeHref) {
+//     linkPageHomeEl.classList.add('current');
+//   }
+//   if (currentPageUrl === shopHref) {
+//     linkPageShopEl.classList.add('current');
+//   }
+// }
+
 function currentPage(linkPageHomeEl, linkPageShopEl) {
+  const currentPagePath = window.location.pathname;
+  const rootPath = '/';
+  if (currentPagePath === rootPath) {
+    linkPageHomeEl.classList.add('current');
+  }
+
   const currentPageUrl = window.location.pathname;
   const homeHref = '/team-project-books/index.html';
   const shopHref = '/team-project-books/shopping-list.html';
