@@ -54,7 +54,9 @@ function onOpenFormAuth() {
 
 function onBtnLogout() {
   closeMenu();
-  backdropOutEl.classList.remove('is-hidden');
+  backdropOutEl.classList.remove('is-hidden-b');
+  bodyElement.classList.add('no-scroll');
+
 }
 
 function setUserName(displayName) {
@@ -74,7 +76,7 @@ closeButton.addEventListener('click', closeMenu);
 
 window.addEventListener('resize', handleResize);
 
-// =========== Виклик меню "Виходу з аккаунта" ====================
+// =========== Виклик меню "Виходу з аккаунта" ===================
 
 
 // headerBtnUser.addEventListener('click', () => {
@@ -121,7 +123,6 @@ export function renderBtnSignupTabDesc() {
   headerBtnUserEl.innerHTML = markupSignupTabDesc;
     const btnOpenFormAuth = document.querySelector('[data-auth-open]');
     btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
-
 }
 
 // ========== yes registration user ====================
@@ -130,12 +131,29 @@ export function renderBtnSignupTabDesc() {
 //   headerNavLinkEl.insertAdjacentHTML('beforeend', markupNavLinkPageTabDesc)
 // }
 
+function onEscCloseLogout(e) {
+  const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+  if (e.code === 'Escape') {
+    closeLogout (headerBtnUserMenu)
+    } 
+}
+
+function onClickCloseLogout(e) {
+  console.log(e.c);
+}
+
+function closeLogout (headerBtnUserMenu) {
+    headerBtnUserMenu.classList.add('is-hidden');
+}
+
 function renderBtnUserProfTabDesc() {
   const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="./images/svg-sprite-den.svg#user-arrow-down-icon"></use></svg></div></button><div class="header-btn-user-menu is-hidden"><button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button></div>`;
   headerBtnUserEl.innerHTML = markupUserProfTabDesc;
   const headerBtnUser = document.querySelector('.header-btn-user');
-  headerBtnUser.addEventListener('click', onOpenMenuUser);
+const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
 
+  headerBtnUser.addEventListener('click', onOpenMenuUser);
+  headerBtnUserWrap.addEventListener('keydown', onEscCloseLogout)
 }
 
 // function renderBtnLogoutTabDesc() {
