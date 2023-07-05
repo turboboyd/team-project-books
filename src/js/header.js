@@ -3,7 +3,7 @@ import { backdropOutEl } from './modal-auth-out';
 import { userVerification, userVerificationTabDesk } from './firebase';
 import mobileBg from '../images/mobile-menu/mobile-menu-bg.png';
 import mobileBgx2 from '../images/mobile-menu/mobile-menu-bg-2x.png';
-import sprite from '../images/sprite.svg'
+import sprite from '../images/sprite.svg';
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
