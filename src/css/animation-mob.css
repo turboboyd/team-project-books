@@ -13,13 +13,13 @@
 }
 
 .mobile-bg-wrapper {
-    width: 118vw;
+    width: 450px;
     height: auto;
     z-index: -1;
     pointer-events: none;
     position: relative;
-    bottom: calc(100vh - calc(70vh - 100%));
-    transform: translateY(525px) translateX(-79px) rotate(15deg);
+    bottom: 400px;
+    transform: translateY(525px) translateX(-79px) rotate(-15deg);
 }
 
 .primary {

@@ -1,18 +1,92 @@
 import { modalElem } from './modal-auth';
 import { backdropOutEl } from './modal-auth-out';
 import { userVerification, userVerificationTabDesk } from './firebase';
+import mobileBg from '../images/mobile-menu/mobile-menu-bg.png';
+import mobileBgx2 from '../images/mobile-menu/mobile-menu-bg-2x.png';
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
 const menuStart = document.querySelector('.mob-menu-start');
 const bodyElement = document.querySelector('body');
 
-const htmlUserNotLoginModal =
-  '<button data-modal-auth-open class="menu-btn-start" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
+const htmlUserNotLoginModal = `
+  <button data-modal-auth-open class="menu-btn-start" type="button">
+    Sign up<svg class="menu-btn-start-icon" width="20" height="20">
+      <use href="./images/svg-sprite-den.svg#arrow-right-icon"></use>
+    </svg>
+  </button>
+  <div class="mobile-bg-wrapper">
+  <picture class="mobile-bg primary">
+    <source
+      srcset=""
+      type="image/webp"
+    />
+    <source
+      srcset="${mobileBgx2}"
+      type="image/png"
+    />
 
-const htmlUserLoginModal =
-  '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a id="home" class="mob-menu-link-nav" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a id="shop" class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
+    <img
+      src="${mobileBg}"
+      alt="books"
+      style="width: 100%"
+    />
+  </picture>
 
+  <picture class="mobile-bg secondary">
+    <source
+      srcset=""
+      type="image/webp"
+    />
+    <source
+      srcset="${mobileBg}"
+      type="image/png"
+    />
+
+    <img
+      src="${mobileBg}"
+      alt="books"
+      style="width: 100%"
+    />
+  </picture>
+</div>
+  `;
+const htmlUserLoginModal = `  <div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a id="home" class="mob-menu-link-nav" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a id="shop" class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>  <div class="mobile-bg-wrapper">
+  <picture class="mobile-bg primary">
+    <source
+      srcset=""
+      type="image/webp"
+    />
+    <source
+      srcset="${mobileBgx2}"
+      type="image/png"
+    />
+
+    <img
+      src="${mobileBg}"
+      alt="books"
+      style="width: 100%"
+    />
+  </picture>
+
+  <picture class="mobile-bg secondary">
+    <source
+      srcset=""
+      type="image/webp"
+    />
+    <source
+      srcset="${mobileBg}"
+      type="image/png"
+    />
+
+    <img
+      src="${mobileBg}"
+      alt="books"
+      style="width: 100%"
+    />
+  </picture>
+</div>
+`;
 export function renderUserLogin(displayName) {
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
@@ -74,7 +148,6 @@ function onBtnLogout() {
   closeMenu();
   backdropOutEl.classList.remove('is-hidden-b');
   bodyElement.classList.add('no-scroll');
-
 }
 
 function setUserName(displayName) {
@@ -153,21 +226,21 @@ function onEscCloseLogout(e) {
 
   if (e.code === 'Escape') {
     closeLogout(headerBtnUserMenu);
-    } 
+  }
 }
 
 function onClickCloseLogout(e) {
   const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
   const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
-  const targetClick = e.target
+  const targetClick = e.target;
 
   if (!headerBtnUserWrap.contains(targetClick)) {
     closeLogout(headerBtnUserMenu);
   }
 }
 
-function closeLogout (headerBtnUserMenu) {
-    headerBtnUserMenu.classList.add('is-hidden');
+function closeLogout(headerBtnUserMenu) {
+  headerBtnUserMenu.classList.add('is-hidden');
 }
 
 function renderBtnUserProfTabDesc() {
