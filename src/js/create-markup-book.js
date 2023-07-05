@@ -1,7 +1,7 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import boookDefolt from '../images/defolt-book-min.png' // You can also use <link> for styles
-// ..
+import boookDefolt from '../images/defolt-book-min.png';
+
 AOS.init();
 
 export default function createMarkupBook({ _id, book_image, title, author }) {
