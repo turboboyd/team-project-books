@@ -42,7 +42,7 @@
   flex-direction: column;
   justify-content: center;
 
-  min-width: 325px;
+  min-width: 310px;
 
   max-height: 100vh;
   overflow-y: auto;
