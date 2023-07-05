@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-86e06390.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/book-shop@2x-f7209893.js">
-    <link rel="stylesheet" href="/team-project-books/assets/book-shop@2x-8d06c551.css">
+    <script type="module" crossorigin src="/team-project-books/assets/index-5e842e3e.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/book-shop@2x-dd27e7ef.js">
+    <link rel="stylesheet" href="/team-project-books/assets/book-shop@2x-4768025a.css">
     <link rel="stylesheet" href="/team-project-books/assets/index-b16a6001.css">
   </head>
   <body class="page">
@@ -164,6 +164,10 @@
               placeholder="Name"
               id="authName"
               required
+              maxlength="10"
+              minlength="3"
+              pattern="[a-zA-Z]*"
+              title="The name should not exceed 10 characters."
             />
           </div>
           <div class="field">
@@ -176,6 +180,10 @@
               placeholder="Email"
               id="authEmail"
               required
+              minlength="10"
+              maxlength="30"
+              pattern="[^@\s]+@[^@\s]+"
+              title="The Email should be no less than 10 characters and no more than 30 characters"
             />
           </div>
           <div class="field">
@@ -187,7 +195,9 @@
               type="password"
               placeholder="Password"
               id="authPassword"
+              minlength="6"
               required
+              title="Password must be at least 6 characters long"
             />
           </div>
           <div class="field btn">
@@ -206,6 +216,10 @@
               placeholder="Email"
               id="loginEmail"
               required
+              minlength="10"
+              maxlength="30"
+              pattern="[^@\s]+@[^@\s]+"
+              title="The Email should be no less than 10 characters and no more than 30 characters"
             />
           </div>
           <div class="field">
@@ -217,7 +231,9 @@
               type="password"
               placeholder="Password"
               id="loginPassword"
+              minlength="6"
               required
+              title="Password must be at least 6 characters long"
             />
           </div>
           <div class="field btn">
