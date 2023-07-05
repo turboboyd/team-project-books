@@ -417,6 +417,11 @@ input:checked + .slider:before {
 .header-btn-user-wrap {
   position: relative;
 }
+@media screen and (min-width: 768px) {
+  .header-btn-user-wrap {
+    min-width: 184px;
+  }
+}
 
 .header-btn-user-menu {
   position: absolute;
