@@ -26,7 +26,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
+console.log('auth: ', auth);
+console.log('getAuth: ', getAuth);
+const userActive = auth.currentUser;
+console.log('userActive: ', userActive);
 
 
 const authUser = (userName, userEmail, userPassword) => {
