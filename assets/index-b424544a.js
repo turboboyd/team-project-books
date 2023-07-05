@@ -12,7 +12,7 @@ Notiflix needs to be appended to the "<`+s+'>" element, but you called it before
     `),D.disableMutationObserver=!0),D.disableMutationObserver||an.ready("[data-aos]",Pn),Hn(D.disable)||Dn()?jn():(document.querySelector("body").setAttribute("data-aos-easing",D.easing),document.querySelector("body").setAttribute("data-aos-duration",D.duration),document.querySelector("body").setAttribute("data-aos-delay",D.delay),["DOMContentLoaded","load"].indexOf(D.startEvent)===-1?document.addEventListener(D.startEvent,function(){ut(!0)}):window.addEventListener("load",function(){ut(!0)}),D.startEvent==="DOMContentLoaded"&&["complete","interactive"].indexOf(document.readyState)>-1&&ut(!0),window.addEventListener("resize",on(ut,D.debounceDelay,!0)),window.addEventListener("orientationchange",on(ut,D.debounceDelay,!0)),at)},Xa={init:Ha,refresh:ut,refreshHard:Pn};Xa.init();function Xn({_id:e,book_image:t,title:n,author:i}){return`    <li class="card-book" data-aos="zoom-in" data-aos-delay="150" data-aos-duration="800">
         <a href="#" class="card-book-link" title="${n}">
         <div class="card-book-wrap">
-    <img width="218" height="auto" class="card-book-image" src="${t}" alt="${n}" loading="lazy">
+    <img width="218" height="auto" class="card-book-image" src="${t}" alt="${n}" loading="lazy" onerror="this.src='../images/defolt-book-min.png'">
     <p class="card-book-notification">Quick view</p>
     <p class="card-book-id visually-hidden">${e}</p>
     </div>
