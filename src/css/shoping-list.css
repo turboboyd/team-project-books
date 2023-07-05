@@ -20,6 +20,7 @@
 }
 
 .shopping-wrap {
+  width: 192px;
   height: 142px;
   display: flex;
   flex-direction: column;
@@ -81,7 +82,7 @@
 }
 .icon-shopping-trash {
   stroke: var(--white-color);
-  fill: var(--white-color);
+  fill: transparent;
 }
 
 .shopping-book-cover {
@@ -104,15 +105,11 @@
 }
 
 .shopping-book-categories {
-  max-width: 144px;
   color: var(--second-text-color);
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.36px;
   margin-bottom: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .shopping-book-description {
   max-height: 68px;
@@ -139,6 +136,21 @@
   .shopping-title {
     margin-bottom: 120px;
   }
+  .shopping-book-categories {
+    max-width: 144px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media screen and (max-width: 360px) {
+  .shopping-book-title {
+    max-width: 100px;
+    font-size: 16px;
+  }
+  .shopping-book-categories {
+    max-width: 100px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -154,6 +166,7 @@
     height: 240px;
   }
   .shopping-wrap {
+    width: 508px;
     height: 165px;
   }
   .shop-item {
@@ -212,6 +225,9 @@
   /* .shop-wrap {
     flex-grow: 1;
   } */
+  .shopping-wrap {
+    width: 808px;
+  }
 
   .empty {
     height: 409px;
