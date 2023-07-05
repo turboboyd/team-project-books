@@ -11,13 +11,30 @@ const htmlUserNotLoginModal =
   '<button data-modal-auth-open class="menu-btn-start" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
 
 const htmlUserLoginModal =
-  '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a class="mob-menu-link-nav current" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
+  '<div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a id="home" class="mob-menu-link-nav" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a id="shop" class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>';
 
 export function renderUserLogin(displayName) {
   menuStart.innerHTML = htmlUserLoginModal;
   const btnLogout = document.querySelector('.menu-btn-exit');
   btnLogout.addEventListener('click', onBtnLogout);
   setUserName(displayName);
+
+  const linkPageHomeEl = document.querySelector('#home');
+  const linkPageShopEl = document.querySelector('#shop');
+  currentPage(linkPageHomeEl, linkPageShopEl);
+}
+
+function currentPage(linkPageHomeEl, linkPageShopEl) {
+  const currentPageUrl = window.location.href;
+  console.log(currentPageUrl);
+
+  if (currentPageUrl === 'http://localhost:5173/index.html') {
+    linkPageHomeEl.classList.add('current');
+  }
+
+  if (currentPageUrl === 'http://localhost:5173/shopping-list.html') {
+    linkPageShopEl.classList.add('current');
+  }
 }
 
 export function renderUserNotLogin() {
