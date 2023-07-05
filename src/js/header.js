@@ -26,11 +26,12 @@ export function renderUserLogin(displayName) {
 
 function currentPage(linkPageHomeEl, linkPageShopEl) {
   const currentPageUrl = window.location.pathname;
-
-  if (currentPageUrl === '/team-project-books/index.html') {
+  const homeHref = '/team-project-books/index.html';
+  const shopHref = '/team-project-books/shopping-list.html';
+  if (currentPageUrl === homeHref) {
     linkPageHomeEl.classList.add('current');
   }
-  if (currentPageUrl === '/team-project-books/shopping-list.html') {
+  if (currentPageUrl === shopHref) {
     linkPageShopEl.classList.add('current');
   }
 }

@@ -291,6 +291,11 @@ form .btn input[type='submit'] {
   }
 }
 
+form .btn input[type='submit']:hover,
+form .btn input[type='submit']:focus {
+  color: ;
+}
+
 form .btn {
   padding: 16px 24px;
   text-align: center;
