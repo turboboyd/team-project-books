@@ -1,0 +1,43 @@
+.mobile-bg {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  will-change: transform;
+  padding: 0 3.4vw;
+}
+@media screen and (min-width: 768px) {
+  .mobile-bg {
+    display: none;
+  }
+}
+.mobile-bg-wrapper {
+  width: 118vw;
+  height: auto;
+  z-index: -1;
+  pointer-events: none;
+  position: relative;
+  bottom: calc(100vh - calc(70vh - 100%));
+  transform: translateY(525px) translateX(-79px) rotate(15deg);
+}
+.primary {
+  animation: primary 8s linear infinite;
+}
+.secondary {
+  animation: secondary 8s linear infinite;
+}
+@keyframes primary {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes secondary {
+  from {
+    transform: translate(100%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
