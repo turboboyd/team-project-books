@@ -42,7 +42,7 @@
   flex-direction: column;
   justify-content: center;
 
-  min-width: 335px;
+  min-width: 325px;
 
   max-height: 100vh;
   overflow-y: auto;
@@ -175,12 +175,14 @@
   text-align: center;
   letter-spacing: -0.04em;
 }
-@media screen and (max-height: 686px){
+@media screen and (max-height: 625px) {
   .modal-book-attributes{
-  display: none;
+    display: none;
+  } 
 }
+@media screen and (max-height: 745px){
   .modal-img{
-  height: 325px;
+  max-width: 70%;
 }
   .modal-pop-up-btn{
   font-size: 10px;
