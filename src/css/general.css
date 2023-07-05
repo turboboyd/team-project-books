@@ -33,9 +33,9 @@ body {
   margin: 0 auto;
 }
 
-.section {
+/* .section {
   padding-top: 40px;
-}
+} */
 
 .title {
   color: var(--title-color);
@@ -99,7 +99,7 @@ body {
   }
 }
 
-.visually-hidden{
+.visually-hidden {
   position: absolute;
   white-space: nowrap;
   width: 1px;
@@ -112,6 +112,6 @@ body {
   margin: -1px;
 }
 
-.section{
+.section {
   padding: 40px 0;
 }

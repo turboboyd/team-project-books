@@ -1,21 +1,19 @@
 .backdrop-auth-out {
   position: fixed;
   z-index: 3;
-  opacity: 1;
-
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
-
-  overflow-y: hidden;
-  background-color: rgba(17, 17, 17, 0.4);
-
-  transition: opacity var(--transition);
+  width: 100%;
+  background: rgba(17, 17, 17, 0.4);
+  overflow-y: auto;
+  transition: opacity var(--transition), visibility var(--transition);
 }
 
-.backdrop-auth-out.is-hidden {
+.backdrop-auth-out.is-hidden-b {
+  visibility: hidden;
   opacity: 0;
+  pointer-events: none;
 }
 
 .modal-auth-out {

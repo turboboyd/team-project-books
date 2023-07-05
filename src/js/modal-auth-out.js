@@ -1,4 +1,5 @@
 import { userVerification, userVerificationTabDesk } from './firebase'
+const bodyElementModalOut = document.querySelector('body');
 
 
 
@@ -8,9 +9,9 @@ export const btnOutYes = document.querySelector('[data-btn-out-yes]');
 const btnOutNo = document.querySelector('[data-btn-out-no]')
 
 export function removeHiddenModalOut() {
-    backdropOutEl.classList.add('is-hidden');
+    backdropOutEl.classList.add('is-hidden-b');
     document.removeEventListener('keydown', onEscPressModalOut);
-    
+    bodyElementModalOut.classList.remove('no-scroll');
 }
 
 function onCloseModalOut(e) {
@@ -23,7 +24,9 @@ function onCloseModalOut(e) {
 
 function onEscPressModalOut(e) {
     if (e.key === 'Escape') {
-     backdropOutEl.classList.add('is-hidden')
+        backdropOutEl.classList.add('is-hidden-b')
+        bodyElementModalOut.classList.remove('no-scroll');
+
     }  
 }
 

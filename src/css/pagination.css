@@ -1,9 +1,11 @@
 .pagination-wrap {
+  max-width: 996px;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .nav-pagination-btn {
   display: flex;
@@ -11,6 +13,9 @@
 }
 .pagination-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
   gap: 10px;
 }
 
@@ -28,6 +33,9 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 1.22;
+}
+.more-btn-pagination {
+  min-width: 44px;
 }
 .pagination-btn-left > .pagination-btn-nav {
   background-color: var(--arrow-right-color);
@@ -50,4 +58,40 @@
 .current-btn-pagination {
   background-color: var(--title-color);
   color: var(--header-white-color);
+}
+
+@media screen and (max-width: 767px) {
+  .pagination-btn,
+  .pagination-btn-nav {
+    width: 38px;
+    height: 38px;
+  }
+  .more-btn-pagination {
+    min-width: 38px;
+  }
+
+  .pagination-wrap {
+    max-width: 335px;
+    padding: 20px 5px;
+    gap: 8px;
+  }
+  .nav-pagination-btn {
+    gap: 8px;
+  }
+  .pagination-list {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .pagination-btn,
+  .pagination-btn-nav {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  .more-btn-pagination {
+    min-width: 30px;
+  }
 }

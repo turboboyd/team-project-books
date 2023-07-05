@@ -26,13 +26,11 @@ export function renderUserLogin(displayName) {
 
 function currentPage(linkPageHomeEl, linkPageShopEl) {
   const currentPageUrl = window.location.href;
-  console.log(currentPageUrl);
 
-  if (currentPageUrl === 'http://localhost:5173/index.html') {
+  if (currentPageUrl === '/team-project-books/index.html') {
     linkPageHomeEl.classList.add('current');
   }
-
-  if (currentPageUrl === 'http://localhost:5173/shopping-list.html') {
+  if (currentPageUrl === '/team-project-books/shopping-list.html') {
     linkPageShopEl.classList.add('current');
   }
 }
@@ -67,13 +65,15 @@ function handleResize() {
 }
 
 function onOpenFormAuth() {
-  console.log('fsafaf');
-  modalElem.classList.remove('is-hidden');
+  modalElem.classList.remove('is-hidden-auth');
+  closeMenu();
 }
 
 function onBtnLogout() {
   closeMenu();
-  backdropOutEl.classList.remove('is-hidden');
+  backdropOutEl.classList.remove('is-hidden-b');
+  bodyElement.classList.add('no-scroll');
+
 }
 
 function setUserName(displayName) {
@@ -93,7 +93,7 @@ closeButton.addEventListener('click', closeMenu);
 
 window.addEventListener('resize', handleResize);
 
-// =========== Виклик меню "Виходу з аккаунта" ====================
+// =========== Виклик меню "Виходу з аккаунта" ===================
 
 // headerBtnUser.addEventListener('click', () => {
 //   headerBtnUserMenu.classList.toggle('is-hidden');
@@ -147,11 +147,37 @@ export function renderBtnSignupTabDesc() {
 //   headerNavLinkEl.insertAdjacentHTML('beforeend', markupNavLinkPageTabDesc)
 // }
 
+function onEscCloseLogout(e) {
+  const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+
+  if (e.code === 'Escape') {
+    closeLogout(headerBtnUserMenu);
+    } 
+}
+
+function onClickCloseLogout(e) {
+  const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
+  const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+  const targetClick = e.target
+
+  if (!headerBtnUserWrap.contains(targetClick)) {
+    closeLogout(headerBtnUserMenu);
+  }
+}
+
+function closeLogout (headerBtnUserMenu) {
+    headerBtnUserMenu.classList.add('is-hidden');
+}
+
 function renderBtnUserProfTabDesc() {
   const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="./images/svg-sprite-den.svg#user-arrow-down-icon"></use></svg></div></button><div class="header-btn-user-menu is-hidden"><button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button></div>`;
   headerBtnUserEl.innerHTML = markupUserProfTabDesc;
   const headerBtnUser = document.querySelector('.header-btn-user');
+  const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
+
   headerBtnUser.addEventListener('click', onOpenMenuUser);
+  headerBtnUserWrap.addEventListener('keydown', onEscCloseLogout);
+  document.addEventListener('click', onClickCloseLogout);
 }
 
 // function renderBtnLogoutTabDesc() {
@@ -171,11 +197,8 @@ export function renderHeaderTabDescLogin(displayName) {
   // renderNavLinkPageTabDesc();
   // renderBtnLogoutTabDesc();
   onNavMenu();
-  console.log('делаем рендер');
   renderBtnUserProfTabDesc();
   setUserNameTabDesc(displayName);
-
-  console.log('renderHeaderTabDescLogin');
 }
 
 export function renderHeaderTabDescLogout() {
