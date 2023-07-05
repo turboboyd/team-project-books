@@ -25,7 +25,7 @@ export function renderUserLogin(displayName) {
 }
 
 function currentPage(linkPageHomeEl, linkPageShopEl) {
-  const currentPageUrl = window.location.href;
+  const currentPageUrl = window.location.pathname;
 
   if (currentPageUrl === '/team-project-books/index.html') {
     linkPageHomeEl.classList.add('current');
