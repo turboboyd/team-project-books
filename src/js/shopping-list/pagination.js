@@ -3,7 +3,7 @@ import markupBookCard from './marcup-shopping-card';
 import addEventListenerToTrash from './remove-books';
 import {
   btnListPaginationEl,
-  addClassListToCurrentBtn,
+  // addClassListToCurrentBtn,
   renderBtnList,
   countPerPage,
   isMobile,
@@ -13,8 +13,6 @@ export let currentPage = 1;
 export const shoppingListKey = 'shoppingList';
 const shoppingListEl = document.querySelector('.shopping__list');
 let savedBooks;
-const navBtnListLeftEl = document.querySelector('.pagination-btn-left');
-const navBtnListRightEl = document.querySelector('.pagination-btn-right');
 
 export function setCurrentPage(newPage) {
   currentPage = newPage;
@@ -23,8 +21,8 @@ export function checkStorage() {
   const localSavedBooks = localStorage.getItem(shoppingListKey);
   if (localSavedBooks && localSavedBooks.length !== 0) {
     savedBooks = parseStorage(shoppingListKey);
-    renderBtnList(savedBooks, currentPage);
-    addClassListToCurrentBtn(currentPage);
+    renderBtnList(savedBooks);
+    // addClassListToCurrentBtn(currentPage);
     renderShoppingList(savedBooks, currentPage);
   } else {
     listIsEmpty();
@@ -37,8 +35,6 @@ export function listIsEmpty() {
   btnListPaginationEl.innerHTML = '';
   const ShoppingListIsEmpty = document.querySelector('.empty');
   ShoppingListIsEmpty.classList.remove('visually-hidden');
-  navBtnListLeftEl.classList.add('visually-hidden');
-  navBtnListRightEl.classList.add('visually-hidden');
 }
 
 export function renderShoppingList(arrOfBooks, page) {
@@ -63,11 +59,12 @@ export function renderOnePage(page, arrBooks) {
 export function OnClickrenderShoppingList(e) {
   rewriteValuecurrentPageOnClick(e);
   renderShoppingList(parseStorage(shoppingListKey), currentPage);
-  addClassListToCurrentBtn(currentPage);
+  // addClassListToCurrentBtn(currentPage);
 }
 
 function rewriteValuecurrentPageOnClick(e) {
   const btnEl = e.target.closest('button');
   const pageBtn = Number(btnEl.textContent);
   setCurrentPage(pageBtn);
+  console.log('currentPage', currentPage);
 }
