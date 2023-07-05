@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Shopping List</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-323922cf.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/book-shop@2x-8427d9c2.js">
-    <link rel="stylesheet" href="/team-project-books/assets/book-shop@2x-3bc2d627.css">
+    <script type="module" crossorigin src="/team-project-books/assets/shopping-list-7f3a580c.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/book-shop@2x-816fbb2c.js">
+    <link rel="stylesheet" href="/team-project-books/assets/book-shop@2x-a67521c2.css">
   </head>
 
   <body class="page">
@@ -39,11 +39,11 @@
     </ul>
   </nav>
   <div class="header-buttons">
-    <label id="switch" class="switch">
+    <label id="slider" class="switch">
       <input aria-label="slider" type="checkbox" id="slider" />
       <span class="slider round"></span>
     </label>
-    <button  aria-label="menu" class="burger" type="button">
+    <button aria-label="menu" class="burger" type="button">
       <svg class="header-menu-icon-mob" width="28" height="28">
         <use href="/team-project-books/assets/svg-sprite-den-24beee76.svg#ham-menu-icon"></use>
       </svg>
@@ -68,13 +68,12 @@
         </div>
       </button> -->
 
-        <!-- <button class="header-menu-btn-exit" type="button">
+      <!-- <button class="header-menu-btn-exit" type="button">
           Log out
           <svg class="menu-btn-start-icon" width="20" height="20">
             <use href="./images/svg-sprite-den.svg#arrow-right-icon"></use>
           </svg>
         </button> -->
-
     </div>
     <!-- <button class="menu-btn-start-tab" type="button">
       Sign up
@@ -225,9 +224,14 @@
 </div>
 
           <!-- modal auth -->
-          <div data-modal class="backdrop-auth is-hidden">
+          <div data-modal class="backdrop-auth is-hidden-auth">
   <div class="modal-auth">
-    <button data-modal-close aria-label="close modal" type="button" class="btn__close">
+    <button
+      data-modal-close
+      aria-label="close modal"
+      type="button"
+      class="btn__close"
+    >
       <svg class="btn__close-modal">
         <use href="/team-project-books/assets/sprite-2a762604.svg#icon-close"></use>
       </svg>
@@ -239,13 +243,25 @@
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-user"></use>
             </svg>
-            <input aria-label="Name" type="text" placeholder="Name" id="authName" required />
+            <input
+              aria-label="Name"
+              type="text"
+              placeholder="Name"
+              id="authName"
+              required
+            />
           </div>
           <div class="field">
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-mail-02"></use>
             </svg>
-            <input aria-label="Email" type="text" placeholder="Email" id="authEmail" required />
+            <input
+              aria-label="Email"
+              type="text"
+              placeholder="Email"
+              id="authEmail"
+              required
+            />
           </div>
           <div class="field">
             <svg class="form__input-icon">
@@ -269,7 +285,13 @@
             <svg class="form__input-icon">
               <use href="/team-project-books/assets/sprite-2a762604.svg#icon-mail-02"></use>
             </svg>
-            <input aria-label="Email" type="text" placeholder="Email" id="loginEmail" required />
+            <input
+              aria-label="Email"
+              type="text"
+              placeholder="Email"
+              id="loginEmail"
+              required
+            />
           </div>
           <div class="field">
             <svg class="form__input-icon">
@@ -300,7 +322,7 @@
   </div>
 </div>
 
-          <div class="backdrop-auth-out is-hidden" data-backdrop-out>
+          <div class="backdrop-auth-out is-hidden-b" data-backdrop-out>
   <div class="modal-auth-out">
     <button data-btn-out-close type="button" aria-label="Close Login Window" class="btn__close">
       <svg class="btn__close-modal">
