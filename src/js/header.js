@@ -149,13 +149,20 @@ export function renderBtnSignupTabDesc() {
 
 function onEscCloseLogout(e) {
   const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+
   if (e.code === 'Escape') {
-    closeLogout (headerBtnUserMenu)
+    closeLogout(headerBtnUserMenu);
     } 
 }
 
 function onClickCloseLogout(e) {
-  console.log(e.c);
+  const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
+  const headerBtnUserMenu = document.querySelector('.header-btn-user-menu');
+  const targetClick = e.target
+
+  if (!headerBtnUserWrap.contains(targetClick)) {
+    closeLogout(headerBtnUserMenu);
+  }
 }
 
 function closeLogout (headerBtnUserMenu) {
@@ -169,7 +176,8 @@ function renderBtnUserProfTabDesc() {
   const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
 
   headerBtnUser.addEventListener('click', onOpenMenuUser);
-  headerBtnUserWrap.addEventListener('keydown', onEscCloseLogout)
+  headerBtnUserWrap.addEventListener('keydown', onEscCloseLogout);
+  document.addEventListener('click', onClickCloseLogout);
 }
 
 // function renderBtnLogoutTabDesc() {
