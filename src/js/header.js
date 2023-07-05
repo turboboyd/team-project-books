@@ -26,13 +26,11 @@ export function renderUserLogin(displayName) {
 
 function currentPage(linkPageHomeEl, linkPageShopEl) {
   const currentPageUrl = window.location.href;
-  console.log(currentPageUrl);
 
-  if (currentPageUrl === 'http://localhost:5173/index.html') {
+  if (currentPageUrl === '/team-project-books/index.html') {
     linkPageHomeEl.classList.add('current');
   }
-
-  if (currentPageUrl === 'http://localhost:5173/shopping-list.html') {
+  if (currentPageUrl === '/team-project-books/shopping-list.html') {
     linkPageShopEl.classList.add('current');
   }
 }
@@ -191,11 +189,8 @@ export function renderHeaderTabDescLogin(displayName) {
   // renderNavLinkPageTabDesc();
   // renderBtnLogoutTabDesc();
   onNavMenu();
-  console.log('делаем рендер');
   renderBtnUserProfTabDesc();
   setUserNameTabDesc(displayName);
-
-  console.log('renderHeaderTabDescLogin');
 }
 
 export function renderHeaderTabDescLogout() {
