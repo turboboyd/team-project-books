@@ -269,7 +269,7 @@ function closeLogout(headerBtnUserMenu) {
 }
 
 function renderBtnUserProfTabDesc() {
-  const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="${sprite}#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="${sprite}#user-arrow-down-icon"></use></svg></div></button><div class="header-btn-user-menu"><button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="${sprite}#arrow-right-icon"></use></svg></button></div>`;
+  const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="${sprite}#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="${sprite}#user-arrow-down-icon"></use></svg></div></button><div class="header-btn-user-menu is-hidden"><button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="${sprite}#arrow-right-icon"></use></svg></button></div>`;
   headerBtnUserEl.innerHTML = markupUserProfTabDesc;
   const headerBtnUser = document.querySelector('.header-btn-user');
   const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
