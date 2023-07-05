@@ -16,7 +16,10 @@
 .modal-open {
   overflow: hidden;
 }
-
+.modal-pop-up-btn{
+  width: 100%;
+  font-size: 11px;
+}
 .backdrop-pop-up.is-hidden {
   visibility: hidden;
   opacity: 0;
@@ -42,7 +45,7 @@
   flex-direction: column;
   justify-content: center;
 
-  min-width: 335px;
+  min-width: 310px;
 
   max-height: 100vh;
   overflow-y: auto;
@@ -54,9 +57,9 @@
   border-radius: 18px;
 }
 
-.modal-pop-up-btn {
-  font-size: 12px;
-
+.modal-pop-up-container{
+  max-width: 287px;
+  min-height: 325px;
 }
 
 .modal-img {
@@ -78,17 +81,18 @@
 
   border: none;
   border-radius: 50%;
+  
+  transition: var(--transition);
+}
+.close-button:focus,
+.close-button:hover {
+  background-color: var(--accent-color);
 }
 
 .close-button__icon {
   stroke: var(--title-color);
   width: 12px;
   height: 12px;
-}
-
-.close-button__icon:focus,
-.close-button__icon:hover {
-  stroke: var(--accent-color);
 }
 
 .messagetextpop {
@@ -159,11 +163,6 @@
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
-.modal-pop-up-content {
-  max-width: 287px;
-  min-height: 325px;
-}
-
 .modal-message {
   margin-left: auto;
   margin-right: auto;
@@ -175,12 +174,12 @@
   text-align: center;
   letter-spacing: -0.04em;
 }
-
 @media screen and (min-width: 768px) {
   .modal-pop-up {
     min-width: 579px;
     min-height: 465px;
     padding: 40px;
+    overflow-y: auto;
   }
 
   .close-button {
@@ -203,7 +202,10 @@
     font-size: 12px;
     line-height: 1.16;
   }
-
+  
+  .modal-pop-up-container{
+    max-width: 100%;
+  }
   .modal-pop-up-content {
     display: flex;
     gap: 24px;

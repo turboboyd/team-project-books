@@ -5,7 +5,6 @@
 }
 
 .shop-link:is(:hover, :focus) .shop-img {
-  background: lightgray 0px -0.889px / 100% 105.556% no-repeat;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
   transform: scale(1.1);
 }
@@ -49,7 +48,7 @@
   align-items: flex-start;
   padding: 14px;
   border-radius: 16px;
-  background-color: var(--main-bgr-color);
+  background-color: var(--header-white-color);
   border: 2px solid var(--border-color);
 }
 .shop-list {
@@ -79,10 +78,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: var(--transition);
+}
+
+.shopping-trash:is(:hover, :focus) {
+  background-color: var(--accent-header-color);
+  transition: var(--transition);
+}
+.shopping-trash:is(:hover, :focus) .icon-shopping-trash {
+  stroke: var(--pagination-btn-border);
+  transition: var(--transition);
 }
 .icon-shopping-trash {
   stroke: var(--white-color);
   fill: transparent;
+  transition: var(--transition);
 }
 
 .shopping-book-cover {
@@ -235,11 +245,6 @@
     align-items: center;
   }
 
-  /* .sidebar-shoppinglist,
-  .shopping {
-    width: 50%;
-    float: left;
-  } */
   .shopping {
     width: 996px;
   }

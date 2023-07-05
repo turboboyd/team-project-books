@@ -134,6 +134,12 @@ input[type='radio'] {
   text-transform: uppercase;
   cursor: pointer;
 }
+#signup:checked ~ label.login:hover,
+#login:checked ~ label.signup:hover,
+#signup:checked ~ label.login:focus,
+#login:checked ~ label.signup:focus {
+  color: var(--accent-color);
+}
 
 #login:checked ~ label.signup {
   margin-right: 20px;
@@ -232,9 +238,12 @@ input[type='radio'] {
   }
 }
 
-.form-inner form .field input:focus {
+.form-inner form .field input:focus,
+.form-inner form .field input:hover {
   outline: none;
   border-color: var(--accent-color);
+  -webkit-box-shadow: inset 0px 0px 3px 2px var(--accent-color);
+  box-shadow: inset 0px 0px 3px 2px var(--accent-color);
 }
 
 .form-inner form .field input::placeholder {
@@ -273,6 +282,7 @@ form .btn input[type='submit'] {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  transition: all var(--transition);
 }
 @media screen and (min-width: 768px) {
   form .btn input[type='submit'] {
@@ -280,6 +290,11 @@ form .btn input[type='submit'] {
     line-height: 1.33;
     letter-spacing: -0.18px;
   }
+}
+
+form .btn:hover input[type='submit'],
+form .btn:focus input[type='submit'] {
+  color: #ffffff;
 }
 
 form .btn {
