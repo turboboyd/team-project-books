@@ -175,7 +175,17 @@
   text-align: center;
   letter-spacing: -0.04em;
 }
-
+@media screen and (max-height: 686px){
+  .modal-book-attributes{
+  display: none;
+}
+  .modal-img{
+  height: 325px;
+}
+  .modal-pop-up-btn{
+  font-size: 10px;
+}
+}
 @media screen and (min-width: 768px) {
   .modal-pop-up {
     min-width: 579px;
