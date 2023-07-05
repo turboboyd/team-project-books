@@ -48,7 +48,7 @@
   min-width: 310px;
 
   max-height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   color: var(--text-color);
@@ -81,17 +81,18 @@
 
   border: none;
   border-radius: 50%;
+  
+  transition: var(--transition);
+}
+.close-button:focus,
+.close-button:hover {
+  background-color: var(--accent-color);
 }
 
 .close-button__icon {
   stroke: var(--title-color);
   width: 12px;
   height: 12px;
-}
-
-.close-button__icon:focus,
-.close-button__icon:hover {
-  stroke: var(--accent-color);
 }
 
 .messagetextpop {
@@ -178,6 +179,7 @@
     min-width: 579px;
     min-height: 465px;
     padding: 40px;
+    overflow-y: auto;
   }
 
   .close-button {
@@ -200,7 +202,10 @@
     font-size: 12px;
     line-height: 1.16;
   }
-
+  
+  .modal-pop-up-container{
+    max-width: 100%;
+  }
   .modal-pop-up-content {
     display: flex;
     gap: 24px;
