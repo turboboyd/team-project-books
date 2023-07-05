@@ -12,13 +12,21 @@
   z-index: 20;
   padding: 94px 15px;
 }
-.modal-open{
+
+.modal-open {
   overflow: hidden;
 }
+
 .backdrop-pop-up.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+.modal-pop-up-btn:disabled {
+  pointer-events: none;
+  color: var(--main-font-color);
+  border-color: var(--main-font-color);
 }
 
 .modal-pop-up {
@@ -35,7 +43,7 @@
   justify-content: center;
 
   min-width: 335px;
-  
+
   max-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -48,10 +56,13 @@
 
 .modal-pop-up-btn {
   font-size: 12px;
+
 }
-.modal-img{
+
+.modal-img {
   min-height: 100%;
 }
+
 .close-button {
   background-color: transparent;
   position: absolute;
@@ -80,7 +91,7 @@
   stroke: var(--accent-color);
 }
 
-.messagetextpop{
+.messagetextpop {
   width: 242px;
   margin-top: 8px;
   margin-left: 15px;
@@ -91,14 +102,16 @@
   text-align: center;
   color: #b4afaf;
 }
+
 .modal-book-attributes {
   display: flex;
   flex-direction: column;
 }
 
 .modal-img {
-  max-width: 287px;
-  min-height: 408px;
+  max-width: 100%;
+  height: auto;
+
   border-radius: 8px;
   margin-bottom: 14px;
   border: none;
@@ -137,9 +150,18 @@
   margin-bottom: 40px;
 }
 
+.apple.modal-shop-img {
+  filter: grayscale(100%);
+}
+
 .modal-shop-img:hover,
 .modal-shop-img:focus {
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.modal-pop-up-content {
+  max-width: 287px;
+  min-height: 325px;
 }
 
 .modal-message {
@@ -156,10 +178,11 @@
 
 @media screen and (min-width: 768px) {
   .modal-pop-up {
-    max-width: 579px;
+    min-width: 579px;
     min-height: 465px;
     padding: 40px;
   }
+
   .close-button {
     top: 24px;
     right: 24px;
@@ -172,19 +195,28 @@
     width: 21px;
     height: 21px;
   }
-  
-    .messagetextpop {
-      width: 324px;
-      margin-right: auto;
-      margin-left: auto;
-      font-size: 12px;
-      line-height: 1.16;
+
+  .messagetextpop {
+    width: 324px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 1.16;
   }
+
   .modal-pop-up-content {
     display: flex;
     gap: 24px;
     margin-bottom: 40px;
+    min-width: 100%;
   }
+
+  .modal-pop-up-btn {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.01em;
+  }
+
   .modal-img {
     max-width: 192px;
     min-height: 281px;
@@ -196,6 +228,7 @@
 
     max-width: 270px;
   }
+
   .modal-book-author {
     margin-bottom: 8px;
     font-size: 14px;
