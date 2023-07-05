@@ -1,4 +1,4 @@
-import{a as x,b as I,c as $,d as N,e as A,f as B}from"./book-shop@2x-dde28729.js";function c(t){try{return JSON.parse(localStorage.getItem(t))}catch(n){console.log(n)}}function z(t){return t.map((e,i)=>`<li class="shopping-item">
+import{a as x,b as I,c as $,d as N,e as A,f as B}from"./book-shop@2x-31eeef97.js";function c(t){try{return JSON.parse(localStorage.getItem(t))}catch(n){console.log(n)}}function z(t){return t.map((e,i)=>`<li class="shopping-item">
     <img
       class="shopping-book-cover"
       src="${e.book_image}"
