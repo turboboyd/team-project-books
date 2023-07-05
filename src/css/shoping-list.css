@@ -19,18 +19,6 @@
   filter: var(--amazon-image-filter);
 }
 
-.shop-page .visually-hidden {
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  margin: -1px;
-}
 .shopping-wrap {
   height: 142px;
   display: flex;
@@ -221,9 +209,9 @@
     line-height: 1.33;
     letter-spacing: -0.36px;
   }
-  .shop-wrap {
+  /* .shop-wrap {
     flex-grow: 1;
-  }
+  } */
 
   .empty {
     height: 409px;
@@ -231,5 +219,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  /* .sidebar-shoppinglist,
+  .shopping {
+    width: 50%;
+    float: left;
+  } */
+  .shopping {
+    width: 996px;
+  }
+  .page-container {
+    display: flex;
   }
 }

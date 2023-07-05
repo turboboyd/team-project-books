@@ -22,7 +22,6 @@ export function checkStorage() {
   if (localSavedBooks && localSavedBooks.length !== 0) {
     savedBooks = parseStorage(shoppingListKey);
     renderBtnList(savedBooks);
-    // addClassListToCurrentBtn(currentPage);
     renderShoppingList(savedBooks, currentPage);
   } else {
     listIsEmpty();
