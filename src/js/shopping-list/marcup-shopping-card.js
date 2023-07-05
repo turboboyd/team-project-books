@@ -4,6 +4,7 @@ import bookStore from '../../images/stores/book.png';
 import bookStore2x from '../../images/stores/book@2x.png';
 import bookShop from '../../images/stores/book-shop.png';
 import bookShop2x from '../../images/stores/book-shop@2x.png';
+import sprite from '../../images/sprite.svg'
 
 export default function markupBookCard(books) {
   const marcup = books
@@ -21,7 +22,7 @@ export default function markupBookCard(books) {
       <h2 class="shopping-book-title">${book.title}</h2>
       <button class="shopping-trash" type="button" data-id="${book._id}" data-index="${index}">
         <svg class="icon-shopping-trash" width="18" height="18">
-          <use href="./images/sprite.svg#icon-trash"></use>
+          <use href="${sprite}#icon-trash"></use>
         </svg>
       </button>
 
