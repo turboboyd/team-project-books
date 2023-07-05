@@ -15,9 +15,9 @@ let leftContainer = document.querySelector('.pagination-btn-left');
 let rightContainer = document.querySelector('.pagination-btn-right');
 const paginationWrapEl = document.querySelector('.pagination-wrap');
 
-export function renderBtnList(data) {
+export function renderBtnList() {
   const pageCount = allPage();
-  if (pageCount === 1) {
+  if (pageCount < 2) {
     if (leftContainer && rightContainer) {
       removeArrow();
     }
@@ -122,13 +122,19 @@ function createBtnMore() {
     btnMore.textContent = '...';
     btnListPaginationEl.after(btnMore);
     btnMore.classList.add('pagination-btn-nav', 'more-btn-pagination');
-    btnMore.addEventListener('click', OnClickMoreBtn);
+    btnMore.addEventListener('click', OnClickShowMoreBtn);
   }
 }
 
-function OnClickMoreBtn() {
+function OnClickShowMoreBtn() {
   createAllBtn();
-  btnMore.remove();
+  btnMore.removeEventListener('click', OnClickShowMoreBtn);
+  btnMore.addEventListener('click', OnClickHideMoreBtn);
+}
+
+function OnClickHideMoreBtn() {
+  renderBtnList();
+  btnMore.addEventListener('click', OnClickShowMoreBtn);
 }
 
 function addEventListenerToArrowBtn() {
@@ -152,12 +158,11 @@ function addEventListenerToArrowBtn() {
 }
 
 function OnClickGoToFirstPage() {
-  const pageCount = allPage();
   if (currentPage > 1) {
     setCurrentPage(1);
     const data = parseStorage(shoppingListKey);
     renderShoppingList(data, currentPage);
-    renderBtnList(data);
+    renderBtnList();
   }
 }
 
