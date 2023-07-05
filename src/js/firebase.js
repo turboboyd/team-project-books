@@ -26,18 +26,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-console.log('auth: ', auth);
-console.log('getAuth: ', getAuth);
-const userActive = auth.currentUser;
-console.log('userActive: ', userActive);
-
 
 const authUser = (userName, userEmail, userPassword) => {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
     .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
-      updateProfile(user, {
+        updateProfile(user, {
         displayName: userName
       }).then(() => {
         console.log('Sign in successful');
@@ -107,7 +101,6 @@ setTimeout(() => {
 
 export function userVerification() {
   const userActive = auth.currentUser;
-  console.log(userActive);
   if (userActive !== null) {
     const displayName = userActive.displayName;
     renderUserLogin(displayName);
@@ -118,7 +111,6 @@ export function userVerification() {
 
 export function userVerificationTabDesk() {
   const userActive = auth.currentUser;
-  console.log(userActive);
   if (userActive !== null) {
     const displayName = userActive.displayName;
     renderHeaderTabDescLogin(displayName);
