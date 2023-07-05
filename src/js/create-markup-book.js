@@ -7,7 +7,7 @@ export default function createMarkupBook({ _id, book_image, title, author }) {
   return `    <li class="card-book" data-aos="zoom-in" data-aos-delay="150" data-aos-duration="800">
         <a href="#" class="card-book-link" title="${title}">
         <div class="card-book-wrap">
-    <img width="218" height="auto" class="card-book-image" src="${book_image}" alt="${title}" loading="lazy">
+    <img width="218" height="auto" class="card-book-image" src="${book_image}" alt="${title}" loading="lazy" onerror="this.src='../images/defolt-book-min.png'">
     <p class="card-book-notification">Quick view</p>
     <p class="card-book-id visually-hidden">${_id}</p>
     </div>
@@ -20,7 +20,7 @@ export default function createMarkupBook({ _id, book_image, title, author }) {
 
 
 export function createMarkup({_id ,book_image, title, author, description, buy_links}) {
-  return `<img width="218" height="auto" class="modal-img" src="${book_image}" alt="${title}" />
+  return `<img width="218" height="auto" class="modal-img" src="${book_image}" alt="${title}"/>
     <div class='modal-book-attributes'>
       <p class="modal-book-title">${title}</p>
       <p class="modal-book-author">${author}</p>
