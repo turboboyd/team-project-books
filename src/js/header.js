@@ -3,6 +3,7 @@ import { backdropOutEl } from './modal-auth-out';
 import { userVerification, userVerificationTabDesk } from './firebase';
 import mobileBg from '../images/mobile-menu/mobile-menu-bg.png';
 import mobileBgx2 from '../images/mobile-menu/mobile-menu-bg-2x.png';
+import sprite from '../images/sprite.svg'
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
@@ -12,7 +13,7 @@ const bodyElement = document.querySelector('body');
 const htmlUserNotLoginModal = `
   <button data-modal-auth-open class="menu-btn-start" type="button">
     Sign up<svg class="menu-btn-start-icon" width="20" height="20">
-      <use href="./images/svg-sprite-den.svg#arrow-right-icon"></use>
+      <use href="${sprite}#arrow-right-icon"></use>
     </svg>
   </button>
   <div class="mobile-bg-wrapper">
@@ -51,7 +52,7 @@ const htmlUserNotLoginModal = `
   </picture>
 </div>
   `;
-const htmlUserLoginModal = `  <div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a id="home" class="mob-menu-link-nav" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a id="shop" class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>  <div class="mobile-bg-wrapper">
+const htmlUserLoginModal = `  <div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="${sprite}#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a id="home" class="mob-menu-link-nav" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a id="shop" class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="${sprite}#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="${sprite}#arrow-right-icon"></use></svg></button>  <div class="mobile-bg-wrapper">
   <picture class="mobile-bg primary">
     <source
       srcset=""
@@ -208,7 +209,7 @@ const headerNavLinkEl = document.querySelector('.header-list-nav');
 
 // ========== not registration user ====================
 export function renderBtnSignupTabDesc() {
-  const markupSignupTabDesc = `<button data-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/symbol-defs.svg#icon-arrow-right"></use></svg></button>`;
+  const markupSignupTabDesc = `<button data-auth-open class="menu-btn-start-tab" type="button">Sign up<svg class="menu-btn-start-icon" width="20" height="20"><use href="${sprite}#icon-arrow-right"></use></svg></button>`;
   headerBtnUserEl.innerHTML = markupSignupTabDesc;
   const btnOpenFormAuth = document.querySelector('[data-auth-open]');
   btnOpenFormAuth.addEventListener('click', onOpenFormAuth);
@@ -216,7 +217,7 @@ export function renderBtnSignupTabDesc() {
 
 // ========== yes registration user ====================
 // function renderNavLinkPageTabDesc() {
-//   const markupNavLinkPageTabDesc = `<ul class="header-list-nav"><li><a class="header-link-nav current" href="./index.html">HOME</a></li><li><a class="header-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#bag"></use></svg></a></li></ul>`;
+//   const markupNavLinkPageTabDesc = `<ul class="header-list-nav"><li><a class="header-link-nav current" href="./index.html">HOME</a></li><li><a class="header-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="${sprite}#bag"></use></svg></a></li></ul>`;
 //   headerNavLinkEl.insertAdjacentHTML('beforeend', markupNavLinkPageTabDesc)
 // }
 
@@ -243,7 +244,7 @@ function closeLogout(headerBtnUserMenu) {
 }
 
 function renderBtnUserProfTabDesc() {
-  const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="./images/svg-sprite-den.svg#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="./images/svg-sprite-den.svg#user-arrow-down-icon"></use></svg></div></button><div class="header-btn-user-menu is-hidden"><button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button></div>`;
+  const markupUserProfTabDesc = `<button class="header-btn-user" type="button"><div class="btn-container"><div class="header-btn-user-foto"><svg class="header-btn-user-icon" width="19" height="19"><use href="${sprite}#user-default-icon"></use></svg></div><p class="user-name-tablet-desktop">welcome</p><svg class="header-btn-down-icon" width="23" height="26"><use href="${sprite}#user-arrow-down-icon"></use></svg></div></button><div class="header-btn-user-menu is-hidden"><button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="${sprite}#arrow-right-icon"></use></svg></button></div>`;
   headerBtnUserEl.innerHTML = markupUserProfTabDesc;
   const headerBtnUser = document.querySelector('.header-btn-user');
   const headerBtnUserWrap = document.querySelector('.header-btn-user-wrap ');
@@ -254,7 +255,7 @@ function renderBtnUserProfTabDesc() {
 }
 
 // function renderBtnLogoutTabDesc() {
-//   const markupLogoutTabDesc = `<button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="./images/svg-sprite-den.svg#arrow-right-icon"></use></svg></button>`;
+//   const markupLogoutTabDesc = `<button class="header-menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="${sprite}#arrow-right-icon"></use></svg></button>`;
 //   headerBtnUserMenu.innerHTML = markupLogoutTabDesc;
 // }
 
