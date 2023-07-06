@@ -164,6 +164,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .shopping__list {
+    min-height: 691px;
+  }
   .shopping-title {
     margin-bottom: 140px;
   }
@@ -223,6 +226,9 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .shopping__list {
+    min-height: 691px;
+  }
   .shopping-book-title {
     max-width: 750px;
   }
