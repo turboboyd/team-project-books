@@ -12,7 +12,7 @@ import {
 } from './header';
 import { onModalClose } from './modal-auth'; 
 import { ofNavMenu } from './header'
-import { addUserIdToLocalStorage, addUserDataToDB, getDataUserDB, getOnIncludeDBUser } from './firestore-db'
+import { addUserIdToLocalStorage, addUserDataToDB, getTESTDataUserDB, getOnIncludeDBUser, addIdUserDocumentToLS, getBooksFromDBForRender  } from './firestore-db'
 
 
 export const firebaseConfig = {
@@ -24,10 +24,10 @@ export const firebaseConfig = {
   appId: "1:730775079305:web:22a6aa554ab92270bef958"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// const db = getFirestore(app);
+
 
 const authUser = (userName, userEmail, userPassword) => {
   try { 
@@ -40,8 +40,9 @@ const authUser = (userName, userEmail, userPassword) => {
         addUserIdToLocalStorage(user.uid)
         addUserDataToDB(user.displayName, user.email, user.uid)
         getDataUserDB(user.uid)
+        addIdUserDocumentToLS(user.uid)
         console.log('Sign in successful');
-        // location.reload()    
+        location.reload()    
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
@@ -60,9 +61,9 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
       const user = userCredential.user;
       addUserIdToLocalStorage(user.uid)
       getOnIncludeDBUser(user)
-      getDataUserDB(user.uid)
+      getBooksFromDBForRender()
       console.log('Successful login');
-      location.reload()
+      // location.reload()
     })
    } catch (error) {
        const errorCode = error.code;
@@ -76,7 +77,8 @@ function addUserAuth(e) {
     const authName = authNameEl.value.trim();
     const authEmail = authEmailEl.value.trim();
     const authPassword = authPasswordEl.value;
-    authUser(authName, authEmail, authPassword);
+  authUser(authName, authEmail, authPassword);
+  onModalClose()
     setTimeout(() => {
         signupForm.reset();
     }, 1000)
@@ -86,7 +88,8 @@ function onLoginUser(e) {
     e.preventDefault();
     const loginEmail = loginEmailEl.value;
     const loginPassword = loginPasswordEl.value;
-    loginUser(auth, loginEmail, loginPassword);
+  loginUser(auth, loginEmail, loginPassword);
+  onModalClose()
     setTimeout(() => {
         loginForm.reset();
     }, 1000)
@@ -98,7 +101,9 @@ function onLogoutUser () {
     removeHiddenModalOut();
     renderBtnSignupTabDesc();
     ofNavMenu()
-    location.reload()
+    localStorage.clear()
+    window.location.href = 'http://localhost:5173/index.html';
+    // location.reload()
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });

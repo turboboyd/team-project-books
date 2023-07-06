@@ -1,5 +1,5 @@
 import BookAPI from './book-api';
-import { addBookObjToDB} from './firestore-db'
+import { addBookObjToDB, getBookInDBandBookInLocalStorage} from './firestore-db'
 import { showLoader, hideLoader } from './loader';
 // import createMarkup from './create-markup-book';
 import Cleaning from './cleaning';
@@ -105,8 +105,7 @@ function removeChangeTextModalBtn() {
 }
 
 function addToShoppingList(bookData) {
-  console.log(bookData);
-  addBookObjToDB(bookData)
+  addBookObjToDB(bookData);
 
   const shoppingList = shopListMethods.getShoppingList();
   shoppingList.push(bookData);
@@ -152,7 +151,10 @@ modalPopUpBtn.addEventListener('click', () => {
   const shoppingList = shopListMethods.getShoppingList();
 
   if (shoppingList.some(book => book._id === bookId)) {
-    shopListMethods.removeFromShoppingList(bookId);
+
+    getBookInDBandBookInLocalStorage(bookId)
+
+    // shopListMethods.removeFromShoppingList(bookId);
     addChangeTextModalBtn();
   } else {
     addToShoppingList(currentBookData);

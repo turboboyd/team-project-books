@@ -7,6 +7,7 @@ import {
   setCurrentPage,
 } from './pagination';
 import { countPerPage, renderBtnList, allPage } from './pagination-btn';
+import { getBookInDBandBookInLocalStorage } from '../firestore-db'
 
 export default function addEventListenerToTrash() {
   const trashEl = document.querySelectorAll('.shopping-trash');
@@ -43,6 +44,7 @@ function OnClickRemoveBookFromListandStorage(e) {
 }
 
 function removeFromShoppingList(bookId) {
+  getBookInDBandBookInLocalStorage(bookId)
   const shoppingList = parseStorage(shoppingListKey);
   const index = shoppingList.findIndex(book => book._id === bookId);
   if (index !== -1) {

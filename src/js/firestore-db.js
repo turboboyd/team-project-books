@@ -19,6 +19,7 @@ import {
     arrayUnion,
     arrayRemove,
 } from 'firebase/firestore';
+  import lsMethods from './localstorage-method'
 
  const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
@@ -28,6 +29,8 @@ import {
   messagingSenderId: "730775079305",
   appId: "1:730775079305:web:22a6aa554ab92270bef958"
 };
+
+const userLocalStorage = new lsMethods()
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -44,11 +47,40 @@ export function addUserIdToLocalStorage(id) {
     }
 }
 
+export async function addIdUserDocumentToLS(idUser) {
+    const idUserLS = getUserIdToLocalStorage();
+    const docRef = collection(db, "user");
+    try {
+        const q = query(docRef, where("idUser", "==", idUserLS));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            if (idUserLS === idUser) {
+                const userIdDocument = JSON.stringify(doc.id);
+                localStorage.setItem("userIdDocument", userIdDocument )
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        // Notify.error 
+    }
+}
+
 function getUserIdToLocalStorage() {
     try {
         const idUser =
             JSON.parse(localStorage.getItem("idUser"));
         return idUser;
+    } catch (error) {
+        console.log(error);
+        // Notify.error
+    }
+}
+
+function getIdUserDocumentFromLS() {
+     try {
+        const idUserDoc =
+            JSON.parse(localStorage.getItem("userIdDocument"));
+        return idUserDoc;
     } catch (error) {
         console.log(error);
         // Notify.error
@@ -70,13 +102,12 @@ export async function addUserDataToDB(name, email, idUser) {
     }
 } 
 
-// add to saveShoppingList(shoppingList)
-export async function addBookObjToDB(shoppingList) {
-    const idUser = getUserIdToLocalStorage();
-    const docRef = doc(db, "user", idUser);
+export async function addBookObjToDB(bookObject) {
+    const userIdDocument = getIdUserDocumentFromLS();
+    const docRef = doc(db, "user", userIdDocument);
     try {
         await updateDoc(docRef, {
-            booksUser: arrayUnion(shoppingList)
+            booksUser: arrayUnion(bookObject)
     });
     } catch (error) {
         console.log(error);
@@ -84,7 +115,21 @@ export async function addBookObjToDB(shoppingList) {
     }
 }
 
-async function getBooksFromDBForRender() {
+async function removeBookObjFromDB(bookObject) {
+    const userIdDocument = getIdUserDocumentFromLS();
+    const docRef = doc(db, "user", userIdDocument);
+    try {
+        await updateDoc(docRef, {
+            booksUser: arrayRemove(bookObject)
+        });
+    } catch (error) {
+        console.log(error);
+        // Notify.error 
+    }
+    
+}
+
+export async function getBooksFromDBForRender() {
     const idUserLS = getUserIdToLocalStorage();
     const docRef = collection(db, "user");
     let arrBooksDB = [];
@@ -92,16 +137,18 @@ async function getBooksFromDBForRender() {
         const q = query(docRef, where("idUser", "==", idUserLS));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-            arrBooksDB.push(doc.data());
+            arrBooksDB.push(doc.data().booksUser);
         });
+        arrBooksDB.forEach((el) => {
+        userLocalStorage.saveShoppingList(el)
+        })
     } catch (error) {
         console.log(error);
         // Notify.error 
     }
-    return arrBooksDB;
 }
 
-async function getBookInDBandBookInLocalStorage(idBook) {
+export async function getBookInDBandBookInLocalStorage(idBook) {
     const idUserLS = getUserIdToLocalStorage();
     const docRef = collection(db, "user");
     let arrBooks = [];
@@ -111,43 +158,11 @@ async function getBookInDBandBookInLocalStorage(idBook) {
         querySnapshot.forEach((doc) => {
             arrBooks.push(doc.data().booksUser);
         });
-        arrBooks.forEach(el => {
-            if (el._id === idBook) {
-                removeBookObjFromDB(el)
+        arrBooks.forEach((el, i) => {
+            if (el[i]._id === idBook) {
+                removeBookObjFromDB(el[i])
             }
         })
-    } catch (error) {
-        console.log(error);
-        // Notify.error 
-    }
-}
-
-async function removeBookObjFromDB(bookElDB) {
-    const idUser = getUserIdToLocalStorage();
-    const docRef = doc(db, "user", idUser);
-
-    try {
-        await updateDoc(docRef, {
-        booksUser: arrayRemove(bookElDB)
-});
-    } catch (error) {
-        console.log(error);
-        // Notify.error 
-    }
-}
-
-export async function getDataUserDB(idUserGet) {
-    const idUserLS = getUserIdToLocalStorage();
-    const docRef = collection(db, "user");
-    let dataUser = null;
-    try {
-        const q = query(docRef, where("idUser", "==", idUserLS));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-            if (idUserLS === idUserGet) {
-                dataUser = doc.data()
-            }
-        });
     } catch (error) {
         console.log(error);
         // Notify.error 
@@ -166,6 +181,7 @@ export async function getOnIncludeDBUser(user) {
         });
 
         if (dataUser) {
+            addIdUserDocumentToLS(uid)
             return;
         } else {
             addUserDataToDB(displayName, email, uid)
@@ -174,4 +190,24 @@ export async function getOnIncludeDBUser(user) {
         console.log(error);
         // Notify.error 
     }
+}
+
+// ======= TEST TEST ================
+export async function getTESTDataUserDB(idUserGet) {
+    const idUserLS = getUserIdToLocalStorage();
+    const docRef = collection(db, "user");
+    let dataUser = null;
+    try {
+        const q = query(docRef, where("idUser", "==", idUserLS));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            if (idUserLS === idUserGet) {
+                dataUser = doc.id
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        // Notify.error 
+    }
+    console.log(dataUser);
 }
