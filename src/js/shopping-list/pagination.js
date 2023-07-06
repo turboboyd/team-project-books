@@ -65,5 +65,4 @@ function rewriteValuecurrentPageOnClick(e) {
   const btnEl = e.target.closest('button');
   const pageBtn = Number(btnEl.textContent);
   setCurrentPage(pageBtn);
-  console.log('currentPage', currentPage);
 }
