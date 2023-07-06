@@ -41,9 +41,9 @@ const authUser = (userName, userEmail, userPassword) => {
         }).then(() => {
           addUserIdToLocalStorage(user.uid)
           addUserDataToDB(user.displayName, user.email, user.uid)
-          getDataUserDB(user.uid)
           addIdUserDocumentToLS(user.uid)
-          location.reload()
+          userVerification();
+          userVerificationTabDesk();
           onModalClose();
           signupForm.reset();
           Notiflix.Notify.success('Sign in successful');
@@ -72,7 +72,8 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
         addUserIdToLocalStorage(user.uid)
         getOnIncludeDBUser(user)
         getBooksFromDBForRender()
-        // location.reload()
+        userVerification();
+        userVerificationTabDesk();
         onModalClose();
         loginForm.reset();
         Notiflix.Notify.success('Successful login');
@@ -106,7 +107,7 @@ function onLoginUser(e) {
   onModalClose()
     setTimeout(() => {
         loginForm.reset();
-    }, 1000)
+    }, 2000)
 
 }
 
@@ -116,10 +117,8 @@ function onLogoutUser () {
     renderBtnSignupTabDesc();
     ofNavMenu()
     localStorage.clear()
-    window.location.href = 'http://localhost:5173/index.html';
-    // location.reload()
+    window.location.href = 'https://turboboyd.github.io/team-project-books/index.html';
 }).catch((error) => {
-  console.log('Помилка при LOGOUT');
   Notiflix.Notify.failure(`Error LOGOUT`);
 });
 }
