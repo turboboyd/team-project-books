@@ -8,19 +8,18 @@
   opacity: 1;
   /* scale: 1; */
   visibility: visible;
-  transition: opacity 250ms linear,
-    scale 250ms linear,
-    visibility 250ms linear;
+  transition: opacity 500ms linear,
+    visibility 500ms linear;
 }
 
-.footer-backdrop.is-open {
+.footer-backdrop.visually-hidden {
   opacity: 0;
   /* visibility: visible; */
   visibility: hidden;
     /* scale: 0.9; */
     pointer-events: none;
 }
-.footer-modal.is-open{
+.footer-modal.visually-hidden{
   transform: translate(-50%, 50%);
   transition: transform 500ms linear;
 }
