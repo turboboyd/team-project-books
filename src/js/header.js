@@ -3,7 +3,7 @@ import { backdropOutEl } from './modal-auth-out';
 import { userVerification, userVerificationTabDesk } from './firebase';
 import mobileBg from '../images/mobile-menu/mobile-menu-bg.png';
 import mobileBgx2 from '../images/mobile-menu/mobile-menu-bg-2x.png';
-import sprite from '../images/sprite.svg'
+import sprite from '../images/sprite.svg';
 
 const burgerButton = document.querySelector('.burger');
 const closeButton = document.querySelector('.header-btn-close');
@@ -99,7 +99,31 @@ export function renderUserLogin(displayName) {
   currentPage(linkPageHomeEl, linkPageShopEl);
 }
 
+// function currentPage(linkPageHomeEl, linkPageShopEl) {
+//   const currentPagePath = window.location.pathname;
+//   const rootPath = '/';
+//   if (currentPagePath === rootPath) {
+//     linkPageHomeEl.classList.add('current');
+//   }
+
+//   const currentPageUrl = window.location.pathname;
+//   const homeHref = '/index.html';
+//   const shopHref = '/shopping-list.html';
+//   if (currentPageUrl === homeHref) {
+//     linkPageHomeEl.classList.add('current');
+//   }
+//   if (currentPageUrl === shopHref) {
+//     linkPageShopEl.classList.add('current');
+//   }
+// }
+
 function currentPage(linkPageHomeEl, linkPageShopEl) {
+  const currentPagePath = window.location.pathname;
+  const rootPath = '/';
+  if (currentPagePath === rootPath) {
+    linkPageHomeEl.classList.add('current');
+  }
+
   const currentPageUrl = window.location.pathname;
   const homeHref = '/team-project-books/index.html';
   const shopHref = '/team-project-books/shopping-list.html';
