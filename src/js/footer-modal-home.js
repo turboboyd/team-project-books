@@ -7,16 +7,16 @@ openFooterBackdropHome.addEventListener('click', openFooterModal);
 closeFooterModalBtnHome.addEventListener('click', closeFooterModal);
 
 function openFooterModal() {
-  footerBackdropHome.classList.remove('is-open');
-  openFooterModalHome.classList.remove('is-open');
+  footerBackdropHome.classList.remove('visually-hidden');
+  openFooterModalHome.classList.remove('visually-hidden');
 
   openFooterBackdropHome.removeEventListener('click', openFooterModal);
   closeFooterModalBtnHome.addEventListener('click', closeFooterModal);
 }
 
 function closeFooterModal() {
-  footerBackdropHome.classList.add('is-open');
-  openFooterModalHome.classList.add('is-open');
+  footerBackdropHome.classList.add('visually-hidden');
+  openFooterModalHome.classList.add('visually-hidden');
   closeFooterModalBtnHome.removeEventListener('click', closeFooterModal);
   openFooterBackdropHome.addEventListener('click', openFooterModal);
 }
