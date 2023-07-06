@@ -4,23 +4,26 @@ import bookStore from '../../images/stores/book.png';
 import bookStore2x from '../../images/stores/book@2x.png';
 import bookShop from '../../images/stores/book-shop.png';
 import bookShop2x from '../../images/stores/book-shop@2x.png';
-import sprite from '../../images/sprite.svg'
+import sprite from '../../images/sprite.svg';
+import boookDefault from '../../images/defolt-book-min.png';
 
 export default function markupBookCard(books) {
   const marcup = books
     .map(
       (book, index) => `<li class="shopping-item">
-    <img
+    <img 
       class="shopping-book-cover"
       src="${book.book_image}"
-      alt="${book.title}"
+      alt="${book.title}?${book.title}:${{ boookDefault }}"
       width="100"
       height="142"
       loading="lazy"
     />
     <div class="shopping-wrap">
       <h2 class="shopping-book-title">${book.title}</h2>
-      <button class="shopping-trash" type="button" data-id="${book._id}" data-index="${index}">
+      <button class="shopping-trash" type="button" data-id="${
+        book._id
+      }" data-index="${index}">
         <svg class="icon-shopping-trash" width="18" height="18">
           <use href="${sprite}#icon-trash"></use>
         </svg>
@@ -33,7 +36,9 @@ export default function markupBookCard(books) {
 
         <ul class="shop-list">
           <li>
-            <a class="shop-link" href="${book.buy_links[0].url}" target="_blank">
+            <a class="shop-link" href="${
+              book.buy_links[0].url
+            }" target="_blank">
               <img
                 class="shop-img amazon icon-shop-1"
                 srcset="${amazon} 1x, ${amazon2x} 2x"
@@ -45,7 +50,9 @@ export default function markupBookCard(books) {
             </a>
           </li>
           <li>
-            <a class="shop-link" href="${book.buy_links[1].url}" target="_blank">
+            <a class="shop-link" href="${
+              book.buy_links[1].url
+            }" target="_blank">
               <img
                 class="shop-img icon-shop-2"
                 srcset="${bookStore} 1x, ${bookStore2x} 2x"
@@ -57,7 +64,9 @@ export default function markupBookCard(books) {
             </a>
           </li>
           <li>
-            <a class="shop-link" href="${book.buy_links[4].url}" target="_blank">
+            <a class="shop-link" href="${
+              book.buy_links[4].url
+            }" target="_blank">
               <img
                 class="shop-img icon-shop-3"
                 srcset=" ${bookShop} 1x, ${bookShop2x} 2x"
