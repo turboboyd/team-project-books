@@ -20,7 +20,7 @@ import {
     arrayRemove,
 } from 'firebase/firestore';
   import lsMethods from './localstorage-method'
-
+  import Notiflix from 'notiflix';  
  const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
   authDomain: "my-app-bookchelf-gr6.firebaseapp.com",
@@ -34,7 +34,8 @@ const userLocalStorage = new lsMethods()
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+// Notiflix.Notify.success('Sign in successful')
+// Notiflix.Notify.failure(`Error while updating profile`);
 
 
 export function addUserIdToLocalStorage(id) {
@@ -43,7 +44,6 @@ export function addUserIdToLocalStorage(id) {
         localStorage.setItem("idUser", idUser )
     } catch (error) {
         console.log(error);
-        // Notify.error
     }
 }
 
