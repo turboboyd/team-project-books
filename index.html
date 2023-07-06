@@ -12,9 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Bookshelf</title>
     
-    <script type="module" crossorigin src="/team-project-books/assets/index-d0f4e7d6.js"></script>
-    <link rel="modulepreload" crossorigin href="/team-project-books/assets/book-shop@2x-c4278026.js">
-    <link rel="stylesheet" href="/team-project-books/assets/book-shop@2x-f9ac2b7c.css">
+    <script type="module" crossorigin src="/team-project-books/assets/index-94576d11.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-project-books/assets/book-shop@2x-7c97dbb6.js">
+    <link rel="stylesheet" href="/team-project-books/assets/book-shop@2x-e2af0571.css">
     <link rel="stylesheet" href="/team-project-books/assets/index-b16a6001.css">
   </head>
   <body class="page">
@@ -143,7 +143,7 @@
         </div>
 
         <!-- modal auth -->
-        <div data-modal class="backdrop-auth is-hidden-auth">
+        <div data-modal class="backdrop-auth visually-hidden">
   <div class="modal-auth">
     <button
       data-modal-close
@@ -257,9 +257,14 @@
   </div>
 </div>
 
-        <div class="backdrop-auth-out is-hidden-b" data-backdrop-out>
+        <div class="backdrop-auth-out visually-hidden" data-backdrop-out>
   <div class="modal-auth-out">
-    <button data-btn-out-close type="button" aria-label="Close Login Window" class="btn__close">
+    <button
+      data-btn-out-close
+      type="button"
+      aria-label="Close Login Window"
+      class="btn__close"
+    >
       <svg class="btn__close-modal">
         <use href="/team-project-books/assets/sprite-a6312564.svg#icon-close"></use>
       </svg>
@@ -269,8 +274,12 @@
     </p>
 
     <div class="btn-auth-out">
-      <button data-btn-out-yes type="button" aria-label="yes" class="btn">Yes</button>
-      <button data-btn-out-no type="button" aria-label="no"  class="btn">No</button>
+      <button data-btn-out-yes type="button" aria-label="yes" class="btn">
+        Yes
+      </button>
+      <button data-btn-out-no type="button" aria-label="no" class="btn">
+        No
+      </button>
     </div>
     <div class="messagetext" id="messageText"></div>
   </div>
