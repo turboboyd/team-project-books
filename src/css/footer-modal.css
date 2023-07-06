@@ -2,24 +2,35 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 100;
   opacity: 1;
-  transition: opacity 800ms ease-in-out;
+  /* scale: 1; */
+  visibility: visible;
+  transition: opacity 250ms linear,
+    scale 250ms linear,
+    visibility 250ms linear;
 }
 
 .footer-backdrop.is-open {
   opacity: 0;
-  visibility: visible;
-  pointer-events: none;
+  /* visibility: visible; */
+  visibility: hidden;
+    /* scale: 0.9; */
+    pointer-events: none;
 }
-
+.footer-modal.is-open{
+  transform: translate(-50%, 50%);
+  transition: transform 500ms linear;
+}
 .footer-modal {
+  
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: transform 500ms linear;
   z-index: 101;
   padding: 20px;
   border-radius: 10px;
@@ -35,7 +46,10 @@
   font-size: 20px;
   width: 100%;
   height: 100%;
+  
 }
+
+
 
 .footer-modal-close-btn {
   position: absolute;
