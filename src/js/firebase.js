@@ -12,7 +12,7 @@ import {
 } from './header';
 import { onModalClose } from './modal-auth'; 
 import {ofNavMenu} from './header'
-
+import Notiflix from 'notiflix';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
@@ -34,7 +34,7 @@ const authUser = (userName, userEmail, userPassword) => {
         updateProfile(user, {
         displayName: userName
       }).then(() => {
-        console.log('Sign in successful');
+        Notiflix.Notify.success('Sign in successful');
         
         onModalClose();
         signupForm.reset();
@@ -42,12 +42,18 @@ const authUser = (userName, userEmail, userPassword) => {
         userVerificationTabDesk();
       }).catch((error) => {
         console.error('Error while updating profile:', error);
+        Notiflix.Notify.failure(
+          `Error while updating profile: ${error}`
+        );
       });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error('Error while registration profile:', errorCode, errorMessage);
+              Notiflix.Notify.failure(
+                `Error while registration profile: ${error}`
+              );
     });
 }
 
@@ -55,7 +61,7 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
       signInWithEmailAndPassword(auth, loginUserEmail, loginUserPassword)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log('Successful login');
+      Notiflix.Notify.success('Successful login');
 
       onModalClose();
       loginForm.reset();
@@ -66,6 +72,7 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error('Error during login:', errorCode, errorMessage);
+      Notiflix.Notify.failure(`Error during login: ${error}`);
     });
 }
 
@@ -91,6 +98,7 @@ function onLogoutUser () {
     ofNavMenu()
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
+  Notiflix.Notify.failure(`Error LOGOUT}`);
 });
 }
 

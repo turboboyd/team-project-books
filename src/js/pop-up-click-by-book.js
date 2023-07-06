@@ -9,7 +9,7 @@ import bookStore from '../images/stores/book.png';
 import bookStore2x from '../images/stores/book@2x.png';
 import bookShop from '../images/stores/book-shop.png';
 import bookShop2x from '../images/stores/book-shop@2x.png';
-
+import Notiflix from 'notiflix';
 const bookApi = new BookAPI();
 const clearMarkup = new Cleaning();
 const shopListMethods = new localstorageMethods();
@@ -139,6 +139,9 @@ async function handleBookClick(event) {
       }
     } catch (error) {
       console.error('Error handling book click:', error);
+      Notiflix.Notify.failure(
+        `Error handling book click: ${error}`
+      );
     }
   }
 }
