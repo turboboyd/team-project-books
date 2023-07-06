@@ -1,4 +1,5 @@
 import BookAPI from './book-api';
+import { addBookObjToDB} from './firestore-db'
 import { showLoader, hideLoader } from './loader';
 // import createMarkup from './create-markup-book';
 import Cleaning from './cleaning';
@@ -104,6 +105,9 @@ function removeChangeTextModalBtn() {
 }
 
 function addToShoppingList(bookData) {
+  console.log(bookData);
+  addBookObjToDB(bookData)
+
   const shoppingList = shopListMethods.getShoppingList();
   shoppingList.push(bookData);
   shopListMethods.saveShoppingList(shoppingList);

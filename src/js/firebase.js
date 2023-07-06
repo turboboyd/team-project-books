@@ -11,10 +11,11 @@ import {
   renderBtnSignupTabDesc,
 } from './header';
 import { onModalClose } from './modal-auth'; 
-import {ofNavMenu} from './header'
+import { ofNavMenu } from './header'
+import { addUserIdToLocalStorage, addUserDataToDB, getDataUserDB, getOnIncludeDBUser } from './firestore-db'
 
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
   authDomain: "my-app-bookchelf-gr6.firebaseapp.com",
   projectId: "my-app-bookchelf-gr6",
@@ -26,47 +27,48 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+// const db = getFirestore(app);
 
 const authUser = (userName, userEmail, userPassword) => {
-    createUserWithEmailAndPassword(auth, userEmail, userPassword)
-    .then((userCredential) => {
+  try { 
+      createUserWithEmailAndPassword(auth, userEmail, userPassword)
+      .then((userCredential) => {
         const user = userCredential.user;
         updateProfile(user, {
         displayName: userName
       }).then(() => {
+        addUserIdToLocalStorage(user.uid)
+        addUserDataToDB(user.displayName, user.email, user.uid)
+        getDataUserDB(user.uid)
         console.log('Sign in successful');
-        
-        onModalClose();
-        signupForm.reset();
-        userVerification();
-        userVerificationTabDesk();
+        // location.reload()    
       }).catch((error) => {
         console.error('Error while updating profile:', error);
       });
     })
-    .catch((error) => {
+   } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error('Error while registration profile:', errorCode, errorMessage);
-    });
+    };
 }
 
 const loginUser = (auth, loginUserEmail, loginUserPassword) => {
-      signInWithEmailAndPassword(auth, loginUserEmail, loginUserPassword)
+  try { 
+    signInWithEmailAndPassword(auth, loginUserEmail, loginUserPassword)
     .then((userCredential) => {
       const user = userCredential.user;
+      addUserIdToLocalStorage(user.uid)
+      getOnIncludeDBUser(user)
+      getDataUserDB(user.uid)
       console.log('Successful login');
-
-      onModalClose();
-      loginForm.reset();
-      userVerification();
-      userVerificationTabDesk();
+      location.reload()
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Error during login:', errorCode, errorMessage);
-    });
+   } catch (error) {
+       const errorCode = error.code;
+       const errorMessage = error.message;
+       console.error('Error during login:', errorCode, errorMessage);
+    };
 }
 
 function addUserAuth(e) {
@@ -74,14 +76,21 @@ function addUserAuth(e) {
     const authName = authNameEl.value.trim();
     const authEmail = authEmailEl.value.trim();
     const authPassword = authPasswordEl.value;
-  authUser(authName, authEmail, authPassword);
+    authUser(authName, authEmail, authPassword);
+    setTimeout(() => {
+        signupForm.reset();
+    }, 1000)
 }
 
 function onLoginUser(e) {
     e.preventDefault();
     const loginEmail = loginEmailEl.value;
     const loginPassword = loginPasswordEl.value;
-  loginUser(auth, loginEmail, loginPassword);
+    loginUser(auth, loginEmail, loginPassword);
+    setTimeout(() => {
+        loginForm.reset();
+    }, 1000)
+
 }
 
 function onLogoutUser () {
@@ -89,6 +98,7 @@ function onLogoutUser () {
     removeHiddenModalOut();
     renderBtnSignupTabDesc();
     ofNavMenu()
+    location.reload()
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
 });
