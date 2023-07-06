@@ -43,7 +43,7 @@ const authUser = (userName, userEmail, userPassword) => {
       }).catch((error) => {
         console.error('Error while updating profile:', error);
         Notiflix.Notify.failure(
-          `Error while updating profile: ${error}`
+          `Error while updating profile`
         );
       });
     })
@@ -52,7 +52,7 @@ const authUser = (userName, userEmail, userPassword) => {
       const errorMessage = error.message;
       console.error('Error while registration profile:', errorCode, errorMessage);
               Notiflix.Notify.failure(
-                `Error while registration profile: ${error}`
+                `Error while registration profile`
               );
     });
 }
@@ -72,7 +72,7 @@ const loginUser = (auth, loginUserEmail, loginUserPassword) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error('Error during login:', errorCode, errorMessage);
-      Notiflix.Notify.failure(`Error during login: ${error}`);
+      Notiflix.Notify.failure(`Error during login`);
     });
 }
 
@@ -98,7 +98,7 @@ function onLogoutUser () {
     ofNavMenu()
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
-  Notiflix.Notify.failure(`Error LOGOUT}`);
+  Notiflix.Notify.failure(`Error LOGOUT`);
 });
 }
 

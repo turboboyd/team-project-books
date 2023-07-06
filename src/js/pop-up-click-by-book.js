@@ -140,7 +140,7 @@ async function handleBookClick(event) {
     } catch (error) {
       console.error('Error handling book click:', error);
       Notiflix.Notify.failure(
-        `Error handling book click: ${error}`
+        `Error handling book click`
       );
     }
   }
