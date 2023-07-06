@@ -32,6 +32,7 @@
   .categories {
     width: 337px;
     height: 472px;
+    margin-bottom: 0;
   }
   .categories_list {
     max-height: 472px;
