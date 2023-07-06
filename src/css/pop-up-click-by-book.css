@@ -94,7 +94,10 @@
   width: 12px;
   height: 12px;
 }
-
+.close-button__icon:focus,
+.close-button__icon:hover{
+stroke: var(--main-bgr-color);
+}
 .messagetextpop {
   width: 242px;
   margin-top: 8px;
