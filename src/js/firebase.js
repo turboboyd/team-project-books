@@ -11,8 +11,10 @@ import {
   renderBtnSignupTabDesc,
 } from './header';
 import { onModalClose } from './modal-auth'; 
+
 import { ofNavMenu } from './header'
 import { addUserIdToLocalStorage, addUserDataToDB, getTESTDataUserDB, getOnIncludeDBUser, addIdUserDocumentToLS, getBooksFromDBForRender  } from './firestore-db'
+import Notiflix from 'notiflix';
 
 
 export const firebaseConfig = {
@@ -30,46 +32,58 @@ const auth = getAuth(app);
 
 
 const authUser = (userName, userEmail, userPassword) => {
-  try { 
-      createUserWithEmailAndPassword(auth, userEmail, userPassword)
+  try {
+    createUserWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
         const user = userCredential.user;
         updateProfile(user, {
-        displayName: userName
-      }).then(() => {
-        addUserIdToLocalStorage(user.uid)
-        addUserDataToDB(user.displayName, user.email, user.uid)
-        getDataUserDB(user.uid)
-        addIdUserDocumentToLS(user.uid)
-        console.log('Sign in successful');
-        location.reload()    
-      }).catch((error) => {
-        console.error('Error while updating profile:', error);
-      });
-    })
-   } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Error while registration profile:', errorCode, errorMessage);
-    };
-}
+          displayName: userName
+        }).then(() => {
+          addUserIdToLocalStorage(user.uid)
+          addUserDataToDB(user.displayName, user.email, user.uid)
+          getDataUserDB(user.uid)
+          addIdUserDocumentToLS(user.uid)
+          location.reload()
+          onModalClose();
+          signupForm.reset();
+          Notiflix.Notify.success('Sign in successful');
+        }).catch((error) => {
+          console.error('Error while updating profile:', error);
+          Notiflix.Notify.failure(
+            `Error while updating profile`
+          );
+        });
+      })
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // console.error('Error while registration profile:', errorCode, errorMessage);
+    Notiflix.Notify.failure(
+      `Error while registration profile`
+    );
+  };         
+};
 
 const loginUser = (auth, loginUserEmail, loginUserPassword) => {
-  try { 
+  try {
     signInWithEmailAndPassword(auth, loginUserEmail, loginUserPassword)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      addUserIdToLocalStorage(user.uid)
-      getOnIncludeDBUser(user)
-      getBooksFromDBForRender()
-      console.log('Successful login');
-      // location.reload()
-    })
-   } catch (error) {
-       const errorCode = error.code;
-       const errorMessage = error.message;
-       console.error('Error during login:', errorCode, errorMessage);
-    };
+      .then((userCredential) => {
+        const user = userCredential.user;
+        addUserIdToLocalStorage(user.uid)
+        getOnIncludeDBUser(user)
+        getBooksFromDBForRender()
+        // location.reload()
+        onModalClose();
+        loginForm.reset();
+        Notiflix.Notify.success('Successful login');
+
+      })
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.error('Error during login:', errorCode, errorMessage);
+    Notiflix.Notify.failure(`Error during login`);
+  };
 }
 
 function addUserAuth(e) {
@@ -106,6 +120,7 @@ function onLogoutUser () {
     // location.reload()
 }).catch((error) => {
   console.log('Помилка при LOGOUT');
+  Notiflix.Notify.failure(`Error LOGOUT`);
 });
 }
 
