@@ -17,7 +17,7 @@
   transition: opacity var(--transition), visibility var(--transition);
 }
 
-.backdrop-auth.is-hidden-auth {
+.backdrop-auth.visually-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
