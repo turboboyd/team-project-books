@@ -3,6 +3,8 @@ import { backdropOutEl } from './modal-auth-out';
 import { userVerification, userVerificationTabDesk } from './firebase';
 import mobileBg from '../images/mobile-menu/mobile-menu-bg.png';
 import mobileBgx2 from '../images/mobile-menu/mobile-menu-bg-2x.png';
+import mobileBgWebP from '../images/mobile-menu/mobile-menu-bg.webp';
+import mobileBgWebPx2 from '../images/mobile-menu/mobile-menu-bg-2x.webp';
 import sprite from '../images/sprite.svg';
 
 const burgerButton = document.querySelector('.burger');
@@ -19,7 +21,7 @@ const htmlUserNotLoginModal = `
   <div class="mobile-bg-wrapper">
   <picture class="mobile-bg primary">
     <source
-      srcset=""
+      srcset="${mobileBgWebPx2}"
       type="image/webp"
     />
     <source
@@ -28,7 +30,7 @@ const htmlUserNotLoginModal = `
     />
 
     <img
-      src="${mobileBg}"
+      src="${mobileBgx2}"
       alt="books"
       style="width: 100%"
     />
@@ -36,7 +38,7 @@ const htmlUserNotLoginModal = `
 
   <picture class="mobile-bg secondary">
     <source
-      srcset=""
+      srcset="${mobileBgWebP}"
       type="image/webp"
     />
     <source
@@ -55,7 +57,7 @@ const htmlUserNotLoginModal = `
 const htmlUserLoginModal = `  <div class="menu-user-bar"><div class="menu-user-bar-foto"><svg class="menu-user-bar-icon" width="19" height="19"><use href="${sprite}#user-default-icon"></use></svg></div><p class="menu-user-bar-name">Stephen</p></div><nav class="mob-menu-nav"><ul class="mob-menu-list-nav"><li class="mob-menu-item-nav"><a id="home" class="mob-menu-link-nav" href="./index.html">HOME</a></li><li class="mob-menu-item-nav"><a id="shop" class="mob-menu-link-nav" href="./shopping-list.html">SHOPPING LIST<svg class="header-link-icon" width="20" height="20"><use href="${sprite}#bag"></use></svg></a></li></ul></nav><button class="menu-btn-exit" type="button">Log out<svg class="menu-btn-start-icon" width="20" height="20"><use href="${sprite}#arrow-right-icon"></use></svg></button>  <div class="mobile-bg-wrapper">
   <picture class="mobile-bg primary">
     <source
-      srcset=""
+      srcset="${mobileBgWebPx2}"
       type="image/webp"
     />
     <source
@@ -64,7 +66,7 @@ const htmlUserLoginModal = `  <div class="menu-user-bar"><div class="menu-user-b
     />
 
     <img
-      src="${mobileBg}"
+      src="${mobileBgx2}"
       alt="books"
       style="width: 100%"
     />
@@ -72,7 +74,7 @@ const htmlUserLoginModal = `  <div class="menu-user-bar"><div class="menu-user-b
 
   <picture class="mobile-bg secondary">
     <source
-      srcset=""
+      srcset="${mobileBgWebP}"
       type="image/webp"
     />
     <source
