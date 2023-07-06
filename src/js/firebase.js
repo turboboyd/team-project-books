@@ -11,10 +11,13 @@ import {
   renderBtnSignupTabDesc,
 } from './header';
 import { onModalClose } from './modal-auth'; 
-import {ofNavMenu} from './header'
+
+import { ofNavMenu } from './header'
+import { addUserIdToLocalStorage, addUserDataToDB, getTESTDataUserDB, getOnIncludeDBUser, addIdUserDocumentToLS, getBooksFromDBForRender  } from './firestore-db'
 import Notiflix from 'notiflix';
 
-const firebaseConfig = {
+
+export const firebaseConfig = {
   apiKey: "AIzaSyA5yMbzqmiZ7atqSLoo6p8776_z1r_qRCA",
   authDomain: "my-app-bookchelf-gr6.firebaseapp.com",
   projectId: "my-app-bookchelf-gr6",
@@ -23,57 +26,65 @@ const firebaseConfig = {
   appId: "1:730775079305:web:22a6aa554ab92270bef958"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+
 const authUser = (userName, userEmail, userPassword) => {
+  try {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
-    .then((userCredential) => {
+      .then((userCredential) => {
         const user = userCredential.user;
         updateProfile(user, {
-        displayName: userName
-      }).then(() => {
-        Notiflix.Notify.success('Sign in successful');
-        
-        onModalClose();
-        signupForm.reset();
-        userVerification();
-        userVerificationTabDesk();
-      }).catch((error) => {
-        console.error('Error while updating profile:', error);
-        Notiflix.Notify.failure(
-          `Error while updating profile`
-        );
-      });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Error while registration profile:', errorCode, errorMessage);
-              Notiflix.Notify.failure(
-                `Error while registration profile`
-              );
-    });
-}
+          displayName: userName
+        }).then(() => {
+          addUserIdToLocalStorage(user.uid)
+          addUserDataToDB(user.displayName, user.email, user.uid)
+          addIdUserDocumentToLS(user.uid)
+          userVerification();
+          userVerificationTabDesk();
+          onModalClose();
+          signupForm.reset();
+          Notiflix.Notify.success('Sign in successful');
+        }).catch((error) => {
+          console.error('Error while updating profile:', error);
+          Notiflix.Notify.failure(
+            `Error while updating profile`
+          );
+        });
+      })
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // console.error('Error while registration profile:', errorCode, errorMessage);
+    Notiflix.Notify.failure(
+      `Error while registration profile`
+    );
+  };         
+};
 
 const loginUser = (auth, loginUserEmail, loginUserPassword) => {
-      signInWithEmailAndPassword(auth, loginUserEmail, loginUserPassword)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      Notiflix.Notify.success('Successful login');
+  try {
+    signInWithEmailAndPassword(auth, loginUserEmail, loginUserPassword)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        addUserIdToLocalStorage(user.uid)
+        getOnIncludeDBUser(user)
+        getBooksFromDBForRender()
+        userVerification();
+        userVerificationTabDesk();
+        onModalClose();
+        loginForm.reset();
+        Notiflix.Notify.success('Successful login');
 
-      onModalClose();
-      loginForm.reset();
-      userVerification();
-      userVerificationTabDesk();
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Error during login:', errorCode, errorMessage);
-      Notiflix.Notify.failure(`Error during login`);
-    });
+      })
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.error('Error during login:', errorCode, errorMessage);
+    Notiflix.Notify.failure(`Error during login`);
+  };
 }
 
 function addUserAuth(e) {
@@ -82,6 +93,10 @@ function addUserAuth(e) {
     const authEmail = authEmailEl.value.trim();
     const authPassword = authPasswordEl.value;
   authUser(authName, authEmail, authPassword);
+  onModalClose()
+    setTimeout(() => {
+        signupForm.reset();
+    }, 1000)
 }
 
 function onLoginUser(e) {
@@ -89,6 +104,11 @@ function onLoginUser(e) {
     const loginEmail = loginEmailEl.value;
     const loginPassword = loginPasswordEl.value;
   loginUser(auth, loginEmail, loginPassword);
+  onModalClose()
+    setTimeout(() => {
+        loginForm.reset();
+    }, 2000)
+
 }
 
 function onLogoutUser () {
@@ -96,8 +116,9 @@ function onLogoutUser () {
     removeHiddenModalOut();
     renderBtnSignupTabDesc();
     ofNavMenu()
+    localStorage.clear()
+    window.location.href = 'https://turboboyd.github.io/team-project-books/index.html';
 }).catch((error) => {
-  console.log('Помилка при LOGOUT');
   Notiflix.Notify.failure(`Error LOGOUT`);
 });
 }
