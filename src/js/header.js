@@ -167,13 +167,13 @@ function handleResize() {
 }
 
 function onOpenFormAuth() {
-  modalElem.classList.remove('is-hidden-auth');
+  modalElem.classList.remove('visually-hidden');
   closeMenu();
 }
 
 function onBtnLogout() {
   closeMenu();
-  backdropOutEl.classList.remove('is-hidden-b');
+  backdropOutEl.classList.remove('visually-hidden');
   bodyElement.classList.add('no-scroll');
 }
 
