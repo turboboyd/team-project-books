@@ -17,22 +17,32 @@ const paginationWrapEl = document.querySelector('.pagination-wrap');
 
 export function renderBtnList() {
   const pageCount = allPage();
-  if (pageCount < 2) {
+  if (pageCount > 1) {
+    if (pageCount < 2) {
+      if (leftContainer && rightContainer) {
+        removeArrow();
+      }
+      renderBtnPerPage();
+    } else {
+      if (!leftContainer && !rightContainer) {
+        createArrow();
+      }
+      renderBtnPerPage();
+    }
+    if (pageCount > countBtnOfPage) {
+      createBtnMore();
+    }
+    if (pageCount <= countBtnOfPage && btnMore) {
+      btnMore.remove();
+    }
+  } else {
+    btnListPaginationEl.innerHTML = '';
     if (leftContainer && rightContainer) {
       removeArrow();
     }
-    renderBtnPerPage();
-  } else {
-    if (!leftContainer && !rightContainer) {
-      createArrow();
+    if (btnMore) {
+      btnMore.innerHTML = '';
     }
-    renderBtnPerPage();
-  }
-  if (pageCount > countBtnOfPage) {
-    createBtnMore();
-  }
-  if (pageCount <= countBtnOfPage && btnMore) {
-    btnMore.remove();
   }
 }
 
