@@ -19,7 +19,7 @@
   --second-text-color: #b4afaf;
   --accent-color-filter: #4f2ee8;
   --amazon-image-filter: grayscale(100%);
-  --loader-book-color: #111111;
+  --loader-book-color: #4f2ee8;
   --pagination-btn-text: #000;
   --pagination-btn-bcg: #fff;
   --pagination-btn-border: #111;
@@ -43,7 +43,7 @@
   --second-text-color: #b4afaf;
   --accent-color-filter: #eac645;
   --amazon-image-filter: grayscale(100%) invert(1);
-  --loader-book-color: #ffffff;
+  --loader-book-color: #4f2ee8;
   --pagination-btn-text: #fff;
   --pagination-btn-bcg: #202024;
   --pagination-btn-border: #000;
